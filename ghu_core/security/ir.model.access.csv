@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ghu_core_ghu_core,ghu_core.ghu_core,model_ghu_core_ghu_core,,1,0,0,0
