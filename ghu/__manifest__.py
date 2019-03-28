@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ghu_core",
+    'name': "Global Humanistic University",
 
     'summary': """
-        This is the basic extension of odoo for GHU""",
+        Greatest Odoo Module Ever""",
 
     'description': """
         Long description of module's purpose
     """,
 
-    'author': "Gerald Aistleitner, gerald.aistleitner@gmail.com",
-    'website': "http://ghu.edu.cw",
+    'author': "Gerald Aistleitner",
+    'website': "https://www.linkedin.com/in/gerald-aistleitner-1a2712120/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
@@ -19,16 +19,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'crm', 'account'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'security/ir.model.access.csv',
+        'views/advisor_view.xml',
         'views/templates.xml',
+        'menu/advisor_menu.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'application': True
 }
