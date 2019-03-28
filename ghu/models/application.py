@@ -45,12 +45,16 @@ class GhuApplication(models.Model):
         column2='lang_id'
     )
 
+    company_position = fields.Char(
+        'Company Position', size=256,
+        states={'done': [('readonly', True)]})
+
     email = fields.Char(
         'Email', size=256, required=True,
         states={'done': [('readonly', True)]})
-
-    company_position = fields.Char(
-        'Company Position', size=256, required=True,
+    
+    skype = fields.Char(
+        'Skype', size=256,
         states={'done': [('readonly', True)]})
 
     street = fields.Char(
@@ -75,11 +79,12 @@ class GhuApplication(models.Model):
     mobile = fields.Char(
         'Mobile', size=16,
         states={'done': [('readonly', True)], 'submit': [('required', True)]})
-
-
-    fees = fields.Float('Fees', states={'done': [('readonly', True)]})
     
-    image = fields.Binary('image', states={'done': [('readonly', True)]})
+    photo = fields.Binary('Photo', states={'done': [('readonly', True)]})
+    
+    vita = fields.Binary('Vita', states={'done': [('readonly', True)]})
+
+    passport = fields.Binary('Passport', states={'done': [('readonly', True)]})
 
     state = fields.Selection(
         [('new', 'New'),
