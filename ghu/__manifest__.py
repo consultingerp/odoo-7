@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'crm', 'account', 'website', 'website_form_editor'],
+    'depends': ['base', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor'],
 
     # always loaded
     'data': [
