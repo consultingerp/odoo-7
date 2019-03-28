@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Global Humanistic University",
+    'name': "GHU",
 
     'summary': """
         Greatest Odoo Module Ever""",
@@ -23,10 +23,10 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'views/advisor_view.xml',
-        'views/templates.xml',
-        'menu/advisor_menu.xml'
+        #'security/ir.model.access.csv',
+        #'views/advisor_view.xml',
+        #'views/templates.xml',
+        #'menu/advisor_menu.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

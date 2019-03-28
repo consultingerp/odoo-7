@@ -6,9 +6,9 @@ class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
 
-
     _inherits = {"res.partner": "partner_id"}
 
+    advisor_id = fields.Char('Last Name', size=12)
 
     last_name = fields.Char('Last Name', size=128)
     
@@ -39,3 +39,7 @@ class GhuAdvisor(models.Model):
         string=u'Birthday',
         default=fields.Date.context_today
     )
+
+    _sql_constraints = [
+        ('unique_advisor_code',
+         'unique(code)', 'Code should be unique per advisor!')]

@@ -45,6 +45,14 @@ class GhuApplication(models.Model):
         column2='lang_id'
     )
 
+    email = fields.Char(
+        'Email', size=256, required=True,
+        states={'done': [('readonly', True)]})
+
+    company_position = fields.Char(
+        'Company Position', size=256, required=True,
+        states={'done': [('readonly', True)]})
+
     street = fields.Char(
         'Street', size=256, states={'done': [('readonly', True)]})
 
@@ -67,9 +75,7 @@ class GhuApplication(models.Model):
     mobile = fields.Char(
         'Mobile', size=16,
         states={'done': [('readonly', True)], 'submit': [('required', True)]})
-    email = fields.Char(
-        'Email', size=256, required=True,
-        states={'done': [('readonly', True)]})
+
 
     fees = fields.Float('Fees', states={'done': [('readonly', True)]})
     
@@ -86,23 +92,16 @@ class GhuApplication(models.Model):
 
 
     student_id = fields.Many2one(
-        'op.student', 'Student', states={'done': [('readonly', True)]}
+        'ghu.student', 'Student', states={'done': [('readonly', True)]}
     )
 
     product_id = fields.Many2one(
         'product.product', 'Product', required=True,
         domain=[('type', '=', 'service')], readonly=True)
 
-    course_id = fields.Many2one(
-        'ghu.course', 'Course', required=True, readonly=True)
+    study_id = fields.Many2one(
+        'ghu.course', 'Study', required=True, readonly=True)
 
     partner_id = fields.Many2one('res.partner', 'Partner')
     is_student = fields.Boolean('Is Already Student')
-    fees_term_id = fields.Many2one('op.fees.terms', 'Fees Term')
     
-class qualification(models.Model):
-    _name = 'ghu.qualification'
-    _description = "Qualification"
-    register_id = fields.Many2one(
-        'op.admission.register', 'Admission Register', required=True,
-        states={'done': [('readonly', True)]})
