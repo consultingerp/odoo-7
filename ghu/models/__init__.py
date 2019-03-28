@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from . import models
 from . import advisor
 from . import application
 from . import program
