@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="ghu.model_ghu_application" model="ir.model">     
-            <field name="website_form_default_field_id" ref="ghu.field_ghu_application_description" />    
+        <record id="ghu.model_ghu_application" model="ir.model">       
             <field name="website_form_access">True</field>
             <field name="website_form_label">Apply now</field>
         </record>
