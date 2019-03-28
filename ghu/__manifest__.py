@@ -23,6 +23,7 @@
 
     # always loaded
     'data': [
+        'data/ghu_data.xml',
         #'security/ir.model.access.csv',
         #'views/advisor_view.xml',
         #'views/templates.xml',
