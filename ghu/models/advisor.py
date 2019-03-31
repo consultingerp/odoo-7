@@ -8,10 +8,14 @@ class GhuAdvisor(models.Model):
 
     _inherits = {"res.partner": "partner_id"}
 
-    advisor_id = fields.Char('Last Name', size=12)
+    advisor_id = fields.Char('Advisor ID', size=12)
 
     last_name = fields.Char('Last Name', size=128)
-    
+
+    nomination = fields.Char('Nomination', size=128)
+
+    academic_degree = fields.Char('Academic Degree', size=128)
+
     nationality = fields.Many2one(
         string=u'Nationality',
         comodel_name='res.country'

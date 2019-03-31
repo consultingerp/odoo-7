@@ -101,11 +101,16 @@
                             <page name="personal_information"
                                   string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
+                                    <field name="advisor_id" required="1">
+                                    <field name="nomination">
                                     <field name="gender" required="1"/>
                                     <field name="birth_date" required="1"/>
                                     <field name="nationality"/>
                                     <field name="user_id" string="User" readonly="1"/>
                                     <field name="email" required="1"/>
+                                    <field name="native_language">
+                                    <field name="foreign_languages">
+
                                 </group>
                                 <group string="Address Detail" name="address">
                                     <label for="type"/>
