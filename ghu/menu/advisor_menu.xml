@@ -5,7 +5,7 @@
                   name="Advisor"
                   sequence="25"
                   action="act_open_ghu_advisor_view"
-                  web_icon="ghu,static/icons/user-graduate-solid.svg"/>
+                  web_icon="ghu,static/icons/advisor.png"/>
 
         <menuitem id="menu_ghu_advisor_main_student"
                   name="Profile"
