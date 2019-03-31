@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="ghu.model_ghu_application" model="ir.model">       
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Apply now</field>
+        </record>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>ghu.application</value>
+            <value eval="[
+                'title',
+                'first_name',
+                'last_name',
+                'title_post',
+                'gender',
+                'marital_status',
+                'birthday',
+                'nationality',
+                'native_language',
+                'foreign_languages',
+                'company_position',
+                'email',
+                'skype',
+                'street',
+                'street2',
+                'zip',
+                'city',
+                'state_id',
+                'country_id',
+                'phone',
+                'mobile',
+                'photo',
+                'vita',
+                'passport',
+                'product_id',
+                'study_id'
+            ]"/>
+        </function>
+    </data>
+</openerp>

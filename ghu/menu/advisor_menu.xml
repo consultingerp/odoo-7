@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_ghu_advisor_root"
+                  name="Advisor"
+                  sequence="25"
+                  action="act_open_ghu_advisor_view_2"
+                  web_icon="ghu,static/icons/advisor.png"/>
+    </data>
+</odoo>
