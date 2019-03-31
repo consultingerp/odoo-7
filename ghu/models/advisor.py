@@ -44,6 +44,8 @@ class GhuAdvisor(models.Model):
         default=fields.Date.context_today
     )
 
+    vita = fields.Binary('Vita')
+
     programs = fields.Many2many(
         string=u'Programs',
         comodel_name='ghu.program',

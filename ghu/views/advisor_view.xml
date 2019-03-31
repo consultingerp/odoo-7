@@ -111,6 +111,7 @@
                                     <field name="native_language"/>
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
+                                    <field name="vita"/>
 
                                 </group>
                                 <group string="Address Detail" name="address">
