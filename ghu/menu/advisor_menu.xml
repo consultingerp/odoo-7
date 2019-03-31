@@ -4,18 +4,7 @@
         <menuitem id="menu_ghu_advisor_root"
                   name="Advisor"
                   sequence="25"
-                  action="act_open_ghu_advisor_view"
+                  action="act_open_ghu_advisor_view_2"
                   web_icon="ghu,static/icons/advisor.png"/>
-
-        <menuitem id="menu_ghu_advisor_main_student"
-                  name="Profile"
-                  parent="menu_ghu_advisor_root"
-                  sequence="20"
-                  action="act_open_ghu_advisor_view_2"/>
-
-        <menuitem id="menu_ghu_general_advisor"
-                  parent="menu_ghu_advisor_root"
-                  sequence="21"
-                  name="General"/>
     </data>
 </odoo>
