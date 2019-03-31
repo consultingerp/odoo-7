@@ -4,8 +4,8 @@
         <menuitem id="menu_ghu_advisor_root"
                   name="Advisor"
                   sequence="25"
-                  action="act_open_ghu_advisor_view_2"
-                  web_icon="ghu,static/description/icon_student.png"/>
+                  action="act_open_ghu_advisor_view"
+                  web_icon="ghu,static/icons/user-graduate-solid.svg"/>
 
         <menuitem id="menu_ghu_advisor_main_student"
                   name="Profile"
