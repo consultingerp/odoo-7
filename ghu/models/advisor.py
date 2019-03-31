@@ -13,8 +13,8 @@ class GhuAdvisor(models.Model):
     last_name = fields.Char('Last Name', size=128)
     
     nationality = fields.Many2one(
-        string=u'res.country',
-        comodel_name='Nationality'
+        string=u'Nationality',
+        comodel_name='res.country'
     )
         
     native_language = fields.Many2one(
