@@ -108,8 +108,8 @@
                                     <field name="nationality"/>
                                     <field name="user_id" string="User" readonly="1"/>
                                     <field name="email" required="1"/>
-                                    <field name="native_language">
-                                    <field name="foreign_languages">
+                                    <field name="native_language" />
+                                    <field name="foreign_languages" />
 
                                 </group>
                                 <group string="Address Detail" name="address">
