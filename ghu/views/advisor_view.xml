@@ -110,6 +110,7 @@
                                     <field name="email" required="1"/>
                                     <field name="native_language"/>
                                     <field name="foreign_languages"/>
+                                    <field name="programs"/>
 
                                 </group>
                                 <group string="Address Detail" name="address">

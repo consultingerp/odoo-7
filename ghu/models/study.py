@@ -32,7 +32,7 @@ class GhuStudy(models.Model):
 
     program_id = fields.Many2one(
         string=u'Program',
-        comodel_name='ghu.subject',
+        comodel_name='ghu.program',
     )
 
     _sql_constraints = [

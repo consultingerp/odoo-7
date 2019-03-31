@@ -29,8 +29,8 @@ class GhuAdvisor(models.Model):
     foreign_languages = fields.Many2many(
         string=u'Foreign Languages',
         comodel_name='res.lang',
-        relation='application_lang_rel',
-        column1='application_id',
+        relation='advisor_lang_rel',
+        column1='advisor_id',
         column2='lang_id'
     )
     
@@ -43,6 +43,15 @@ class GhuAdvisor(models.Model):
         string=u'Birthday',
         default=fields.Date.context_today
     )
+
+    programs = fields.Many2many(
+        string=u'Programs',
+        comodel_name='ghu.program',
+        relation='advisor_program_rel',
+        column1='advisor_id',
+        column2='program_id',
+    )
+    
 
     _sql_constraints = [
         ('unique_advisor_code',
