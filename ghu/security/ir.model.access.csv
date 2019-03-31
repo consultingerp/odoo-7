@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ghu_student,ghu.student,model_ghu_student,,1,1,1,0
 access_ghu_advisor,ghu.advisor,model_ghu_advisor,,1,1,1,0
 access_ghu_program,ghu.program,model_ghu_program,,1,1,1,0
+access_ghu_application,ghu.application,model_ghu_application,,1,1,1,0
