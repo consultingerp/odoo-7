@@ -55,8 +55,3 @@ class GhuAdvisor(models.Model):
         column1='advisor_id',
         column2='program_id',
     )
-    
-
-    _sql_constraints = [
-        ('unique_advisor_code',
-         'unique(code)', 'Code should be unique per advisor!')]
