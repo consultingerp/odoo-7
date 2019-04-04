@@ -18,7 +18,7 @@ class GhuApplication(models.Model):
         states={'done': [('readonly', True)]})
     
     marital_status = fields.Selection(
-        string=u'Marital Stauts',
+        string=u'Marital Status',
         selection=[('single', 'Single')]
     )
     
