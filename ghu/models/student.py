@@ -53,12 +53,6 @@ class GhuStudent(models.Model):
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
 
-    _sql_constraints = [
-        ('unique_gr_no',
-         'unique(gr_no)',
-         'Gr Number Must be unique!')
-    ]
-
     @api.multi
     @api.constrains('birth_date')
     def _check_birthdate(self):
