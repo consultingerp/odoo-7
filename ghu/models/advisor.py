@@ -16,6 +16,8 @@ class GhuAdvisor(models.Model):
 
     academic_degree = fields.Char('Academic Degree', size=128)
 
+    skype = fields.Char('Skype', size=128)
+
     nationality = fields.Many2one(
         string=u'Nationality',
         comodel_name='res.country'
