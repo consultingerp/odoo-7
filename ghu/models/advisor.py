@@ -8,8 +8,6 @@ class GhuAdvisor(models.Model):
 
     _inherits = {"res.partner": "partner_id"}
 
-    advisor_id = fields.Char('Advisor ID', size=12)
-
     last_name = fields.Char('Last Name', size=128)
 
     nomination = fields.Char('Nomination', size=128)

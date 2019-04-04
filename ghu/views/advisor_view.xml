@@ -101,7 +101,7 @@
                             <page name="personal_information"
                                   string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
-                                    <field name="advisor_id" required="1"/>
+                                    <field name="external_id" required="1"/>
                                     <field name="nomination"/>
                                     <field name="academic_degree"/>
                                     <field name="gender" required="1"/>
