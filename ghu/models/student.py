@@ -40,6 +40,7 @@ class GhuStudentStudy(models.Model):
 class GhuStudent(models.Model):
     _name = 'ghu.student'
     _inherits = {'res.partner': 'partner_id'}
+    _description = "Student"
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128)
