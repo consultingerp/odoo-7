@@ -109,6 +109,7 @@
                                     <field name="nationality"/>
                                     <field name="user_id" string="User" readonly="1"/>
                                     <field name="email" required="1"/>
+                                    <field name="skype" />
                                     <field name="native_language"/>
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
