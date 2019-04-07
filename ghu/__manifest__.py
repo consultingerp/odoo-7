@@ -27,7 +27,6 @@
         'data/website_ghu_data.xml',
         'security/ir.model.access.csv',
         'views/advisor_view.xml',
-        'views/website_advisor_templates.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml'
     ],
