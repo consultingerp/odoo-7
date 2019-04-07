@@ -32,7 +32,7 @@
                                 </section>
                                 <section class="pt32 pb32" id="advisor">
                                     <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]" />
-                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].search()" />
+                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].search([])" />
                                     <div class="container" t-if="len(advisor)">
                                         <div class="row">
                                             <div t-foreach="advisor" t-as="advisor" class="col-md-3 col-xl-2 mt16 text-center">
