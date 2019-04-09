@@ -33,7 +33,8 @@
                                 <section class="pt32 pb32" id="advisor">
                                     <t t-set="is_publisher" t-value="request.env['res.users'].has_group('website.group_website_publisher')"/>
                                     <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
-                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].search(advisor_domain)"/>
+                                    <!-- TODO: Remove this ugly sudo() -->
+                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
                                     <div class="container" t-if="len(advisor)">
                                         <div class="row">
                                             <div t-foreach="advisor" t-as="advisor" class="col-md-4 col-xl-3 mt16 text-center">
