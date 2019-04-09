@@ -2,7 +2,7 @@
 <odoo>
     <record id="ghu_advisor_public" model="ir.rule">
         <field name="name">ghu_advisor: Public</field>
-        <field name="model_id" ref="model_ghu_advisor"/>
+        <field name="model_id" ref="model_website_ghu_advisor"/>
         <field name="domain_force">[('website_published', '=', True)]</field>
         <field name="groups" eval="[(4, ref('base.group_public'))]"/>
         <field name="perm_read" eval="True"/>
@@ -12,7 +12,7 @@
     </record>
     <record id="ghu_advisor_portal" model="ir.rule">
         <field name="name">ghu_advisor: Portal</field>
-        <field name="model_id" ref="model_ghu_advisor"/>
+        <field name="model_id" ref="model_website_ghu_advisor"/>
         <field name="domain_force">[('website_published', '=', True)]</field>
         <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
         <field name="perm_read" eval="True"/>
