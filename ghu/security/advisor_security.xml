@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ghu_advisor_public" model="ir.rule">
+        <field name="name">ghu_advisor: Public</field>
+        <field name="model_id" ref="ghu.advisor"/>
+        <field name="domain_force">[('website_published', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="ghu_advisor_portal" model="ir.rule">
+        <field name="name">ghu_advisor: Portal</field>
+        <field name="model_id" ref="ghu.advisor"/>
+        <field name="domain_force">[('website_published', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+</odoo>
