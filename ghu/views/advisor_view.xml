@@ -75,6 +75,12 @@
             <field name="model">ghu.advisor</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
+                <button name="toggle_active" position="before">
+                    <button class="oe_stat_button" name="website_publish_button"
+                        type="object" icon="fa-globe">
+                        <field name="website_published" widget="website_button"/>
+                    </button>
+                </button>
                 <form string="Advisor">
                     <sheet>
                         <field name="image" widget="image" class="oe_left oe_avatar"/>
