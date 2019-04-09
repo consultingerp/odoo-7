@@ -36,7 +36,12 @@
                                     <div class="container" t-if="len(advisor)">
                                         <div class="row">
                                             <div t-foreach="advisor" t-as="advisor" class="col-md-4 col-xl-3 mt16 text-center">
-                                                <img t-att-src="website.image_url(advisor, 'image_large')" class="img-fluid shadow rounded" alt="Advisor"/>
+                                                <t t-call="website.publish_management">
+                                                    <t t-set="object" t-value="advisor"/>
+                                                    <t t-set="publish_edit" t-value="True"/>
+                                                    <t t-set="style" t-value="'float: none !important; margin-bottom: 4px;'"/>
+                                                </t>
+                                                <img t-att-src="website.image_url(advisor, 'image')" class="img-fluid shadow rounded" alt="Advisor"/>
                                                 <div class="mt8">
                                                     <span t-field="advisor.nomination"/><br/>
                                                     <strong t-field="advisor.name"/>
