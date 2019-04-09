@@ -1,45 +1,69 @@
-<?xml version="1.0"?>
-<openerp>
-<data noupdate="0">
-    <t name="Advisor" t-name="ghu.advisor">
-        <t t-call="website.layout">
-            <div id="wrap">
-                <div class="oe_structure">
-                    <section class="pt8 pb8">
-                        <div class="container">
-                            <div class="row s_nb_column_fixed">
-                                <div class="col-lg-12 s_title pt16 pb16">
-                                    <h1 class="text-center">Our advisors</h1>
-                                    <h3 class="text-muted text-center">Great people for great students</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="pt32 pb32" id="advisor">
-                        <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
-                        <t t-set="advisor" t-value="request.env['ghu.advisor'].search([])"/>
-                        <div class="container" t-if="len(advisor)">
-                            <div class="row">
-                                <div t-foreach="advisor" t-as="advisor" class="col-md-4 col-xl-3 mt16 text-center">
-                                    <img t-att-src="website.image_url(advisor, 'image_large')" class="img-fluid shadow rounded" alt="Advisor"/>
-                                    <div class="mt8">
-                                        <span t-field="advisor.nomination"/><br/>
-                                        <strong t-field="advisor.name"/>
-                                        <strong t-field="advisor.last_name"/>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="action_open_website" model="ir.actions.act_url">
+            <field name="name">Website Advisor</field>
+            <field name="target">self</field>
+            <field name="url">/advisor</field>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website"/>
+            <field name="state">open</field>
+        </record>
+        <!-- Advisor page -->
+        <record id="advisor" model="ir.ui.view">
+            <field name="name">Advisor</field>
+            <field name="type">qweb</field>
+            <field name="key">ghu.advisor</field>
+            <field name="arch" type="xml">
+                <t name="Advisor" t-name="ghu.advisor">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                                <section class="pt8 pb8">
+                                    <div class="container">
+                                        <div class="row s_nb_column_fixed">
+                                            <div class="col-lg-12 s_title pt16 pb16">
+                                                <h1 class="text-center">Our advisors</h1>
+                                                <h3 class="text-muted text-center">Great people for great students</h3>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div t-field="advisor.nationality.name"/>
-                                    <t t-foreach="advisor.programs" t-as="program">
-                                        <span t-field="program.name" />
-                                    </t>
-                                    <div t-field="advisor.native_language.name" class="text-muted mt16 d-block mx-auto"/>
-
-                                </div>
+                                </section>
+                                <section class="pt32 pb32" id="advisor">
+                                    <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
+                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].search([])"/>
+                                    <div class="container" t-if="len(advisor)">
+                                        <div class="row">
+                                            <div t-foreach="advisor" t-as="advisor" class="col-md-4 col-xl-3 mt16 text-center">
+                                                <img t-att-src="website.image_url(advisor, 'image_large')" class="img-fluid shadow rounded" alt="Advisor"/>
+                                                <div class="mt8">
+                                                    <span t-field="advisor.nomination"/><br/>
+                                                    <strong t-field="advisor.name"/>
+                                                    <strong t-field="advisor.last_name"/>
+                                                </div>
+                                                <div t-field="advisor.nationality.name"/>
+                                                <t t-foreach="advisor.programs" t-as="program">
+                                                    <span t-field="program.name" />
+                                                </t>
+                                                <div t-field="advisor.native_language.name" class="text-muted mt16 d-block mx-auto"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </t>
-    </t>
+                    </t>
+                </t>
+            </field>
+        </record>
+        <record id="advisor_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/advisor</field>
+            <field name="view_id" ref="advisor"/>
+        </record>
+    </data>
+</odoo>
+
 </data>
 </openerp>
