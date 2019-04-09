@@ -6,4 +6,4 @@ access_ghu_application,ghu.application,model_ghu_application,,1,1,1,0
 access_ghu_student_study,access_ghu_student_study,model_ghu_student_study,base.group_user,1,0,0,0
 access_ghu_study,access_ghu_study,model_ghu_study,base.group_user,1,0,0,0
 access_ghu_university,access_ghu_university,model_ghu_university,base.group_user,1,0,0,0
-access_ghu_advisor,ghu.advisor,model_website_ghu_advisor,base.group_portal,1,0,0,0
+access_ghu_advisor_public,ghu.advisor,model_website_ghu_advisor,base.group_portal,1,0,0,0
