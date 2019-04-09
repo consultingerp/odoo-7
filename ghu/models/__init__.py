@@ -6,3 +6,4 @@ from . import program
 from . import student
 from . import study
 from . import university
+from . import employee
