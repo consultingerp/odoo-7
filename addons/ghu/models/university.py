@@ -26,6 +26,7 @@ from odoo.exceptions import ValidationError
 class GhuUniversity(models.Model):
     _name = 'ghu.university'
     _inherits = {'res.partner': 'partner_id'}
+    _description = "University"
 
     code = fields.Char('Code', size=16, required=True)
     partner_id = fields.Many2one(

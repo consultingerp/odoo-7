@@ -18,7 +18,7 @@ class GhuApplication(models.Model):
         states={'done': [('readonly', True)]})
     
     marital_status = fields.Selection(
-        string=u'Marital Stauts',
+        string=u'Marital Status',
         selection=[('single', 'Single')]
     )
     
@@ -28,8 +28,8 @@ class GhuApplication(models.Model):
     )
 
     nationality = fields.Many2one(
-        string=u'res.country',
-        comodel_name='Nationality'
+        string=u'Nationality',
+        comodel_name='res.country'
     )
     
     native_language = fields.Many2one(
@@ -105,7 +105,7 @@ class GhuApplication(models.Model):
         domain=[('type', '=', 'service')], readonly=True)
 
     study_id = fields.Many2one(
-        'ghu.course', 'Study', required=True, readonly=True)
+        'ghu.study', 'Study', required=True, readonly=True)
 
     partner_id = fields.Many2one('res.partner', 'Partner')
     is_student = fields.Boolean('Is Already Student')

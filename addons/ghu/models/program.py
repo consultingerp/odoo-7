@@ -25,7 +25,8 @@ from odoo import models, fields
 class GhuProgram(models.Model):
     _name = 'ghu.program'
     _rec_name = 'name'
-
+    _description = "Program"
+    
     name = fields.Char('Name', size=128, required=True)
     code = fields.Char('Code', size=256, required=True)
 

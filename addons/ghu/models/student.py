@@ -40,6 +40,7 @@ class GhuStudentStudy(models.Model):
 class GhuStudent(models.Model):
     _name = 'ghu.student'
     _inherits = {'res.partner': 'partner_id'}
+    _description = "Student"
 
     middle_name = fields.Char('Middle Name', size=128)
     last_name = fields.Char('Last Name', size=128)
@@ -52,12 +53,6 @@ class GhuStudent(models.Model):
     already_partner = fields.Boolean('Already Partner')
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
-
-    _sql_constraints = [
-        ('unique_gr_no',
-         'unique(gr_no)',
-         'Gr Number Must be unique!')
-    ]
 
     @api.multi
     @api.constrains('birth_date')
