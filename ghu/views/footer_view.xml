@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="ghu.brand_promotion" inherit_id="website.brand_promotion">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
+            <div class="o_brand_promotion">
+                <ul class="meta-menu pull-right">
+                    <li>
+                        <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" class="ml-10" target="_blank">
+                            <img src='/ghu/static/img/aacsb.jpg' height="55px" title="AACSB" class="align-left" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ghu/static/files/Certificate-ASIC-GHU.pdf" class="ml-10" target="_blank">
+                            <img src='/ghu/static/img/asic-accredited.jpg' height="55px" title="ASIC" class="align-left" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.aac.cw/" class="ml-10" target="_blank">
+                            <img src='/ghu/static/img/aac.jpg' height="55px" title="AAC" class="align-left" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
+                            <img src='/ghu/static/img/ministry.png' height="55px" title="Ministry of Curacao" class="align-left" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.researchgate.net/institution/Global_Humanistic_University" class="ml-10" target="_blank">
+                            <img src='/ghu/static/img/rg.png' height="55px" title="ResearchGate" class="align-left" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+</odoo>

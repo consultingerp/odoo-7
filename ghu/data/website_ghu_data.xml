@@ -50,9 +50,7 @@
                                                     <strong t-field="advisor.last_name"/>
                                                 </div>
                                                 <div t-field="advisor.nationality.name"/>
-                                                <t t-foreach="advisor.programs" t-as="program">
-                                                    <span t-field="program.name"/><t t-if="not program_last">,</t>
-                                                </t>
+                                                <t t-foreach="advisor.programs" t-as="program"><span t-field="program.name"/><t t-if="not program_last">,</t></t>
                                                 <div t-field="advisor.native_language.name" class="text-muted mt16 d-block mx-auto"/>
                                                 <a t-if="advisor.vita" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
                                             </div>

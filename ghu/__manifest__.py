@@ -29,6 +29,7 @@
         'security/advisor_security.xml',
         'views/advisor_view.xml',
         'views/employee_view.xml',
+        'views/footer_view.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml'
     ],
