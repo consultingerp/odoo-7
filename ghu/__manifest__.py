@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.25',
+    'version': '0.26',
  
     # any module necessary for this one to work correctly
     'depends': ['base', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor'],
@@ -29,6 +29,7 @@
         'security/advisor_security.xml',
         'views/advisor_view.xml',
         'views/employee_view.xml',
+        'views/footer_view.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml'
     ],
