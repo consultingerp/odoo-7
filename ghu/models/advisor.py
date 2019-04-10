@@ -34,7 +34,7 @@ class GhuAdvisor(models.Model):
         comodel_name='ghu.lang',
         relation='advisor_lang_rel',
         column1='advisor_id',
-        column2='id'
+        column2='lang_id'
     )
     
     gender = fields.Selection(
