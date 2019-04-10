@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
     'version': '0.24',
-
+ 
     # any module necessary for this one to work correctly
     'depends': ['base', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor'],
 
