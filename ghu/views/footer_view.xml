@@ -4,7 +4,7 @@
         <template id="ghu.brand_promotion" inherit_id="website.brand_promotion">
             <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
                 <div class="o_brand_promotion">
-                    <ul class="meta-menu pull-right" style="list-style: none outside none;">
+                    <ul class="meta-menu pull-right" style="padding-left:0;list-style: none outside none;">
                         <li style="float:left;margin-left: 10px;">
                             <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/aacsb.png' height="55px" title="AACSB" class="align-left" />
