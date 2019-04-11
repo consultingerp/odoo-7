@@ -5,7 +5,8 @@ from odoo import models, fields, api
 class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
-
+    #_order = "nomination.name DESC, nationality.name ASC, last_name ASC"
+    _inherit = ['website.published.multi.mixin']
     _inherits = {"res.partner": "partner_id"}
 
     advisor_id = fields.Char('Advisor ID', size=12)
@@ -30,7 +31,7 @@ class GhuAdvisor(models.Model):
 
     foreign_languages = fields.Many2many(
         string=u'Foreign Languages',
-        comodel_name='res.lang',
+        comodel_name='ghu.lang',
         relation='advisor_lang_rel',
         column1='advisor_id',
         column2='lang_id'
@@ -55,3 +56,9 @@ class GhuAdvisor(models.Model):
         column1='advisor_id',
         column2='program_id',
     )
+
+class GhuLang(models.Model):
+    _name = 'ghu.lang'
+    _description = "Language"
+
+    name = fields.Char('Name', size=128)
