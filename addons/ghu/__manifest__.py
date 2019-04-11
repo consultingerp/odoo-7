@@ -31,7 +31,8 @@
         'views/employee_view.xml',
         'views/footer_view.xml',
         #'views/templates.xml',
-        'menu/advisor_menu.xml'
+        'menu/advisor_menu.xml',
+        'views/application_form.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

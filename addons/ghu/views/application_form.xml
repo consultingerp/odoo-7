@@ -1,95 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <template id="apply_form" name="Application Form" inherit_id="website.contactus" customize_show="True">
-            <xpath expr="//div[@name='mail_button']" position="replace">
-                <div>
-                    <form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/page/website_crm.contactus_thanks" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
-                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <div class="form-group form-field o_website_form_required_custom">
-                            <label class="col-md-3 col-sm-4 control-label" for="contact_name">Your Name</label>
-                            <div class="col-md-7 col-sm-8">
-                                <input type="text" class="form-control o_website_form_input" name="contact_name" required=""/>
+<odoo>
+    <data noupdate="0">
+        <!-- Application page -->
+        <record id="application_doctoral_program_view" model="ir.ui.view">
+            <field name="name">Application for Doctoral Program</field>
+            <field name="type">qweb</field>
+            <field name="key">ghu.apply_doctoral</field>
+            <field name="arch" type="xml">
+                <t name="Application for Doctoral Program" t-name="ghu.apply_doctoral">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                                <section class="pt8 pb8">
+                                    <div class="container">
+                                        <div class="row s_nb_column_fixed">
+                                            <div class="col-lg-12 s_title pt16 pb16">
+                                                <h1>Application for Doctoral Program</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
-                        </div>
-                        <div class="form-group form-field">
-                            <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
-                            <div class="col-md-7 col-sm-8">
-                                <input type="text" class="form-control o_website_form_input" placeholder="e.g. (+32).81.81.37.00" name="phone"/>
-                            </div>
-                        </div>
-                        <div class="form-group form-field o_website_form_required_custom">
-                            <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
-                            <div class="col-md-7 col-sm-8">
-                                <input type="text" class="form-control o_website_form_input" name="email_from" required=""/>
-                            </div>
-                        </div>
-                        <div class="form-group form-field o_website_form_required_custom">
-                            <label class="col-md-3 col-sm-4 control-label" for="partner_name">Your Company</label>
-                            <div class="col-md-7 col-sm-8">
-                                <input type="text" class="form-control o_website_form_input" name="partner_name" required=""/>
-                            </div>
-                        </div>
-                        <div class="form-group form-field o_website_form_required">
-                            <label class="col-md-3 col-sm-4 control-label" for="name">Subject</label>
-                            <div class="col-md-7 col-sm-8">
-                                <input type="text" class="form-control o_website_form_input" name="name" required=""/>
-                            </div>
-                        </div>
-                        <div class="form-group form-field o_website_form_required_custom">
-                            <label class="col-md-3 col-sm-4 control-label" for="description">Your Question</label>
-                            <div class="col-md-7 col-sm-8">
-                                <textarea class="form-control o_website_form_input" name="description" required=""></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                                <button class="btn btn-primary btn-lg o_website_form_send">Send</button>
-                                <span id="o_website_form_result"></span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-			</xpath>
-		</template>
+                            <div class="container mt-2">
+                                <div class="row">
+                                    <div class="col-lg-12 pt48 pb48">
+                                        <form action="/website_form/" method="post" class="s_website_form card bg-white" enctype="multipart/form-data" data-model_name="ghu.application" data-success_page="/apply-doctoral-program/thank-you">
+                                            <div class="card-header">
+                                                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link o_default_snippet_text active show" id="application_doctoral_program_view_personal_link" data-toggle="tab" href="#application_doctoral_program_view_personal_content" role="tab" aria-controls="application_doctoral_program_view_personal_content" aria-selected="true">Personal Data</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link o_default_snippet_text" id="application_doctoral_program_view_residential_address_link" data-toggle="tab" href="#application_doctoral_program_view_residential_address_content" role="tab" aria-controls="application_doctoral_program_view_residential_address_content" aria-selected="false">Residential Address</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link o_default_snippet_text" id="application_doctoral_program_view_study_program_link" data-toggle="tab" href="#application_doctoral_program_view_study_program_content" role="tab" aria-controls="application_doctoral_program_view_study_program_content" aria-selected="false">Study Program</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link o_default_snippet_text" id="application_doctoral_program_view_documents_link" data-toggle="tab" href="#application_doctoral_program_view_documents_content" role="tab" aria-controls="application_doctoral_program_view_documents_content" aria-selected="false">Required Documents</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link o_default_snippet_text" id="application_doctoral_program_view_payment_link" data-toggle="tab" href="#application_doctoral_program_view_payment_content" role="tab" aria-controls="application_doctoral_program_view_payment_content" aria-selected="false">Payment Data</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="card-body tab-content">
+                                                <div class="tab-pane fade active show" id="application_doctoral_program_view_personal_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_personal_link">
+                                                    <p class="o_default_snippet_text">
+                                                        Please fill out your personal data.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="application_doctoral_program_view_residential_address_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_residential_address_link">
+                                                    <p class="o_default_snippet_text">
+                                                        Please fill out your residential address data.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="application_doctoral_program_view_study_program_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_study_program_link">
+                                                    <p class="o_default_snippet_text">
+                                                        Please fill out your study program data.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="application_doctoral_program_view_documents_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_documents_link">
+                                                    <p class="o_default_snippet_text">
+                                                        Please upload your required documents.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="application_doctoral_program_view_payment_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_payment_link">
+                                                    <p class="o_default_snippet_text">
+                                                        Please fill out your payment data.
+                                                    </p>
 
-        <template id="contactus_thanks" name="Contact us">
-            <t t-call="website.layout">
-              <div id="wrap">
-                <div class="oe_structure"/>
-                <div class="container">
-                    <h1>Thanks!</h1>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="alert alert-success">
-                                Your message has been sent successfully.
-                                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                                    <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
+                                                    <span id="o_website_form_result"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <p>
-                                We will get back to you shortly.
-                            </p><p class="mt64">
-                                If you have an emergency, do not hesitate to contact us by phone:
-                            </p>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-phone"></i> : <span t-field="res_company.phone"/></li>
-                                <li><i class="fa fa-envelope"></i> : <span t-field="res_company.email"/></li>
-                            </ul>
+                            <div class="oe_structure mt-2"/>
                         </div>
-                        <div class="col-md-4">
-                            <t t-call="website.company_description"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="oe_structure"/>
-              </div>
-            </t>
-        </template>
-
-        <template id="website_crm_tests" name="Website CRM Tests" inherit_id="web.assets_common">
-            <xpath expr="." position="inside">
-                <script type="text/javascript" src="/website_crm/static/src/js/website_crm_tour.js"></script>
-            </xpath>
-        </template>
-
+                    </t>
+                </t>
+            </field>
+        </record>
+        <record id="application_doctoral_program_page" model="website.page">
+            <field name="url">/apply-doctoral-program</field>
+            <field name="website_published">True</field>
+            <field name="view_id" ref="application_doctoral_program_view"/>
+        </record>
     </data>
-</openerp>
+</odoo>

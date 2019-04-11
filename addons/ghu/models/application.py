@@ -19,11 +19,17 @@ class GhuApplication(models.Model):
     
     marital_status = fields.Selection(
         string=u'Marital Status',
-        selection=[('single', 'Single')]
+        selection=[
+            ('single', 'Single'),
+            ('married', 'Married'),
+            ('divorced', 'Divorced'),
+            ('separated', 'Separated'),
+            ('widowed', 'Widowed'),
+        ]
     )
     
     birthday = fields.Date(
-        string=u'Birthday',
+        string=u'Date of Birth',
         default=fields.Date.context_today
     )
 
@@ -93,7 +99,7 @@ class GhuApplication(models.Model):
          ('pending', 'Pending'),
          ('cancel', 'Cancelled'),
          ('done', 'Done')],
-        'State', default='draft', track_visibility='onchange')
+        'State', default='new', track_visibility='onchange')
 
 
     student_id = fields.Many2one(
