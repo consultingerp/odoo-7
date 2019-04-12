@@ -7,8 +7,11 @@ services:
     ports:
       - "8069:8069"
     volumes:
+      - ./odoo.conf:/etc/odoo/odoo.conf
+      - ./addons:/mnt/extra-addons
+      - ./enterprise/addons:/mnt/enterprise-addons
+      - ./enterprise/themes:/mnt/enterprise-themes
       - odoo-web-data:/var/lib/odoo
-      - ./:/mnt/extra-addons
   db:
     image: postgres:10
     environment:
