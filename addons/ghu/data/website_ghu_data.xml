@@ -20,12 +20,12 @@
                     <t t-call="website.layout">
                         <div id="wrap">
                             <div class="oe_structure">
-                                <section class="pt8 pb8">
+                                <section class="pb0 bg-beta oe_custom_bg pt0">
                                     <div class="container">
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16">
-                                                <h1 class="text-center">Our advisors</h1>
-                                                <h3 class="text-muted text-center">Great people for great students</h3>
+                                                <h1 class="text-left">Our advisors</h1>
+                                                <h3 class="text-muted text-left">Great people for great students</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -35,24 +35,89 @@
                                     <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
                                     <!-- TODO: Remove this ugly sudo() -->
                                     <t t-set="advisor" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
+                                    <t t-set="all_programs" t-value="request.env['ghu.program'].sudo().search([('name','!=','')])"/>
+                                    <t t-set="all_languages" t-value="request.env['ghu.lang'].sudo().search([('name','!=','')])"/>
+                                    <t t-set="countries" t-value="request.env['res.country'].sudo().search([('name','!=','')])"/>
                                     <div class="container" t-if="len(advisor)">
                                         <div class="row">
-                                            <div t-foreach="advisor" t-as="advisor" class="col-md-4 col-xl-3 mt16 text-center">
-                                                <t t-call="website.publish_management">
-                                                    <t t-set="object" t-value="advisor"/>
-                                                    <t t-set="publish_edit" t-value="True"/>
-                                                    <t t-set="style" t-value="'float: none !important; margin-bottom: 4px;'"/>
-                                                </t>
-                                                <img t-att-src="website.image_url(advisor, 'image')" class="img-fluid shadow rounded" alt="Advisor"/>
-                                                <div class="mt8">
-                                                    <span t-field="advisor.nomination"/><br/>
-                                                    <strong t-field="advisor.name"/>
-                                                    <strong t-field="advisor.last_name"/>
+                                            <div class="col-md-4 col-xl-3 mt16">
+                                                <div class="js-fields">
+                                                    <div class="filters-group">
+                                                        <p class="filter-label">Filter all advisors by study field:</p>
+                                                        <div class="btn-group filter-options">
+                                                            <t t-foreach="all_programs" t-as="program">
+                                                                <button type="button" class="btn btn-filter" t-att-data-value="program.id">
+                                                                    <t t-esc="program.name"/>
+                                                                </button>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <div class="js-languages">
+                                                        <div class="filters-group">
+                                                            <p class="filter-label">Filter all advisors by language:</p>
+                                                            <div class="btn-group filter-options">
+                                                                <t t-foreach="all_languages" t-as="language">
+                                                                    <button type="button" class="btn btn-filter" t-att-data-value="language.id">
+                                                                        <t t-esc="language.name"/>
+                                                                    </button>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="js-countries">
+                                                        <div class="filters-group">
+                                                            <p class="filter-label">Filter all advisors by country:</p>
+                                                            <div class="btn-group filter-options">
+                                                                <t t-foreach="countries" t-as="country">
+                                                                    <button type="button" class="btn btn-filter" t-att-data-value="country.id">
+                                                                        <t t-esc="country.name"/>
+                                                                    </button>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div t-field="advisor.nationality.name"/>
-                                                <t t-foreach="advisor.programs" t-as="program"><span t-field="program.name"/><t t-if="not program_last">,</t></t>
-                                                <div t-field="advisor.native_language.name" class="text-muted mt16 d-block mx-auto"/>
-                                                <a t-if="advisor.vita" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
+                                            </div>
+                                            <div class="col-md-8 col-xl-9">
+                                                <div class="row advisor-container shuffle">
+                                                    <t t-foreach="advisor" t-as="advisor">
+                                                        <t t-set="programs">
+                                                            <t t-foreach="advisor.programs" t-as="program">
+                                                                <t t-esc="program.id"/>
+                                                                <t t-if="not program_last">,</t>
+                                                            </t>
+                                                        </t>
+                                                        <t t-set="languages">
+                                                            <t t-foreach="advisor.foreign_languages" t-as="language">
+                                                                <t t-esc="language.id"/>
+                                                                <t t-if="not language_last">,</t>
+                                                            </t>
+                                                        </t>
+                                                        <div t-att-data-field="programs.strip()" t-att-data-lang="languages.strip()" t-att-data-country="advisor.nationality.id" class="col-md-4 col-xl-3 mt16 text-center">
+                                                            <t t-call="website.publish_management">
+                                                                <t t-set="object" t-value="advisor"/>
+                                                                <t t-set="publish_edit" t-value="True"/>
+                                                                <t t-set="style" t-value="'float: none !important; margin-bottom: 4px;'"/>
+                                                            </t>
+                                                            <img t-att-src="website.image_url(advisor, 'image')" class="img-fluid shadow rounded" alt="Advisor"/>
+                                                            <div class="mt8">
+                                                                <span t-field="advisor.nomination"/>
+                                                                <br/>
+                                                                <strong t-field="advisor.name"/>
+                                                                <strong t-field="advisor.last_name"/>
+                                                            </div>
+                                                            <div t-field="advisor.nationality.name"/>
+                                                            <t t-foreach="advisor.programs" t-as="program">
+                                                                <span t-field="program.name"/><t t-if="not program_last">,</t>
+                                                            </t>
+                                                            <br/>
+                                                            <t t-foreach="advisor.foreign_languages" t-as="lang">
+                                                                <t t-esc="lang.name"/><t t-if="not lang_last">,</t>
+                                                            </t>
+                                                            <a t-if="advisor.vita" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
+                                                        </div>
+                                                    </t>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +126,7 @@
                         </div>
                     </t>
                 </t>
-            
+
             </field>
         </record>
         <record id="advisor_page" model="website.page">

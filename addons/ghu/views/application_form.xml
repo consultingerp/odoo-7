@@ -46,57 +46,180 @@
                                                 </ul>
                                             </div>
 
-                                            <t t-set="languages" t-value="request.env['res.lang'].sudo().search([])"/>
+                                            <t t-set="languages" t-value="request.env['ghu.lang'].sudo().search([('name','!=','')])"/>
 
                                             <div class="card-body tab-content">
                                                 <div class="tab-pane fade active show" id="application_doctoral_program_view_personal_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_personal_link">
-                                                    <p class="o_default_snippet_text">
+
+                                                    <fieldset class="powermail_fieldset powermail_fieldset_1 " style="">
+                                                        <legend class="powermail_legend">Personal Data</legend>
+                                                        <div class="row">
+                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_firstname  form-group col-md-6">
+                                                                <label for="powermail_field_firstname" class="control-label col-sm-3" title="">
+        First Name<span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_input form-control " id="powermail_field_firstname" type="text" name="tx_powermail_pi1[field][firstname]" value="" /></div>
+                                                            </div>
+                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_lastname  form-group col-md-6">
+                                                                <label for="powermail_field_lastname" class="control-label col-sm-3" title="">
+        Last Name<span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_input form-control " id="powermail_field_lastname" type="text" name="tx_powermail_pi1[field][lastname]" value="" /></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_date powermail_fieldwrap_dateofbirth  form-group col-md-6">
+                                                                <label for="powermail_field_dateofbirth" class="control-label col-sm-3" title="">
+        Date of Birth<span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_date form-control " id="powermail_field_dateofbirth" type="date" name="tx_powermail_pi1[field][dateofbirth]" value="" /></div>
+                                                            </div>
+                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_nationality  form-group col-md-6">
+                                                                <label for="powermail_field_nationality" class="control-label col-sm-3" title="">
+        Nationality<span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="powermail_field_nationality" name="tx_powermail_pi1[field][nationality]">
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_maritalstatus  form-group col-md-6">
+                                                            <label for="powermail_field_maritalstatus" class="control-label col-sm-3" title="">
+        Marital Status<span class="mandatory">*</span>
+                                                        </label>
+                                                        <div class="col-sm-9">
+                                                            <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="powermail_field_maritalstatus" name="tx_powermail_pi1[field][maritalstatus]">
+                                                                <option value="divorced">Divorced</option>
+                                                                <option value="married">Married</option>
+                                                                <option value="separated">Separated</option>
+                                                                <option value="single">Single</option>
+                                                                <option value="widowed">Widowed</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_gender  form-group col-md-6">
+                                                        <label for="powermail_field_gender" class="control-label col-sm-3" title="">
+        Gender<span class="mandatory">*</span>
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="powermail_field_gender" name="tx_powermail_pi1[field][gender]">
+                                                            <option value="female">Female</option>
+                                                            <option value="male">Male</option>
+                                                            <option value="other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_academicdegreespre  form-group col-md-6">
+                                                    <label for="powermail_field_academicdegreespre" class="control-label col-sm-3" title="">
+        Academic Degrees (Pre)
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input class="powermail_input form-control " id="powermail_field_academicdegreespre" type="text" name="tx_powermail_pi1[field][academicdegreespre]" value=""/></div>
+                                                    </div>
+                                                    <div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_academicdegrees  form-group col-md-6">
+                                                        <label for="powermail_field_academicdegrees" class="control-label col-sm-3" title="">
+        Academic Degrees (Post)<span class="mandatory">*</span>
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_input form-control " id="powermail_field_academicdegrees" type="text" name="tx_powermail_pi1[field][academicdegrees]" value=""/></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_nativelanguage  form-group col-md-6">
+                                                        <label for="powermail_field_nativelanguage" class="control-label col-sm-3" title="">
+        Native Language<span class="mandatory">*</span>
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="powermail_field_nativelanguage" name="tx_powermail_pi1[field][nativelanguage]">
+                                                            <t t-foreach="languages" t-as="language">
+                                                                <option t-attrf="language.id" t-field="language.display_name"></option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="powermail_fieldwrap powermail_fieldwrap_type_check powermail_fieldwrap_iconfirmgoodknowledgeoftheenglishlanguage nolabel form-group col-md-6">
+                                                    <div class="col-sm-9">
+                                                        <div class="checkbox ">
+                                                            <label>
+                                                                <input type="hidden" name="tx_powermail_pi1[field][iconfirmgoodknowledgeoftheenglishlanguage]" value=""/>
+                                                                    <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-errors-container=".powermail_field_error_container_iconfirmgoodknowledgeoftheenglishlanguage" data-parsley-class-handler=".powermail_fieldwrap_iconfirmgoodknowledgeoftheenglishlanguage div:first > div" class="powermail_checkbox powermail_checkbox_211" id="powermail_field_iconfirmgoodknowledgeoftheenglishlanguage_1" type="checkbox" name="tx_powermail_pi1[field][iconfirmgoodknowledgeoftheenglishlanguage][]" value="I confirm good knowledge of the english language*" data-parsley-multiple="tx_powermail_pi1fieldiconfirmgoodknowledgeoftheenglishlanguage"/>
+					I confirm good knowledge of the english language*
+                                                                    </label>
+                                                                </div>
+                                                                <div class="powermail_field_error_container powermail_field_error_container_iconfirmgoodknowledgeoftheenglishlanguage"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_otherlanguages  form-group col-md-6">
+                                                            <label for="powermail_field_otherlanguages" class="control-label col-sm-3" title="">
+        Other Languages
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input type="hidden" name="tx_powermail_pi1[field][otherlanguages]" value=""/>
+                                                                    <select class="powermail_select form-control " id="powermail_field_otherlanguages" multiple="multiple" name="tx_powermail_pi1[field][otherlanguages][]" data-parsley-multiple="tx_powermail_pi1[field][otherlanguages][]">
+                                                                        
+                                                                    </select>
+                                                                    <div class="powermail_field_error_container powermail_field_error_container_otherlanguages"></div>
+                                                                </div>
+                                                            </div>
+                                                            <input class="powermail_hidden  powermail_source" id="powermail_field_source" type="hidden" name="tx_powermail_pi1[field][source]" value=""/></div>
+                                                        </fieldset>
+                                                        <p class="o_default_snippet_text">
                                                         Please fill out your personal data.
 
                                                         Available languages demo:
-                                                        <div t-foreach="languages" t-as="language">
-                                                            <span t-field="language.display_name"></span>
-                                                        </div>
-                                                    </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="application_doctoral_program_view_residential_address_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_residential_address_link">
-                                                    <p class="o_default_snippet_text">
+                                                            <div t-foreach="languages" t-as="language">
+                                                                <span t-field="language.display_name"></span>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="application_doctoral_program_view_residential_address_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_residential_address_link">
+                                                        <p class="o_default_snippet_text">
                                                         Please fill out your residential address data.
-                                                    </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="application_doctoral_program_view_study_program_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_study_program_link">
-                                                    <p class="o_default_snippet_text">
+                                                        </p>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="application_doctoral_program_view_study_program_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_study_program_link">
+                                                        <p class="o_default_snippet_text">
                                                         Please fill out your study program data.
-                                                    </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="application_doctoral_program_view_documents_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_documents_link">
-                                                    <p class="o_default_snippet_text">
+                                                        </p>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="application_doctoral_program_view_documents_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_documents_link">
+                                                        <p class="o_default_snippet_text">
                                                         Please upload your required documents.
-                                                    </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="application_doctoral_program_view_payment_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_payment_link">
-                                                    <p class="o_default_snippet_text">
+                                                        </p>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="application_doctoral_program_view_payment_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_payment_link">
+                                                        <p class="o_default_snippet_text">
                                                         Please fill out your payment data.
-                                                    </p>
+                                                        </p>
 
-                                                    <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
-                                                    <span id="o_website_form_result"></span>
+                                                        <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
+                                                        <span id="o_website_form_result"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="oe_structure mt-2"/>
                             </div>
-                            <div class="oe_structure mt-2"/>
-                        </div>
+                        </t>
                     </t>
-                </t>
-            </field>
-        </record>
-        <record id="application_doctoral_program_page" model="website.page">
-            <field name="url">/apply-doctoral-program</field>
-            <field name="website_published">True</field>
-            <field name="view_id" ref="application_doctoral_program_view"/>
-        </record>
-    </data>
-</odoo>
+                </field>
+            </record>
+            <record id="application_doctoral_program_page" model="website.page">
+                <field name="url">/apply-doctoral-program</field>
+                <field name="website_published">True</field>
+                <field name="view_id" ref="application_doctoral_program_view"/>
+            </record>
+        </data>
+    </odoo>
