@@ -5,6 +5,7 @@
         <record id="application_doctoral_program_view" model="ir.ui.view">
             <field name="name">Application for Doctoral Program</field>
             <field name="type">qweb</field>
+            <field name="model">ghu.application</field>
             <field name="key">ghu.apply_doctoral</field>
             <field name="arch" type="xml">
                 <t name="Application for Doctoral Program" t-name="ghu.apply_doctoral">
@@ -44,10 +45,18 @@
                                                     </li>
                                                 </ul>
                                             </div>
+
+                                            <t t-set="languages" t-value="request.env['res.lang'].sudo().search([])"/>
+
                                             <div class="card-body tab-content">
                                                 <div class="tab-pane fade active show" id="application_doctoral_program_view_personal_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_personal_link">
                                                     <p class="o_default_snippet_text">
                                                         Please fill out your personal data.
+
+                                                        Available languages demo:
+                                                        <div t-foreach="languages" t-as="language">
+                                                            <span t-field="language.display_name"></span>
+                                                        </div>
                                                     </p>
                                                 </div>
                                                 <div class="tab-pane fade" id="application_doctoral_program_view_residential_address_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_residential_address_link">
