@@ -81,16 +81,8 @@
                                             <div class="col-md-8 col-xl-9">
                                                 <div class="row advisor-container shuffle">
                                                     <t t-foreach="advisor" t-as="advisor">
-                                                        <t t-set="programs">
-                                                            <t t-foreach="advisor.programs" t-as="program">
-                                                                <t t-esc="program.id"/><t t-if="not program_last">,</t>
-                                                            </t>
-                                                        </t>
-                                                        <t t-set="languages">
-                                                            <t t-foreach="advisor.foreign_languages" t-as="language">
-                                                                <t t-esc="language.id"/><t t-if="not language_last">,</t>
-                                                            </t>
-                                                        </t>
+                                                        <t t-set="programs"><t t-foreach="advisor.programs" t-as="program"><t t-esc="program.id"/><t t-if="not program_last">,</t></t></t>
+                                                        <t t-set="languages"><t t-foreach="advisor.foreign_languages" t-as="language"><t t-esc="language.id"/><t t-if="not language_last">,</t></t></t>
                                                         <div t-att-data-field="programs.strip()" t-att-data-lang="languages.strip()" t-att-data-country="advisor.nationality.id" class="col-md-4 col-xl-3 mt16 text-center">
                                                             <t t-call="website.publish_management">
                                                                 <t t-set="object" t-value="advisor"/>
