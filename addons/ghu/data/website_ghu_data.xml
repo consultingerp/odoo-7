@@ -52,28 +52,28 @@
                                                             </t>
                                                         </div>
                                                     </div>
-                                                    <div class="js-languages">
-                                                        <div class="filters-group">
-                                                            <p class="filter-label">Filter all advisors by language:</p>
-                                                            <div class="btn-group filter-options">
-                                                                <t t-foreach="all_languages" t-as="language">
-                                                                    <button type="button" class="btn btn-filter" t-att-data-value="language.id">
-                                                                        <t t-esc="language.name"/>
-                                                                    </button>
-                                                                </t>
-                                                            </div>
+                                                </div>
+                                                <div class="js-languages">
+                                                    <div class="filters-group">
+                                                        <p class="filter-label">Filter all advisors by language:</p>
+                                                        <div class="btn-group filter-options">
+                                                            <t t-foreach="all_languages" t-as="language">
+                                                                <button type="button" class="btn btn-filter" t-att-data-value="language.id">
+                                                                    <t t-esc="language.name"/>
+                                                                </button>
+                                                            </t>
                                                         </div>
                                                     </div>
-                                                    <div class="js-countries">
-                                                        <div class="filters-group">
-                                                            <p class="filter-label">Filter all advisors by country:</p>
-                                                            <div class="btn-group filter-options">
-                                                                <t t-foreach="countries" t-as="country">
-                                                                    <button type="button" class="btn btn-filter" t-att-data-value="country.id">
-                                                                        <t t-esc="country.name"/>
-                                                                    </button>
-                                                                </t>
-                                                            </div>
+                                                </div>
+                                                <div class="js-countries">
+                                                    <div class="filters-group">
+                                                        <p class="filter-label">Filter all advisors by country:</p>
+                                                        <div class="btn-group filter-options">
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <button type="button" class="btn btn-filter" t-att-data-value="country.id">
+                                                                    <t t-esc="country.name"/>
+                                                                </button>
+                                                            </t>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -83,14 +83,12 @@
                                                     <t t-foreach="advisor" t-as="advisor">
                                                         <t t-set="programs">
                                                             <t t-foreach="advisor.programs" t-as="program">
-                                                                <t t-esc="program.id"/>
-                                                                <t t-if="not program_last">,</t>
+                                                                <t t-esc="program.id"/><t t-if="not program_last">,</t>
                                                             </t>
                                                         </t>
                                                         <t t-set="languages">
                                                             <t t-foreach="advisor.foreign_languages" t-as="language">
-                                                                <t t-esc="language.id"/>
-                                                                <t t-if="not language_last">,</t>
+                                                                <t t-esc="language.id"/><t t-if="not language_last">,</t>
                                                             </t>
                                                         </t>
                                                         <div t-att-data-field="programs.strip()" t-att-data-lang="languages.strip()" t-att-data-country="advisor.nationality.id" class="col-md-4 col-xl-3 mt16 text-center">
@@ -111,9 +109,7 @@
                                                                 <span t-field="program.name"/><t t-if="not program_last">,</t>
                                                             </t>
                                                             <br/>
-                                                            <t t-foreach="advisor.foreign_languages" t-as="lang">
-                                                                <t t-esc="lang.name"/><t t-if="not lang_last">,</t>
-                                                            </t>
+                                                            <!-- TODO: show foreign languages -->
                                                             <a t-if="advisor.vita" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
                                                         </div>
                                                     </t>
