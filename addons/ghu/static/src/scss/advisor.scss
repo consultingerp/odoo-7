@@ -1,0 +1,24 @@
+.filters-group .btn.btn-filter {
+  display: inline-block;
+  border-radius: 10px !important;
+  margin: 5px;
+  padding: 4px 6px;
+  text-transform: none;
+  border: 2px solid #000;
+}
+
+.btn-group.filter-options {
+  display: block;
+}
+
+button.btn.btn-filter.active {
+    background-color: #0d2e5a;
+    color: #fff;
+    border-color: #0d2e5a;
+}
+
+button.btn.btn-filter:hover {
+    background-color: #0d2e5a !important;
+    color: #fff;
+    border-color: #0d2e5a;
+}

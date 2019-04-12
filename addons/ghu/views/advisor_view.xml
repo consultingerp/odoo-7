@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/ghu/static/src/scss/advisor.scss"/>
+            <script type="text/javascript" src="/ghu/static/src/js/shuffle.min.js"></script>
+            <script type="text/javascript" src="/ghu/static/src/js/filter.js"></script>
+        </xpath>
+    </template>
     <data>
         <record id="kanban_view_advisor" model="ir.ui.view">
             <field name="name">Advisor Kanban</field>
@@ -13,7 +20,7 @@
                             <div t-attf-class="oe_kanban_global_click o_res_advisor_kanban">
                                 <div class="o_kanban_image">
                                     <t t-if="record.image.value">
-                                        <img t-att-src="kanban_image('ghu.advisor', 'image', record.id.value)" alt="Advisor"/>
+                                        <img t-att-src="kanban_image('ghu.advisor', 'image_small', record.id.raw_value)" alt="Advisor"/>
                                     </t>
                                     <t t-if="!record.image.value">
                                         <img t-att-src='_s + "/base/static/img/avatar.png"' alt="Advisor"/>
@@ -75,12 +82,11 @@
             <field name="model">ghu.advisor</field>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                
+
                 <form string="Advisor">
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button class="oe_stat_button" name="website_publish_button"
-                                type="object" icon="fa-globe">
+                            <button class="oe_stat_button" name="website_publish_button" type="object" icon="fa-globe">
                                 <field name="website_published" widget="website_button"/>
                             </button>
                         </div>
@@ -105,8 +111,7 @@
                             </h1>
                         </div>
                         <notebook colspan="4">
-                            <page name="personal_information"
-                                  string="Personal Information">
+                            <page name="personal_information" string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
                                     <field name="advisor_id" required="1"/>
                                     <field name="nomination"/>
@@ -137,9 +142,7 @@
                                             <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}'/>
                                             <field name="zip" placeholder="ZIP" style="width: 20%%"/>
                                         </div>
-                                        <field name="country_id"
-                                               placeholder="Country" class="oe_no_button"
-                                               options='{"no_open": True}'/>
+                                        <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
                                     </div>
                                 </group>
                             </page>
@@ -158,10 +161,8 @@
                     <field name="name"/>
                     <newline/>
                     <group expand="0" string="Group By...">
-                        <filter name="nationality" string="Nationality"
-                                domain="[]" context="{'group_by':'nationality'}"/>
-                        <filter name="language" string="Language"
-                                domain="[]" context="{'group_by':'lang'}"/>
+                        <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>
+                        <filter name="language" string="Language" domain="[]" context="{'group_by':'lang'}"/>
                     </group>
                 </search>
             </field>

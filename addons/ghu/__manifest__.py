@@ -19,7 +19,7 @@
     'version': '0.26',
  
     # any module necessary for this one to work correctly
-    'depends': ['base', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
+    'depends': ['base', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
 
     # always loaded
     'data': [
@@ -31,7 +31,8 @@
         'views/employee_view.xml',
         'views/footer_view.xml',
         #'views/templates.xml',
-        'menu/advisor_menu.xml'
+        'menu/advisor_menu.xml',
+        'views/application_form.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

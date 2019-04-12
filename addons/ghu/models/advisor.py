@@ -59,6 +59,7 @@ class GhuAdvisor(models.Model):
 
 class GhuLang(models.Model):
     _name = 'ghu.lang'
+    _rec_name = 'name'
     _description = "Language"
 
     name = fields.Char('Name', size=128)
