@@ -1047,6 +1047,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <input type="hidden" name="product_id" value="1" />
                                                     </fieldset>
                                                     <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
                                                     <span id="o_website_form_result" />
