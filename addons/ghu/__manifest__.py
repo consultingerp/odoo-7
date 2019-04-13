@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.26',
+    'version': '0.27',
  
     # any module necessary for this one to work correctly
     'depends': ['base', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
