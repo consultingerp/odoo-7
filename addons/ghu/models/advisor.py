@@ -56,6 +56,10 @@ class GhuAdvisor(models.Model):
         column1='advisor_id',
         column2='program_id',
     )
+    # How do I call this from qweb?
+    @api.model
+    def get_unique_countries(self,countries):
+        return "test"
 
 class GhuLang(models.Model):
     _name = 'ghu.lang'
