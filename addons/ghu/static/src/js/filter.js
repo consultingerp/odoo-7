@@ -177,5 +177,7 @@ AdvisorFilter.prototype.itemPassesFilters = function (element) {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  window.advisorFilter = new AdvisorFilter(document.querySelector('.advisor-container'));
+  if(document.querySelector('.advisor-container')){
+    window.advisorFilter = new AdvisorFilter(document.querySelector('.advisor-container'));
+  }
 });

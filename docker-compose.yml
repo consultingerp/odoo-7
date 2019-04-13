@@ -1,13 +1,15 @@
 version: '2'
 services:
   web:
-    image: odoo:12.0
+    build:
+      context: _/odoo
+      args:
+        ODOO_RELEASE: "20190410"
     depends_on:
       - db
     ports:
       - "8069:8069"
     volumes:
-      - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/extra-addons
       - ./enterprise/addons:/mnt/enterprise-addons
       - ./enterprise/themes:/mnt/enterprise-themes

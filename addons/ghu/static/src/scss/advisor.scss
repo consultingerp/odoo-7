@@ -4,7 +4,8 @@
   margin: 5px;
   padding: 4px 6px;
   text-transform: none;
-  border: 2px solid #000;
+  font-weight: normal;
+  border: 1px solid #ccc;
 }
 
 .btn-group.filter-options {
@@ -21,4 +22,8 @@ button.btn.btn-filter:hover {
     background-color: #0d2e5a !important;
     color: #fff;
     border-color: #0d2e5a;
+}
+
+#wrapwrap .shadow {
+    border-color: #16519d;
 }

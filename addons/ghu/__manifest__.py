@@ -16,18 +16,22 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.26',
+    'version': '0.27',
  
     # any module necessary for this one to work correctly
     'depends': ['base', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
 
     # always loaded
     'data': [
+        'data/application.xml',
         'data/ghu_data.xml',
         'data/website_ghu_data.xml',
         'security/ir.model.access.csv',
         'security/advisor_security.xml',
         'views/advisor_view.xml',
+        'views/program_view.xml',
+        'views/lang_view.xml',
+        'views/study_view.xml',
         'views/employee_view.xml',
         'views/footer_view.xml',
         #'views/templates.xml',

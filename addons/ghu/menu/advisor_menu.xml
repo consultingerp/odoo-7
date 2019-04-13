@@ -6,5 +6,26 @@
                   sequence="25"
                   action="act_open_ghu_advisor_view_2"
                   web_icon="ghu,static/icons/advisor.png"/>
+        <menuitem id="menu_ghu_root"
+                  name="GHU"
+                  sequence="30"
+                  action="act_open_ghu_program_view_2"
+                  web_icon="ghu,static/icons/advisor.png"/>
+        <menuitem id="menu_ghu_program"
+                  parent="menu_ghu_root"
+                  name="Programs"
+                  sequence="30"
+                  action="act_open_ghu_program_view_2"
+                  web_icon="ghu,static/icons/advisor.png"/>
+        <menuitem id="menu_ghu_study"
+                  parent="menu_ghu_root"
+                  name="Studies"
+                  sequence="30"
+                  action="act_open_ghu_study_view_2"/>
+        <menuitem id="menu_ghu_lang"
+                  parent="menu_ghu_root"
+                  name="Languages"
+                  sequence="30"
+                  action="act_open_ghu_lang_view_2"/>
     </data>
 </odoo>
