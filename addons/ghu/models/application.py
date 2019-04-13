@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class GhuApplication(models.Model):
     _name = 'ghu.application'
-    _description = "Application"
+    _description = "GHU Application"
 
     title = fields.Text("Title")
     first_name = fields.Text("First Name")
