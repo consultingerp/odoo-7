@@ -34,12 +34,12 @@
                                     <t t-set="is_publisher" t-value="request.env['res.users'].has_group('website.group_website_publisher')"/>
                                     <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
                                     <!-- TODO: Remove this ugly sudo() -->
-                                    <t t-set="advisor" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
-                                    <t t-set="all_programs" t-value="request.env['ghu.program'].sudo().search([('name','!=','')])"/>
-                                    <t t-set="all_languages" t-value="request.env['ghu.lang'].sudo().search([('name','!=','')])"/>
-                                    <t t-set="countries" t-value="request.env['res.country'].sudo().search([('name','!=','')])"/>
+                                    <t t-set="advisors" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
+                                    <t t-set="all_programs" t-value="set([program for programs in [list(advisor.programs) for advisor in advisors] for program in programs])"/>
+                                    <t t-set="all_languages" t-value="set([l for languages in [([advisor.native_language] + list(advisor.foreign_languages)) for advisor in advisors] for l in languages])"/>
+                                    <t t-set="countries" t-value="set([advisor.nationality for advisor in advisors])"/>
                                     
-                                    <div class="container" t-if="len(advisor)">
+                                    <div class="container" t-if="len(advisors)">
                                         <div class="row">
                                             <div class="col-md-4 col-xl-3 mt16">
                                                 <div class="js-fields">
@@ -81,7 +81,7 @@
                                             </div>
                                             <div class="col-md-8 col-xl-9">
                                                 <div class="row advisor-container">
-                                                    <t t-foreach="advisor" t-as="advisor">
+                                                    <t t-foreach="advisors" t-as="advisor">
                                                         <t t-set="programs"><t t-foreach="advisor.programs" t-as="program"><t t-esc="program.id"/><t t-if="not program_last">,</t></t></t>
                                                         <t t-set="languages"><t t-foreach="advisor.foreign_languages" t-as="language"><t t-esc="language.id"/><t t-if="not language_last">,</t></t></t>
                                                         <div t-att-data-field="programs.strip()" t-att-data-lang="languages.strip()" t-att-data-country="advisor.nationality.id" class="col-md-6 col-xl-6 mt16 media text-left">
