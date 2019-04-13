@@ -40,20 +40,16 @@ class GhuApplication(models.Model):
     
     native_language = fields.Many2one(
         string=u'Native Language',
-        comodel_name='res.lang'
+        comodel_name='ghu.lang'
     )
 
     foreign_languages = fields.Many2many(
         string=u'Foreign Languages',
-        comodel_name='res.lang',
+        comodel_name='ghu.lang',
         relation='application_lang_rel',
         column1='application_id',
         column2='lang_id'
     )
-
-    company_position = fields.Char(
-        'Company Position', size=256,
-        states={'done': [('readonly', True)]})
 
     email = fields.Char(
         'Email', size=256, required=True,
@@ -84,7 +80,7 @@ class GhuApplication(models.Model):
                                   'submit': [('required', True)]})
     mobile = fields.Char(
         'Mobile', size=16,
-        states={'done': [('readonly', True)], 'submit': [('required', True)]})
+        states={'done': [('readonly', True)]})
     
     photo = fields.Binary('Photo', states={'done': [('readonly', True)]})
     
@@ -107,8 +103,8 @@ class GhuApplication(models.Model):
     )
 
     product_id = fields.Many2one(
-        'product.product', 'Product', required=True,
-        domain=[('type', '=', 'service')], readonly=True)
+        'product.product', 'Product',
+        domain=[('type', '=', 'service')], required=False, readonly=True)
 
     study_id = fields.Many2one(
         'ghu.study', 'Study', required=True, readonly=True)
