@@ -107,8 +107,7 @@
                                                             <div class="powermail_fieldwrap powermail_fieldwrap_type_select powermail_fieldwrap_maritalstatus  form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="powermail_field_maritalstatus" class="control-label col-sm-3" title="">
-                                                                        Marital Status
-                                                                        <span class="mandatory">*</span>
+                                                                        Marital Status&#xA0;<span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="powermail_field_maritalstatus" name="tx_powermail_pi1[field][maritalstatus]">
@@ -315,16 +314,7 @@
                                                                 <div class="col-sm-9 " />
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_html powermail_fieldwrap_preliminarystudies layout1 form-group col-md-6">
-                                                                <div class="col-sm-9 ">
-                                                                    <legend>Preliminary studies</legend>
-                                                                </div>
-                                                            </div>
-                                                            <div class="powermail_fieldwrap powermail_fieldwrap_type_html powermail_fieldwrap_placeholder_01  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
+                                                        <legend>Preliminary studies</legend>
                                                         <div class="row">
                                                             <div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_institution  form-group col-md-6">
                                                                 <div class="row">
