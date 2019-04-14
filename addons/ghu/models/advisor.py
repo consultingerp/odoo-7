@@ -61,8 +61,7 @@ class GhuAdvisor(models.Model):
     def all_languages(self):
         res = set()
         for advisor in self:
-            res.add(advisor.native_language)
-            res.update(advisor.foreign_languages)
+            res.add(advisor.foreign_languages)
         
         return sorted(res, key=lambda lang: lang.name.lower() if lang.name else "")
 
