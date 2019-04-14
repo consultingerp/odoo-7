@@ -35,9 +35,6 @@
                                     <t t-set="advisor_domain" t-value="[] if is_publisher else [('website_published', '=', True)]"/>
                                     <!-- TODO: Remove this ugly sudo() -->
                                     <t t-set="advisors" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
-                                    <t t-set="all_programs" t-value="set([program for programs in [list(advisor.programs) for advisor in advisors] for program in programs])"/>
-                                    <t t-set="all_languages" t-value="set([l for languages in [(list(advisor.foreign_languages)) for advisor in advisors] for l in languages])"/>
-                                    <t t-set="countries" t-value="set([advisor.nationality for advisor in advisors])"/>
                                     
                                     <div class="container" t-if="len(advisors)">
                                         <div class="row">
@@ -46,7 +43,7 @@
                                                     <div class="filters-group">
                                                         <p class="filter-label">Filter all advisors by study field:</p>
                                                         <div class="btn-group filter-options">
-                                                            <t t-foreach="all_programs" t-as="program">
+                                                            <t t-foreach="advisors.all_programs()" t-as="program">
                                                                 <button type="button" class="btn btn-filter" t-att-data-value="program.id">
                                                                     <t t-esc="program.name"/>
                                                                 </button>
@@ -58,7 +55,7 @@
                                                     <div class="filters-group">
                                                         <p class="filter-label">Filter all advisors by language:</p>
                                                         <div class="btn-group filter-options">
-                                                            <t t-foreach="all_languages" t-as="language">
+                                                            <t t-foreach="advisors.all_languages()" t-as="language">
                                                                 <button type="button" class="btn btn-filter" t-att-data-value="language.id">
                                                                     <t t-esc="language.name"/>
                                                                 </button>
@@ -70,7 +67,7 @@
                                                     <div class="filters-group">
                                                         <p class="filter-label">Filter all advisors by country:</p>
                                                         <div class="btn-group filter-options">
-                                                            <t t-foreach="countries" t-as="country">
+                                                            <t t-foreach="advisors.all_countries()" t-as="country">
                                                                 <button type="button" class="btn btn-filter" t-att-data-value="country.id">
                                                                     <t t-esc="country.name"/>
                                                                 </button>
