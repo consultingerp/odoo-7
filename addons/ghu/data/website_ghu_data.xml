@@ -36,7 +36,7 @@
                                     <!-- TODO: Remove this ugly sudo() -->
                                     <t t-set="advisors" t-value="request.env['ghu.advisor'].sudo().search(advisor_domain)"/>
                                     <t t-set="all_programs" t-value="set([program for programs in [list(advisor.programs) for advisor in advisors] for program in programs])"/>
-                                    <t t-set="all_languages" t-value="set([l for languages in [([advisor.native_language] + list(advisor.foreign_languages)) for advisor in advisors] for l in languages])"/>
+                                    <t t-set="all_languages" t-value="set([l for languages in [(list(advisor.foreign_languages)) for advisor in advisors] for l in languages])"/>
                                     <t t-set="countries" t-value="set([advisor.nationality for advisor in advisors])"/>
                                     
                                     <div class="container" t-if="len(advisors)">

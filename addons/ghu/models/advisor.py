@@ -30,7 +30,7 @@ class GhuAdvisor(models.Model):
     )
 
     foreign_languages = fields.Many2many(
-        string=u'Foreign Languages',
+        string=u'Teaching Languages',
         comodel_name='ghu.lang',
         relation='advisor_lang_rel',
         column1='advisor_id',
