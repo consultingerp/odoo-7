@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
-    #_order = "nomination.name DESC, nationality.name ASC, last_name ASC"
+    _order = "nomination DESC, nationality ASC, last_name ASC"
     _inherit = ['website.published.multi.mixin']
     _inherits = {"res.partner": "partner_id"}
 
@@ -56,6 +56,31 @@ class GhuAdvisor(models.Model):
         column1='advisor_id',
         column2='program_id',
     )
+
+    @api.multi
+    def all_languages(self):
+        res = set()
+        for advisor in self:
+            res.add(advisor.native_language)
+            res.update(advisor.foreign_languages)
+        
+        return sorted(res, key=lambda lang: lang.name.lower() if lang.name else "")
+
+    @api.multi
+    def all_countries(self):
+        res = set()
+        for advisor in self:
+            res.add(advisor.nationality)
+        
+        return sorted(res, key=lambda nationality: nationality.name.lower() if nationality.name else "")
+
+    @api.multi
+    def all_programs(self):
+        res = set()
+        for advisor in self:
+            res.update(advisor.programs)
+
+        return sorted(res, key=lambda program: program.name.lower() if program.name else "")
 
 
 class GhuLang(models.Model):
