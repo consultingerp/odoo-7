@@ -104,10 +104,10 @@ class GhuApplication(models.Model):
 
     product_id = fields.Many2one(
         'product.product', 'Product',
-        domain=[('type', '=', 'service')], required=False, readonly=True)
+        domain=[('type', '=', 'service')], required=False)
 
     study_id = fields.Many2one(
-        'ghu.study', 'Study', required=True, readonly=True)
+        'ghu.study', 'Study', required=False)
 
     partner_id = fields.Many2one('res.partner', 'Partner')
     is_student = fields.Boolean('Is Already Student')
