@@ -16,7 +16,9 @@
                                     <div class="container">
                                         <div class="row s_nb_column_fixed">
                                             <div class="col-lg-12 s_title pt16 pb16">
-                                                <h1><font style="font-size: 62px;">Application for Doctoral Program</font></h1>
+                                                <h1>
+                                                    <font style="font-size: 62px;">Application for Doctoral Program</font>
+                                                </h1>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +176,9 @@
                                                                     <div class="col-sm-9">
                                                                         <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="native_language" name="native_language">
                                                                             <t t-foreach="languages" t-as="language">
-                                                                                <option t-att-value="language.id"><t t-esc="language.display_name"/></option>
+                                                                                <option t-att-value="language.id">
+                                                                                    <t t-esc="language.display_name"/>
+                                                                                </option>
                                                                             </t>
                                                                         </select>
                                                                     </div>
@@ -317,10 +321,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_html preliminarystudies layout1 form-group col-md-6">
-                                                                <div class="col-sm-9 ">
-                                                                    <legend>Preliminary studies</legend>
-                                                                </div>
+                                                            <div class=" type_html preliminarystudies layout1 form-group col-md-12">
+                                                                <legend>Preliminary studies</legend>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -730,13 +732,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_radio haveyoueverappliedtoglobalhumanisticuniversity layout1 form-group col-md-6">
+                                                            <div class=" type_radio haveyoueverappliedtoglobalhumanisticuniversity layout1 form-group col-md-12">
                                                                 <div class="row">
-                                                                    <label for="haveyoueverappliedtoglobalhumanisticuniversity" class="control-label col-sm-3" title="">
+                                                                    <label for="haveyoueverappliedtoglobalhumanisticuniversity" class="control-label col-sm-6" title="">
                                                                     Have you ever applied to Global Humanistic University?
                                                                         <span class="mandatory">*</span>
                                                                     </label>
-                                                                    <div class="col-sm-9">
+                                                                    <div class="col-sm-6">
                                                                         <div class="radio ">
                                                                             <label>
                                                                                 <input required="required" data-parsley-required-message="One of these fields must be filled!" data-parsley-errors-container=".error_container_haveyoueverappliedtoglobalhumanisticuniversity" class="powermail_radio" id="haveyoueverappliedtoglobalhumanisticuniversity_1" type="radio" name="tx_powermail_pi1[field][haveyoueverappliedtoglobalhumanisticuniversity]" value="0" />
@@ -760,7 +762,7 @@
                                                         <div class="row">
                                                             <div class=" type_radio haveyoueverappliedforadoctoraldegree layout1 form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="haveyoueverappliedforadoctoraldegree" class="control-label col-sm-3" title="">
+                                                                    <label for="haveyoueverappliedforadoctoraldegree" class="control-label col-sm-12" title="">
                                                                     Have you ever applied for a doctoral degree?
                                                                         <span class="mandatory">*</span>
                                                                     </label>
