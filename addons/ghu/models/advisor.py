@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
-    #_order = "nomination.name DESC, nationality.name ASC, last_name ASC"
+    _order = "nomination DESC, nationality ASC, last_name ASC"
     _inherit = ['website.published.multi.mixin']
     _inherits = {"res.partner": "partner_id"}
 
