@@ -34,6 +34,7 @@
         'views/study_view.xml',
         'views/employee_view.xml',
         'views/footer_view.xml',
+        'views/email_signature_view.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
