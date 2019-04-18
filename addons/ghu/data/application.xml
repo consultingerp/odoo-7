@@ -13,7 +13,7 @@ Our academic registrar will now use your application to check whether you meet a
             <field name="user_signature">true</field>
             <field name="auto_delete">false</field>
         </record>
-        <record model="ir.actions.server" id="ghu_doctoral_application_send_confirmation_email">
+        <record model="base.automation" id="ghu_doctoral_application_send_confirmation_email">
             <field name="name">Send Doctoral Application Confirmation Email</field>
             <field name="model_id" ref="model_ghu_application"/>
             <field name="trigger">on_create</field>
