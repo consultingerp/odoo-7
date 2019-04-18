@@ -60,7 +60,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="first_name" type="text" name="first_name" value="" />
+                                                                        <input required="required" class=" form-control " id="first_name" type="text" name="first_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -71,7 +71,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="last_name" type="text" name="last_name" value="" />
+                                                                        <input required="required" class=" form-control " id="last_name" type="text" name="last_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -102,7 +102,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="nationality" name="nationality">
+                                                                        <select required="required" class="form-control " id="nationality" name="nationality">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
@@ -119,7 +119,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="maritalstatus" name="maritalstatus">
+                                                                        <select required="required" class="form-control " id="maritalstatus" name="maritalstatus">
                                                                             <option value="divorced">Divorced</option>
                                                                             <option value="married">Married</option>
                                                                             <option value="separated">Separated</option>
@@ -136,7 +136,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="gender" name="gender">
+                                                                        <select required="required" class="form-control " id="gender" name="gender">
                                                                             <option value="f">Female</option>
                                                                             <option value="m">Male</option>
                                                                             <option value="o">Other</option>
@@ -161,7 +161,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="title_post" type="text" name="title_post" value="" />
+                                                                        <input required="required" class=" form-control " id="title_post" type="text" name="title_post" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -174,7 +174,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="native_language" name="native_language">
+                                                                        <select required="required" class="form-control " id="native_language" name="native_language">
                                                                             <t t-foreach="languages" t-as="language">
                                                                                 <option t-att-value="language.id">
                                                                                     <t t-esc="language.display_name"/>
@@ -189,7 +189,7 @@
                                                                     <div class="col-sm-9">
                                                                         <div class="checkbox ">
                                                                             <label>
-                                                                                <input required="required" class="powermail_checkbox powermail_checkbox_211" id="iconfirmgoodknowledgeoftheenglishlanguage_1" type="checkbox" name="tx_powermail_pi1[field][iconfirmgoodknowledgeoftheenglishlanguage][]" value="I confirm good knowledge of the english language*" data-parsley-multiple="tx_powermail_pi1fieldiconfirmgoodknowledgeoftheenglishlanguage" />
+                                                                                <input required="required" id="iconfirmgoodknowledgeoftheenglishlanguage_1" type="checkbox" value="I confirm good knowledge of the english language*" />
                                                                                 I confirm good knowledge of the english language*
                                                                             </label>
                                                                         </div>
@@ -204,7 +204,7 @@
                                                                     <label for="foreign_languages" class="control-label col-sm-3" title="">Other Languages</label>
                                                                     <div class="col-sm-9">
                                                                         <input type="hidden" name="foreign_languages" value="" />
-                                                                        <select class="powermail_select form-control " id="foreign_languages" multiple="multiple" name="foreign_languages" data-parsley-multiple="tx_powermail_pi1[field][otherlanguages][]">
+                                                                        <select class="form-control " id="foreign_languages" multiple="multiple" name="foreign_languages">
                                                                             <t t-foreach="languages" t-as="language">
                                                                                 <option t-att-value="language.id" t-field="language.display_name" />
                                                                             </t>
@@ -213,7 +213,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input class="powermail_hidden  powermail_source" id="source" type="hidden" name="source" value="" />
+                                                            <input id="source" type="hidden" name="source" value="" />
                                                         </div>
                                                     </fieldset>
                                                 </div>
@@ -227,7 +227,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="street" type="text" name="street" value="" />
+                                                                        <input required="required" class=" form-control " id="street" type="text" name="street" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -238,7 +238,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="zip" type="text" name="zip" value="" />
+                                                                        <input required="required" class=" form-control " id="zip" type="text" name="zip" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -251,7 +251,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="city" type="text" name="city" value="" />
+                                                                        <input required="required" class=" form-control " id="city" type="text" name="city" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -262,7 +262,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="country_id" name="country_id">
+                                                                        <select required="required" class="form-control " id="country_id" name="country_id">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
@@ -279,7 +279,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" data-parsley-error-message="This is not a valid Phone Number!" class=" form-control " id="phone" type="tel" name="phone" value="" />
+                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class=" form-control " id="phone" type="tel" name="phone" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -290,7 +290,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" data-parsley-error-message="This is not a valid email address!" class=" form-control " id="email" type="email" name="email" value="" />
+                                                                        <input required="required" class=" form-control " id="email" type="email" name="email" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -308,7 +308,7 @@
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <t t-set="all_studies" t-value="request.env['ghu.study'].sudo().search([])"/>
-                                                                        <select required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class="powermail_select form-control " id="study_id" name="study_id">
+                                                                        <select required="required" class="form-control " id="study_id" name="study_id">
                                                                             <t t-foreach="all_studies" t-as="study">
                                                                                 <option t-att-value="study.id" t-field="study.name" />
                                                                             </t>
@@ -348,7 +348,7 @@
                                                                 <div class="row">
                                                                     <label for="from" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="from" type="date" name="from-0" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="from" type="date" name="from-0" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -356,7 +356,7 @@
                                                                 <div class="row">
                                                                     <label for="to" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to" type="date" name="to-0" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to" type="date" name="to-0" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -416,7 +416,7 @@
                                                                 <div class="row">
                                                                     <label for="datefrom_to_01" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="datefrom_to_01" type="date" name="from-1" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_01" type="date" name="from-1" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -425,7 +425,7 @@
                                                                 <div class="row">
                                                                     <label for="to_01" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to_01" type="date" name="to-1" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_01" type="date" name="to-1" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -486,7 +486,7 @@
                                                                 <div class="row">
                                                                     <label for="datefrom_to_02" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="datefrom_to_02" type="date" name="from-2" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_02" type="date" name="from-2" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -494,7 +494,7 @@
                                                                 <div class="row">
                                                                     <label for="to_02" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to_02" type="date" name="to-2" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_02" type="date" name="to-2" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -553,7 +553,7 @@
                                                                 <div class="row">
                                                                     <label for="datefrom_to_03" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="datefrom_to_03" type="date" name="from-3" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_03" type="date" name="from-3" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -561,7 +561,7 @@
                                                                 <div class="row">
                                                                     <label for="to_03" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to_03" type="date" name="to-3" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_03" type="date" name="to-3" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -620,7 +620,7 @@
                                                                 <div class="row">
                                                                     <label for="datefrom_to_04" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="datefrom_to_04" type="date" name="from-4" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_04" type="date" name="from-4" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -628,7 +628,7 @@
                                                                 <div class="row">
                                                                     <label for="to_04" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to_04" type="date" name="to-4" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_04" type="date" name="to-4" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -687,7 +687,7 @@
                                                                 <div class="row">
                                                                     <label for="datefrom_to_05" class="control-label col-sm-3" title="">From</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="datefrom_to_05" type="date" name="from-5" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_05" type="date" name="from-5" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -695,7 +695,7 @@
                                                                 <div class="row">
                                                                     <label for="to_05" class="control-label col-sm-3" title="">To</label>
                                                                     <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="powermail_date form-control " id="to_05" type="date" name="to-5" value="" />
+                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_05" type="date" name="to-5" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -741,13 +741,13 @@
                                                                     <div class="col-sm-6">
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input required="required" data-parsley-required-message="One of these fields must be filled!" data-parsley-errors-container=".error_container_haveyoueverappliedtoglobalhumanisticuniversity" class="powermail_radio" id="haveyoueverappliedtoglobalhumanisticuniversity_1" type="radio" name="tx_powermail_pi1[field][haveyoueverappliedtoglobalhumanisticuniversity]" value="0" />
+                                                                                <input required="required" id="haveyoueverappliedtoglobalhumanisticuniversity_1" type="radio" name="ever_applied_at_ghu" value="0" />
                                                                             No
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input class="powermail_radio" id="haveyoueverappliedtoglobalhumanisticuniversity_2" type="radio" name="tx_powermail_pi1[field][haveyoueverappliedtoglobalhumanisticuniversity]" value="1" />
+                                                                                <input id="haveyoueverappliedtoglobalhumanisticuniversity_2" type="radio" name="ever_applied_at_ghu" value="1" />
                                                                             Yes
                                                                             </label>
                                                                         </div>
@@ -769,13 +769,13 @@
                                                                     <div class="col-sm-9">
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input required="required" data-parsley-required-message="One of these fields must be filled!" data-parsley-errors-container=".error_container_haveyoueverappliedforadoctoraldegree" class="powermail_radio" id="haveyoueverappliedforadoctoraldegree_1" type="radio" name="tx_powermail_pi1[field][haveyoueverappliedforadoctoraldegree]" value="0" />
+                                                                                <input required="required" id="haveyoueverappliedforadoctoraldegree_1" type="radio" name="ever_applied_doctoral" value="0" />
                                                                             No
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input class="powermail_radio" id="haveyoueverappliedforadoctoraldegree_2" type="radio" name="tx_powermail_pi1[field][haveyoueverappliedforadoctoraldegree]" value="1" />
+                                                                                <input id="haveyoueverappliedforadoctoraldegree_2" type="radio" name="ever_applied_doctoral" value="1" />
                                                                             Yes
                                                                             </label>
                                                                         </div>
@@ -787,7 +787,7 @@
                                                                 <div class="row">
                                                                     <label for="universityalreadyappliedto" class="control-label col-sm-3" title="">University</label>
                                                                     <div class="col-sm-9">
-                                                                        <input class=" form-control " id="universityalreadyappliedto" type="text" name="tx_powermail_pi1[field][universityalreadyappliedto]" value="" />
+                                                                        <input class=" form-control " id="universityalreadyappliedto" type="text" name="ever_applied_doctoral_university" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -804,7 +804,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" data-parsley-powermailfilesize="10485760,photo" data-parsley-powermailfilesize-message="The file, that you want to upload is too large!" data-parsley-powermailfileextensions="photo" data-parsley-powermailfileextensions-message="It's not allowed to upload a file with this extension!" class=" " id="photo" type="file" name="photo" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="photo" type="file" name="photo" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -815,7 +815,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" data-parsley-powermailfilesize="10485760,curriculumvitae" data-parsley-powermailfilesize-message="The file, that you want to upload is too large!" data-parsley-powermailfileextensions="curriculumvitae" data-parsley-powermailfileextensions-message="It's not allowed to upload a file with this extension!" class=" " id="curriculumvitae" type="file" name="vita" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="curriculumvitae" type="file" name="vita" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -828,7 +828,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" data-parsley-powermailfilesize="10485760,copyofpassport" data-parsley-powermailfilesize-message="The file, that you want to upload is too large!" data-parsley-powermailfileextensions="copyofpassport" data-parsley-powermailfileextensions-message="It's not allowed to upload a file with this extension!" class=" " id="copyofpassport" type="file" name="passport[]" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="copyofpassport" type="file" name="passport[]" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -839,7 +839,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" multiple="multiple" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" data-parsley-powermailfilesize="10485760,copiesofdegrees" data-parsley-powermailfilesize-message="The file, that you want to upload is too large!" data-parsley-powermailfileextensions="copiesofdegrees" data-parsley-powermailfileextensions-message="It's not allowed to upload a file with this extension!" class=" " id="copiesofdegrees" type="file" name="degrees[]" />
+                                                                        <input required="required" multiple="multiple" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="copiesofdegrees" type="file" name="degrees[]" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -852,7 +852,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-7">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" data-parsley-powermailfilesize="10485760,titleandabstractofintendedresearch" data-parsley-powermailfilesize-message="The file, that you want to upload is too large!" data-parsley-powermailfileextensions="titleandabstractofintendedresearch" data-parsley-powermailfileextensions-message="It's not allowed to upload a file with this extension!" class=" " id="titleandabstractofintendedresearch" type="file" name="tx_powermail_pi1[field][titleandabstractofintendedresearch][]" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="titleandabstractofintendedresearch" type="file" name="research_abstract" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -871,8 +871,7 @@
                                                                     <div class="col-sm-9">
                                                                         <div class="checkbox ">
                                                                             <label>
-                                                                                <input type="hidden" name="tx_powermail_pi1[field][initialpayment]" value="" />
-                                                                                <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-errors-container=".error_container_initialpayment" class="powermail_checkbox powermail_checkbox_94" id="initialpayment_1" type="checkbox" name="tx_powermail_pi1[field][initialpayment][]" value="Partial payment USD 500.— for advisor procedure" />
+                                                                                <input required="required" id="initialpayment_1" type="checkbox" name="initial_payment_ok" value="Partial payment USD 500.— for advisor procedure" />
                                                                             Partial payment USD 500.— for advisor procedure
                                                                             </label>
                                                                         </div>
@@ -894,22 +893,20 @@
                                                                     <div class="col-sm-9">
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input required="required" data-parsley-required-message="One of these fields must be filled!" data-parsley-errors-container=".error_container_paymentmethod" class="powermail_radio" id="paymentmethod_1" type="radio" name="tx_powermail_pi1[field][paymentmethod]" value="one_time" />
+                                                                                <input required="required" id="paymentmethod_1" type="radio" name="payment_method" value="one_time" />
                                                                             One-time payment USD 24,500.-- (at the beginning)
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input class="powermail_radio" id="paymentmethod_2" type="radio" name="tx_powermail_pi1[field][paymentmethod]" value="two_time" />
-                                                                            USD 12,500.-- at the beginning; USD 12,500. -- after 12
-                                                                months
+                                                                                <input id="paymentmethod_2" type="radio" name="payment_method" value="two_times" />
+                                                                            USD 12,500.-- at the beginning; USD 12,500. -- after 12 months
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input class="powermail_radio" id="paymentmethod_3" type="radio" name="tx_powermail_pi1[field][paymentmethod]" value="three_time" />
-                                                                            USD 9,000.-- at the beginning; 9,000.-- after 12 months,
-                                                                8,000.-- after Phase1
+                                                                                <input id="paymentmethod_3" type="radio" name="payment_method" value="three_times" />
+                                                                            USD 9,000.-- at the beginning; 9,000.-- after 12 months, 8,000.-- after Phase 1
                                                                             </label>
                                                                         </div>
                                                                         <div class="error_container error_container_paymentmethod" />
@@ -942,7 +939,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="fullname" type="text" name="tx_powermail_pi1[field][fullname]" value="" />
+                                                                        <input required="required" class=" form-control " id="fullname" type="text" name="payment_fullname" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -953,7 +950,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="street_01" type="text" name="tx_powermail_pi1[field][street_01]" value="" />
+                                                                        <input required="required" class=" form-control " id="street_01" type="text" name="payment_street" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -966,7 +963,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="zip_01" type="text" name="tx_powermail_pi1[field][zip_01]" value="" />
+                                                                        <input required="required" class=" form-control " id="zip_01" type="text" name="payment_zip" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -977,7 +974,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" class=" form-control " id="city_07" type="text" name="tx_powermail_pi1[field][city_07]" value="" />
+                                                                        <input required="required" class=" form-control " id="city_07" type="text" name="payment_city" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -987,7 +984,7 @@
                                                                 <div class="row">
                                                                     <label for="country_01" class="control-label col-sm-3" title="">Country</label>
                                                                     <div class="col-sm-9">
-                                                                        <select class="powermail_select form-control " id="country_01" name="tx_powermail_pi1[field][country_01]">
+                                                                        <select class="form-control " id="country_01" name="payment_country">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value-value="country.id" t-field="country.name" />
                                                                             </t>
@@ -1002,7 +999,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" data-parsley-error-message="This is not a valid Phone Number!" class=" form-control " id="phone_01" type="tel" name="tx_powermail_pi1[field][phone_01]" value="" />
+                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class=" form-control " id="phone_01" type="tel" name="payment_phone" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1015,7 +1012,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" data-parsley-required-message="This field must be filled!" data-parsley-trigger="change" data-parsley-error-message="This is not a valid email address!" class=" form-control " id="email_01" type="email" name="tx_powermail_pi1[field][email_01]" value="" />
+                                                                        <input required="required" class=" form-control " id="email_01" type="email" name="payment_email" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1051,8 +1048,7 @@
                                                         </div>
                                                         <input type="hidden" name="product_id" value="1" />
                                                     </fieldset>
-                                                    <span id="application_soon">Application is currently not available, for more information please <a href="/contactus">get in contact</a> with us.</span>
-                                                    <button class="btn o_website_form_send o_default_snippet_text btn-primary" disabled="disabled">Submit Application</button>
+                                                    <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
                                                     <span id="o_website_form_result" />
                                                 </div>
                                             </div>
