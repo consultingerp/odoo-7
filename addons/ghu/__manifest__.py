@@ -19,7 +19,7 @@
     'version': '0.29',
  
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
 
     # always loaded
     'data': [
@@ -34,6 +34,7 @@
         'views/study_view.xml',
         'views/employee_view.xml',
         'views/footer_view.xml',
+        'views/email_signature_view.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',

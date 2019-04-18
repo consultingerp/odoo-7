@@ -23,6 +23,11 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+  mailhog:
+    image: mailhog/mailhog
+    ports: 
+      - 25:1025 # smtp server
+      - 8025:8025 # web ui
 volumes:
   odoo-web-data:
   odoo-db-data:
