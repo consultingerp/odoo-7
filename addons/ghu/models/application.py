@@ -106,7 +106,7 @@ class GhuApplication(models.Model):
     ever_applied_doctoral_university_name = fields.Char(
         'University name where applied for doctoral degree',
         size=256,
-        required=True,
+        required=False,
     )
 
     # REQUIRED DOCUMENTS

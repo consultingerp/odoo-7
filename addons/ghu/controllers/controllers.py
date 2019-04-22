@@ -48,7 +48,7 @@ class Ghu(http.Controller):
         except IntegrityError:
             return json.dumps(False)
 
-        return json.dumps('hahahaa')
+        return json.dumps(dict(id=application_record.id))
 
     # @http.route('/ghu/ghu/', auth='public')
     # def index(self, **kw):
