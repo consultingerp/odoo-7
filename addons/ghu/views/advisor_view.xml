@@ -126,6 +126,8 @@
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
                                     <field name="vita"/>
+                                    <field name="degree"/>
+                                    <field name="agreement"/>
 
                                 </group>
                                 <group string="Address Detail" name="address">

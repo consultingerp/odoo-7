@@ -49,6 +49,14 @@ class GhuAdvisor(models.Model):
 
     vita = fields.Binary('Vita')
 
+    degree = fields.Binary(
+        string='Degree'
+    )
+    
+    agreement = fields.Binary(
+        string=u'Agreement',
+    )
+
     programs = fields.Many2many(
         string=u'Programs',
         comodel_name='ghu.program',
