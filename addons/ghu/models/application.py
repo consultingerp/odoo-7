@@ -87,7 +87,8 @@ class GhuApplication(models.Model):
 
     # STUDY PROGRAM FIELDS
     study_id = fields.Many2one(
-        'ghu.study', 'Study', required=False)
+        'ghu.study', 'Study', required=True
+    )
 
     preliminary_studies = fields.One2many(
         'ghu.application_study',
