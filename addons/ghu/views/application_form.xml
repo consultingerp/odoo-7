@@ -27,7 +27,7 @@
                             <div class="container mt-2">
                                 <div class="row">
                                     <div class="col-lg-12 pt48 pb48">
-                                        <form action="/website_form/" method="post" class="s_website_form card bg-white" enctype="multipart/form-data" data-model_name="ghu.application" data-success_page="/apply-doctoral-program/thank-you">
+                                        <form action="/ghu/" method="post" class="s_website_form card bg-white" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
                                             <div class="card-header">
                                                 <ul class="nav nav-tabs card-header-tabs" role="tablist">
                                                     <li class="nav-item">
@@ -53,56 +53,57 @@
                                                 <div class="tab-pane fade active show" id="application_doctoral_program_view_personal_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_personal_link">
                                                     <fieldset class="  " style="">
                                                         <div class="row">
-                                                            <div class=" type_input first_name  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="first_name" class="control-label col-sm-3" title="">
                                                                         First Name
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="first_name" type="text" name="first_name" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="first_name" type="text" name="first_name" value="" />
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input lastname  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="last_name" class="control-label col-sm-3" title="">
                                                                         Last Name
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="last_name" type="text" name="last_name" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="last_name" type="text" name="last_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_date dateofbirth  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="birthday" class="control-label col-sm-3" title="">
                                                                         Date of Birth
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <div class="o_website_form_date input-group date" id="datepicker4" data-target-input="nearest">
-                                                                            <input type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker4" name="birthday"/>
-                                                                            <div class="input-group-append" data-target="#datepicker4" data-toggle="datetimepicker">
+                                                                        <div class="input-group">
+                                                                            <input type="date" class="form-control o_website_form_input" name="date_of_birth" required="required" />
+                                                                            <div class="input-group-append">
                                                                                 <div class="input-group-text">
-                                                                                    <i class="fa fa-calendar" data-original-title="" title=""></i>
+                                                                                    <i class="fa fa-calendar"></i>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_select nationality  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="nationality" class="control-label col-sm-3" title="">
                                                                         Nationality
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" class="form-control " id="nationality" name="nationality">
+                                                                        <select required="required" class="form-control o_website_form_input" id="nationality" name="nationality">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
@@ -112,14 +113,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_select maritalstatus  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="maritalstatus" class="control-label col-sm-3" title="">
                                                                         Marital Status
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" class="form-control " id="maritalstatus" name="maritalstatus">
+                                                                        <select required="required" class="form-control o_website_form_input" id="maritalstatus" name="marital_status">
                                                                             <option value="divorced">Divorced</option>
                                                                             <option value="married">Married</option>
                                                                             <option value="separated">Separated</option>
@@ -129,14 +130,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_select gender  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="gender" class="control-label col-sm-3" title="">
                                                                         Gender
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" class="form-control " id="gender" name="gender">
+                                                                        <select required="required" class="form-control o_website_form_input" id="gender" name="gender">
                                                                             <option value="f">Female</option>
                                                                             <option value="m">Male</option>
                                                                             <option value="o">Other</option>
@@ -146,35 +147,37 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input academicdegreespre  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="academicdegreespre" class="control-label col-sm-3" title="">Academic Degrees (Pre)</label>
+                                                                    <label for="academicdegreespre" class="control-label col-sm-3" title="">
+                                                                        Academic Degrees (Pre)
+                                                                    </label>
                                                                     <div class="col-sm-9">
-                                                                        <input class=" form-control " id="academicdegreespre" type="text" name="academicdegreespre" value="" />
+                                                                        <input class="form-control o_website_form_input" id="academicdegreespre" type="text" name="academic_degree_pre" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input academicdegrees  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="title_post" class="control-label col-sm-3" title="">
                                                                         Academic Degrees (Post)
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="title_post" type="text" name="title_post" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="title_post" type="text" name="academic_degree_post" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_select native_language  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="native_language" class="control-label col-sm-3" title="">
                                                                         Native Language
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" class="form-control " id="native_language" name="native_language">
+                                                                        <select required="required" class="form-control o_website_form_input" id="native_language" name="native_language">
                                                                             <t t-foreach="languages" t-as="language">
                                                                                 <option t-att-value="language.id">
                                                                                     <t t-esc="language.display_name"/>
@@ -184,27 +187,23 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_check iconfirmgoodknowledgeoftheenglishlanguage nolabel form-group col-md-6">
-                                                                <div class="row">
-                                                                    <div class="col-sm-9">
-                                                                        <div class="checkbox ">
-                                                                            <label>
-                                                                                <input required="required" id="iconfirmgoodknowledgeoftheenglishlanguage_1" type="checkbox" value="I confirm good knowledge of the english language*" />
-                                                                                I confirm good knowledge of the english language*
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="error_container error_container_iconfirmgoodknowledgeoftheenglishlanguage" />
+                                                            <div class="form-field form-group col-md-6">
+                                                                <div class="row col-sm-12">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input o_website_form_input" required="required" type="checkbox" value="confirm_english" id="confirm_english" />
+                                                                        <label class="form-check-label" for="confirm_english">
+                                                                            I confirm good knowledge of the english language *
+                                                                        </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_select foreign_languages  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="foreign_languages" class="control-label col-sm-3" title="">Other Languages</label>
                                                                     <div class="col-sm-9">
-                                                                        <input type="hidden" name="foreign_languages" value="" />
-                                                                        <select class="form-control " id="foreign_languages" multiple="multiple" name="foreign_languages">
+                                                                        <select class="form-control o_website_form_input" id="foreign_languages" multiple="multiple" name="other_languages">
                                                                             <t t-foreach="languages" t-as="language">
                                                                                 <option t-att-value="language.id" t-field="language.display_name" />
                                                                             </t>
@@ -213,56 +212,55 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <input id="source" type="hidden" name="source" value="" />
                                                         </div>
                                                     </fieldset>
                                                 </div>
                                                 <div class="tab-pane fade" id="application_doctoral_program_view_residential_address_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_residential_address_link">
                                                     <fieldset class="  ">
                                                         <div class="row">
-                                                            <div class=" type_input street  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="street" class="control-label col-sm-3" title="">
                                                                     Street
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="street" type="text" name="street" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="street" type="text" name="street" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input zip  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="zip" class="control-label col-sm-3" title="">
                                                                     ZIP
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="zip" type="text" name="zip" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="zip" type="text" name="zip" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input city  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="city" class="control-label col-sm-3" title="">
                                                                     City
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="city" type="text" name="city" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="city" type="text" name="city" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_select country  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="country_id" class="control-label col-sm-3" title="">
                                                                     Country
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <select required="required" class="form-control " id="country_id" name="country_id">
+                                                                        <select required="required" class="form-control o_website_form_input" id="country_id" name="country_id">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
@@ -272,25 +270,25 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input phone  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="phone" class="control-label col-sm-3" title="">
                                                                     Phone
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class=" form-control " id="phone" type="tel" name="phone" value="" />
+                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class="form-control o_website_form_input" id="phone" type="tel" name="phone" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input email  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="email" class="control-label col-sm-3" title="">
                                                                     Email
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="email" type="email" name="email" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="email" type="email" name="email" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -300,7 +298,7 @@
                                                 <div class="tab-pane fade" id="application_doctoral_program_view_study_program_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_study_program_link">
                                                     <fieldset class="  ">
                                                         <div class="row">
-                                                            <div class=" type_select study_id  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="study_id" class="control-label col-sm-3" title="">
                                                                     Desired Study Field
@@ -308,7 +306,7 @@
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <t t-set="all_studies" t-value="request.env['ghu.study'].sudo().search([])"/>
-                                                                        <select required="required" class="form-control " id="study_id" name="study_id">
+                                                                        <select required="required" class="form-control o_website_form_input" id="study_id" name="study_id">
                                                                             <t t-foreach="all_studies" t-as="study">
                                                                                 <option t-att-value="study.id" t-field="study.name" />
                                                                             </t>
@@ -316,438 +314,116 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_html placeholder  form-group col-md-6">
+                                                            <div class="form-group col-md-6">
                                                                 <div class="col-sm-9 " />
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_html preliminarystudies layout1 form-group col-md-12">
+                                                            <div class="form-group col-md-12">
                                                                 <legend>Preliminary studies</legend>
                                                             </div>
                                                         </div>
+                                                        <t t-foreach="range(5)" t-as="i">
+                                                            <h6>Study <t t-esc="i + 1" /></h6>
+                                                            <div class="row">
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="institution-{{ i }}" class="control-label col-sm-3" title="">Institution</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input class="form-control o_website_form_input" t-attf-id="institution-{{ i }}" type="text" t-attf-name="studies-institution-{{ i }}" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="city-{{ i }}" class="control-label col-sm-3" title="">City</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input class="form-control o_website_form_input" t-attf-id="city-{{ i }}" type="text" t-attf-name="studies-city-{{ i }}" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="from-{{ i }}" class="control-label col-sm-3" title="">From</label>
+                                                                        <div class="col-sm-9">
+                                                                            <div class="input-group">
+                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="from-{{ i }}" t-attf-name="studies-from_date-{{ i }}" />
+                                                                                <div class="input-group-append">
+                                                                                    <div class="input-group-text">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="to-{{ i }}" class="control-label col-sm-3" title="">To</label>
+                                                                        <div class="col-sm-9">
+                                                                            <div class="input-group">
+                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="to-{{ i }}" t-attf-name="studies-to_date-{{ i }}" />
+                                                                                <div class="input-group-append">
+                                                                                    <div class="input-group-text">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="majorsubject-{{ i }}" class="control-label col-sm-3" title="">Subject</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input class="form-control o_website_form_input" t-attf-id="majorsubject-{{ i }}" type="text" t-attf-name="studies-subject-{{ i }}" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="diploma-{{ i }}" class="control-label col-sm-3" title="">Diploma</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input class="form-control o_website_form_input" t-attf-id="diploma-{{ i }}" type="text" t-attf-name="studies-diploma-{{ i }}" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-field form-group col-md-6">
+                                                                    <div class="row">
+                                                                        <label t-attf-for="creditpoints-{{ i }}" class="control-label col-sm-3" title="">Credit Points</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input class="form-control o_website_form_input" t-attf-id="creditpoints-{{ i }}" type="text" t-attf-name="studies-credit_points-{{ i }}" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-sm-9 " />
+                                                                </div>
+                                                            </div>
+                                                        </t>
                                                         <div class="row">
-                                                            <div class=" type_input institution  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-12">
                                                                 <div class="row">
-                                                                    <label for="institution" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution" type="text" name="institution-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_01  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="city_01" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_01" type="text" name="city-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date from  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="from" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="from" type="date" name="from-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="to" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to" type="date" name="to-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input majorsubject  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="majorsubject" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="majorsubject" type="text" name="subject-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diploma  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diploma" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="diploma" type="text" name="diploma-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="creditpoints" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints" type="text" name="creditpoints-0" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html firstplaceholder  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input institution_01 layout3 form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="institution_01" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution_01" type="text" name="institution-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="city_02" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_02" type="text" name="city-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date datefrom_to_01  form-group col-md-6">
-
-                                                                <div class="row">
-                                                                    <label for="datefrom_to_01" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_01" type="date" name="from-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to_01  form-group col-md-6">
-
-                                                                <div class="row">
-                                                                    <label for="to_01" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_01" type="date" name="to-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input subject  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="subject" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="subject" type="text" name="subject-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diplomatitle_01  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diplomatitle_01" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input placeholder="Academic Degree" class=" form-control " id="diplomatitle_01" type="text" name="diploma-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints_01  form-group col-md-6">
-
-                                                                <div class="row">
-                                                                    <label for="creditpoints_01" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints_01" type="text" name="creditpoints-1" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html placeholder2  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input institution_02 layout3 form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="institution_02" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution_02" type="text" name="institution-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_03  form-group col-md-6">
-
-                                                                <div class="row">
-                                                                    <label for="city_03" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_03" type="text" name="city-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date datefrom_to_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="datefrom_to_02" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_02" type="date" name="from-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="to_02" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_02" type="date" name="to-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input majorsubject_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="majorsubject_02" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="majorsubject_02" type="text" name="subject-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diplomatitle_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diplomatitle_02" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input placeholder="Academic degree" class=" form-control " id="diplomatitle_02" type="text" name="diploma-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints_02  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="creditpoints_02" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints_02" type="text" name="creditpoints-2" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html placeholder3  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input institution_03 layout3 form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="institution_03" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution_03" type="text" name="institution-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="city_04" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_04" type="text" name="city-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date datefrom_to_03  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="datefrom_to_03" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_03" type="date" name="from-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to_03  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="to_03" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_03" type="date" name="to-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input majorsubject_03  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="majorsubject_03" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="majorsubject_03" type="text" name="subject-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diplomatitle_03  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diplomatitle_03" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input placeholder="Academic Degree" class=" form-control " id="diplomatitle_03" type="text" name="diploma-3" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints_03  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="creditpoints_03" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints_03" type="text" name="creditpoints-3]" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html placeholder4  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input institution_04 layout3 form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="institution_04" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution_04" type="text" name="institution-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="city_05" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_05" type="text" name="city-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date datefrom_to_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="datefrom_to_04" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_04" type="date" name="from-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="to_04" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_04" type="date" name="to-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input majorsubject_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="majorsubject_04" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="majorsubject_04" type="text" name="subject-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diplomatitle_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diplomatitle_04" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input placeholder="Academic Degree" class=" form-control " id="diplomatitle_04" type="text" name="diploma-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints_04  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="creditpoints_04" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints_04" type="text" name="creditpoints-4" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html placeholder5  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input institution_05 layout3 form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="institution_05" class="control-label col-sm-3" title="">Institution</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="institution_05" type="text" name="institution-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input city_06  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="city_06" class="control-label col-sm-3" title="">City</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="city_06" type="text" name="city-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_date datefrom_to_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="datefrom_to_05" class="control-label col-sm-3" title="">From</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="datefrom_to_05" type="date" name="from-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_date to_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="to_05" class="control-label col-sm-3" title="">To</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input data-datepicker-force="0" data-datepicker-settings="date" data-datepicker-months="January,February,March,April,May,June,July,August,September,October,November,December" data-datepicker-days="So,Mo,Tu,We,Th,Fr,Sa" data-datepicker-format="Y-m-d" class="form-control " id="to_05" type="date" name="to-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input majorsubject_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="majorsubject_05" class="control-label col-sm-3" title="">Subject</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="majorsubject_05" type="text" name="subject-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_input diplomatitle_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="diplomatitle_05" class="control-label col-sm-3" title="">Diploma</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input placeholder="Academic Degree" class=" form-control " id="diplomatitle_05" type="text" name="diploma-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_input creditpoints_05  form-group col-md-6">
-                                                                <div class="row">
-                                                                    <label for="creditpoints_05" class="control-label col-sm-3" title="">Credit Points</label>
-                                                                    <div class="col-sm-9">
-                                                                        <input class=" form-control " id="creditpoints_05" type="text" name="creditpoints-5" value="" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class=" type_html placeholder_02  form-group col-md-6">
-                                                                <div class="col-sm-9 " />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class=" type_radio haveyoueverappliedtoglobalhumanisticuniversity layout1 form-group col-md-12">
-                                                                <div class="row">
-                                                                    <label for="haveyoueverappliedtoglobalhumanisticuniversity" class="control-label col-sm-6" title="">
+                                                                    <label class="form-check-label control-label col-sm-6" title="">
                                                                     Have you ever applied to Global Humanistic University?
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-6">
-                                                                        <div class="radio ">
+                                                                        <div class="radio">
                                                                             <label>
-                                                                                <input required="required" id="haveyoueverappliedtoglobalhumanisticuniversity_1" type="radio" name="ever_applied_at_ghu" value="0" />
+                                                                                <input class="o_website_form_input" required="required" id="haveyoueverappliedtoglobalhumanisticuniversity_1" type="radio" name="ever_applied_at_ghu" value="0" />
                                                                             No
                                                                             </label>
                                                                         </div>
-                                                                        <div class="radio ">
+                                                                        <div class="radio">
                                                                             <label>
-                                                                                <input id="haveyoueverappliedtoglobalhumanisticuniversity_2" type="radio" name="ever_applied_at_ghu" value="1" />
+                                                                                <input class="o_website_form_input" required="required" id="haveyoueverappliedtoglobalhumanisticuniversity_2" type="radio" name="ever_applied_at_ghu" value="1" />
                                                                             Yes
                                                                             </label>
                                                                         </div>
@@ -755,27 +431,27 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_html placeholder_03  form-group col-md-6">
+                                                            <div class="form-group col-md-6">
                                                                 <div class="col-sm-9 " />
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_radio haveyoueverappliedforadoctoraldegree layout1 form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="haveyoueverappliedforadoctoraldegree" class="control-label col-sm-12" title="">
+                                                                    <label class="form-check-label control-label col-sm-12" title="">
                                                                     Have you ever applied for a doctoral degree?
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input required="required" id="haveyoueverappliedforadoctoraldegree_1" type="radio" name="ever_applied_doctoral" value="0" />
+                                                                                <input class="o_website_form_input" required="required" id="haveyoueverappliedforadoctoraldegree_1" type="radio" name="ever_applied_doctoral" value="0" />
                                                                             No
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input id="haveyoueverappliedforadoctoraldegree_2" type="radio" name="ever_applied_doctoral" value="1" />
+                                                                                <input class="o_website_form_input" required="required" id="haveyoueverappliedforadoctoraldegree_2" type="radio" name="ever_applied_doctoral" value="1" />
                                                                             Yes
                                                                             </label>
                                                                         </div>
@@ -783,11 +459,11 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input universityalreadyappliedto  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="universityalreadyappliedto" class="control-label col-sm-3" title="">University</label>
                                                                     <div class="col-sm-9">
-                                                                        <input class=" form-control " id="universityalreadyappliedto" type="text" name="ever_applied_doctoral_university" value="" />
+                                                                        <input class="form-control o_website_form_input" id="universityalreadyappliedto" type="text" name="ever_applied_doctoral_university_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -797,62 +473,62 @@
                                                 <div class="tab-pane fade" id="application_doctoral_program_view_documents_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_documents_link">
                                                     <fieldset class="  ">
                                                         <div class="row">
-                                                            <div class=" type_file photo  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="photo" class="control-label col-sm-3" title="">
                                                                     Photo
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="photo" type="file" name="photo" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class="form-control o_website_form_input" id="photo" type="file" name="photo_file" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_file curriculumvitae  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="curriculumvitae" class="control-label col-sm-3" title="">
                                                                     Curriculum vitae
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="curriculumvitae" type="file" name="vita" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class="form-control o_website_form_input" id="curriculumvitae" type="file" name="vita_file" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_file copyofpassport  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="copyofpassport" class="control-label col-sm-3" title="">
                                                                     Copy of Passport
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="copyofpassport" type="file" name="passport[]" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class="form-control o_website_form_input" id="copyofpassport" type="file" name="passport_file" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_file copiesofdegrees  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="copiesofdegrees" class="control-label col-sm-3" title="As one ZIP file">
                                                                     Copies of degrees
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" multiple="multiple" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="copiesofdegrees" type="file" name="degrees[]" />
+                                                                        <input required="required" multiple="multiple" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class="form-control o_website_form_input" id="copiesofdegrees" type="file" name="degrees_file" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_file titleandabstractofintendedresearch  form-group col-md-12">
+                                                            <div class="form-field form-group col-md-12">
                                                                 <div class="row">
                                                                     <label for="titleandabstractofintendedresearch" class="control-label col-sm-5" title="">
                                                                     Title and Abstract of intended research
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-7">
-                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class=" " id="titleandabstractofintendedresearch" type="file" name="research_abstract" />
+                                                                        <input required="required" accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg" class="form-control o_website_form_input" id="titleandabstractofintendedresearch" type="file" name="research_abstract_file" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -860,60 +536,58 @@
                                                     </fieldset>
                                                 </div>
                                                 <div class="tab-pane fade" id="application_doctoral_program_view_payment_content" role="tabpanel" aria-labelledby="application_doctoral_program_view_payment_link">
-                                                    <fieldset class="  ">
+                                                    <fieldset class="">
                                                         <div class="row">
-                                                            <div class=" type_check initialpayment  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="initialpayment" class="control-label col-sm-3" title="">
                                                                     Initial Payment
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <div class="checkbox ">
-                                                                            <label>
-                                                                                <input required="required" id="initialpayment_1" type="checkbox" name="initial_payment_ok" value="Partial payment USD 500.— for advisor procedure" />
-                                                                            Partial payment USD 500.— for advisor procedure
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input o_website_form_input" required="required" type="checkbox" id="initial_payment_ok" />
+                                                                            <label class="form-check-label" for="initial_payment_ok">
+                                                                                Partial payment USD 500.— for advisor procedure
                                                                             </label>
                                                                         </div>
-                                                                        <div class="error_container error_container_initialpayment" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_html info  form-group col-md-6">
+                                                            <div class="form-group col-md-6">
                                                                 <div class="col-sm-9 " />
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_radio paymentmethod  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="paymentmethod" class="control-label col-sm-3" title="">
+                                                                    <label for="paymentmethod" class="form-check-label control-label col-sm-3" title="">
                                                                     Payment method
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input required="required" id="paymentmethod_1" type="radio" name="payment_method" value="one_time" />
+                                                                                <input required="required" class="o_website_form_input" id="paymentmethod_1" type="radio" name="payment_method" value="one_time" checked="checked" />
                                                                             One-time payment USD 24,500.-- (at the beginning)
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input id="paymentmethod_2" type="radio" name="payment_method" value="two_times" />
+                                                                                <input id="paymentmethod_2" class="o_website_form_input" type="radio" name="payment_method" value="two_times" />
                                                                             USD 12,500.-- at the beginning; USD 12,500. -- after 12 months
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio ">
                                                                             <label>
-                                                                                <input id="paymentmethod_3" type="radio" name="payment_method" value="three_times" />
+                                                                                <input id="paymentmethod_3" class="o_website_form_input" type="radio" name="payment_method" value="three_times" />
                                                                             USD 9,000.-- at the beginning; 9,000.-- after 12 months, 8,000.-- after Phase 1
                                                                             </label>
                                                                         </div>
-                                                                        <div class="error_container error_container_paymentmethod" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_text marker  form-group col-md-6">
+                                                            <div class="form-group col-md-6">
                                                                 <div class="col-sm-9 ">The listed tuition fee includes all digital learning materials,
                                                         including software and user data for the online portals, as well
                                                         as exam fees for the first entrance to each module. For each
@@ -932,115 +606,113 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input fullname  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="fullname" class="control-label col-sm-3" title="">
                                                                     Full Name
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="fullname" type="text" name="payment_fullname" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="fullname" type="text" name="payment_full_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input street_01  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="street_01" class="control-label col-sm-3" title="">
                                                                     Street
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="street_01" type="text" name="payment_street" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="street_01" type="text" name="payment_street" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input zip_01  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="zip_01" class="control-label col-sm-3" title="">
                                                                     ZIP
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="zip_01" type="text" name="payment_zip" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="zip_01" type="text" name="payment_zip" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input city_07  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="city_07" class="control-label col-sm-3" title="">
                                                                     City
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="city_07" type="text" name="payment_city" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="city_07" type="text" name="payment_city" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_select country_01  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="country_01" class="control-label col-sm-3" title="">Country</label>
                                                                     <div class="col-sm-9">
-                                                                        <select class="form-control " id="country_01" name="payment_country">
+                                                                        <select class="form-control o_website_form_input" id="country_01" name="payment_country">
                                                                             <t t-foreach="countries" t-as="country">
-                                                                                <option t-att-value-value="country.id" t-field="country.name" />
+                                                                                <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_input phone_01  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="phone_01" class="control-label col-sm-3" title="">
                                                                     Phone
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class=" form-control " id="phone_01" type="tel" name="payment_phone" value="" />
+                                                                        <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class="form-control o_website_form_input" id="phone_01" type="tel" name="payment_phone" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_input email_01  form-group col-md-6">
+                                                            <div class="form-field form-group col-md-6">
                                                                 <div class="row">
                                                                     <label for="email_01" class="control-label col-sm-3" title="">
                                                                     Email
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class=" form-control " id="email_01" type="email" name="payment_email" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="email_01" type="email" name="payment_email" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class=" type_html placeholder_04  form-group col-md-6">
+                                                            <div class="form-group col-md-6">
                                                                 <div class="col-sm-9 " />
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class=" type_content generaltermsandconditions  form-group col-md-6">
-                                                                <div class="col-sm-9 ">
-                                                                    <div id="c390" class="frame frame-default frame-type-text frame-background-none frame-no-backgroundimage frame-space-before-none frame-space-after-none">
-                                                                        <div class="frame-container">
-                                                                            <div class="frame-inner">
-                                                                                <p>
-                                                                                    I have read the
-                                                                                    <a href="/index.php?id=136">terms
-                                                                            and conditions</a>
-                                                                                    with today's date
-                                                                        including resignation of the Global Humanistic
-                                                                        University, I agree with these and accept with
-                                                                        my submission that these are the basis for my
-                                                                        study contract.
-                                                                                    <br />
-                                                                                    With my
-                                                                        submission, I also confirm the accuracy of my
-                                                                        information.
-                                                                                </p>
-                                                                            </div>
+                                                            <div class="form-field form-group col-md-6">
+                                                                <div id="c390" class="frame frame-default frame-type-text frame-background-none frame-no-backgroundimage frame-space-before-none frame-space-after-none">
+                                                                    <div class="frame-container">
+                                                                        <div class="frame-inner">
+                                                                            <p>
+                                                                                I have read the
+                                                                                <a href="/index.php?id=136">terms
+                                                                        and conditions</a>
+                                                                                with today's date
+                                                                    including resignation of the Global Humanistic
+                                                                    University, I agree with these and accept with
+                                                                    my submission that these are the basis for my
+                                                                    study contract.
+                                                                                <br />
+                                                                                With my
+                                                                    submission, I also confirm the accuracy of my
+                                                                    information.
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>

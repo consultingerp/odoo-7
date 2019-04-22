@@ -20,7 +20,6 @@ class GhuApplication(models.Model):
     )
     date_of_birth = fields.Date(
         string=u'Date of Birth',
-        default=fields.Date.context_today,
         required=True,
     )
     nationality = fields.Many2one(
@@ -170,12 +169,10 @@ class GhuApplicationStudy(models.Model):
     city = fields.Char('City', size=128, required=True)
     from_date = fields.Date(
         string=u'From',
-        default=fields.Date.context_today,
         required=True,
     )
     to_date = fields.Date(
         string=u'To',
-        default=fields.Date.context_today,
         required=True,
     )
     subject = fields.Char('Subject', size=256, required=True)
