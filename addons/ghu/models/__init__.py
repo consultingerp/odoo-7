@@ -7,3 +7,4 @@ from . import student
 from . import study
 from . import university
 from . import employee
+from . import lead

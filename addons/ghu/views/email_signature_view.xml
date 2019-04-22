@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="ghu.mail_signature" inherit_id="mail.message_notification_email">
+            <xpath expr="//div/p" position="replace">
+                <table style="border:0;padding-top:15px;">
+                    <tr>
+                        <td>
+                            <a href="https://www.ghu.edu.cw/" target="_blank">
+                                <img src='https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg' height="110px" title="GHU"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <table style="border:0;padding-top:15px;">
+                <tr>
+                    <td>
+                        <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" target="_blank">
+                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png' height="55px" title="AACSB"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf" target="_blank">
+                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg' height="55px" title="ASIC" class="align-left"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://www.aac.cw/"  target="_blank">
+                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg' height="55px" title="AAC"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
+                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png' height="55px" title="Ministry of Curacao"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.researchgate.net/institution/Global_Humanistic_University" target="_blank">
+                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/rg.png' height="55px" title="ResearchGate"/>
+                        </a>
+                    </td>
+                    </tr>
+                </table>
+            </xpath>
+        </template>
+    </data>
+</odoo>

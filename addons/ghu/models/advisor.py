@@ -6,7 +6,7 @@ class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
     _order = "nomination DESC, nationality ASC, last_name ASC"
-    _inherit = ['website.published.multi.mixin']
+    _inherit = ['website.published.mixin']
     _inherits = {"res.partner": "partner_id"}
 
     advisor_id = fields.Char('Advisor ID', size=12)
@@ -48,6 +48,14 @@ class GhuAdvisor(models.Model):
     )
 
     vita = fields.Binary('Vita')
+
+    degree = fields.Binary(
+        string='Degree'
+    )
+    
+    agreement = fields.Binary(
+        string=u'Agreement',
+    )
 
     programs = fields.Many2many(
         string=u'Programs',
