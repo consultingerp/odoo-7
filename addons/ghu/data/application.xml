@@ -5,12 +5,18 @@
             <field name="name">Doctoral Application Confirmation</field>
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">Your Application at Global Humanistic University</field>
-            <field name="body_html">We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.
-Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. Please note that this is a very time-consuming task and can take up to three weeks.</field>
+            <field name="body_html"><![CDATA[
+                <p>We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.</p>
+                <p>
+                    Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU.
+                    <br />
+                    Please note that this is a very time-consuming task and can take up to three weeks.
+                </p>
+            ]]></field>
             <field name="email_from">office@ghu.edu.cw</field>
             <field name="use_default_to">false</field>
             <field name="email_to">${object.email}</field>
-            <field name="user_signature">true</field>
+            <field name="user_signature">false</field>
             <field name="auto_delete">false</field>
         </record>
         <record model="base.automation" id="ghu_doctoral_application_send_confirmation_email">
