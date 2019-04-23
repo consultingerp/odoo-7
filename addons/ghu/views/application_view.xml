@@ -157,8 +157,8 @@
             <field name="name">applications</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ghu.application</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="search_view_id" ref="view_ghu_application_search"/>
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -189,8 +189,8 @@
             <field name="name">applications</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ghu.application</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="search_view_id" ref="view_ghu_application_search"/>
             <field name="domain">[]</field>
             <field name="context">{}</field>
