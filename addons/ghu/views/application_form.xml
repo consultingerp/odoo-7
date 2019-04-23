@@ -739,5 +739,45 @@
             <field name="website_published">True</field>
             <field name="view_id" ref="application_doctoral_program_view" />
         </record>
+
+
+        <record id="application_doctoral_program_thankyou_view" model="ir.ui.view">
+            <field name="name">Application Doctoral Program Thank You Page</field>
+            <field name="type">qweb</field>
+            <field name="key">ghu.apply_doctoral_thankyou</field>
+            <field name="arch" type="xml">
+                <t name="Thank you" t-name="ghu.apply_doctoral_thankyou">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="oe_structure">
+                                <section class="pb0 bg-beta oe_custom_bg pt0">
+                                <div class="container">
+                                    <div class="row s_nb_column_fixed">
+                                    <div class="col-lg-12 s_title pt16 pb16">
+                                        <h1 class="text-left">Thank you</h1>
+                                    </div>
+                                    </div>
+                                </div>
+                                </section>
+                                <section class="s_text_block pt32 pb0">
+                                <div class="container">
+                                    <div class="row">
+                                    <div class="pb0 pt0 col-lg-8">
+                                        <p class="lead">Thank you for your application. We will now process your submitted information and get in contact with you as soon as possible.</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                </section>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+        <record id="application_doctoral_program_thankyou_page" model="website.page">
+            <field name="website_published">True</field>
+            <field name="url">/apply-doctoral-program/thank-you</field>
+            <field name="view_id" ref="application_doctoral_program_thankyou_view"/>
+        </record>
     </data>
 </odoo>
