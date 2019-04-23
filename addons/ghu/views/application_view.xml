@@ -22,9 +22,9 @@
                                 <div class="oe_kanban_details">
                                     <h4>
                                         <a type="open">
-                                            <field name="name"/>
-                                            <t t-if="record.last_name.raw_value">
-                                                <field name="last_name"/>
+                                            <field name="last_name"/>
+                                            <t t-if="record.first_name.raw_value">
+                                                <field name="first_name"/>
                                             </t>
                                         </a>
                                     </h4>
