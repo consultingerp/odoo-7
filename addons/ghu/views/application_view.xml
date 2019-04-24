@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_ghu_application_kanban" model="ir.ui.view">
+            <field name="name">Application Kanban</field>
+            <field name="model">ghu.application</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_application_kanban">
+                    <field name="id"/>
+                    <field name="photo_file"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_res_application_kanban">
+                                <div class="o_kanban_image">
+                                    <t t-if="record.photo_file.value">
+                                        <img t-att-src="kanban_image('ghu.application', 'photo_file', record.id.raw_value)" alt="Applicant"/>
+                                    </t>
+                                    <t t-if="!record.photo_file.value">
+                                        <img t-att-src='_s + "/base/static/img/avatar.png"' alt="Applicant"/>
+                                    </t>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="last_name"/>
+                                            <t t-if="record.first_name.raw_value">
+                                                <field name="first_name"/>
+                                            </t>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li t-if="record.email.raw_value">
+                                            <a t-attf-href="mailto:#{record.email.value}">
+                                                <field name="email"/>
+                                            </a>
+                                        </li>
+                                        <li t-if="record.native_language.raw_value">
+                                            <field name="native_language"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_ghu_application_tree" model="ir.ui.view">
+            <field name="name">ghu.application.tree</field>
+            <field name="model">ghu.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="application">
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="nationality"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ghu_application_form" model="ir.ui.view">
+            <field name="name">ghu.application.form</field>
+            <field name="model">ghu.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <form string="application">
+                    <sheet>
+                            <field name="state" invisible="1"/>
+                        <field name="photo_file" widget='image' class="oe_avatar" options='{"preview_image":"photo_file"}'/>
+                        <div class="oe_title">
+                            <h3>
+                                <field name="last_name" placeholder="Last Name"/>
+                            </h3>
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="first_name" required="1" placeholder="First Name"/>
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                            <field name="last_name" placeholder="Last Name" required="1"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="date_of_birth"/>
+                                    <field name="nationality"/>
+                                    <field name="marital_status"/>
+                                    <field name="gender"/>
+                                    <field name="academic_degree_pre" />
+                                    <field name="academic_degree_post" />                                    
+                                    <field name="native_language"/>
+                                    <field name="other_languages"/>
+                                                                      
+                                    
+                                    
+
+                                </group>
+                                <group string="Address Detail" name="address">
+                                    <label for="street" string="Address"/>
+                                    <div name="div_address">
+                                        <field name="street" placeholder="Street..."/>
+                                        <div class="address_format">
+                                            <field name="zip" placeholder="ZIP" style="width: 20%%"/>
+                                            <field name="city" placeholder="City" style="width: 40%%"/>                                            
+                                        </div>
+                                        <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
+                                        <field name="phone" />
+                                        <field name="email" />  
+                                    </div>
+                                </group>
+                                <group col="4" colspan="4"  string="Study Information" name="program">
+                                    <field name="study_id"/>
+                                    <field name="preliminary_studies"/>
+                                    <field name="ever_applied_at_ghu"/>
+                                    <field name="ever_applied_doctoral"/>
+                                    <field name="ever_applied_doctoral_university_name"/>
+                                </group>
+                                <group col="4" colspan="4"  string="Documents" name="documents">
+                                    <field name="photo_file"/>
+                                    <field name="vita_file"/>
+                                    <field name="passport_file"/>
+                                    <field name="degrees_file"/>
+                                    <field name="research_abstract_file"/>
+                                </group>
+
+                                <group col="4" colspan="4"  string="Payment" name="payment">
+                                    <field name="payment_method"/>
+                                    <field name="payment_full_name"/>
+                                    <field name="payment_street"/>
+                                    <field name="payment_zip"/>
+                                    <field name="payment_city"/>
+                                    <field name="payment_country"/>
+                                    <field name="payment_phone"/>
+                                    <field name="payment_email"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ghu_application_search" model="ir.ui.view">
+            <field name="name">ghu.application.search</field>
+            <field name="model">ghu.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="application">
+                    <field name="last_name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>
+                        <filter name="native_language" string="Native Language" domain="[]" context="{'group_by':'native_language'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_ghu_application_view">
+            <field name="name">applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ghu.application</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="view_ghu_application_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_application_view_form">
+            <field name="act_window_id" ref="act_open_ghu_application_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ghu_application_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_application_view_tree">
+            <field name="act_window_id" ref="act_open_ghu_application_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ghu_application_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_application_view_kanban">
+            <field name="act_window_id" ref="act_open_ghu_application_view"/>
+            <field name="sequence" eval="5"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_ghu_application_kanban"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_ghu_application_view_2">
+            <field name="name">applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ghu.application</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="search_view_id" ref="view_ghu_application_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+    </data>
+</odoo>
