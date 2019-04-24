@@ -5,13 +5,15 @@ from odoo import models, fields, api
 class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
-    _order = "nomination DESC, nationality ASC, last_name ASC"
+    _order = "nomination DESC, nationality ASC, lastname ASC"
     _inherit = ['website.published.mixin']
     _inherits = {"res.partner": "partner_id"}
 
+    is_cafeteria = fields.Boolean(
+        string=u'Is cafeteria?',
+    )
+    
     advisor_id = fields.Char('Advisor ID', size=12)
-
-    last_name = fields.Char('Last Name', size=128)
 
     nomination = fields.Char('Nomination', size=128)
 
