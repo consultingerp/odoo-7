@@ -85,7 +85,7 @@
                                                             <div t-att-data-field="programs.strip()" t-att-data-lang="languages.strip()" t-att-data-country="advisor.nationality.id" class="col-md-6 col-xl-6 mt16 media text-left">
                                                                 
                                                                 <div class="media-left mr-3">
-                                                                    <img t-att-src="website.image_url(advisor, 'image_medium')" width="150px" class="img-fluid shadow rounded" alt="Advisor"/>
+                                                                    <img t-att-src="website.image_url(advisor, 'image_medium')" width="150px" class="img-fluid shadow rounded" t-attf-alt="#{advisor.name}"/>
                                                                 </div>
                                                                 <div class="media-body">
                                                                     <t t-call="website.publish_management">
@@ -96,7 +96,6 @@
                                                                     <span t-field="advisor.nomination"/>
                                                                     <br/>
                                                                     <strong t-field="advisor.name"/>
-                                                                    <strong t-field="advisor.last_name"/>
                                                                     <div t-field="advisor.nationality.name"/>
                                                                     <t t-foreach="advisor.programs" t-as="program">
                                                                         <span t-field="program.name"/><t t-if="not program_last">,</t>

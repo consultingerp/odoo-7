@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="ghu.mail_signature" inherit_id="mail.message_notification_email">
-            <xpath expr="//div/p" position="replace">
+            <xpath expr="//div[contains(@class,'font-size: 13px;')]" position="before">
                 <table style="border:0;padding-top:15px;">
                     <tr>
                         <td>
@@ -12,6 +12,8 @@
                         </td>
                     </tr>
                 </table>
+            </xpath>
+            <xpath expr="//div/p" position="replace">
                 <table style="border:0;padding-top:15px;">
                 <tr>
                     <td>
