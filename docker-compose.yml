@@ -14,6 +14,9 @@ services:
       - ./enterprise/addons:/mnt/enterprise-addons
       - ./enterprise/themes:/mnt/enterprise-themes
       - odoo-web-data:/var/lib/odoo
+    networks:
+      - db
+      - smtp
   db:
     image: postgres:10
     environment:
@@ -23,11 +26,18 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - db
   mailhog:
     image: mailhog/mailhog
     ports: 
-      - 25:1025 # smtp server
+    #  - 25:1025 # smtp server
       - 8025:8025 # web ui
+    networks:
+      - smtp
 volumes:
   odoo-web-data:
   odoo-db-data:
+networks:
+  smtp:
+  db:
