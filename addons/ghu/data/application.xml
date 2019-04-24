@@ -57,7 +57,7 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">New Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you that ${object.first_name} has submitted an application to the Global Humanistic University.</p>
+                <p>We are pleased to inform you that ${object.first_name} ${object.last_name} has submitted an application to the Global Humanistic University.</p>
                 <p>Please find all the provided information below and get in contact with Zareska if you need further information</p>
                 
                 
