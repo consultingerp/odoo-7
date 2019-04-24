@@ -9,6 +9,10 @@ class GhuAdvisor(models.Model):
     _inherit = ['website.published.mixin']
     _inherits = {"res.partner": "partner_id"}
 
+    is_cafeteria = fields.Boolean(
+        string=u'Is cafeteria?',
+    )
+    
     advisor_id = fields.Char('Advisor ID', size=12)
 
     nomination = fields.Char('Nomination', size=128)
