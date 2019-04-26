@@ -30,6 +30,7 @@ class Ghu(http.Controller):
 
             if hasattr(kwargs[key], 'filename'):
                 value = kwargs.pop(key)
+                kwargs[(key[:-3] + '_filename')] = value.filename
                 kwargs[key[:-3]] = base64.b64encode(value.read())
 
         # set default fields

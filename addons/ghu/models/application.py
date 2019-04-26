@@ -111,10 +111,29 @@ class GhuApplication(models.Model):
 
     # REQUIRED DOCUMENTS
     photo_file = fields.Binary('Photo', required=True)
+    photo_file_filename = fields.Char(
+        string=u'photo_filename',
+    )
+    
     vita_file = fields.Binary('Curriculum Vitae', required=True)
+    vita_file_filename = fields.Char(
+        string=u'vita_filename',
+    )
+    
     passport_file = fields.Binary('Copy of Passport', required=True)
+    passport_file_filename = fields.Char(
+        string=u'passport_filename',
+    )
+    
     degrees_file = fields.Binary('Copies of degrees', required=True)
+    degrees_file_filename = fields.Char(
+        string=u'degrees_filename',
+    )
+    
     research_abstract_file = fields.Binary('Title and Abstract of intended research', required=True)
+    research_abstract_file_filename = fields.Char(
+        string=u'research_abstract_filename',
+    )
 
     # PAYMENT FIELDS
     payment_method = fields.Selection(
@@ -159,6 +178,57 @@ class GhuApplication(models.Model):
         'Product',
         domain=[('type', '=', 'service')],
     )
+
+    def on_creation(self, record):
+        email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
+        photo_id = self.env['ir.attachment'].create(
+            {
+                    'name': record.photo_file_filename,
+                    'datas': record.photo_file,
+                    'datas_fname': record.photo_file_filename,
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+        cv_id = self.env['ir.attachment'].create(
+            {
+                    'name': record.vita_file_filename,
+                    'datas': record.vita_file,
+                    'datas_fname': record.vita_file_filename,
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+        pp_id = self.env['ir.attachment'].create(
+            {
+                    'name': record.passport_file_filename,
+                    'datas': record.passport_file,
+                    'datas_fname': record.passport_file_filename,
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+        degree_id = self.env['ir.attachment'].create(
+            {
+                    'name': record.degrees_file_filename,
+                    'datas': record.degrees_file,
+                    'datas_fname': record.degrees_file_filename,
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+        abstract_id = self.env['ir.attachment'].create(
+            {
+                    'name': record.research_abstract_file_filename,
+                    'datas': record.research_abstract_file,
+                    'datas_fname': record.research_abstract_file_filename,
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+        email_template.attachment_ids =  False
+        email_template.attachment_ids = [(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
+        email_template.send_mail(record.id, raise_exception=False, force_send=True)
 
 
 class GhuApplicationStudy(models.Model):
