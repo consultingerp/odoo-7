@@ -230,6 +230,9 @@ class GhuApplication(models.Model):
         email_template.attachment_ids = [(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
         email_template.send_mail(record.id, raise_exception=False, force_send=True)
 
+        notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
+        notification_template.send_mail(record.id, raise_exception=False, force_send=True)
+
 
 class GhuApplicationStudy(models.Model):
     _name = 'ghu.application_study'
