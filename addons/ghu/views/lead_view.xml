@@ -8,6 +8,8 @@
 
       <field name="team_id" position="after">
         <field name="study_id" />
+        <field name="nationality" />
+        <field name="highest_degree" />
       </field>
 
     </field>
