@@ -126,11 +126,16 @@
                                     <field name="ever_applied_doctoral_university_name"/>
                                 </group>
                                 <group col="4" colspan="4"  string="Documents" name="documents">
-                                    <field name="photo_file"/>
-                                    <field name="vita_file"/>
-                                    <field name="passport_file"/>
-                                    <field name="degrees_file"/>
-                                    <field name="research_abstract_file"/>
+                                    <field name="photo_file" widget="binary" filename="photo_file_filename"/>
+                                    <field name="photo_file_filename" invisible="1"/>
+                                    <field name="vita_file" widget="binary" filename="vita_file_filename"/>
+                                    <field name="vita_file_filename" invisible="1"/>
+                                    <field name="passport_file" widget="binary" filename="passport_file_filename"/>
+                                    <field name="passport_file_filename" invisible="1"/>
+                                    <field name="degrees_file" widget="binary" filename="degrees_file_filename"/>
+                                    <field name="degrees_file_filename" invisible="1"/>
+                                    <field name="research_abstract_file" widget="binary" filename="research_abstract_file_filename"/>
+                                    <field name="research_abstract_file_filename" invisible="1"/>
                                 </group>
 
                                 <group col="4" colspan="4"  string="Payment" name="payment">
