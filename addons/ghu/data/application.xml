@@ -5,21 +5,115 @@
             <field name="name">Doctoral Application Confirmation</field>
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">Your Application at Global Humanistic University</field>
-            <field name="body_html">We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.
-Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. Please note that this is a very time-consuming task and can take up to three weeks.</field>
+            <field name="body_html"><![CDATA[
+                <p>We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
+                            <table style="border:0;padding-top:15px;">
+                    <tbody><tr>
+                        <td>
+                            <a href="https://www.ghu.edu.cw/" target="_blank">
+                                <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg" height="110px" title="GHU">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <table style="border:0;padding-top:15px;">
+                <tbody><tr>
+                    <td>
+                        <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png" height="55px" title="AACSB">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg" height="55px" title="ASIC" class="align-left">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://www.aac.cw/" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg" height="55px" title="AAC">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png" height="55px" title="Ministry of Curacao">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.researchgate.net/institution/Global_Humanistic_University" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/rg.png" height="55px" title="ResearchGate">
+                        </a>
+                    </td>
+                    </tr>
+                </tbody></table>
+            ]]></field>
             <field name="email_from">office@ghu.edu.cw</field>
             <field name="use_default_to">false</field>
             <field name="email_to">${object.email}</field>
-            <field name="user_signature">true</field>
+            <field name="user_signature">false</field>
             <field name="auto_delete">false</field>
         </record>
-        <record model="base.automation" id="ghu_doctoral_application_send_confirmation_email">
-            <field name="name">Send Doctoral Application Confirmation Email</field>
+        <record model="mail.template" id="ghu_new_doctoral_application_template">
+            <field name="name">New Doctoral Application</field>
+            <field name="model_id" ref="model_ghu_application"></field>
+            <field name="subject">New Application at Global Humanistic University</field>
+            <field name="body_html"><![CDATA[
+                <p>We are pleased to inform you that ${object.first_name} ${object.last_name} has submitted an application to the Global Humanistic University.</p>
+                <p>Please find all the provided information below and get in contact with Zareska if you need further information</p>
+            
+                <table style="border:0;padding-top:15px;">
+                    <tbody><tr>
+                        <td>
+                            <a href="https://www.ghu.edu.cw/" target="_blank">
+                                <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg" height="110px" title="GHU">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <table style="border:0;padding-top:15px;">
+                <tbody><tr>
+                    <td>
+                        <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png" height="55px" title="AACSB">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg" height="55px" title="ASIC" class="align-left">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://www.aac.cw/" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg" height="55px" title="AAC">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png" height="55px" title="Ministry of Curacao">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://www.researchgate.net/institution/Global_Humanistic_University" target="_blank">
+                            <img src="https://www.ghu.edu.cw/ghu/static/img/mails/rg.png" height="55px" title="ResearchGate">
+                        </a>
+                    </td>
+                    </tr>
+                </tbody></table>
+            ]]></field>
+            <field name="email_from">office@ghu.edu.cw</field>
+            <field name="use_default_to">false</field>
+            <field name="email_to">registrar@ghu.edu.cw</field>
+            <field name="user_signature">false</field>
+            <field name="auto_delete">false</field>
+        </record>
+        <record model="base.automation" id="ghu_doctoral_application_send_new_email">
+            <field name="name">Send Doctoral Application Mails</field>
             <field name="model_id" ref="model_ghu_application"/>
             <field name="trigger">on_create</field>
             <field name="type">ir.actions.server</field>
-            <field name="state">email</field>
-            <field name="template_id" ref="ghu_doctoral_application_confirmation_template"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+tool = env["ghu.application"] 
+tool.on_creation(record)]]></field>
         </record>
         <record model="product.product" id="ghu_doctoral_application_fee">
             <field name="default_code">Doctoral Application Fee</field>
