@@ -229,9 +229,14 @@ class GhuApplication(models.Model):
             [],
             'Signature Request - ' + self.partner_id.name,
             'Your Application at GHU',
-            '<p>We are pleased to inform you, " + self.partner_id.firstname + ", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
+            '<p>We are pleased to inform you, ' + self.partner_id.firstname + ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
             True
         )
+        sign_request = self.env['sign.request'].browse(res['id']).sudo()
+        sign_request.toggle_favorited()
+        sign_request.action_sent()
+        sign_request.write({'state': 'sent'})
+        sign_request.request_item_ids.write({'state': 'sent'})
 
     def on_creation(self, record):
         self.create_sign_request(record)
