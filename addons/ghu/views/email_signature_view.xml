@@ -45,5 +45,10 @@
                 </table>
             </xpath>
         </template>
+        <template id="ghu.mail_remove_powered_by" inherit_id="mail.mail_notification_borders">
+            <xpath expr="//table//tr[last()]//td" position="replace">
+                <td></td>
+            </xpath>
+        </template>
     </data>
 </odoo>
