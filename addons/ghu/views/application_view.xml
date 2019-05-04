@@ -69,6 +69,7 @@
 
                 <form string="application">
                     <header>
+                        <button string="Send signature request again" type="object" name="create_sign_request" attrs="{'invisible': [('state', '!=', 'new')]}"/>
                         <button string="Approved by registrar" type="object" name="approved_registrar" attrs="{'invisible': [('state', '!=', 'signed')]}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
@@ -93,6 +94,7 @@
                         <notebook colspan="4">
                             <page name="personal_information" string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
+                                    <field name="partner_id"/>
                                     <field name="date_of_birth"/>
                                     <field name="nationality"/>
                                     <field name="marital_status"/>

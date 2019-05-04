@@ -16,10 +16,10 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.33',
+    'version': '0.34',
  
     # any module necessary for this one to work correctly
-    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign'],
 
     # always loaded
     'data': [
@@ -37,6 +37,8 @@
         'views/email_signature_view.xml',
         'views/lead_view.xml',
         'views/application_view.xml',
+        'views/application_pdf.xml',
+        'views/application_report.xml',
         #'views/templates.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',

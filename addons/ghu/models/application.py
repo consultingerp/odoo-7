@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+import base64
 
 class GhuApplication(models.Model):
     _name = 'ghu.application'
@@ -188,9 +188,49 @@ class GhuApplication(models.Model):
         'Product',
         domain=[('type', '=', 'service')],
     )
-
-
-    
+    @api.one
+    def create_sign_request(self, record):
+        pdf = self.env.ref('ghu.application_agreement_pdf').sudo().render_qweb_pdf([self.id])[0]
+        attachmentName = 'Application-'+self.last_name+'-'+str(self.id)+'.pdf'
+        attachment = self.env['ir.attachment'].create({
+            'name': attachmentName,
+            'type': 'binary',
+            'datas': base64.encodestring(pdf),
+            'datas_fname': attachmentName,
+            'res_model': 'ghu.application',
+            'res_id': self.id,
+            'mimetype': 'application/x-pdf'
+        })
+        template = self.env['sign.template'].create(
+            {
+                'attachment_id': attachment.id,
+                'active': 'true'
+            }
+        )
+        signature = self.env['sign.item'].create(
+            {
+                'template_id' : template.id,
+                'height': 0.05,
+                'name': "Signature",
+                'page': "1",
+                'posX': 0.766,
+                'posY': 0.042,
+                'required': 'true',
+                'responsible_id': 1,
+                'type_id': 1,
+                'width': 0.2
+            }
+        )
+        request = self.env['sign.send.request'].create(
+            {
+                'template_id': template.id,
+                'signer_id': self.partner_id.id,
+                'subject': 'Your Application at GHU',
+                'filename': attachmentName,
+                'message': "<p>We are pleased to inform you, "+self.partner_id.first_name+", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>"
+            }
+        )
+        request.create_request()
 
     def on_creation(self, record):
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
