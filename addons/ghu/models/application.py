@@ -6,6 +6,7 @@ from odoo import models, fields, api
 class GhuApplication(models.Model):
     _name = 'ghu.application'
     _description = 'GHU Application'
+    _rec_name = 'last_name'
 
     # PERSONAL DATA FIELDS
     first_name = fields.Char(
@@ -153,19 +154,28 @@ class GhuApplication(models.Model):
     payment_phone = fields.Char('Payment Phone', size=64, required=True)
     payment_email = fields.Char('Payment Email', size=256, required=True)
 
-
+    states = [
+            ('new', 'New'),
+            ('signed', 'Signed'),
+            ('approved', 'Approved'),
+            ('advisor_search', 'Advisor Search'),
+            ('advisor_matched', 'Advisor Match'),
+            ('advisor_found', 'Advisor agreed'),
+            ('done', 'Done'),
+            ('declined', 'Declined')
+        ]
     # PROCESS FIELDS
     state = fields.Selection(
-        [
-            ('new', 'New'),
-            ('confirm', 'Confirmed'),
-            ('reject', 'Rejected'),
-            ('pending', 'Pending'),
-            ('cancel', 'Cancelled'),
-            ('done', 'Done')
-        ],
-        'State', default='new', required=True, track_visibility='onchange'
+        states,
+        'State', default='new', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
+    @api.model
+    def _read_group_stage_ids(self,stages,domain,order):
+        return [k for k, v in self.states]
+
+    @api.one
+    def approved_registrar(self, record):
+        self.write({'state' : 'approved'})
 
     partner_id = fields.Many2one(
         'res.partner',
@@ -178,6 +188,9 @@ class GhuApplication(models.Model):
         'Product',
         domain=[('type', '=', 'service')],
     )
+
+
+    
 
     def on_creation(self, record):
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
