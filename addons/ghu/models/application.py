@@ -221,15 +221,15 @@ class GhuApplication(models.Model):
                 'width': 0.2
             }
         )
-        res = self.env['sign.request'].sudo().initialize_new(
+        res = self.env['sign.request'].initialize_new(
             template.id,
             [
                 {'role': self.env.ref('sign.sign_item_role_customer').id, 'partner_id': self.partner_id.id}
             ],
             [],
-            'Your Application at GHU - ' + self.partner_id.lastname,
-            'Your Application at GHU - ' + self.partner_id.lastname,
-            "<p>We are pleased to inform you, " + self.partner_id.firstname + ", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>",
+            'Signature Request - ' + self.partner_id.name,
+            'Your Application at GHU',
+            '<p>We are pleased to inform you, " + self.partner_id.firstname + ", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
             True
         )
 
