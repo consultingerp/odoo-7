@@ -36,6 +36,7 @@
         'views/footer_view.xml',
         'views/email_signature_view.xml',
         'views/lead_view.xml',
+        'views/sign_view.xml',
         'views/application_view.xml',
         'views/application_pdf.xml',
         'views/application_report.xml',

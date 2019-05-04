@@ -221,7 +221,7 @@ class GhuApplication(models.Model):
                 'width': 0.2
             }
         )
-        res = self.env['sign.request'].initialize_new(
+        res = self.env['sign.request'].sudo(self.env['res.users'].search([('email', 'like', 'office@ghu.edu.cw')], limit=1)).initialize_new(
             template.id,
             [
                 {'role': self.env.ref('sign.sign_item_role_customer').id, 'partner_id': self.partner_id.id}
