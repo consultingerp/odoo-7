@@ -227,12 +227,15 @@ class GhuApplication(models.Model):
                 'signer_id': self.partner_id.id,
                 'subject': 'Your Application at GHU',
                 'filename': attachmentName,
-                'message': "<p>We are pleased to inform you, "+self.partner_id.first_name+", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>"
+                'message': "<p>We are pleased to inform you, "+self.partner_id.firstname+", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>"
             }
         )
         request.create_request()
 
     def on_creation(self, record):
+        self.create_sign_request(record)
+
+    def signed_by_applicant(self, record):
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
         photo_id = self.env['ir.attachment'].create(
             {
