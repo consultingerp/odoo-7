@@ -38,8 +38,10 @@
         'views/lead_view.xml',
         'views/application_view.xml',
         #'views/templates.xml',
+        'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
+        'views/res_config_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

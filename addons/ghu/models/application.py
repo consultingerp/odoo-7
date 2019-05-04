@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+import logging
+
 from odoo import models, fields, api
+
+_logger = logging.getLogger(__name__)
 
 
 class GhuApplication(models.Model):
@@ -189,6 +194,11 @@ class GhuApplication(models.Model):
         domain=[('type', '=', 'service')],
     )
 
+    application_fee_invoice_id = fields.Many2one(
+        'account.invoice',
+        'Application Fee Invoice',
+    )
+
 
     
 
@@ -245,6 +255,41 @@ class GhuApplication(models.Model):
 
         notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
         notification_template.send_mail(record.id, raise_exception=False, force_send=True)
+
+    def on_state_change(self):
+        # generate invoice
+        if self.state == 'approved' and not self.application_fee_invoice_id:
+            # get proper product
+            product = self.env['product.product'].search([('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
+            # product_id = self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product')
+            # _logger.warning('product is %r' % product)
+
+            invoice = self.env['account.invoice'].create(dict(
+                partner_id=self.partner_id, # customer
+                type='out_invoice',
+                date_invoice=datetime.datetime.utcnow().date(), # invoice date
+                date_due=(datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).date(), # due date
+                user_id=self.env().user.id, # salesperson
+                invoice_line_ids=[], # invoice lines
+                name='Doctoral Program Application Fee', # name for account move lines
+                # partner_bank_id=, # company bank account
+            ))
+
+            invoice_line = self.env['account.invoice.line'].with_context(
+                    type=invoice.type, 
+                    journal_id=invoice.journal_id.id, 
+                    default_invoice_id=invoice.id
+                ).create(dict(
+                    product_id=product.id,
+                    name='Doctoral Program Application Fee',
+                    price_unit=product.lst_price,
+                ))
+
+            invoice.invoice_line_ids = [invoice_line]
+
+            invoice.action_invoice_open()
+
+            self.application_fee_invoice_id = invoice.id
 
 
 class GhuApplicationStudy(models.Model):

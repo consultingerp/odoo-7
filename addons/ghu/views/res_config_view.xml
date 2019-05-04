@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.ghu</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" string="GHU" data-string="GHU" data-key="ghu" groups="base.group_user">
+                        <h2>GHU Settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
+                                <div class="o_setting_right_pane">
+                                    <label string="Transferwise" for="ghu_transferwise_api_key"/>
+                                    <span class="fa fa-lg fa-dollar"/>
+                                    <div class="text-muted">
+                                        Settings for Payment Provider Transferwise
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Transferwise Apikey" for="ghu_transferwise_api_key"/>
+                                            <field name="ghu_transferwise_api_key" attrs="{'required': True}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
+                                <div class="o_setting_right_pane">
+                                    <label string="Doctoral Program" for="ghu_doctoral_application_fee_product"/>
+                                    <span class="fa fa-lg fa-graduation-cap"/>
+                                    <div class="text-muted">
+                                        Settings for GHU Doctoral Program
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Application Fee Product" for="ghu_doctoral_application_fee_product"/>
+                                            <field name="ghu_doctoral_application_fee_product" attrs="{'required': True}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_ghu_config" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'ghu'}</field>
+        </record>
+
+        <menuitem
+            id="menu_ghu_config"
+            name="GHU"
+            parent="base.menu_administration"
+            sequence="50"
+            action="action_ghu_config"
+            groups="base.group_system"
+        />
+    </data>
+</odoo>
