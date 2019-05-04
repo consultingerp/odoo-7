@@ -221,15 +221,24 @@ class GhuApplication(models.Model):
                 'width': 0.2
             }
         )
+
         request = self.env['sign.send.request'].create(
             {
                 'template_id': template.id,
-                'signer_id': self.partner_id.id,
                 'subject': 'Your Application at GHU',
                 'filename': attachmentName,
-                'message': "<p>We are pleased to inform you, "+self.partner_id.firstname+", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>"
+                'message': "<p>We are pleased to inform you, " + self.partner_id.firstname + ", that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>"
             }
         )
+
+        signer = self.env['sign.send.request.signer'].create(
+            {
+                'partner_id': self.partner_id.id,
+                'role_id': 1,
+                'sign_send_request_id': request.id
+            }
+        )
+
         request.create_request()
 
     def on_creation(self, record):
