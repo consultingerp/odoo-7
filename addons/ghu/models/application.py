@@ -171,7 +171,11 @@ class GhuApplication(models.Model):
     )
     @api.model
     def _read_group_stage_ids(self,stages,domain,order):
-        return ['new','signed','approved','advisor_search','advisor_matched','advisor_found','done','declined']
+        return [k for k, v in self.states]
+
+    @api.one
+    def approved_registrar(self, record):
+        self.write({'state' : 'approved'})
 
     partner_id = fields.Many2one(
         'res.partner',

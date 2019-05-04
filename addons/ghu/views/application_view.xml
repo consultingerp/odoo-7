@@ -68,8 +68,11 @@
             <field name="arch" type="xml">
 
                 <form string="application">
+                    <header>
+                        <button string="Approved by registrar" type="object" name="approved_registrar" attrs="{'invisible': [('state', '!=', 'signed')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                     <sheet>
-                        <field name="state" />
                         <field name="photo_file" widget='image' class="oe_avatar" options='{"preview_image":"photo_file"}'/>
                         <div class="oe_title">
                             <h1>
