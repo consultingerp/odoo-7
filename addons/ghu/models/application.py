@@ -188,6 +188,13 @@ class GhuApplication(models.Model):
         'Product',
         domain=[('type', '=', 'service')],
     )
+
+    sign_request_id = fields.Many2one(
+        'sign.request',
+        'Sign Request',
+        states={'done': [('readonly', True)]},
+    )
+
     @api.one
     def create_sign_request(self, record):
         pdf = self.env.ref('ghu.application_agreement_pdf').sudo().render_qweb_pdf([self.id])[0]
@@ -227,9 +234,9 @@ class GhuApplication(models.Model):
                 {'role': self.env.ref('sign.sign_item_role_customer').id, 'partner_id': self.partner_id.id}
             ],
             [],
-            'Signature Request - ' + self.partner_id.name,
+            'Application finalization',
             'Your Application at GHU',
-            '<p>We are pleased to inform you, ' + self.partner_id.firstname + ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only one step left to finish it, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
+            '<p>We are pleased to inform you, ' + self.partner_id.firstname + ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only your signature missing, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
             True
         )
         sign_request = self.env['sign.request'].browse(res['id']).sudo()
@@ -238,10 +245,23 @@ class GhuApplication(models.Model):
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
 
+        application = self.env['ghu.application'].browse(self.id).sudo()
+        application.sign_request_id = sign_request.id
+    
+
     def on_creation(self, record):
         self.create_sign_request(record)
 
+    # Check if signed request is one of an application
+    def check_signature(self, record):
+        if record.state == "signed":
+            application = self.search([('sign_request_id','=',record.id)])
+            if application:
+                if application.state == "new":
+                    self.signed_by_applicant(application)
+
     def signed_by_applicant(self, record):
+        record.state = "signed"
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
         photo_id = self.env['ir.attachment'].create(
             {
@@ -290,10 +310,10 @@ class GhuApplication(models.Model):
         )
         email_template.attachment_ids =  False
         email_template.attachment_ids = [(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
-        email_template.send_mail(record.id, raise_exception=False, force_send=True)
+        email_template.send_mail(record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
-        notification_template.send_mail(record.id, raise_exception=False, force_send=True)
+        notification_template.send_mail(record.id, raise_exception=False, force_send=False)
 
 
 class GhuApplicationStudy(models.Model):
