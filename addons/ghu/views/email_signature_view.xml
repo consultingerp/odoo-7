@@ -47,12 +47,12 @@
         </template>
         <template id="ghu.mail_remove_powered_by" inherit_id="mail.mail_notification_borders">
             <xpath expr="//table//tr[last()]//td" position="replace">
-                <td></td>
+                <td align="center" style="min-width: 590px;"><span>Global Humanistic University</span></td>
             </xpath>
         </template>
         <template id="ghu.mail_remove_powered_by_light" inherit_id="mail.mail_notification_light">
             <xpath expr="//table//tr[last()]//td" position="replace">
-                <td> </td>
+                <td align="center" style="min-width: 590px;"><span>Global Humanistic University</span></td>
             </xpath>
         </template>
     </data>

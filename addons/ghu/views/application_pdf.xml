@@ -7,32 +7,251 @@
                     <t t-call="web.external_layout">
                         <div class="page">
                             <h2>Application for doctoral program</h2>
-                            <div class="container mt-2">
+                            <div class="container mt-3">
                                 <div class="row">
-                                    <div class="row">
-                                        <div class="form-field form-group col-md-6">
-                                            <div class="row">
-                                                <label for="first_name" class="control-label col-sm-3" title="">
-                                                    First Name
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <span t-field="o.first_name"/>
-                                                </div>
-
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Name
                                             </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.academic_degree_pre"/> <span t-field="o.first_name"/> <span t-field="o.last_name"/> <span t-field="o.academic_degree_post"/>
+                                            </div>
+
                                         </div>
-                                        <div class="form-field form-group col-md-6">
-                                            <div class="row">
-                                                <label for="last_name" class="control-label col-sm-3" title="">
-                                                    Last Name
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <span t-field="o.last_name"/>
-                                                </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Date of birth
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.date_of_birth"/> 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Nationality
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.nationality"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Marital Status
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.marital_status"/> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Gender
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.gender"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Native Language
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.native_language.name"/> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                ✔ I confirm good knowledge of the english language
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Foreign Languages
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <t t-foreach="o.other_languages" t-as="language">
+                                                    <span t-field="language.name"/><t t-if="not language_last">,</t> 
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Street
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.street"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                ZIP
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.zip"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                City
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.city"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Country
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.country.name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Phone
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.phone"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Email
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.email"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-field form-group col-md-12">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                Desired Study Field
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <span t-field="o.study_id.name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3>Preliminary Studies</h3>
+                                    </div>
+                                </div>
+                                <t t-foreach="o.preliminary_studies" t-as="study">
+                                    <h6>Study <t t-esc="study_index + 1" /></h6>
+                                    <div class="row">
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="col-sm-3">Institution</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.institution"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">City</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.city"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">From</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.from_date"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">To</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.to_date"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">Subject</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.subject"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">Diploma</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.diploma"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-field form-group col-md-6">
+                                            <div class="row">
+                                                <div class="control-label col-sm-3">Credit Points</div>
+                                                <div class="col-sm-9">
+                                                    <span t-field="study.credit_points"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="col-sm-9 " />
+                                        </div>
+                                    </div>
+                                </t>
+                                <!-- TODO: Finish mail-->
                             </div>
                         </div>
                     </t>
