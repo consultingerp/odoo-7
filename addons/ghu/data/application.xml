@@ -112,19 +112,8 @@
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
             <field name="code"><![CDATA[
-tool = env["ghu.application"] 
+tool = env["ghu.application"]
 tool.on_creation(record)
-]]></field>
-        </record>
-        <record model="base.automation" id="ghu_doctoral_application_approved">
-            <field name="name">Doctoral Application Approved -> Generate Application Fee Invoice</field>
-            <field name="model_id" ref="model_ghu_application"/>
-            <field name="trigger">on_change</field>
-            <field name="on_change_fields">state</field>
-            <field name="type">ir.actions.server</field>
-            <field name="state">code</field>
-            <field name="code"><![CDATA[
-record.on_state_change()
 ]]></field>
         </record>
         <record model="product.product" id="ghu_doctoral_application_fee">

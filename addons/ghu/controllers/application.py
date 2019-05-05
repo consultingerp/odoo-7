@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import base64
 import json
+import logging
 
 from psycopg2 import IntegrityError
 
 from odoo import http
 from odoo.http import request
+
+_logger = logging.getLogger(__name__)
 
 class Ghu(http.Controller):
     @http.route('/ghu/create_application/', type='http', auth='public', methods=['POST'], website=True)
@@ -73,17 +76,18 @@ class Ghu(http.Controller):
             contact_data[f] = kwargs.pop(f)
 
         # extract invoice fields
-        invoice_data = dict()
+        invoice_data = dict(type='invoice')
         for f in invoice_fields:
-            invoice_data[f[len('payment_')-1:]] = kwargs.pop(f)
+            invoice_data[f[len('payment_'):]] = kwargs.pop(f)
+
+        # preprocess fields
+        kwargs['ever_applied_at_ghu'] = bool(int(kwargs['ever_applied_at_ghu']))
+        kwargs['ever_applied_doctoral'] = bool(int(kwargs['ever_applied_doctoral']))
+        kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
-            # create invoice address
-            invoice_data['type'] = 'invoice'
-            invoice_partner = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(invoice_data)
-            
             # create contact
-            contact_data['child_ids'] = [invoice_partner.id]
+            contact_data['child_ids'] = [(0, 0, invoice_data)] # create invoice address implicit
             contact = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(contact_data)
 
             # create application

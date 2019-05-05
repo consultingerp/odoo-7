@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <!-- turn on customer addresses in sale_management module
+        <!-- turn on customer addresses in sale_management module -->
         <record model="res.config.settings" id="ghu.sale_settings">
             <field name="group_sale_delivery_address" eval="True"/>
         </record>
         <function model="res.config.settings" name="execute">
             <value eval="[ref('ghu.sale_settings')]"/>
             <value eval="{}"/>
-        </function> -->
+        </function>
     </data>
 </odoo>

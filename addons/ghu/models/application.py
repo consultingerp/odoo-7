@@ -3,7 +3,8 @@
 import datetime
 import logging
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -139,7 +140,7 @@ class GhuApplication(models.Model):
         'State', default='new', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
     @api.model
-    def _read_group_stage_ids(self,stages,domain,order):
+    def _read_group_stage_ids(self, stages, domain, order):
         return [k for k, v in self.states]
 
     @api.one
@@ -164,8 +165,16 @@ class GhuApplication(models.Model):
         'Application Fee Invoice',
     )
 
+    @api.multi
+    def write(self, values):
+        if 'state' in values:
+            states = [k for k, v in self.states]
+            if abs(states.index(self.state) - states.index(values['state'])) > 1:
+                raise ValidationError(_('You\'re not allowed to skip stages in this kanban!'))
 
-    
+            self.on_state_change(values['state'])
+
+        super(GhuApplication, self).write(values)
 
     def on_creation(self, record):
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
@@ -221,16 +230,17 @@ class GhuApplication(models.Model):
         notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
         notification_template.send_mail(record.id, raise_exception=False, force_send=True)
 
-    def on_state_change(self):
+    def on_state_change(self, new_state):
         # generate invoice
-        if self.state == 'approved' and not self.application_fee_invoice_id:
+        if new_state == 'approved' and not self.application_fee_invoice_id:
             # get proper product
             product = self.env['product.product'].search([('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
-            # product_id = self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product')
-            # _logger.warning('product is %r' % product)
+
+            invoice_partners = self.partner_id.child_ids.filtered(lambda p: p.type == 'invoice')
 
             invoice = self.env['account.invoice'].create(dict(
-                partner_id=self.partner_id, # customer
+                partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id, # customer (billing address)
+                partner_shipping_id=self.partner_id.id, # customer (applicant)
                 type='out_invoice',
                 date_invoice=datetime.datetime.utcnow().date(), # invoice date
                 date_due=(datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).date(), # due date
@@ -250,7 +260,7 @@ class GhuApplication(models.Model):
                     price_unit=product.lst_price,
                 ))
 
-            invoice.invoice_line_ids = [invoice_line]
+            invoice.invoice_line_ids = [(4, invoice_line.id)]
 
             invoice.action_invoice_open()
 

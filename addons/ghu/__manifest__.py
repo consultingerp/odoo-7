@@ -19,7 +19,7 @@
     'version': '0.33',
  
     # any module necessary for this one to work correctly
-    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sale_management'],
 
     # always loaded
     'data': [
