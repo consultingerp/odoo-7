@@ -101,25 +101,7 @@
                                     
 
                                 </group>
-                                <!-- <group string="Address Detail" name="address">
-                                    <label for="street" string="Address"/>
-                                    <div name="div_address">
-                                        <field name="street" placeholder="Street..."/>
-                                        <div class="address_format">
-                                            <field name="zip" placeholder="ZIP" style="width: 20%%"/>
-                                            <field name="city" placeholder="City" style="width: 40%%"/>                                            
-                                        </div>
-                                        <div>
-                                            <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
-                                        </div>
-                                        <div>
-                                            <field name="phone" />
-                                        </div>
-                                        <div>
-                                            <field name="email" />  
-                                        </div>
-                                    </div>
-                                </group> -->
+
                                 <group col="4" colspan="4"  string="Study Information" name="program">
                                     <field name="study_id"/>
                                     <field name="preliminary_studies"/>
