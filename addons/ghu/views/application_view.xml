@@ -23,9 +23,9 @@
                                 <div class="oe_kanban_details">
                                     <h4>
                                         <a type="open">
-                                            <field name="last_name"/>
-                                            <t t-if="record.first_name.raw_value">
-                                                <field name="first_name"/>
+                                            <field name="lastname"/>
+                                            <t t-if="record.firstname.raw_value">
+                                                <field name="firstname"/>
                                             </t>
                                         </a>
                                     </h4>
@@ -53,8 +53,8 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <tree string="application">
-                    <field name="first_name"/>
-                    <field name="last_name"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
                     <field name="nationality"/>
                     <field name="state" invisible="1"/>
                 </tree>
@@ -79,12 +79,7 @@
                                 <table>
                                     <tr>
                                         <td style="padding-right:10px;">
-                                            <field name="first_name" required="1" placeholder="First Name"/>
-                                        </td>
-                                        <td style="padding-right:10px;">
-                                        </td>
-                                        <td style="padding-right:10px;">
-                                            <field name="last_name" placeholder="Last Name" required="1"/>
+                                            <field name="partner_id" required="1"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -106,7 +101,7 @@
                                     
 
                                 </group>
-                                <group string="Address Detail" name="address">
+                                <!-- <group string="Address Detail" name="address">
                                     <label for="street" string="Address"/>
                                     <div name="div_address">
                                         <field name="street" placeholder="Street..."/>
@@ -124,7 +119,7 @@
                                             <field name="email" />  
                                         </div>
                                     </div>
-                                </group>
+                                </group> -->
                                 <group col="4" colspan="4"  string="Study Information" name="program">
                                     <field name="study_id"/>
                                     <field name="preliminary_studies"/>
@@ -145,16 +140,16 @@
                                     <field name="research_abstract_file_filename" invisible="1"/>
                                 </group>
 
-                                <group col="4" colspan="4"  string="Payment" name="payment">
+                                <!-- <group col="4" colspan="4"  string="Payment" name="payment">
                                     <field name="payment_method"/>
-                                    <field name="payment_full_name"/>
+                                    <field name="payment_name"/>
                                     <field name="payment_street"/>
                                     <field name="payment_zip"/>
                                     <field name="payment_city"/>
-                                    <field name="payment_country"/>
+                                    <field name="payment_country_id"/>
                                     <field name="payment_phone"/>
                                     <field name="payment_email"/>
-                                </group>
+                                </group> -->
                             </page>
                         </notebook>
                     </sheet>
@@ -168,7 +163,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <search string="application">
-                    <field name="last_name"/>
+                    <field name="lastname"/>
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>

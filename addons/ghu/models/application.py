@@ -11,26 +11,16 @@ _logger = logging.getLogger(__name__)
 class GhuApplication(models.Model):
     _name = 'ghu.application'
     _description = 'GHU Application'
-    _rec_name = 'last_name'
+    _rec_name = 'lastname'
 
     # PERSONAL DATA FIELDS
-    first_name = fields.Char(
-        'First Name', 
-        size=256, 
-        required=True
-    )
-    last_name = fields.Char(
-        'Last Name', 
-        size=256, 
-        required=True
-    )
+    firstname = fields.Char(related='partner_id.firstname', required=True)
+    lastname = fields.Char(related='partner_id.lastname', required=True)
+    nationality = fields.Many2one('res.country', 'Nationality', required=True)
+    gender = fields.Selection(related='partner_id.gender', required=True)
+
     date_of_birth = fields.Date(
         string=u'Date of Birth',
-        required=True,
-    )
-    nationality = fields.Many2one(
-        string=u'Nationality',
-        comodel_name='res.country',
         required=True,
     )
     marital_status = fields.Selection(
@@ -42,12 +32,6 @@ class GhuApplication(models.Model):
             ('separated', 'Separated'),
             ('widowed', 'Widowed'),
         ]
-    )
-    gender = fields.Selection(
-        [('m', 'Male'), ('f', 'Female'), ('o', 'Other')],
-        string='Gender',
-        required=True,
-        states={'done': [('readonly', True)]}
     )
     academic_degree_pre = fields.Char(
         'Academic Degrees (Pre)', 
@@ -71,24 +55,12 @@ class GhuApplication(models.Model):
     )
 
     # RESIDENTIAL ADDRESS FIELDS
-    street = fields.Char(
-        'Street', 
-        size=256, 
-        required=True, 
-        states={'done': [('readonly', True)]}
-    )
-    zip = fields.Char('Zip', size=16, states={'done': [('readonly', True)]})
-    city = fields.Char('City', size=128, states={'done': [('readonly', True)]})
-
-    country_id = fields.Many2one(
-        'res.country', 'Country', states={'done': [('readonly', True)]})
-    phone = fields.Char(
-        'Phone', size=64, states={'done': [('readonly', True)]}
-    )
-    email = fields.Char(
-        'Email', size=256, required=True,
-        states={'done': [('readonly', True)]}
-    )
+    # street = fields.Char(related='partner_id.street', required=True)
+    # zip = fields.Char(related='partner_id.zip', required=True)
+    # city = fields.Char(related='partner_id.city', required=True)
+    # country_id = fields.Many2one(related='partner_id.country_id', required=True)
+    # phone = fields.Char(related='partner_id.phone', required=True)
+    email = fields.Char(related='partner_id.email', required=True)
 
 
     # STUDY PROGRAM FIELDS
@@ -150,25 +122,17 @@ class GhuApplication(models.Model):
             ('three_times', 'Three-time payment'),
         ]
     )
-    payment_full_name = fields.Char('Payment Full Name', size=256, required=True)
-    payment_street = fields.Char('Payment Street', size=256, required=True)
-    payment_zip = fields.Char('Payment Zip', size=16, required=True)
-    payment_city = fields.Char('Payment City', size=128, required=True)
-    payment_country = fields.Many2one(
-        'res.country', 'Payment Country', required=True)
-    payment_phone = fields.Char('Payment Phone', size=64, required=True)
-    payment_email = fields.Char('Payment Email', size=256, required=True)
 
     states = [
-            ('new', 'New'),
-            ('signed', 'Signed'),
-            ('approved', 'Approved'),
-            ('advisor_search', 'Advisor Search'),
-            ('advisor_matched', 'Advisor Match'),
-            ('advisor_found', 'Advisor agreed'),
-            ('done', 'Done'),
-            ('declined', 'Declined')
-        ]
+        ('new', 'New'),
+        ('signed', 'Signed'),
+        ('approved', 'Approved'),
+        ('advisor_search', 'Advisor Search'),
+        ('advisor_matched', 'Advisor Match'),
+        ('advisor_found', 'Advisor agreed'),
+        ('done', 'Done'),
+        ('declined', 'Declined')
+    ]
     # PROCESS FIELDS
     state = fields.Selection(
         states,
@@ -185,6 +149,7 @@ class GhuApplication(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         'Partner',
+        required=True,
         states={'done': [('readonly', True)]},
     )
 
