@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- QWeb Reports -->
+        <report
+            id="application_agreement_pdf"
+            model="ghu.application"
+            string="Application Submission"
+            report_type="qweb-pdf"
+            name="ghu.application_agreement"
+        />
+    </data>
+</odoo>
