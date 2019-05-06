@@ -9,7 +9,7 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     def _default_ghu_doctoral_application_fee_product(self):
-        return self.env["ir.model.data"].search([('module', '=', 'ghu'), ('name', '=', 'ghu_doctoral_application_fee')]).res_id
+        return self.env.ref('ghu.ghu_doctoral_application_fee').id
     
     ghu_doctoral_application_fee_product = fields.Many2one(
         'product.product',
