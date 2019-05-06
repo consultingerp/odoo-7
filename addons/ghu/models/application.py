@@ -249,8 +249,19 @@ class GhuApplication(models.Model):
     def signed_by_applicant(self, record):
         record.state = "signed"
         # attach signed pdf to mail
-        #record.sign_request_id.completed_document
+        
         email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
+
+        application_id = self.env['ir.attachment'].create(
+            {
+                    'name': "Application",
+                    'datas': record.sign_request_id.completed_document,
+                    'datas_fname': "application.pdf",
+                    'res_model': 'ghu.application',
+                    'type': 'binary'
+            }
+        )
+
         photo_id = self.env['ir.attachment'].create(
             {
                     'name': record.photo_file_filename,
@@ -297,7 +308,7 @@ class GhuApplication(models.Model):
             }
         )
         email_template.attachment_ids =  False
-        email_template.attachment_ids = [(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
+        email_template.attachment_ids = [(4, application_id.id),(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
         email_template.send_mail(record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
