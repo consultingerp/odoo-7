@@ -15,7 +15,7 @@
                                                 Name
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.academic_degree_pre"/> <span t-field="o.first_name"/> <span t-field="o.last_name"/> <span t-field="o.academic_degree_post"/>
+                                                <span t-field="o.academic_degree_pre"/> <span t-field="o.partner_id.firstname"/> <span t-field="o.partner_id.lastname"/> <span t-field="o.academic_degree_post"/>
                                             </div>
 
                                         </div>
@@ -105,7 +105,7 @@
                                                 Street
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.street"/>
+                                                <span t-field="o.partner_id.street"/>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                                 ZIP
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.zip"/>
+                                                <span t-field="o.partner_id.zip"/>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                                                 City
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.city"/>
+                                                <span t-field="o.partner_id.city"/>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                                 Country
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.country.name"/>
+                                                <span t-field="o.partner_id.country_id.name"/>
                                             </div>
                                         </div>
                                     </div>
@@ -149,7 +149,7 @@
                                                 Phone
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.phone"/>
+                                                <span t-field="o.partner_id.phone"/>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@
                                                 Email
                                             </div>
                                             <div class="col-sm-9">
-                                                <span t-field="o.email"/>
+                                                <span t-field="o.partner_id.email"/>
                                             </div>
                                         </div>
                                     </div>
