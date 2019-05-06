@@ -6,7 +6,7 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">Your Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
+                <p>We are pleased to inform you, ${object.firstname}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
                             <table style="border:0;padding-top:15px;">
                     <tbody><tr>
                         <td>
@@ -57,7 +57,7 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">New Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you that ${object.first_name} ${object.last_name} has submitted an application to the Global Humanistic University.</p>
+                <p>We are pleased to inform you that ${object.firstname} ${object.lastname} has submitted an application to the Global Humanistic University.</p>
                 <p>Please find all the provided information below and get in contact with Zareska if you need further information</p>
             
                 <table style="border:0;padding-top:15px;">
@@ -112,8 +112,9 @@
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
             <field name="code"><![CDATA[
-tool = env["ghu.application"] 
-tool.on_creation(record)]]></field>
+tool = env["ghu.application"]
+tool.on_creation(record)
+]]></field>
         </record>
         <record model="product.product" id="ghu_doctoral_application_fee">
             <field name="default_code">Doctoral Application Fee</field>

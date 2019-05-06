@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            name="GHU"
+            id="menu_ghu"
+            web_icon="ghu,static/description/icon.png"
+            sequence="0"
+        />
+    </data>
+</odoo>

@@ -55,24 +55,24 @@
                                                         <div class="row">
                                                             <div class="form-field form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="first_name" class="control-label col-sm-3" title="">
+                                                                    <label for="firstname" class="control-label col-sm-3" title="">
                                                                         First Name
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class="form-control o_website_form_input" id="first_name" type="text" name="first_name" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="firstname" type="text" name="firstname" value="" />
                                                                     </div>
                                                                     
                                                                 </div>
                                                             </div>
                                                             <div class="form-field form-group col-md-6">
                                                                 <div class="row">
-                                                                    <label for="last_name" class="control-label col-sm-3" title="">
+                                                                    <label for="lastname" class="control-label col-sm-3" title="">
                                                                         Last Name
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class="form-control o_website_form_input" id="last_name" type="text" name="last_name" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="lastname" type="text" name="lastname" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -138,9 +138,9 @@
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <select required="required" class="form-control o_website_form_input" id="gender" name="gender">
-                                                                            <option value="f">Female</option>
-                                                                            <option value="m">Male</option>
-                                                                            <option value="o">Other</option>
+                                                                            <option value="female">Female</option>
+                                                                            <option value="male">Male</option>
+                                                                            <option value="other">Other</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -613,7 +613,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class="form-control o_website_form_input" id="fullname" type="text" name="payment_full_name" value="" />
+                                                                        <input required="required" class="form-control o_website_form_input" id="fullname" type="text" name="payment_name" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -658,7 +658,7 @@
                                                                 <div class="row">
                                                                     <label for="country_01" class="control-label col-sm-3" title="">Country</label>
                                                                     <div class="col-sm-9">
-                                                                        <select class="form-control o_website_form_input" id="country_01" name="payment_country">
+                                                                        <select class="form-control o_website_form_input" id="country_01" name="payment_country_id">
                                                                             <t t-foreach="countries" t-as="country">
                                                                                 <option t-att-value="country.id" t-field="country.name" />
                                                                             </t>
