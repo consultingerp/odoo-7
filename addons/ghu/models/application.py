@@ -184,7 +184,7 @@ class GhuApplication(models.Model):
     @api.one
     def create_sign_request(self, record):
         pdf = self.env.ref('ghu.application_agreement_pdf').sudo().render_qweb_pdf([self.id])[0]
-        attachmentName = 'Application-'+self.last_name+'-'+str(self.id)+'.pdf'
+        attachmentName = 'Application-'+self.lastname+'-'+str(self.id)+'.pdf'
         attachment = self.env['ir.attachment'].create({
             'name': attachmentName,
             'type': 'binary',
