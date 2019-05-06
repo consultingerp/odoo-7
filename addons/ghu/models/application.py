@@ -296,7 +296,6 @@ class GhuApplication(models.Model):
                     'type': 'binary'
             }
         )
-        email_template.attachment_ids =  False
         email_template.attachment_ids = [(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
         email_template.send_mail(record.id, raise_exception=False, force_send=False)
 
@@ -336,6 +335,10 @@ class GhuApplication(models.Model):
             invoice.invoice_line_ids = [(4, invoice_line.id)]
 
             invoice.action_invoice_open()
+
+            invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
+            invoice_template.send_mail(invoice.id)
+            invoice.write({'sent': True})
 
             self.application_fee_invoice_id = invoice.id
 
