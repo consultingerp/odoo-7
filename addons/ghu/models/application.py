@@ -319,7 +319,7 @@ class GhuApplication(models.Model):
                 user_id=self.env().user.id, # salesperson
                 invoice_line_ids=[], # invoice lines
                 name='Doctoral Program Application Fee', # name for account move lines
-                # partner_bank_id=, # company bank account
+                partner_bank_id=self.env['ir.config_parameter'].get_param('ghu.automated_invoice_bank_account'), # company bank account
             ))
 
             invoice_line = self.env['account.invoice.line'].with_context(

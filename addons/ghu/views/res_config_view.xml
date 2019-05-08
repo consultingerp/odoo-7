@@ -13,10 +13,16 @@
                         <div class="row mt16 o_settings_container">
                             <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
                                 <div class="o_setting_right_pane">
-                                    <label string="Transferwise" for="ghu_transferwise_api_key"/>
+                                    <label string="Invoicing and Payment" for="ghu_transferwise_api_key"/>
                                     <span class="fa fa-lg fa-dollar"/>
                                     <div class="text-muted">
-                                        Settings for Payment Provider Transferwise
+                                        Settings for Invoicing and Payment
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Auomated Invoice Bank Account" for="ghu_automated_invoice_bank_account"/>
+                                            <field name="ghu_automated_invoice_bank_account" attrs="{'required': True}"/>
+                                        </div>
                                     </div>
                                     <div class="content-group">
                                         <div class="row mt16">
