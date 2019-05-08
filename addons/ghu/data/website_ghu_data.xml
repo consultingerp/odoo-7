@@ -6,10 +6,6 @@
             <field name="target">self</field>
             <field name="url">/advisor</field>
         </record>
-        <record id="base.open_menu" model="ir.actions.todo">
-            <field name="action_id" ref="action_open_website"/>
-            <field name="state">open</field>
-        </record>
         <!-- Advisor page -->
         <record id="advisor" model="ir.ui.view">
             <field name="name">Advisor</field>

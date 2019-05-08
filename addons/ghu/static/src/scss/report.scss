@@ -1,0 +1,14 @@
+.o_report_layout_background thead tr th, .o_report_layout_background h2, .o_background_header h3 {
+    color: #1d2127;
+}
+.o_report_layout_background tbody tr:nth-child(odd) {
+    background-color: rgba(21, 81, 157, 0.2);
+}
+.o_background_footer ul {
+    border-top-color: #0d2e5a;
+    border-bottom-color: #0d2e5a;
+}
+.o_background_footer ul li,
+.o_report_layout_background tbody {
+    color: #0d2e5a;
+}

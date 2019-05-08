@@ -40,6 +40,7 @@
         'views/application_view.xml',
         'views/application_pdf.xml',
         'views/application_report.xml',
+        'views/report_style.xml',
         #'views/templates.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
