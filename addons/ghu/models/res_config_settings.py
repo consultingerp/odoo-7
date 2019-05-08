@@ -10,7 +10,7 @@ class ResConfigSettings(models.TransientModel):
 
     def _default_ghu_doctoral_application_fee_product(self):
         return self.env.ref('ghu.ghu_doctoral_application_fee').id
-    
+
     ghu_doctoral_application_fee_product = fields.Many2one(
         'product.product',
         string='Doctoral Application Fee Product',
@@ -26,6 +26,17 @@ class ResConfigSettings(models.TransientModel):
         required=True,
         default='1234',
         config_parameter='ghu.transferwise_api_key',
+    )
+
+    def _default_ghu_automated_invoice_bank_account(self):
+        return self.env['res.partner.bank'].search([])[0]
+
+    ghu_automated_invoice_bank_account = fields.Many2one(
+        'res.partner.bank',
+        string='Automated Invoice Partner Bank',
+        required=True,
+        default=_default_ghu_automated_invoice_bank_account,
+        config_parameter='ghu.automated_invoice_bank_account'
     )
 
     @api.model

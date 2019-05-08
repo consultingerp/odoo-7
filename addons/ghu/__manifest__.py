@@ -46,6 +46,7 @@
         'menu/advisor_menu.xml',
         'views/application_form.xml',
         'views/res_config_view.xml',
+        'views/invoice_document.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
