@@ -4,7 +4,7 @@ services:
     build:
       context: _/odoo
       args:
-        ODOO_RELEASE: "20190410"
+        ODOO_RELEASE: "20190508"
     depends_on:
       - db
     ports:

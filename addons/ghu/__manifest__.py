@@ -28,6 +28,7 @@
         'data/website_ghu_data.xml',
         'security/ir.model.access.csv',
         'security/advisor_security.xml',
+        'views/assets.xml',
         'views/advisor_view.xml',
         'views/program_view.xml',
         'views/lang_view.xml',
