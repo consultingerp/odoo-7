@@ -9,7 +9,7 @@
         Long description of module's purpose
     """,
 
-    'author': "Gerald Aistleitner",
+    'author': "Gerald Aistleitner & Robert Aistleitner",
     'website': "https://www.linkedin.com/in/gerald-aistleitner-1a2712120/",
 
     # Categories can be used to filter modules in modules listing
