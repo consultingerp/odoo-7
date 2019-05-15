@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_document_with_bank_account" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='qrcode']" position="after">
+                <t t-if="o.partner_bank_id">
+                    <t t-set="partner_bank" t-value="o.partner_bank_id"/>
+                    <br/>
+                    Please transfer the invoice total amount to the following bank account:
+                    <div style="padding-left: 30px">
+                        <b>Bank:</b> <span t-field="partner_bank.bank_name"/>
+                        <br/>
+                        <b>Account Holder:</b> <span t-field="partner_bank.acc_holder_name"/>
+                        <br/>
+                        <b><span t-field="partner_bank.acc_type"/>:</b> <span t-field="partner_bank.acc_number"/>
+                        <br/>
+                        <b>BIC:</b> <span t-field="partner_bank.bank_bic"/>
+                    </div>
+                    <br/>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

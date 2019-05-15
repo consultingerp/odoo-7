@@ -6,16 +6,18 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">Your Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you, ${object.first_name}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
-                            <table style="border:0;padding-top:15px;">
-                    <tbody><tr>
-                        <td>
-                            <a href="https://www.ghu.edu.cw/" target="_blank">
-                                <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg" height="110px" title="GHU">
-                            </a>
-                        </td>
-                    </tr>
-                </tbody></table>
+                <p>We are pleased to inform you, ${object.firstname}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
+                <table style="border:0;padding-top:15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="https://www.ghu.edu.cw/" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg" height="110px" title="GHU">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table style="border:0;padding-top:15px;">
                 <tbody><tr>
                     <td>
@@ -57,7 +59,7 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">New Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you that ${object.first_name} ${object.last_name} has submitted an application to the Global Humanistic University.</p>
+                <p>We are pleased to inform you that ${object.firstname} ${object.lastname} has submitted an application to the Global Humanistic University.</p>
                 <p>Please find all the provided information below and get in contact with Zareska if you need further information</p>
             
                 <table style="border:0;padding-top:15px;">
@@ -105,6 +107,86 @@
             <field name="user_signature">false</field>
             <field name="auto_delete">false</field>
         </record>
+        <record model="mail.template" id="ghu_invoice_email_template">
+            <field name="name">GHU Invoice Template</field>
+            <field name="model_id" ref="account.model_account_invoice"></field>
+            <field name="subject">${object.company_id.name} Invoice (Ref ${object.number or 'n/a'})</field>
+            <field name="body_html"><![CDATA[
+                <p>
+                    Dear ${object.partner_id.name},
+                </p>
+                <p>
+                    Here is your 
+                    %if object.number:
+                        invoice <strong>${object.number}</strong>
+                    %else:
+                        invoice
+                    %endif
+                    %if object.origin:
+                        (with reference: ${object.origin})
+                    %endif
+                    amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong> 
+                    from ${object.company_id.name}.
+                    %if object.state=='paid':
+                        This invoice is already paid.
+                    %else:
+                        Please remit payment at your earliest convenience.
+                    %endif
+                </p>
+                <p>
+                    Do not hesitate to contact us if you have any question.
+                </p>
+                <table style="border:0;padding-top:15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="https://www.ghu.edu.cw/" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg" height="110px" title="GHU">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border:0;padding-top:15px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png" height="55px" title="AACSB">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg" height="55px" title="ASIC" class="align-left">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="http://www.aac.cw/" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg" height="55px" title="AAC">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png" height="55px" title="Ministry of Curacao">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://www.researchgate.net/institution/Global_Humanistic_University" target="_blank">
+                                    <img src="https://www.ghu.edu.cw/ghu/static/img/mails/rg.png" height="55px" title="ResearchGate">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]></field>
+            <field name="email_from">office@ghu.edu.cw</field>
+            <field name="use_default_to">false</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="user_signature">false</field>
+            <field name="auto_delete">false</field>
+            <field name="report_template" ref="account.account_invoices"></field>
+            <field name="report_name">Invoice_${(object.number or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}</field>
+        </record>
         <record model="base.automation" id="ghu_doctoral_application_send_new_email">
             <field name="name">Send Doctoral Application Mails</field>
             <field name="model_id" ref="model_ghu_application"/>
@@ -112,8 +194,20 @@
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
             <field name="code"><![CDATA[
-tool = env["ghu.application"] 
-tool.on_creation(record)]]></field>
+tool = env["ghu.application"]
+tool.on_creation(record)
+]]></field>
+        </record>
+        <record model="base.automation" id="ghu_doctoral_application_send_application">
+            <field name="name">Check if signed document is application</field>
+            <field name="model_id" ref="sign.model_sign_request"/>
+            <field name="trigger">on_write</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+tool = env["ghu.application"]
+tool.check_signature(record)
+]]></field>
         </record>
         <record model="product.product" id="ghu_doctoral_application_fee">
             <field name="default_code">Doctoral Application Fee</field>

@@ -5,7 +5,7 @@
             <field name="name">Application Kanban</field>
             <field name="model">ghu.application</field>
             <field name="arch" type="xml">
-                <kanban class="o_res_application_kanban" default_group_by="state">>
+                <kanban class="o_res_application_kanban" default_group_by="state">
                     <field name="id"/>
                     <field name="photo_file"/>
                     <field name="state"/>
@@ -23,9 +23,9 @@
                                 <div class="oe_kanban_details">
                                     <h4>
                                         <a type="open">
-                                            <field name="last_name"/>
-                                            <t t-if="record.first_name.raw_value">
-                                                <field name="first_name"/>
+                                            <field name="lastname"/>
+                                            <t t-if="record.firstname.raw_value">
+                                                <field name="firstname"/>
                                             </t>
                                         </a>
                                     </h4>
@@ -53,8 +53,8 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <tree string="application">
-                    <field name="first_name"/>
-                    <field name="last_name"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
                     <field name="nationality"/>
                     <field name="state" invisible="1"/>
                 </tree>
@@ -69,6 +69,7 @@
 
                 <form string="application">
                     <header>
+                        <button string="Send signature request again" type="object" name="create_sign_request" attrs="{'invisible': [('state', '!=', 'new')]}"/>
                         <button string="Approved by registrar" type="object" name="approved_registrar" attrs="{'invisible': [('state', '!=', 'signed')]}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
@@ -79,12 +80,7 @@
                                 <table>
                                     <tr>
                                         <td style="padding-right:10px;">
-                                            <field name="first_name" required="1" placeholder="First Name"/>
-                                        </td>
-                                        <td style="padding-right:10px;">
-                                        </td>
-                                        <td style="padding-right:10px;">
-                                            <field name="last_name" placeholder="Last Name" required="1"/>
+                                            <field name="partner_id" required="1"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -93,6 +89,7 @@
                         <notebook colspan="4">
                             <page name="personal_information" string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
+                                    <field name="partner_id"/>
                                     <field name="date_of_birth"/>
                                     <field name="nationality"/>
                                     <field name="marital_status"/>
@@ -106,25 +103,7 @@
                                     
 
                                 </group>
-                                <group string="Address Detail" name="address">
-                                    <label for="street" string="Address"/>
-                                    <div name="div_address">
-                                        <field name="street" placeholder="Street..."/>
-                                        <div class="address_format">
-                                            <field name="zip" placeholder="ZIP" style="width: 20%%"/>
-                                            <field name="city" placeholder="City" style="width: 40%%"/>                                            
-                                        </div>
-                                        <div>
-                                            <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}'/>
-                                        </div>
-                                        <div>
-                                            <field name="phone" />
-                                        </div>
-                                        <div>
-                                            <field name="email" />  
-                                        </div>
-                                    </div>
-                                </group>
+
                                 <group col="4" colspan="4"  string="Study Information" name="program">
                                     <field name="study_id"/>
                                     <field name="preliminary_studies"/>
@@ -143,17 +122,11 @@
                                     <field name="degrees_file_filename" invisible="1"/>
                                     <field name="research_abstract_file" widget="binary" filename="research_abstract_file_filename"/>
                                     <field name="research_abstract_file_filename" invisible="1"/>
+                                    <field name="sign_request_id"/>
                                 </group>
 
-                                <group col="4" colspan="4"  string="Payment" name="payment">
-                                    <field name="payment_method"/>
-                                    <field name="payment_full_name"/>
-                                    <field name="payment_street"/>
-                                    <field name="payment_zip"/>
-                                    <field name="payment_city"/>
-                                    <field name="payment_country"/>
-                                    <field name="payment_phone"/>
-                                    <field name="payment_email"/>
+                                <group col="4" colspan="4" string="Invoices" name="invoices">
+                                    <field name="application_fee_invoice_id"/>
                                 </group>
                             </page>
                         </notebook>
@@ -168,7 +141,7 @@
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <search string="application">
-                    <field name="last_name"/>
+                    <field name="lastname"/>
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>

@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <menuitem id="menu_ghu_application"
+                parent="menu_ghu"
+                name="Applications"
+                sequence="10"
+                action="act_open_ghu_application_view_2"/>      
         <menuitem id="menu_ghu_advisor_root"
+                  parent="menu_ghu"
                   name="Advisor"
-                  sequence="25"
-                  action="act_open_ghu_advisor_view_2"
-                  web_icon="ghu,static/icons/advisor.png"/>
-        <menuitem id="menu_ghu_root"
-                  name="GHU"
-                  sequence="30"
-                  action="act_open_ghu_application_view_2"
-                  web_icon="ghu,static/icons/advisor.png"/>
+                  sequence="15"
+                  action="act_open_ghu_advisor_view_2"/>
         <menuitem id="menu_ghu_program"
-                  parent="menu_ghu_root"
+                  parent="menu_ghu"
                   name="Programs"
-                  sequence="30"
-                  action="act_open_ghu_program_view_2"
-                  web_icon="ghu,static/icons/advisor.png"/>
+                  sequence="20"
+                  action="act_open_ghu_program_view_2"/>
         <menuitem id="menu_ghu_study"
-                  parent="menu_ghu_root"
+                  parent="menu_ghu"
                   name="Studies"
-                  sequence="30"
+                  sequence="25"
                   action="act_open_ghu_study_view_2"/>
         <menuitem id="menu_ghu_lang"
-                  parent="menu_ghu_root"
+                  parent="menu_ghu"
                   name="Languages"
                   sequence="30"
                   action="act_open_ghu_lang_view_2"/>
-        <menuitem id="menu_ghu_application"
-                  parent="menu_ghu_root"
-                  name="Applications"
-                  sequence="10"
-                  action="act_open_ghu_application_view_2"/>
+
     </data>
 </odoo>

@@ -1,0 +1,9 @@
+.o_background_footer, .o_background_header, .o_report_layout_background {
+    color: $o-main-text-color;
+}
+.o_report_layout_background tbody {
+    color: $o-main-text-color;
+    tr:nth-child(odd) {
+        background-color: rgba($o-brand-primary, 0.1);
+    }
+}

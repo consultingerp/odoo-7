@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import base64
 import json
+import logging
 
 from psycopg2 import IntegrityError
 
 from odoo import http
 from odoo.http import request
+
+_logger = logging.getLogger(__name__)
 
 class Ghu(http.Controller):
     @http.route('/ghu/create_application/', type='http', auth='public', methods=['POST'], website=True)
@@ -15,7 +18,31 @@ class Ghu(http.Controller):
             ('model_id', '=', application_model.id),
         ])
 
-        required_fields = [f for f in application_fields if f['required']]
+        required_fields = [f['name'] for f in application_fields if f['required'] and not f['related']]
+        
+        # add required fields for partner
+        contact_fields = [
+            'firstname',
+            'lastname',
+            'gender',
+            'street',
+            'zip',
+            'city',
+            'country_id',
+            'phone',
+            'email',
+        ]
+        required_fields += contact_fields
+        invoice_fields = [
+            'payment_name',
+            'payment_street',
+            'payment_zip',
+            'payment_city',
+            'payment_country_id',
+            'payment_phone',
+            'payment_email',
+        ]
+        required_fields += invoice_fields
 
         # extract studies-* args and files
         studies = dict()
@@ -35,13 +62,36 @@ class Ghu(http.Controller):
 
         # set default fields
         kwargs['state'] = 'new'
+        # avoid missing field
+        kwargs['partner_id'] = True
 
         # check missing fields
-        missing_fields = [f['name'] for f in required_fields if f['name'] not in kwargs]
+        missing_fields = [f for f in required_fields if f not in kwargs]
         if missing_fields:
             return json.dumps(dict(error_fields=missing_fields))
 
+        # extract contact fields
+        contact_data = dict()
+        for f in contact_fields:
+            contact_data[f] = kwargs.pop(f)
+
+        # extract invoice fields
+        invoice_data = dict(type='invoice')
+        for f in invoice_fields:
+            invoice_data[f[len('payment_'):]] = kwargs.pop(f)
+
+        # preprocess fields
+        kwargs['ever_applied_at_ghu'] = bool(int(kwargs['ever_applied_at_ghu']))
+        kwargs['ever_applied_doctoral'] = bool(int(kwargs['ever_applied_doctoral']))
+        kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
+
         try:
+            # create contact
+            contact_data['child_ids'] = [(0, 0, invoice_data)] # create invoice address implicit
+            contact = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(contact_data)
+
+            # create application
+            kwargs['partner_id'] = contact.id
             application_record = request.env['ghu.application'].sudo().with_context(mail_create_nosubscribe=True).create(kwargs)
             for study in studies.values():
                 study['application_id'] = application_record.id
@@ -50,20 +100,3 @@ class Ghu(http.Controller):
             return json.dumps(False)
 
         return json.dumps(dict(id=application_record.id))
-
-    # @http.route('/ghu/ghu/', auth='public')
-    # def index(self, **kw):
-    #     return 'Hello, world'
-
-    # @http.route('/ghu/ghu/objects/', auth='public')
-    # def list(self, **kw):
-    #     return http.request.render('ghu.listing', {
-    #         'root': '/ghu/ghu',
-    #         'objects': http.request.env['ghu.ghu'].search([]),
-    #     })
-
-    # @http.route('/ghu/ghu/objects/<model('ghu.ghu'):obj>/', auth='public')
-    # def object(self, obj, **kw):
-    #     return http.request.render('ghu.object', {
-    #         'object': obj
-    #     })
