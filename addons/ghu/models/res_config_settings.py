@@ -2,6 +2,8 @@ import logging
 
 from odoo import api, fields, models
 
+from ..helpers.transferwise import Transferwise
+
 _logger = logging.getLogger(__name__)
 
 
@@ -28,15 +30,47 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='ghu.transferwise_api_key',
     )
 
-    def _default_ghu_automated_invoice_bank_account(self):
-        return self.env['res.partner.bank'].search([])[0]
+    def _get_transferwise_borderless_accounts(self):
+        tw = Transferwise(self.env['ir.config_parameter'].get_param('ghu.transferwise_api_key'))
+        accounts = tw.get_all_accounts()
+        res = []
+        if accounts:
+            for account in accounts:
+                for currency in account['currencies']:
+                    res.append((
+                        '%s/%s' % (account['id'], currency['currency']),
+                        '%s (%s) in %s at %s' % (
+                            currency['bankDetails']['accountHolderName'], 
+                            currency['bankDetails']['accountNumber'], 
+                            currency['bankDetails']['currency'], 
+                            currency['bankDetails']['bankName'],
+                        )
+                    ))
+        res.append(('invalid', 'Invalid Account, please check Transferwise API key'))
+        return res
 
-    ghu_automated_invoice_bank_account = fields.Many2one(
-        'res.partner.bank',
-        string='Automated Invoice Partner Bank',
+    def _default_ghu_transferwise_borderless_account(self):
+        accounts = self._get_transferwise_borderless_accounts()
+        return accounts[0][0]
+
+    ghu_transferwise_borderless_account = fields.Selection(
+        _get_transferwise_borderless_accounts,
+        string='Transferwise Borderless Account',
+        help='The Transferwise borderless bank account which is used to receive money.',
         required=True,
-        default=_default_ghu_automated_invoice_bank_account,
-        config_parameter='ghu.automated_invoice_bank_account'
+        default=_default_ghu_transferwise_borderless_account,
+        config_parameter='ghu.transferwise_borderless_account'
+    )
+
+    def _default_ghu_automated_invoice_bank_journal(self):
+        return self.env['account.journal'].search([('type', '=', 'bank')])[0]
+
+    ghu_automated_invoice_bank_journal = fields.Many2one(
+        'account.journal',
+        string='Automated Invoice Bank Journal',
+        required=True,
+        default=_default_ghu_automated_invoice_bank_journal,
+        config_parameter='ghu.automated_invoice_bank_journal'
     )
 
     @api.model

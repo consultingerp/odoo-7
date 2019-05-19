@@ -13,6 +13,7 @@ services:
       - ./addons:/mnt/extra-addons
       - ./enterprise/addons:/mnt/enterprise-addons
       - ./enterprise/themes:/mnt/enterprise-themes
+      - ./requirements.txt:/requirements.txt
       - odoo-web-data:/var/lib/odoo
     networks:
       - db

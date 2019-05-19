@@ -19,12 +19,13 @@
     'version': '0.34',
  
     # any module necessary for this one to work correctly
-    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'sale_management'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'sale_management', 'account_transferwise'],
 
     # always loaded
     'data': [
         'data/application.xml',
         'data/ghu_data.xml',
+        'data/transferwise.xml',
         'data/website_ghu_data.xml',
         'security/ir.model.access.csv',
         'security/advisor_security.xml',

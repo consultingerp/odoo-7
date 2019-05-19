@@ -20,14 +20,20 @@
                                     </div>
                                     <div class="content-group">
                                         <div class="row mt16">
-                                            <label class="col-lg-3 o_light_label" string="Auomated Invoice Bank Account" for="ghu_automated_invoice_bank_account"/>
-                                            <field name="ghu_automated_invoice_bank_account" attrs="{'required': True}"/>
+                                            <label class="col-lg-3 o_light_label" string="Automated Invoice Bank Journal" for="ghu_automated_invoice_bank_journal"/>
+                                            <field name="ghu_automated_invoice_bank_journal" attrs="{'required': True}"/>
                                         </div>
                                     </div>
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <label class="col-lg-3 o_light_label" string="Transferwise Apikey" for="ghu_transferwise_api_key"/>
                                             <field name="ghu_transferwise_api_key" attrs="{'required': True}"/>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Transferwise Borderless Account" for="ghu_transferwise_borderless_account"/>
+                                            <field name="ghu_transferwise_borderless_account" attrs="{'required': True}"/>
                                         </div>
                                     </div>
                                 </div>

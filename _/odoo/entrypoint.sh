@@ -2,6 +2,9 @@
 
 set -e
 
+# install custom requirements from this repository
+pip3 install -r /requirements.txt
+
 # set the postgres database host, port, user and password according to the environment
 # and pass them as arguments to the odoo process if not present in the config file
 : ${HOST:=${DB_PORT_5432_TCP_ADDR:='db'}}

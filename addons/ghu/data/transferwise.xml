@@ -1,0 +1,17 @@
+<openerp>
+    <data noupdate="0">
+        <record id="fetch_transferwise_statements" model="ir.cron">
+            <field name="name">Fetch Transferwise Statements</field>
+            <field name="model_id" ref="model_ghu_account_transferwise_payment" />
+            <field name="state">code</field>
+            <field name="code">model.fetch_transferwise_statements()</field>
+            <field name="active" eval="True" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+            <!-- it will fetch statements of the last 72 hours and checks if statements are already handled -->
+        </record>
+    </data>
+</openerp>
