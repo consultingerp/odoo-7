@@ -61,7 +61,7 @@ class GhuAdvisor(models.Model):
         string=u'Degree Filename',
     )
         
-    certificate_file = fields.Binary('Certificate', required=True)
+    certificate_file = fields.Binary('Certificate')
     certificate_file_filename = fields.Char(
         string=u'Certificate Filename',
     )
