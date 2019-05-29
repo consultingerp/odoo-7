@@ -55,15 +55,20 @@ class GhuAdvisor(models.Model):
     )
 
     degree = fields.Binary(
-        string='Degree'
+        string='Degree GHU'
     )
     degree_filename = fields.Char(
         string=u'Degree Filename',
     )
         
-    certificate_file = fields.Binary('Certificate')
+    certificate_file = fields.Binary('Certificate PDF')
     certificate_file_filename = fields.Char(
         string=u'Certificate Filename',
+    )
+
+    certificate_original_file = fields.Binary('Certificate Word')
+    certificate_original_file_filename = fields.Char(
+        string=u'Certificate Filename Word',
     )
     
     agreement = fields.Binary(
