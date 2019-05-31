@@ -30,19 +30,31 @@ class Lead(models.Model):
 
         if custom_values is None:
             custom_values = {}
-        if re.search(r'\S+@zapiermail.com', msg_dict.get('from')).group(0):
+        body = msg_dict.get('body')
+        clean = re.compile('<.*?>')
+        if re.search(r'\S+@zapiermail.com', msg_dict.get('from')):
             defaults = {
-                'name':  re.search(r'First and Last Name: ([\S .]+)', msg_dict.get('body')).group(0),
-                'email_from': re.search(r'Email address: ([\S .]+)', msg_dict.get('body')).group(0),
-                'phone': re.search(r'Phone Number or Skype: ([\S .]+)', msg_dict.get('body')).group(0),
-                'highest_degree': re.search(r'Highest degree: ([\S .]+)', msg_dict.get('body')).group(0),
+                'name':  re.search(r'First and Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Phone Number or Skype: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'highest_degree': re.search(r'Highest degree: ([^\t\n\r\f\v<>]*)', body).group(1),
             }
-        if re.search(r'UserEnquiry@FindAPhD.com', msg_dict.get('from')).group(0):
+            defaults.update(custom_values)
+        if re.search(r'UserEnquiry@FindAPhD.com', msg_dict.get('from')):
             defaults = {
-                'name':  re.search(r'Sender\'s First Name: ([\S .]+)', msg_dict.get('body')).group(0) + '' + re.search(r'Sender\'s Last Name: ([\S .]+)', msg_dict.get('body')).group(0),
-                'email_from': re.search(r'Sender\'s Email Address: ([\S .]+)', msg_dict.get('body')).group(0),
-                'phone': re.search(r'Sender\'s Telephone No.: ([\S .]+)', msg_dict.get('body')).group(0),
+                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
             }
-        defaults.update(custom_values)
+            defaults.update(custom_values)
         return super(Lead, self).message_new(msg_dict, custom_values=defaults)
+
+    @api.model
+    def message_update(self, msg_dict, update_vals=None):
+        if update_vals is None:
+            update_vals = {
+                'stage_id': 1,
+            }
+            self.write(update_vals)
+        return super(Lead, self).message_update(msg_dict, update_vals=update_vals)
     
