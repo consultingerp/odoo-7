@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.36',
+    'version': '0.37',
  
     # any module necessary for this one to work correctly
     'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'sale_management', 'mass_mailing'],
@@ -43,6 +43,7 @@
         'views/application_report.xml',
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
+        'views/web_style.xml',
         #'views/templates.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
