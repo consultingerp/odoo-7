@@ -11,6 +11,11 @@
                             </a>
                         </li>
                         <li style="float:left;margin-left: 10px;">
+                            <a href="https://iacbe.org/memberpdf/GlobalHumanisticUniversity(GHU).pdf" target="_blank">
+                                <img src='https://www.ghu.edu.cw/ghu/static/img/mails/iacbe.png' height="55px" title="IACBE"/>
+                            </a>
+                        </li>
+                        <li style="float:left;margin-left: 10px;">
                             <a href="/ghu/static/files/Certificate-ASIC-GHU.pdf" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/asic-accredited.jpg' height="55px" title="ASIC" class="align-left" />
                             </a>
