@@ -48,6 +48,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="documents_settings">
+                                <div class="o_setting_right_pane">
+                                    <label string="Settings for portal documents" for="ghu_documents_advisor_general"/>
+                                    <span class="fa fa-lg fa-doc"/>
+                                    <div class="text-muted">
+                                        Settings for portal documents
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Advisor General Information Folder" for="ghu_documents_advisor_general"/>
+                                            <field name="ghu_documents_advisor_general"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </xpath>
             </field>
