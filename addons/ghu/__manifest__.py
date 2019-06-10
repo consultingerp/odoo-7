@@ -44,7 +44,7 @@
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
-        #'views/templates.xml',
+        'views/campus_templates.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
