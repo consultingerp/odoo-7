@@ -98,7 +98,7 @@
                                                                     </t>
                                                                     <br/>
                                                                     <!-- TODO: show foreign languages -->
-                                                                    <a t-if="advisor.vita" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
+                                                                    <a t-if="advisor.vita" target="_blank" t-attf-href="web/content/ghu.advisor/#{advisor.id}/vita/cv.pdf?download=true">Download CV</a>
                                                                 </div>
                                                             </div>
                                                         </t>

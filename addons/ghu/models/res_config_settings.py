@@ -28,6 +28,11 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='ghu.transferwise_api_key',
     )
 
+    ghu_documents_advisor_general = fields.Char(
+        string=u'General Information for advisor folders',
+        config_parameter='ghu.documents_advisor_general',
+    )
+
     def _default_ghu_automated_invoice_bank_account(self):
         return self.env['res.partner.bank'].search([])[0]
 
