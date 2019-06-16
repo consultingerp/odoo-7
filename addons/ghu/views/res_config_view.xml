@@ -67,6 +67,12 @@
                         </div>
                     </div>
                 </xpath>
+                <xpath expr="//field[@name='social_instagram']/.." position="after">
+                    <div class="row">
+                        <label for="social_researchgate" string="Research Gate" class="col-md-3 o_light_label"/>
+                        <field name="social_researchgate"/>
+                    </div>
+                </xpath>
             </field>
         </record>
 
