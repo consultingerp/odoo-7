@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <odoo>
     <template id="preheader" name="Research Gate Logo" inherit_id="theme_treehouse.preheader">
-        <xpath expr="//div[@id='social']" position="inside">
+        <!--<xpath expr="//div[@id='social']" position="inside">
             <a t-if="website.social_researchgate" t-att-href="website.social_researchgate" target="_blank">
                 <i class="fa fab fa-researchgate fa-1x"/>
             </a>
-        </xpath>
+        </xpath>-->
     </template>
 </odoo>
