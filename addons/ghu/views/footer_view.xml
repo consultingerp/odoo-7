@@ -16,6 +16,11 @@
                             </a>
                         </li>
                         <li style="float:left;margin-left: 10px;">
+                            <a href="https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf" target="_blank">
+                                <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aqas.png' height="55px" title="AQAS"/>
+                            </a>
+                        </li>
+                        <li style="float:left;margin-left: 10px;">
                             <a href="/ghu/static/files/Certificate-ASIC-GHU.pdf" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/asic-accredited.jpg' height="55px" title="ASIC" class="align-left" />
                             </a>
@@ -28,11 +33,6 @@
                         <li style="float:left;margin-left: 10px;">
                             <a href="/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
                                 <img src='/ghu/static/img/ministry.png' height="55px" title="Ministry of Curacao" class="align-left" />
-                            </a>
-                        </li>
-                        <li style="float:left;margin-left: 10px;">
-                            <a href="https://www.researchgate.net/institution/Global_Humanistic_University" class="ml-10" target="_blank">
-                                <img src='/ghu/static/img/rg.png' height="55px" title="ResearchGate" class="align-left" />
                             </a>
                         </li>
                     </ul>

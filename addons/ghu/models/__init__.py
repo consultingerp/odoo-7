@@ -9,3 +9,5 @@ from . import university
 from . import employee
 from . import lead
 from . import res_config_settings
+from . import company
+from . import website
