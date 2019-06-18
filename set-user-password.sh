@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DATABASE=${1:?Please provide the database you want to set the password for.}
-PASSWORD=${2:?Please provide the password you want to set as first parameter.}
+PASSWORD=${1:?Please provide the password you want to set as first parameter.}
+DATABASE=${2:-production}
 EMAIL=${3:-admin@ghu.edu.cw}
 
 echo "Setting password ${PASSWORD} for user ${EMAIL} in database ${DATABASE}..."
