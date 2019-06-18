@@ -73,6 +73,31 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='ghu.automated_invoice_bank_journal'
     )
 
+    ghu_documents_advisor_general = fields.Char(
+        string=u'General Information for advisor folders',
+        config_parameter='ghu.documents_advisor_general',
+    )
+
+    social_researchgate = fields.Char(related='website_id.social_researchgate', readonly=False)
+
+    # @api.depends('website_id', 'social_twitter', 'social_facebook', 'social_github', 'social_linkedin', 'social_youtube', 'social_googleplus', 'social_instagram', 'social_researchgate')
+    # def has_social_network(self):
+    #     self.has_social_network = self.social_twitter or self.social_facebook or self.social_github \
+    #         or self.social_linkedin or self.social_youtube or self.social_googleplus or self.social_instagram or self.social_researchgate
+
+    # def inverse_has_social_network(self):
+    #     if not self.has_social_network:
+    #         self.social_twitter = ''
+    #         self.social_facebook = ''
+    #         self.social_github = ''
+    #         self.social_linkedin = ''
+    #         self.social_youtube = ''
+    #         self.social_googleplus = ''
+    #         self.social_instagram = ''
+    #         self.social_researchgate = ''
+
+
+
     @api.model
     def get_values(self):
         return super(ResConfigSettings, self).get_values()

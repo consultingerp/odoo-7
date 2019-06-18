@@ -6,7 +6,7 @@ class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
     _order = "nomination DESC, nationality ASC, lastname ASC"
-    _inherit = ['website.published.mixin']
+    _inherit = ['website.published.mixin', 'mail.thread']
     _inherits = {"res.partner": "partner_id"}
 
     is_cafeteria = fields.Boolean(
@@ -50,13 +50,32 @@ class GhuAdvisor(models.Model):
     )
 
     vita = fields.Binary('Vita')
+    vita_filename = fields.Char(
+        string=u'Vita Filename',
+    )
 
     degree = fields.Binary(
-        string='Degree'
+        string='Degree GHU'
+    )
+    degree_filename = fields.Char(
+        string=u'Degree Filename',
+    )
+        
+    certificate_file = fields.Binary('Certificate PDF')
+    certificate_file_filename = fields.Char(
+        string=u'Certificate Filename',
+    )
+
+    certificate_original_file = fields.Binary('Certificate Word')
+    certificate_original_file_filename = fields.Char(
+        string=u'Certificate Filename Word',
     )
     
     agreement = fields.Binary(
         string=u'Agreement',
+    )
+    agreement_filename = fields.Char(
+        string=u'Agreement Filename',
     )
 
     programs = fields.Many2many(
