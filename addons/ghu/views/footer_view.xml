@@ -22,17 +22,17 @@
                         </li>
                         <li style="float:left;margin-left: 10px;">
                             <a href="https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf" target="_blank">
-                                <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aqas.png' height="50px" title="AQAS"/>
+                                <img src='/ghu/static/img/mails/aqas.png' height="50px" title="AQAS"/>
                             </a>
                         </li>
                         <li style="float:left;margin-left: 10px;">
                             <a target="_blank">
-                                <img src="https://www.ghu.edu.cw/ghu/static/img/ciqg.png" height="50px" title="CIQG"  class="align-left"/>
+                                <img src="/ghu/static/img/ciqg.png" height="50px" title="CIQG"  class="align-left"/>
                             </a>
                         </li>
                         <li style="float:left;margin-left: 10px;">
                             <a href="https://iacbe.org/accreditation/member-status%20information/results/?BCountry=&amp;BState=&amp;BStatus=&amp;BAlpha=G" target="_blank">
-                                <img src='https://www.ghu.edu.cw/ghu/static/img/mails/iacbe.png' height="50px" title="IACBE"/>
+                                <img src='/ghu/static/img/mails/iacbe.png' height="50px" title="IACBE"/>
                             </a>
                         </li>
                         <li style="float:left;margin-left: 10px;">
