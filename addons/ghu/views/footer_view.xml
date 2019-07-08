@@ -5,7 +5,7 @@
             <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
                 <div class="o_brand_promotion">
                     <ul class="meta-menu pull-right" style="padding-left:0;list-style: none outside none;">
-                        <li style="float:left;>
+                        <li style="float:left;">
                             <a href="/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
                                 <img src='/ghu/static/img/ministry.png' height="50px" title="Ministry of Curacao" class="align-left" />
                             </a>
