@@ -5,42 +5,42 @@
             <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
                 <div class="o_brand_promotion">
                     <ul class="meta-menu pull-right" style="padding-left:0;list-style: none outside none;">
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;>
                             <a href="/ghu/static/files/GHU_UNI_CHARTER.pdf" target="_blank">
                                 <img src='/ghu/static/img/ministry.png' height="50px" title="Ministry of Curacao" class="align-left" />
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/aacsb.png' height="50px" title="AACSB" class="align-left" />
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="http://www.aac.cw/" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/aac.jpg' height="50px" title="AAC" class="align-left" />
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf" target="_blank">
                                 <img src='/ghu/static/img/mails/aqas.png' height="50px" title="AQAS"/>
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a target="_blank">
                                 <img src="/ghu/static/img/ciqg.png" height="50px" title="CIQG"  class="align-left"/>
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="https://iacbe.org/accreditation/member-status%20information/results/?BCountry=&amp;BState=&amp;BStatus=&amp;BAlpha=G" target="_blank">
                                 <img src='/ghu/static/img/mails/iacbe.png' height="50px" title="IACBE"/>
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="https://www.inqaahe.org/global-humanistic-university" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/inqaahe.png' height="50px" title="INQAAHE" class="align-left" />
                             </a>
                         </li>
-                        <li style="float:left;margin-left: 10px;">
+                        <li style="float:left;margin-left: 5px;">
                             <a href="/ghu/static/files/Certificate-ASIC-GHU.pdf" class="ml-10" target="_blank">
                                 <img src='/ghu/static/img/asic-accredited.jpg' height="50px" title="ASIC" class="align-left" />
                             </a>
