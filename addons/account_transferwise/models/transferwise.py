@@ -63,7 +63,7 @@ class TransferwiseProviderAccount(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals['transferwise_api_key']:
+        if 'transferwise_api_key' not in vals:
             return super(TransferwiseProviderAccount, self).create(vals)
 
         vals['provider_type'] = 'transferwise'
