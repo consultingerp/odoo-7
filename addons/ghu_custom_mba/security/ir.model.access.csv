@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ghu_custom_mba_course,ghu_custom_mba.course,model_ghu_custom_mba_course,,1,1,1,1
+access_ghu_custom_mba_assessment,ghu_custom_mba.assessment,model_ghu_custom_mba_assessment,,1,1,1,1
+access_ghu_custom_mba_assessment_question,ghu_custom_mba.assessment_question,model_ghu_custom_mba_assessment_question,,1,1,1,1
