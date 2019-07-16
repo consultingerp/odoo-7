@@ -8,13 +8,13 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/objects/', auth='public')
     def list(self, **kw):
-        return http.request.render('course.listing', {
-            'root': '/ghu_custom_mba/course',
+        return http.request.render('ghu_custom_mba.listing', {
+            'root': '/campus/course',
             'objects': http.request.env['ghu_custom_mba.course'].search([]),
         })
 
     @http.route('/campus/course/objects/<model("ghu_custom_mba.course"):obj>/', auth='public')
     def object(self, obj, **kw):
-        return http.request.render('course.object', {
+        return http.request.render('ghu_custom_mba.object', {
             'object': obj
         })
