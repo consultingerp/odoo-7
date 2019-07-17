@@ -27,11 +27,12 @@
                                                 <i t-if="object.program_id.code == 'finance'" class="fas fa-landmark"></i>
                                                 <i t-elif="object.program_id.code == 'law'" class="fas fa-gavel"></i>
                                                 <i t-else="" class="fas fa-building"></i>
-                                                <a t-attf-href="#{ root }/objects/#{ object.id }">  
+                                                <a t-attf-href="#{ root }/#{ object.id }">  
                                                     <t t-esc="object.display_name"/>
                                                 </a>
                                             </h5>
-                                            <a t-attf-href="#{ root }/objects/#{ object.id }" class="btn btn-primary">See details</a>
+                                            <a t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">See details</a><br/>
+                                            <a t-if="author == 'true'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mt-2">Edit module</a>
                                         </div>
                                     </div>
                                 </div>
@@ -40,6 +41,11 @@
                     </div>
                 </div>
             </t>
+        </template>
+        <template id="ghu_my_modules_link" name="Link to advisors courses" inherit_id="portal.frontend_layout">
+            <xpath expr="//a[@id='o_logout']" position="before">
+                <a href="/campus/my/courses" role="menuitem" class="dropdown-item">My modules</a>
+            </xpath>
         </template>
     </data>
 </odoo>

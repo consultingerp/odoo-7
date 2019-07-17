@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import api, fields, models, tools
 
 
 class GhuCourse(models.Model):
@@ -148,4 +148,4 @@ class GhuAssessmentQuestion(models.Model):
         comodel_name='ghu_custom_mba.assessment',
         ondelete='cascade',
     )
-    
+
