@@ -25,7 +25,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
+        'views/course/list.xml',
+        'views/course/detail.xml',
+        'views/course/edit.xml',
+        'views/common/vue_assets.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [

@@ -1,0 +1,121 @@
+<odoo>
+    <data noupdate="0">        
+        <template id="coursedetail">
+            <t t-call="website.layout">
+                <t t-set="title"><t t-esc="object.display_name"/></t>
+                <section class="bg-beta oe_custom_bg pb0 pt0">
+                    <div class="container">
+                        <div class="row s_nb_column_fixed">
+                            <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
+                            <h1 class="s_title_default" style="text-align: left; ">
+                                <font style="font-size: 62px;"><t t-esc="object.display_name"/></font>
+                            </h1>
+                            <p t-if="object.long_name" class="s_title_default pt0" style="text-align: left; ">
+                                <font style="font-size: 36px;"><t t-esc="object.long_name"/></font>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div id="wrap" class="container mt-5 mb-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accordion" id="courseAccordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingDescription">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                            Description
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="description" class="collapse show" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.description">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingAims">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#aims" aria-expanded="true" aria-controls="aims">
+                                            Aims
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="aims" class="collapse" aria-labelledby="headingAims" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.aims">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingKnowledge">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#knowledge" aria-expanded="true" aria-controls="knowledge">
+                                            Learning Outcomes: Knowledge
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="knowledge" class="collapse" aria-labelledby="headingKnowledge" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.knowledge">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingSkills">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#skills" aria-expanded="true" aria-controls="skills">
+                                            Learning Outcomes: Skills
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="skills" class="collapse" aria-labelledby="headingSkills" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.skills">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingSyllabus">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#syllabus" aria-expanded="true" aria-controls="syllabus">
+                                            Syllabus
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="syllabus" class="collapse" aria-labelledby="headingSyllabus" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.syllabus">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingAssessment">
+                                        <h5 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target="#assessment" aria-expanded="true" aria-controls="assessment">
+                                            Learning, Teaching and Assessment Strategies
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="assessment" class="collapse" aria-labelledby="headingAssessment" data-parent="#courseAccordion">
+                                        <div class="card-body">
+                                            <div t-field="object.strategies">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

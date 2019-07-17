@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_vue" name="Vue.js Assets">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </template>
+</odoo>
