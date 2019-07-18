@@ -40,14 +40,14 @@
                         </div>
                     </div>
                     <div t-if="custom_mba_documents" class="card">
-                        <div class="card-header" id="headingDescription">
+                        <div class="card-header" id="mbadescription">
                             <h5 class="mb-0">
-                                <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                <a href="#" data-toggle="collapse" data-target="#mba" aria-expanded="true" aria-controls="mbadescription">
                                     Custom MBA Documents
                                 </a>
                             </h5>
                         </div>
-                        <div id="description" class="collapse show" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                        <div id="mba" class="collapse" aria-labelledby="mbadescription" data-parent="#courseAccordion">
                             <div class="card-body">
                                 <t t-call="portal.portal_table">
                                     <thead>
