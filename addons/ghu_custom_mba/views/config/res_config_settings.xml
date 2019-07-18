@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.ghu_custom_mba</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="41"/>
+            <field name="inherit_id" ref="ghu.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" string="GHU Campus" data-string="GHU Campus" data-key="ghu_custom_mba" groups="base.group_user">
+                        <h2>GHU Campus</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
+                                <div class="o_setting_right_pane">
+                                    <label class="o_form_label" string="Settings for portal documents" for="ghu_documents_advisor"/>
+                                    <span class="fa fa-lg fa-folders"/>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Advisor General Information Folder" for="ghu_documents_advisor"/>
+                                                <field name="ghu_documents_advisor"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Custom MBA General Information Folder" for="ghu_documents_custom_mba"/>
+                                                <field name="ghu_documents_custom_mba"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

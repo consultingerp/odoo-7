@@ -4,11 +4,12 @@ from odoo.http import request
 import logging
 import json
 import base64
+import werkzeug
 
 _logger = logging.getLogger(__name__)
 
 class GhuCustomMba(http.Controller):
-    @http.route('/campus/course/', auth='public')
+    @http.route('/campus/course/', auth='user')
     def index(self, **kw):
         return "Hello, world"
 
@@ -40,7 +41,8 @@ class GhuCustomMba(http.Controller):
         _logger.info(request.env['res.users'].sudo().search([('id', '=', http.request.env.context.get('uid'))])[0].partner_id.id)
         return http.request.render('ghu_custom_mba.coursedetail', {
             'root': '/campus/course',
-            'object': obj
+            'object': obj,
+            'author': 'true',
         })
 
     @http.route('/campus/course/new', methods=['GET'], auth='user', website=True)
@@ -53,20 +55,25 @@ class GhuCustomMba(http.Controller):
         for f in course_fields:
             all_fields[f['name']] = ''
         languages = request.env['ghu.lang'].sudo().search([('name','!=','')])
+        programs = request.env['ghu.program'].sudo().search([])
         return http.request.render('ghu_custom_mba.courseedit', {
             'root': '/campus/course',
             'new': True,
             'object': all_fields,
-            'languages': languages
+            'languages': languages,
+            'programs': programs,
         })
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/edit', methods=['GET'], auth='user', website=True)
     def edit(self, obj, **kw):
         languages = request.env['ghu.lang'].sudo().search([('name','!=','')])
+        programs = request.env['ghu.program'].sudo().search([])
         return http.request.render('ghu_custom_mba.courseedit', {
             'root': '/campus/course',
             'object': obj,
-            'languages': languages
+            'author': 'true',
+            'languages': languages,
+            'programs': programs,
         })
 
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
@@ -74,26 +81,32 @@ class GhuCustomMba(http.Controller):
         partner_id = request.env['res.users'].sudo().search([('id', '=', http.request.env.context.get('uid'))])[0].partner_id.id
         advisor_id = request.env['ghu.advisor'].sudo().search([('partner_id','=',partner_id)])[0].id
         kw['author_id'] = advisor_id
+        kw['status'] = 'draft'
         for key in list(kw.keys()):
             if hasattr(kw[key], 'filename'):
                 value = kw.pop(key)
                 kw[(key + '_filename')] = value.filename
                 kw[key] = base64.b64encode(value.read())
         course_record = request.env['ghu_custom_mba.course'].with_context(mail_create_nosubscribe=True).create(kw)
-        return http.request.render('ghu_custom_mba.coursedetail', {
-            'root': '/campus/course',
-            'object': course_record
-        })
+        return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
 
-    @http.route('/campus/course/save/<model("ghu_custom_mba.course"):obj>', methods=['POST'], auth='public', website=True)
+    @http.route('/campus/course/save/<model("ghu_custom_mba.course"):obj>', methods=['POST'], auth='user', website=True)
     def update(self, obj, **kw):
         for key in list(kw.keys()):
             if hasattr(kw[key], 'filename'):
                 value = kw.pop(key)
                 kw[(key + '_filename')] = value.filename
                 kw[key] = base64.b64encode(value.read())
+        kw['status'] = 'draft'
+        for key in list(kw.keys()):
+            if not kw[key]:
+                del kw[key]
         obj.write(kw)
-        return http.request.render('ghu_custom_mba.coursedetail', {
-            'root': '/campus/course',
-            'object': obj
-        })
+        return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
+    def review(self, obj, **kw):
+        kw = dict()
+        kw['state'] = 'new'
+        obj.write(kw)
+        return werkzeug.utils.redirect('/campus/my/courses')

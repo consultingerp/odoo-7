@@ -94,11 +94,20 @@ class GhuCourse(models.Model):
     
     states = [
         ('draft', 'Draft'), # Created by Lecturer but not finished configuration
-        ('new', 'New'), # Submitted by Lecturer but not finished formal and content check
+        ('new', 'In Review'), # Submitted by Lecturer but not finished formal and content check
         ('approved', 'Approved'), # Module is checked for content and formal, published
         ('declined', 'Declined'), # Module is checked but didn't met requirements
         ('outdated', 'Outdated'), # Module has to be revised
     ]
+
+    # PROCESS FIELDS
+    state = fields.Selection(
+        states,
+        'State', default='draft', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
+    )
+
+    def _stateLabel(self):
+        return dict(self._fields['state'].selection).get(self.state)
 
 
 class GhuAssessment(models.Model):

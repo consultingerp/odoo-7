@@ -1,51 +1,47 @@
 <odoo>
     <data noupdate="0">
         <template id="courselist">
-            <t t-call="website.layout">
-                <section class="bg-beta oe_custom_bg pb0 pt0">
-                    <div class="container">
-                        <div class="row s_nb_column_fixed">
-                            <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
-                            <h1 class="s_title_default" style="text-align: left; ">
-                                <font style="font-size: 62px;">My Modules</font>
-                            </h1>
-                            <p class="s_title_default pt0" style="text-align: left; ">
-                                <font style="font-size: 36px;">Manage and create modules</font>
-                            </p>
+            <t t-call="ghu_custom_mba.campus_layout">
+                <t t-set="title">
+                    My Modules
+                </t>
+                <t t-set="subtitle">
+                    Manage and create modules
+                </t>
+                <div class="row">
+                    <div class="col-4" t-foreach="objects" t-as="object">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i t-if="object.program_id.code == 'finance'" class="fas fa-landmark"></i>
+                                    <i t-elif="object.program_id.code == 'law'" class="fas fa-gavel"></i>
+                                    <i t-else="" class="fas fa-building"></i>
+                                    <a t-attf-href="#{ root }/#{ object.id }">
+                                        <t t-esc="object.display_name"/>
+                                    </a>
+                                </h5>
+                                <a t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">See details</a>
+                                <br/>
+                                <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mt-2">Edit module</a>
+                                <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mt-2">Submit for review</a>
+                                <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
                             </div>
                         </div>
                     </div>
-                </section>
-                <div id="wrap" class="container mt-5 mb-5">
-                    <div class="row">
-                        <div class="col-10 offset-1">
-                            <div class="row">
-                                <div class="col-4" t-foreach="objects" t-as="object">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <i t-if="object.program_id.code == 'finance'" class="fas fa-landmark"></i>
-                                                <i t-elif="object.program_id.code == 'law'" class="fas fa-gavel"></i>
-                                                <i t-else="" class="fas fa-building"></i>
-                                                <a t-attf-href="#{ root }/#{ object.id }">  
-                                                    <t t-esc="object.display_name"/>
-                                                </a>
-                                            </h5>
-                                            <a t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">See details</a><br/>
-                                            <a t-if="author == 'true'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mt-2">Edit module</a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-4">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="btn btn-primary" t-attf-href="#{ root }/new">
+                                        <i class="fas fa-plus"></i>  Create new module
+                                    </a>
+                                </h5>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </t>
-        </template>
-        <template id="ghu_my_modules_link" name="Link to advisors courses" inherit_id="portal.frontend_layout">
-            <xpath expr="//a[@id='o_logout']" position="before">
-                <a href="/campus/my/courses" role="menuitem" class="dropdown-item">My modules</a>
-            </xpath>
         </template>
     </data>
 </odoo>
