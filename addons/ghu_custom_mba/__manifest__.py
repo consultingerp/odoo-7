@@ -31,6 +31,7 @@
         'views/documents/list.xml',
         'views/common/layout.xml',
         'views/common/vue_assets.xml',
+        'views/common/intro_assets.xml',
         'views/config/res_config_settings.xml',
     ],
     # only loaded in demonstration mode

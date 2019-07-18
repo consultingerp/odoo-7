@@ -29,14 +29,13 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card mt-3">
+                        <div class="card mt-3" data-intro='Create your first module via a click on the button. Have a nice day.'>
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <a class="btn btn-primary" t-attf-href="#{ root }/new">
                                         <i class="fas fa-plus"></i>  Create new module
                                     </a>
                                 </h5>
-                                
                             </div>
                         </div>
                     </div>

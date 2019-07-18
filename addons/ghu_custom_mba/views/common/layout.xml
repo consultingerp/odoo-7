@@ -28,10 +28,10 @@
                 <div id="wrap" class="container mt-5 mb-5">
                     <div class="row">
                         <div class="col-3">
-                                <p><b>GHU Campus</b></p>
-                                <ul class="list-unstyled">
-                                    <li><a class="w-100 btn btn-primary" href="/campus/my/courses">My Modules</a></li>
-                                    <li><a class="w-100 mt-2 btn btn-primary" href="/campus/documents">Documents</a></li>
+                                <p><b data-intro='Hi! This will be a short tour through GHU Campus.'>GHU Campus</b></p>
+                                <ul data-intro='This is the menu, you can navigate here through the main sections of Campus.' class="list-unstyled">
+                                    <li><a class="w-100 btn btn-primary" data-intro='The page where you can organize your modules for Custom MBA.' href="/campus/my/courses">My Modules</a></li>
+                                    <li><a class="w-100 mt-2 btn btn-primary" data-intro='All documents for you are available here.' href="/campus/documents">Documents</a></li>
                                 </ul>
                         </div>
                         <div class="col-9">
@@ -39,6 +39,13 @@
                         </div>
                     </div>
                 </div>
+                <t t-call-assets="ghu_custom_mba.assets_intro"></t>
+                <script>
+                    if (!window.localStorage.getItem('introDone')){
+                        introJs().start();
+                        window.localStorage.setItem('introDone', '1');
+                    }
+                </script>
             </t>
         </template>
     </data>
