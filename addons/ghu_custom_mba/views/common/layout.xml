@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <template id="ghu_campus_link" name="Link to GHU Campus" inherit_id="portal.frontend_layout">
+            <xpath expr="//a[@id='o_logout']" position="before">
+                <a href="/campus/documents" role="menuitem" class="dropdown-item">GHU Campus</a>
+            </xpath>
+        </template>
+        <template id="campus_layout">
+            <t t-call="website.layout">
+                <section class="bg-beta oe_custom_bg pb0 pt0">
+                    <div class="container">
+                        <div class="row s_nb_column_fixed">
+                            <div class="col-lg-12 s_title pt16 pb16" style="text-align: center;">
+                                <h1 class="s_title_default" style="text-align: left; ">
+                                    <font style="font-size: 62px;">
+                                        <t t-esc="title"/>
+                                    </font>
+                                </h1>
+                                <p t-if="subtitle" class="s_title_default pt0" style="text-align: left; ">
+                                    <font style="font-size: 36px;">
+                                        <t t-esc="subtitle"/>
+                                    </font>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div id="wrap" class="container mt-5 mb-5">
+                    <div class="row">
+                        <div class="col-3">
+                                <p><b data-intro='Hi! This will be a short tour through GHU Campus.'>GHU Campus</b></p>
+                                <ul data-intro='This is the menu, you can navigate here through the main sections of Campus.' class="list-unstyled">
+                                    <li><a class="w-100 btn btn-primary" data-intro='The page where you can organize your modules for Custom MBA.' href="/campus/my/courses">My Modules</a></li>
+                                    <li><a class="w-100 mt-2 btn btn-primary" data-intro='All documents for you are available here.' href="/campus/documents">Documents</a></li>
+                                </ul>
+                        </div>
+                        <div class="col-9">
+                            <t t-raw="0"/>
+                        </div>
+                    </div>
+                </div>
+                <t t-call-assets="ghu_custom_mba.assets_intro"></t>
+                <script>
+                    if (!window.localStorage.getItem('introDone')){
+                        introJs().start();
+                        window.localStorage.setItem('introDone', '1');
+                    }
+                </script>
+            </t>
+        </template>
+    </data>
+</odoo>

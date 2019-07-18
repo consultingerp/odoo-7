@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_vue" name="Vue.js Assets">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="http://www.jsdelivr.com/projects/intro.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
+    </template>
+</odoo>
