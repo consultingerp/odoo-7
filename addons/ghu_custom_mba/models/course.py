@@ -95,6 +95,8 @@ class GhuCourse(models.Model):
     states = [
         ('draft', 'Draft'), # Created by Lecturer but not finished configuration
         ('new', 'In Review'), # Submitted by Lecturer but not finished formal and content check
+        ('script_approved', 'Script Approved, Recording needed'), # Script is fine and can be recorded
+        ('recording_finished', 'Recording In Review'), # Recording is checked
         ('approved', 'Approved'), # Module is checked for content and formal, published
         ('declined', 'Declined'), # Module is checked but didn't met requirements
         ('outdated', 'Outdated'), # Module has to be revised
@@ -106,9 +108,31 @@ class GhuCourse(models.Model):
         'State', default='draft', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
 
+    @api.multi
+    def write(self, values):
+        if 'state' in values:
+            states = [k for k, v in self.states]
+            self.on_state_change(values['state'])
+
+        super(GhuCourse, self).write(values)
+
     def _stateLabel(self):
         return dict(self._fields['state'].selection).get(self.state)
 
+    def on_state_change(self, new_state):
+        # generate invoice
+        if new_state == 'new':
+            print(new_state) # Send mail to office and helmar to have a look
+        elif new_state == 'script_approved':
+            print(new_state) # Create Panopto folder for course, add access rights for Lecturer and notify advisor
+        elif new_state == 'recording_finished':
+            print(new_state) # Notify office to check video recording
+        elif new_state == 'approved':
+            print(new_state) # Publish course on campus, notify Lecturer
+        elif new_state == 'declined':
+            print(new_state) # Notify lecturer of reason why he was declined
+        elif new_state == 'outdated':
+            print(new_state) # Remove course from campus, notifiy lecturer to refactor
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'

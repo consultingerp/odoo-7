@@ -1,8 +1,8 @@
 <odoo>
-  <data>
+  <data noupdate="0">
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="ghu_custom_mba.list">
-      <field name="name">ghu_custom_mba list</field>
+      <field name="name">Courses</field>
       <field name="model">ghu_custom_mba.course</field>
       <field name="arch" type="xml">
         <tree>
@@ -13,11 +13,85 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="ghu_custom_mba.course_form">
+      <field name="name">Course</field>
+      <field name="model">ghu_custom_mba.course</field>
+      <field name="arch" type="xml">
+        <form modifiers="{}">
+          <sheet string="Course" modifiers="{}">
+            <group col="4" modifiers="{}">
+              <field name="name" modifiers="{'required':true}"/>
+              <field name="long_name" modifiers="{'required':true}"/>
+              <newline modifiers="{}"/>
+              <field name="description" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="aims" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="knowledge" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="skills" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="syllabus" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="strategies" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="assessment_ids" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="shortcode" modifiers="{}"/>
+              <field name="language" can_create="true" can_write="true" modifiers="{'required':true}"/>
+              <field name="program_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="script_file" widget="binary"  filename="script_file_filename"/>
+              <field name="script_file_filename" invisible="1"/>
+              <field name="author_id" can_create="true" can_write="true" modifiers="{}"/>
+              <field name="panopto_id" modifiers="{}"/>
+              <field name="creditpoints" modifiers="{}"/>
+              <field name="formal_check_done" modifiers="{}"/>
+              <field name="formal_check" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="formal_reason" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="content_check_done" modifiers="{}"/>
+              <field name="content_check" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="content_reason" colspan="4" modifiers="{}"/>
+              <newline modifiers="{}"/>
+              <field name="state" modifiers="{'required':true}"/>
+              <separator modifiers="{}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    
+
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="ghu_custom_mba.action_window">
       <field name="name">ghu_custom_mba window</field>
       <field name="res_model">ghu_custom_mba.course</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
       <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_form">
+      <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
+      <field name="sequence" eval="20"/>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="ghu_custom_mba.course_form"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_tree">
+      <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
+      <field name="sequence" eval="10"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="ghu_custom_mba.list"/>
     </record>
 
     <!-- server action to the one above -->
@@ -40,9 +114,7 @@
     <!-- menu categories -->
     <menuitem name="Custom MBA" id="ghu_custom_mba.menu_1" parent="ghu.menu_ghu"/>
     <!-- actions -->
-    <menuitem name="List" id="ghu_custom_mba.menu_1_list" parent="ghu_custom_mba.menu_1"
+    <menuitem name="Courses" id="ghu_custom_mba.menu_1_list" parent="ghu_custom_mba.menu_1"
               action="ghu_custom_mba.action_window"/>
-    <menuitem name="Server to list" id="ghu_custom_mba" parent="ghu_custom_mba.menu_1"
-              action="ghu_custom_mba.action_server"/>
   </data>
 </odoo>
