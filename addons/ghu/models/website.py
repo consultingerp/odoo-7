@@ -11,4 +11,4 @@ class Website(models.Model):
     def _default_social_researchgate(self):
         return self.env.ref('base.main_company').social_researchgate
 
-    social_researchgate = fields.Char('Twitter Account', default=_default_social_researchgate)
+    social_researchgate = fields.Char('Researchgate Account', default=_default_social_researchgate)

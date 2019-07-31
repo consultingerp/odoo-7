@@ -110,7 +110,6 @@
                         <notebook colspan="4">
                             <page name="personal_information" string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
-                                    <field name="partner_id" readonly="1">Partner</field>
                                     <field name="advisor_id" required="1"/>
                                     <field name="is_cafeteria"/>
                                     <field name="nomination"/>

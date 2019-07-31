@@ -16,8 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.40',
-
+    'version': '0.42',
     # any module necessary for this one to work correctly
     'depends': [
         'base',
@@ -59,7 +58,6 @@
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
-        'views/campus_templates.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
