@@ -22,14 +22,12 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/my/courses/', auth='user', website=True)
     def listMyCourses(self, **kw):
-        user = request.env['res.users'].sudo().search([('id', '=', http.request.env.context.get('uid'))], limit=1)
-        if user:
-            partner_id = user.partner_id.id
+        if request.user.partner_id.is_custom_mba:
+            partner_id = request.user.partner_id
             advisor = request.env['ghu.advisor'].sudo().search([('partner_id','=',partner_id)], limit=1)
-            if advisor:
-                advisor_id = advisor.id
-            else:
-                return http.request.not_found()
+            advisor_id = advisor.id
+        else:
+            return http.request.not_found()
         return http.request.render('ghu_custom_mba.courselist', {
             'root': '/campus/course',
             'author': 'true',

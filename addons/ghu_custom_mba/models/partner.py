@@ -19,7 +19,6 @@ class GhuPartner(models.Model):
         compute='_is_custom_mba'
     )
 
-    @api.multi
     def _is_advisor(self):
         for record in self:
             if self.env['ghu.advisor'].sudo().search([('partner_id', '=', record.id)]):
@@ -27,7 +26,6 @@ class GhuPartner(models.Model):
             else:
                 record.is_advisor = False
 
-    @api.multi
     def _is_custom_mba(self):
         for record in self:
             if (record._is_advisor()):
