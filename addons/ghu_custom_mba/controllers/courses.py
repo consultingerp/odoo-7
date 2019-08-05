@@ -36,7 +36,6 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
     def detail(self, obj, **kw):
-        _logger.info(request.env['res.users'].sudo().search([('id', '=', http.request.env.context.get('uid'))])[0].partner_id.id)
         return http.request.render('ghu_custom_mba.coursedetail', {
             'root': '/campus/course',
             'object': obj,

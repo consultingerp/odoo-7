@@ -15,7 +15,6 @@ class GhuCampus(CustomerPortal):
     @http.route('/campus/documents/', type='http', auth='user', methods=['GET'], website=True)
     def show_document_list(self, **kwargs):
         partner = request.env.user.partner_id
-        
         values = self._prepare_portal_layout_values()
         
         if partner.is_advisor or request.env.user.has_group('base.group_user'):
