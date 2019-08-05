@@ -19,7 +19,7 @@
     'version': '0.11',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'ghu'],
+    'depends': ['base', 'ghu', 'documents'],
 
     # always loaded
     'data': [
