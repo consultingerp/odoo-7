@@ -28,7 +28,7 @@ class GhuPartner(models.Model):
 
     def _is_custom_mba(self):
         for record in self:
-            if (record._is_advisor()):
+            if record.is_advisor:
                 advisor = self.env['ghu.advisor'].sudo().search(
                     [('partner_id', '=', record.id)], limit=1)
                 if advisor.is_cafeteria:

@@ -23,7 +23,7 @@ class GhuCustomMba(http.Controller):
     @http.route('/campus/my/courses/', auth='user', website=True)
     def listMyCourses(self, **kw):
         if request.env.user.partner_id.is_custom_mba:
-            partner_id = request.env.user.partner_id
+            partner_id = request.env.user.partner_id.id
             advisor = request.env['ghu.advisor'].sudo().search([('partner_id','=',partner_id)], limit=1)
             advisor_id = advisor.id
         else:
