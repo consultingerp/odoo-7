@@ -2,3 +2,4 @@
 
 from . import course
 from . import res_config_settings
+from . import partner
