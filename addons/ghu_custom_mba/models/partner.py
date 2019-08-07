@@ -31,7 +31,7 @@ class GhuPartner(models.Model):
     def _search_advisor(self, operator, value):
         recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.partner_id )
         if recs:
-            return [('id', 'in', [x.partner_id for x in recs])]
+            return [('id', 'in', [x.partner_id.id for x in recs])]
 
     def _is_custom_mba(self):
         for record in self:
@@ -46,4 +46,4 @@ class GhuPartner(models.Model):
     def _search_custom_mba(self, operator, value):
         recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.is_cafeteria is True )
         if recs:
-            return [('id', 'in', [x.partner_id for x in recs])]
+            return [('id', 'in', [x.partner_id.id for x in recs])]
