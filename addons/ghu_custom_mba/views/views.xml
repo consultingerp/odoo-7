@@ -19,19 +19,7 @@
       <field name="arch" type="xml">
         <kanban class="o_res_course_kanban" default_group_by="state">
           <field name="state"/>
-          <templates>
-            <t t-name="kanban-box">
-              <div t-attf-class="oe_kanban_global_click o_res_course_kanban">
-                <div class="oe_kanban_details">
-                  <h4>
-                    <a type="open">
-                      <field name="name"/>
-                    </a>
-                  </h4>
-                </div>
-              </div>
-            </t>
-          </templates>
+          <field name="name"/>
         </kanban>
       </field>
     </record>
