@@ -103,7 +103,8 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
-        kw = dict()
-        kw['state'] = 'new'
-        obj.write(kw)
-        return werkzeug.utils.redirect('/campus/my/courses')
+        if obj.readyForReview():
+            kw = dict()
+            kw['state'] = 'new'
+            obj.write(kw)
+            return werkzeug.utils.redirect('/campus/my/courses')
