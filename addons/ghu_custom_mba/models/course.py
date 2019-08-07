@@ -21,17 +21,14 @@ class GhuCourse(models.Model):
         string=u'Knowledge',
     )
 
-    
     skills = fields.Html(
         string=u'Skills',
     )
-    
-    
+        
     syllabus = fields.Html(
         string=u'Syllabus',
     )
 
-    
     strategies = fields.Html(
         string=u'Learning, Teaching and Assessment Strategies',
     )
@@ -70,8 +67,6 @@ class GhuCourse(models.Model):
 
     creditpoints = fields.Char('Creditpoints Description', size=256, required=False)
 
-    
-
     # Workflow specifics
     formal_check_done = fields.Boolean(
         string=u'Formal check done?',
@@ -107,6 +102,27 @@ class GhuCourse(models.Model):
         states,
         'State', default='draft', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
+
+    required_review_fields = [
+            'name',
+            'aims',
+            'knowledge',
+            'skills',
+            'syllabus',
+            'strategies',
+            'language',
+            'program_id',
+            'script_file',
+        ]
+
+    @api.multi
+    def readyForReview(self):
+        for record in self:
+            for k in self.required_review_fields:
+                if not record[k]:
+                    return False
+        return True
+
 
     @api.multi
     def write(self, values):
