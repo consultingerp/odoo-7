@@ -94,7 +94,7 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="ghu_custom_mba.action_window">
-      <field name="name">ghu_custom_mba window</field>
+      <field name="name">Custom MBA courses</field>
       <field name="res_model">ghu_custom_mba.course</field>
       <field name="type">ir.actions.act_window</field>
       <field name="view_type">form</field>
