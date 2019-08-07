@@ -20,6 +20,16 @@
         <kanban class="o_res_course_kanban" default_group_by="state">
           <field name="state"/>
           <field name="name"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div>
+                <ul>
+                  <li t-if="record.name.raw_value">Course Title: <field name="name"/>
+                  </li>
+                </ul>
+              </div>
+            </t>
+          </templates>
         </kanban>
       </field>
     </record>
@@ -106,9 +116,9 @@
     </record>
     <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_kanban">
       <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
-      <field name="sequence" eval="10"/>
+      <field name="sequence" eval="5"/>
       <field name="view_mode">kanban</field>
-      <field name="view_id" ref="ghu_custom_mba.list"/>
+      <field name="view_id" ref="ghu_custom_mba.kanban"/>
     </record>
 
     <!-- server action to the one above -->
