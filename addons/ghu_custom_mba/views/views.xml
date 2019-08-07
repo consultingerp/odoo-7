@@ -22,11 +22,14 @@
           <field name="name"/>
           <templates>
             <t t-name="kanban-box">
-              <div>
-                <ul>
-                  <li t-if="record.name.raw_value">Course Title: <field name="name"/>
-                  </li>
-                </ul>
+              <div t-attf-class="oe_kanban_global_click o_res_application_kanban">
+                <div class="oe_kanban_details">
+                  <h4>
+                    <a type="open">
+                      <field name="name"/>
+                    </a>
+                  </h4>
+                </div>
               </div>
             </t>
           </templates>
