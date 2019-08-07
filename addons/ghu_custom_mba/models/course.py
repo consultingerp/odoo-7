@@ -102,6 +102,9 @@ class GhuCourse(models.Model):
         states,
         'State', default='draft', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
+    @api.model
+    def _read_group_stage_ids(self, stages, domain, order):
+        return [k for k, v in self.states]
 
     required_review_fields = [
             'name',
