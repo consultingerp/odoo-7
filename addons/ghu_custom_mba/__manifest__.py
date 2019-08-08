@@ -33,6 +33,7 @@
         'views/common/vue_assets.xml',
         'views/common/intro_assets.xml',
         'views/config/res_config_settings.xml',
+        'views/mails/workflow/review-needed.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [
