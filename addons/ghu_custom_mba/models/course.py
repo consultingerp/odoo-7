@@ -165,7 +165,7 @@ class GhuCourse(models.Model):
             print(new_state) # Remove course from campus, notifiy lecturer to refactor
 
     def reviewNeeded(self):
-        notification_template = self.env.ref('ghu_custom_mba.review_needed_mail')
+        notification_template = self.env.sudo().ref('ghu_custom_mba.review_needed_mail')
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
 
