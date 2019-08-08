@@ -1,5 +1,5 @@
 from odoo import api, fields, models, tools
-
+from odoo.exceptions import ValidationError
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'
@@ -137,17 +137,23 @@ class GhuCourse(models.Model):
     def write(self, values):
         if 'state' in values:
             states = [k for k, v in self.states]
-            self.on_state_change(values['state'])
+            if abs(states.index(self.state) - states.index(values['state'])) > 1:
+                raise ValidationError(_('You\'re not allowed to skip stages in this kanban!'))
 
         super(GhuCourse, self).write(values)
+
+        if 'state' in values:
+            self.on_state_change(values['state'])
 
     def _stateLabel(self):
         return dict(self._fields['state'].selection).get(self.state)
 
     def on_state_change(self, new_state):
         # generate invoice
+        if new_state == 'draft':
+            print(new_state) # Send mail to advisor to review
         if new_state == 'new':
-            print(new_state) # Send mail to office and helmar to have a look
+            self.reviewNeeded() # Send mail to office and helmar to have a look
         elif new_state == 'script_approved':
             print(new_state) # Create Panopto folder for course, add access rights for Lecturer and notify advisor
         elif new_state == 'recording_finished':
@@ -158,6 +164,11 @@ class GhuCourse(models.Model):
             print(new_state) # Notify lecturer of reason why he was declined
         elif new_state == 'outdated':
             print(new_state) # Remove course from campus, notifiy lecturer to refactor
+
+    def reviewNeeded(self):
+        notification_template = self.env.ref('ghu_custom_mba.review_needed_mail')
+        notification_template.send_mail(self.id, raise_exception=False, force_send=False)
+        return True
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'

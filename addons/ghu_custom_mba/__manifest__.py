@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.14',
+    'version': '0.15',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'ghu', 'documents'],
@@ -33,6 +33,7 @@
         'views/common/vue_assets.xml',
         'views/common/intro_assets.xml',
         'views/config/res_config_settings.xml',
+        'views/mails/workflow/review-needed.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [
