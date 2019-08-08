@@ -139,11 +139,10 @@ class GhuCourse(models.Model):
             states = [k for k, v in self.states]
             if abs(states.index(self.state) - states.index(values['state'])) > 1:
                 raise ValidationError(_('You\'re not allowed to skip stages in this kanban!'))
-
+            self.on_state_change(values['state'])
         super(GhuCourse, self).write(values)
 
-        if 'state' in values:
-            self.on_state_change(values['state'])
+
 
     def _stateLabel(self):
         return dict(self._fields['state'].selection).get(self.state)

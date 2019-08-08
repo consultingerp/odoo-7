@@ -101,7 +101,7 @@ class GhuCustomMba(http.Controller):
         obj.write(kw)
         return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
 
-    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['POST'], auth='user', website=True)
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
         if obj.readyForReview():
             kw = dict()

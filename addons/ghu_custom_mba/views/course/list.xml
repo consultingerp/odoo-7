@@ -23,7 +23,7 @@
                                 <a t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">See details</a>
                                 <br/>
                                 <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mt-2">Edit course</a>
-                                <form t-if="author == 'true' and object.state =='draft' and object.readyForReview()" method="post" t-attf-action="#{ root }/#{ object.id }/review"><input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/><button type="submit" class="btn btn-primary mb-2 mt-2">Submit for review</button></form>
+                                <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mt-2">Submit for review</a>
                                 <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
                             </div>
                         </div>
