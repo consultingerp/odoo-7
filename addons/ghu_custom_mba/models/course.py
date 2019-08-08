@@ -125,7 +125,13 @@ class GhuCourse(models.Model):
                 if not record[k]:
                     return False
         return True
-
+    
+    @api.multi
+    def missingFieldsForReview(self):
+        for record in self:
+            missing_fields = [f for f in self.required_review_fields if not record[f]]
+            if missing_fields:
+                return [record._fields[f].string for f in missing_fields]
 
     @api.multi
     def write(self, values):
