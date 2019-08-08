@@ -107,4 +107,4 @@ class GhuCustomMba(http.Controller):
             kw = dict()
             kw['state'] = 'new'
             obj.write(kw)
-            return werkzeug.utils.redirect('/campus/my/courses')
+        return werkzeug.utils.redirect('/campus/my/courses')
