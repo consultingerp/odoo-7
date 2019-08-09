@@ -9,6 +9,6 @@ import werkzeug
 _logger = logging.getLogger(__name__)
 
 class GhuIdp(http.Controller):
-    @http.route('/campus/course/', auth='user')
+    @http.route('/saml/course/', auth='user')
     def index(self, **kw):
         return "Hello, world"
