@@ -1,0 +1,3 @@
+mako
+cherrypy>14.0.2
+pysaml2==4.8.0
