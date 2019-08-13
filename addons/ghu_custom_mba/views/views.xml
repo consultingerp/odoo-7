@@ -42,6 +42,11 @@
       <field name="model">ghu_custom_mba.course</field>
       <field name="arch" type="xml">
         <form modifiers="{}">
+          <header>
+            <button string="Approve" type="object" name="approved" attrs="{'invisible': [('state', '!=', 'new')]}"/>
+            <button string="Decline and send information" type="object" name="declined" attrs="{'invisible': [('state', '!=', 'new')]}"/>
+            <field name="state" widget="statusbar"/>
+          </header>
           <sheet string="Course" modifiers="{}">
             <group col="4" modifiers="{}">
               <field name="name" modifiers="{'required':true}"/>
