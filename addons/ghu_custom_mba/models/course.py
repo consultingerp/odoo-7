@@ -142,6 +142,14 @@ class GhuCourse(models.Model):
             self.on_state_change(values['state'])
         super(GhuCourse, self).write(values)
 
+    @api.one
+    def approved(self, record):
+        self.write({'state' : 'script_approved'})
+
+    @api.one
+    def declined(self, record):
+        self.write({'state' : 'draft'})
+
 
 
     def _stateLabel(self):
@@ -150,11 +158,13 @@ class GhuCourse(models.Model):
     def on_state_change(self, new_state):
         # generate invoice
         if new_state == 'draft':
-            print(new_state) # Send mail to advisor to review
+            if self.state == 'new':
+                self.correctionNeeded() # Send mail to advisor to review
         if new_state == 'new':
             self.reviewNeeded() # Send mail to office and helmar to have a look
         elif new_state == 'script_approved':
-            print(new_state) # Create Panopto folder for course, add access rights for Lecturer and notify advisor
+            if self.state == 'new':
+                self.scriptApproved() # Create Panopto folder for course, add access rights for Lecturer and notify advisor
         elif new_state == 'recording_finished':
             print(new_state) # Notify office to check video recording
         elif new_state == 'approved':
@@ -166,6 +176,16 @@ class GhuCourse(models.Model):
 
     def reviewNeeded(self):
         notification_template = self.env.ref('ghu_custom_mba.review_needed_mail').sudo()
+        notification_template.send_mail(self.id, raise_exception=False, force_send=False)
+        return True
+    
+    def correctionNeeded(self):
+        notification_template = self.env.ref('ghu_custom_mba.correction_needed_mail').sudo()
+        notification_template.send_mail(self.id, raise_exception=False, force_send=False)
+        return True
+
+    def scriptApproved(self):
+        notification_template = self.env.ref('ghu_custom_mba.script_approved_mail').sudo()
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
 
