@@ -193,10 +193,11 @@ class GhuCourse(models.Model):
     def createPanoptoFolder(self):
         panopto = GhuPanopto(self.env)
         mainFolder = panopto.createFolder(self.name, self.id)
-        scriptFolder = panopto.createFolder("Lectures", self.id+"-lectures", False, mainFolder)
-        additionalFolder = panopto.createFolder("Additional Information", self.id+"-additional", False, mainFolder)
+        scriptFolder = panopto.createFolder("Lectures", str(self.id)+"-lectures", False, mainFolder)
+        additionalFolder = panopto.createFolder("Additional Information", str(self.id)+"-additional", False, mainFolder)
         self.write({'panopto_id' : mainFolder})
-        panoptoUserId = panopto.getUserId(self.author_id.partner_id.user_id)
+        user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
+        panoptoUserId = panopto.getUserId(user)
         panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
 
 
