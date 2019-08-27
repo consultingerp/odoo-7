@@ -3,14 +3,14 @@
 DUMP_FILE=${1:-ghuedu-master-306626.dump.zip}
 SSH_LOGIN=306626@ghuedu.odoo.com
 
-# ./fetch-enterprise.sh ${SSH_LOGIN}
+./fetch-enterprise.sh ${SSH_LOGIN}
 
-# echo "############################################################"
-# echo "Reset containers and restore dump at ${DUMP_FILE}..."
-# echo "############################################################"
+echo "############################################################"
+echo "Reset containers and restore dump at ${DUMP_FILE}..."
+echo "############################################################"
 
-# docker-compose down -v
-# docker-compose build
+docker-compose down -v
+docker-compose build
 docker-compose up -d
 sleep 20
 
