@@ -19,3 +19,18 @@ class ResConfigSettings(models.TransientModel):
         string='General Information for custom MBA lecturers',
         config_parameter='ghu.documents_custom_mba'
     )
+
+    ghu_panopto_user = fields.Char(
+        string='Panopto Username',
+        config_parameter='ghu.panopto_user'
+    )
+
+    ghu_panopto_password = fields.Char(
+        string='Panopto Password',
+        config_parameter='ghu.panopto_password'
+    )
+
+    ghu_panopto_server = fields.Char(
+        string='Panopto Server',
+        config_parameter='ghu.panopto_server'
+    )

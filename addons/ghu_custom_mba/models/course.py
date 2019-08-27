@@ -1,5 +1,6 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
+from .panopto import GhuPanopto
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'
@@ -188,6 +189,16 @@ class GhuCourse(models.Model):
         notification_template = self.env.ref('ghu_custom_mba.script_approved_mail').sudo()
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
+
+    def createPanoptoFolder(self):
+        panopto = GhuPanopto(self.env)
+        mainFolder = panopto.createFolder(self.name, self.id)
+        scriptFolder = panopto.createFolder("Lectures", self.id+"-lectures", False, mainFolder)
+        additionalFolder = panopto.createFolder("Additional Information", self.id+"-additional", False, mainFolder)
+        self.write({'panopto_id' : mainFolder})
+        panoptoUserId = panopto.getUserId(self.author_id.partner_id.user_id)
+        panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'

@@ -31,6 +31,30 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panopto Username" for="ghu_panopto_user"/>
+                                                <field name="ghu_panopto_user"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panoptop Password" for="ghu_panopto_password"/>
+                                                <field name="ghu_panopto_password"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panoptop Server" for="ghu_panopto_server"/>
+                                                <field name="ghu_panopto_server"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
