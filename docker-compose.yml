@@ -11,9 +11,10 @@ services:
     ports:
       - "8069:8069"
     volumes:
-      - ./addons:/mnt/extra-addons
+      - ./enterprise/odoo:/mnt/odoo
       - ./enterprise/addons:/mnt/enterprise-addons
       - ./enterprise/themes:/mnt/enterprise-themes
+      - ./addons:/mnt/extra-addons
       - odoo-web-data:/var/lib/odoo
     networks:
       - db
