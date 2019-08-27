@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="0">
+        <template id="courselist">
+            <t t-call="ghu_custom_mba.campus_layout">
+                <t t-set="title">
+                    My video folder
+                </t>
+                <t t-set="subtitle">
+                    Manage private videos
+                </t>
+
+                <form type="post" t-attf-action="#{params.launch_url}">
+                    <t t-foreach="params" t-as="param">
+                        <input type="hidden" t-attf-name="{{ param }}" t-attf-value="{{ param_value }}" />
+                    </t>
+                </form>
+            </t>
+        </template>
+    </data>
+</odoo>

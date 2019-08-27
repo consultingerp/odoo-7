@@ -1,6 +1,5 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
-from .panopto import GhuPanopto
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'

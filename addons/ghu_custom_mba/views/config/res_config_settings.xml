@@ -42,7 +42,7 @@
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <div class="col-12">
-                                                <label class="o_light_label" string="Panoptop Password" for="ghu_panopto_password"/>
+                                                <label class="o_light_label" string="Panopto Password" for="ghu_panopto_password"/>
                                                 <field name="ghu_panopto_password"/>
                                             </div>
                                         </div>
@@ -50,8 +50,32 @@
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <div class="col-12">
-                                                <label class="o_light_label" string="Panoptop Server" for="ghu_panopto_server"/>
+                                                <label class="o_light_label" string="Panopto Server" for="ghu_panopto_server"/>
                                                 <field name="ghu_panopto_server"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panopto BLTI Consumer Key" for="ghu_panopto_blti_consumer_key"/>
+                                                <field name="ghu_panopto_blti_consumer_key"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panoptop BLTI Consumer Secret" for="ghu_panopto_blti_consumer_secret"/>
+                                                <field name="ghu_panopto_blti_consumer_secret"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Panoptop BLTI Launch URL" for="ghu_panopto_blti_launch_url"/>
+                                                <field name="ghu_panopto_blti_launch_url"/>
                                             </div>
                                         </div>
                                     </div>

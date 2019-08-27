@@ -34,3 +34,18 @@ class ResConfigSettings(models.TransientModel):
         string='Panopto Server',
         config_parameter='ghu.panopto_server'
     )
+
+    ghu_panopto_blti_consumer_key = fields.Char(
+        string='Panopto BLTI Consumer Key',
+        config_parameter='ghu.panopto_blti_consumer_key'
+    )
+
+    ghu_panopto_blti_consumer_secret = fields.Char(
+        string='Panopto BLTI Consumer Secret',
+        config_parameter='ghu.panopto_blti_consumer_secret'
+    )
+
+    ghu_panopto_blti_launch_url = fields.Char(
+        string='Panopto BLTI Launch URL',
+        config_parameter='ghu.panopto_blti_launch_url'
+    )
