@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="courselist">
+        <template id="myvideos">
             <t t-call="ghu_custom_mba.campus_layout">
                 <t t-set="title">
                     My video folder
@@ -9,8 +9,8 @@
                     Manage private videos
                 </t>
 
-                <form type="post" t-attf-action="#{params.launch_url}">
-                    <t t-foreach="params" t-as="param">
+                <form type="post" t-attf-action="#{bltiParams.launch_url}">
+                    <t t-foreach="bltiParams" t-as="param">
                         <input type="hidden" t-attf-name="{{ param }}" t-attf-value="{{ param_value }}" />
                     </t>
                 </form>
