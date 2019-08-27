@@ -5,7 +5,6 @@ import logging
 import json
 import base64
 import werkzeug
-from blti import GhuBlti
 
 _logger = logging.getLogger(__name__)
 
