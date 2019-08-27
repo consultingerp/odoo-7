@@ -30,7 +30,7 @@
                         <div class="col-3">
                                 <p><b data-intro='Hi! This will be a short tour through GHU Campus.'>GHU Campus</b></p>
                                 <ul data-intro='This is the menu, you can navigate here through the main sections of Campus.' class="list-unstyled">
-                                    <li><a class="w-100 btn btn-primary" data-intro='The page where you can organize your modules for Custom MBA.' href="/campus/my/courses">My Modules</a></li>
+                                    <li t-if="request.env.user.partner_id.is_custom_mba"><a class="w-100 btn btn-primary" data-intro='The page where you can organize your modules for Custom MBA.' href="/campus/my/courses">My courses</a></li>
                                     <li><a class="w-100 mt-2 btn btn-primary" data-intro='All documents for you are available here.' href="/campus/documents">Documents</a></li>
                                 </ul>
                         </div>

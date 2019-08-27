@@ -16,16 +16,14 @@ class GhuCampus(CustomerPortal):
     def show_document_list(self, **kwargs):
         partner = request.env.user.partner_id
         values = self._prepare_portal_layout_values()
-        advisor = False
-        if request.env['ghu.advisor'].sudo().search([('partner_id', '=', partner.id)]):
-            advisor = True
-        if advisor:
+        
+        if partner.is_advisor or request.env.user.has_group('base.group_user'):
             folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_advisor'))
             folder = request.env['documents.folder'].sudo().browse(folder_id)
             values['advisor_documents'] = folder.attachment_ids
             for attachment in values['advisor_documents']:
                 attachment.generate_access_token()
-        if advisor and request.env['ghu.advisor'].sudo().search([('partner_id', '=', partner.id)], limit=1).is_cafeteria:
+        if partner.is_custom_mba or request.env.user.has_group('base.group_user'):
             folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_custom_mba'))
             folder = request.env['documents.folder'].sudo().browse(folder_id)
             values['custom_mba_documents'] = folder.attachment_ids
