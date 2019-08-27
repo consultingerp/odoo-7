@@ -220,3 +220,8 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+addons/theme_ghu_campus
+
+*.sql.gz
+*.zip
