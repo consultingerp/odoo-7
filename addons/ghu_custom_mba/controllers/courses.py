@@ -75,8 +75,8 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
     def create(self, **kw):
-        partner_id = request.env['res.users'].sudo().search([('id', '=', http.request.env.context.get('uid'))])[0].partner_id.id
-        advisor_id = request.env['ghu.advisor'].sudo().search([('partner_id','=',partner_id)])[0].id
+        partner_id = request.env.user.partner_id.id
+        advisor_id = request.env['ghu.advisor'].sudo().search([('partner_id','=',partner_id)], limit=1).id
         kw['author_id'] = advisor_id
         kw['status'] = 'draft'
         for key in list(kw.keys()):
@@ -103,7 +103,8 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
-        kw = dict()
-        kw['state'] = 'new'
-        obj.write(kw)
+        if obj.readyForReview():
+            kw = dict()
+            kw['state'] = 'new'
+            obj.write(kw)
         return werkzeug.utils.redirect('/campus/my/courses')

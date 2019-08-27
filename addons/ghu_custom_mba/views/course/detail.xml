@@ -8,9 +8,19 @@
                 <t t-if="object.long_name" t-set="subtitle">
                     <t t-esc="object.long_name"/>
                 </t>
-                <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
+                <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
+                <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mb-2 mt-2">Edit course</a>
+                <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
+                <div t-if="not object.readyForReview()" class="alert alert-info">
+                    To submit a course for review you will have to finish it by filling in the following fields:<br/>
+                    <strong>
+                        <t t-foreach="object.missingFieldsForReview()" t-as="name">
+                            <t t-esc="name" /><t t-if="not name_last">,</t>
+                        </t>
+                    </strong>
+                </div>
                 <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 mb-2 disabled"><t t-esc="object.state"/></a>
-                <div class="accordion" id="courseAccordion">
+                <div class="accordion mb-2" id="courseAccordion">
                     <div class="card">
                         <div class="card-header" id="headingDescription">
                             <h5 class="mb-0">
@@ -101,6 +111,9 @@
                             </div>
                         </div>
                     </div>
+                    <p>
+                        <a t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true"><t t-esc="object.script_file_filename"></t></a>
+                    </p>
                 </div>
             </t>
         </template>
