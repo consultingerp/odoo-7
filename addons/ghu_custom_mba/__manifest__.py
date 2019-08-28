@@ -33,6 +33,7 @@
         'views/common/layout.xml',
         'views/common/vue_assets.xml',
         'views/common/intro_assets.xml',
+        'views/common/panopto_login.xml',
         'views/config/res_config_settings.xml',
         'views/mails/workflow/review-needed.xml',
         'views/mails/workflow/script-approved.xml',
