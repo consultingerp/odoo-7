@@ -17,11 +17,12 @@ class GhuCustomMbaAdvisor(models.Model):
         string=u'Video Checked',
     )
     
-    
+    @api.multi
     def createPanoptoFolder(self):
-        panopto = GhuPanopto(self.env)
-        panoptoFolder = panopto.createFolder(self.name, "advisor"+str(self.id))
-        user = self.env['res.users'].search([('partner_id','=',self.partner_id.id)], limit=1)
-        panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToFolder(panoptoFolder, panoptoUserId, 'Creator')
-        self.write({'panoptoFolder': panoptoFolder})
+        for record in self:
+            panopto = GhuPanopto(self.env)
+            panoptoFolder = panopto.createFolder(record.name, "advisor"+str(record.id))
+            user = self.env['res.users'].search([('partner_id','=',record.partner_id.id)], limit=1)
+            panoptoUserId = panopto.getUserId(user)
+            panopto.grantAccessToFolder(panoptoFolder, panoptoUserId, 'Creator')
+            record.write({'panoptoFolder': panoptoFolder})
