@@ -1,5 +1,6 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
+from ..util.panopto import GhuPanopto
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'
@@ -90,7 +91,7 @@ class GhuCourse(models.Model):
     states = [
         ('draft', 'Draft'), # Created by Lecturer but not finished configuration
         ('new', 'In Review'), # Submitted by Lecturer but not finished formal and content check
-        ('script_approved', 'Script Approved, Recording needed'), # Script is fine and can be recorded
+        ('script_approved', 'Recording in progress'), # Script is fine and can be recorded
         ('recording_finished', 'Recording In Review'), # Recording is checked
         ('approved', 'Approved'), # Module is checked for content and formal, published
         ('declined', 'Declined'), # Module is checked but didn't met requirements
@@ -126,6 +127,13 @@ class GhuCourse(models.Model):
                     return False
         return True
     
+    @api.multi
+    def readyForRecording(self):
+        for record in self:
+            if record.author_id.videoCheck and record.state == 'script_approved':  
+                return True
+        return False
+
     @api.multi
     def missingFieldsForReview(self):
         for record in self:
@@ -188,6 +196,17 @@ class GhuCourse(models.Model):
         notification_template = self.env.ref('ghu_custom_mba.script_approved_mail').sudo()
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
+
+    def createPanoptoFolder(self):
+        panopto = GhuPanopto(self.env)
+        mainFolder = panopto.createFolder(self.name, self.id)
+        scriptFolder = panopto.createFolder("Lectures", str(self.id)+"-lectures", False, mainFolder)
+        additionalFolder = panopto.createFolder("Additional Information", str(self.id)+"-additional", False, mainFolder)
+        self.write({'panopto_id' : mainFolder})
+        user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
+        panoptoUserId = panopto.getUserId(user)
+        panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'

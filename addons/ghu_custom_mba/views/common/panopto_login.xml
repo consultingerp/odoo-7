@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="0">
+        <template id="panopto_login">
+            <iframe height="0" style="border:0" width="0" border="0" id="FileFrame" src="about:blank"></iframe>
+            <script type="text/javascript">
+                var doc = document.getElementById('FileFrame').contentWindow.document;
+                doc.open();
+                doc.write('<html><head><title></title></head><body>');
+                doc.write('<form name="ltiLaunchForm" method="post" t-attf-action="#{bltiParams['launch_url']}">');
+                doc.write('<t t-foreach="bltiParams['launch_data']" t-as="param"><input type="hidden" t-attf-name="{{ param }}" t-attf-value="{{ param_value }}" /></t>');
+                doc.write('</form>');
+                doc.write('\x3Cscript language="javascript">');
+                doc.write('document.ltiLaunchForm.submit();');
+                doc.write('\x3C/script>');
+                doc.write('</body></html>');
+                doc.close();
+            </script>
+        </template>
+    </data>
+</odoo>
