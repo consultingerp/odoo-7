@@ -5,6 +5,7 @@ import logging
 import json
 import base64
 import werkzeug
+from .blti import GhuBlti
 
 _logger = logging.getLogger(__name__)
 
@@ -47,14 +48,14 @@ class GhuCustomMba(http.Controller):
     @http.route('/campus/my/video', methods=['GET'], auth='user', website=True)
     def video(self, **kw):
         blti = GhuBlti(
-            request.env['ir.config_parameter'].sudo().get_param(
+            
+        )
+        params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_consumer_key'),
             request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_consumer_secret'),
             request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_launch_url')
-        )
-        params = blti.createParams('private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
+                'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
         return http.request.render('ghu_custom_mba.myvideos', {
             'bltiParams': params
         })
