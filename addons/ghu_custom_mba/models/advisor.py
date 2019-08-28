@@ -9,9 +9,19 @@ _logger = logging.getLogger(__name__)
 class GhuCustomMbaAdvisor(models.Model):
     _inherit = 'ghu.advisor'
 
+    panoptoFolder = fields.Char(
+        string=u'Panopto Folder',
+    )
+
+    videoCheck = fields.Boolean(
+        string=u'Video Checked',
+    )
+    
+    
     def createPanoptoFolder(self):
         panopto = GhuPanopto(self.env)
-        self.panoptoFolder = panopto.createFolder(self.name, "advisor"+str(self.id))
+        panoptoFolder = panopto.createFolder(self.name, "advisor"+str(self.id))
         user = self.env['res.users'].search([('partner_id','=',self.partner_id.id)], limit=1)
         panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToFolder(self.panoptoFolder, panoptoUserId, 'Creator')
+        panopto.grantAccessToFolder(panoptoFolder, panoptoUserId, 'Creator')
+        self.write({'panoptoFolder': panoptoFolder})

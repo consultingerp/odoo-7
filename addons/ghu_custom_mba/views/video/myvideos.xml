@@ -3,12 +3,18 @@
         <template id="myvideos">
             <t t-call="ghu_custom_mba.campus_layout">
                 <t t-set="title">
-                    My video folder
+                    My video presentation
                 </t>
                 <t t-set="subtitle">
-                    Manage private videos
+                    Manage my public video presentation
                 </t>
                 <t t-call="ghu_custom_mba.panopto_login" />
+                <>
+                <iframe id="panopto" width="100%" height="900" frameborder="0"></iframe>
+                <script>
+                    setTimeout(function(){
+                        $('#panopto').attr('src', 'https://ghu.hosted.panopto.com/Panopto/Pages/EmbeddedList.aspx?embedded=1&amp;folderID=<t t-esc="advisor.panoptoFolder"/>')}, 1500); 
+                </script>
             </t>
         </template>
     </data>

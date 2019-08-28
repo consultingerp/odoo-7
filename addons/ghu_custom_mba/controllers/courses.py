@@ -47,17 +47,19 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/my/video', methods=['GET'], auth='user', website=True)
     def video(self, **kw):
-        blti = GhuBlti(
-            
-        )
+        blti = GhuBlti()
         params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_consumer_key'),
             request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_consumer_secret'),
             request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
+        partner_id = request.env.user.partner_id.id
+        advisor = request.env['ghu.advisor'].sudo().search(
+            [('partner_id', '=', partner_id)], limit=1)
         return http.request.render('ghu_custom_mba.myvideos', {
-            'bltiParams': params
+            'bltiParams': params,
+            'advisor': advisor
         })
 
     @http.route('/campus/course/new', methods=['GET'], auth='user', website=True)

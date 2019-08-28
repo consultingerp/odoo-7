@@ -19,7 +19,6 @@
                         </t>
                     </strong>
                 </div>
-                <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 mb-2 disabled"><t t-esc="object.state"/></a>
                 <div class="accordion mb-2" id="courseAccordion">
                     <div class="card">
                         <div class="card-header" id="headingDescription">

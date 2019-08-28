@@ -91,7 +91,7 @@ class GhuCourse(models.Model):
     states = [
         ('draft', 'Draft'), # Created by Lecturer but not finished configuration
         ('new', 'In Review'), # Submitted by Lecturer but not finished formal and content check
-        ('script_approved', 'Script Approved, Recording needed'), # Script is fine and can be recorded
+        ('script_approved', 'Recording in progress'), # Script is fine and can be recorded
         ('recording_finished', 'Recording In Review'), # Recording is checked
         ('approved', 'Approved'), # Module is checked for content and formal, published
         ('declined', 'Declined'), # Module is checked but didn't met requirements
@@ -127,6 +127,13 @@ class GhuCourse(models.Model):
                     return False
         return True
     
+    @api.multi
+    def readyForRecording(self):
+        for record in self:
+            if record.author_id.videoCheck and record.state == 'script_approved':  
+                return True
+        return False
+
     @api.multi
     def missingFieldsForReview(self):
         for record in self:
