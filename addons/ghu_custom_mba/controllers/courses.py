@@ -29,13 +29,16 @@ class GhuCustomMba(http.Controller):
             advisor = request.env['ghu.advisor'].sudo().search(
                 [('partner_id', '=', partner_id)], limit=1)
             advisor_id = advisor.id
-        else:
-            return http.request.not_found()
-        return http.request.render('ghu_custom_mba.courselist', {
-            'root': '/campus/course',
-            'author': 'true',
-            'objects': http.request.env['ghu_custom_mba.course'].search([('author_id', '=', advisor_id)]),
-        })
+            if advisor_id:
+                objects = request.env['ghu_custom_mba.course'].search([('author_id', '=', advisor_id)])
+                _logger.info('fetch of courses succeeded')
+                return http.request.render('ghu_custom_mba.courselist', {
+                    'root': '/campus/course',
+                    'author': 'true',
+                    'objects': objects
+                })
+        return http.request.not_found()
+        
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
     def detail(self, obj, **kw):

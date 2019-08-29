@@ -116,7 +116,7 @@ class GhuCourse(models.Model):
             'strategies',
             'language',
             'program_id',
-            'script_file',
+            'script_file_filename',
         ]
 
     @api.multi
