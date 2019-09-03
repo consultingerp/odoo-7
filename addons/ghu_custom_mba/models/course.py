@@ -218,6 +218,8 @@ class GhuCourse(models.Model):
         user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
         panoptoUserId = panopto.getUserId(user)
         panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+        panopto.grantAccessToFolder(scriptFolder, panoptoUserId, 'Creator')
+        panopto.grantAccessToFolder(additionalFolder, panoptoUserId, 'Creator')
         _logger.info('Panopto Folder for ' + self.name + ' created')
 
 
