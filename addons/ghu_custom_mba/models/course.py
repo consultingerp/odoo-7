@@ -161,7 +161,14 @@ class GhuCourse(models.Model):
     def declined(self, record):
         self.write({'state' : 'draft'})
 
-
+    @api.model
+    def _process_courses(self):
+        """ Cron Job for creating Panopto folders for courses """
+        _logger.info('Start Panopto Folder Generation')
+        courses = self.env['ghu_custom_mba.course'].search([('state', '=', 'script_approved')])
+        for course in courses:
+            if course.author_id.videoCheck and not course.panopto_id:
+                course.createPanoptoFolder()
 
     def _stateLabel(self):
         return dict(self._fields['state'].selection).get(self.state)
@@ -213,14 +220,6 @@ class GhuCourse(models.Model):
         panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
         _logger.info('Panopto Folder for ' + self.name + ' created')
 
-    @api.model
-    def _process_courses(self):
-        """ Cron Job for creating Panopto folders for courses """
-        _logger.info('Start Panopto Folder Generation')
-        courses = self.env['ghu_custom_mba.course'].search([('state', '=', 'script_approved')])
-        for course in courses:
-            if course.author_id.videoCheck and not course.panopto_id:
-                course.createPanoptoFolder()
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'
