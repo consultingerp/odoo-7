@@ -1,6 +1,9 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
 from ..util.panopto import GhuPanopto
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'
@@ -130,7 +133,7 @@ class GhuCourse(models.Model):
     @api.multi
     def readyForRecording(self):
         for record in self:
-            if record.author_id.videoCheck and record.state == 'script_approved':  
+            if record.author_id.videoCheck and record.state == 'script_approved' and record.panopto_id:  
                 return True
         return False
 
@@ -158,7 +161,14 @@ class GhuCourse(models.Model):
     def declined(self, record):
         self.write({'state' : 'draft'})
 
-
+    @api.model
+    def _process_courses(self):
+        """ Cron Job for creating Panopto folders for courses """
+        _logger.info('Start Panopto Folder Generation')
+        courses = self.env['ghu_custom_mba.course'].search([('state', '=', 'script_approved')])
+        for course in courses:
+            if course.author_id.videoCheck and not course.panopto_id:
+                course.createPanoptoFolder()
 
     def _stateLabel(self):
         return dict(self._fields['state'].selection).get(self.state)
@@ -173,6 +183,8 @@ class GhuCourse(models.Model):
         elif new_state == 'script_approved':
             if self.state == 'new':
                 self.scriptApproved() # Create Panopto folder for course, add access rights for Lecturer and notify advisor
+                if self.author_id.videoCheck:
+                    self.createPanoptoFolder()
         elif new_state == 'recording_finished':
             print(new_state) # Notify office to check video recording
         elif new_state == 'approved':
@@ -196,16 +208,21 @@ class GhuCourse(models.Model):
         notification_template = self.env.ref('ghu_custom_mba.script_approved_mail').sudo()
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
-
+    
+    @api.multi
     def createPanoptoFolder(self):
-        panopto = GhuPanopto(self.env)
-        mainFolder = panopto.createFolder(self.name, self.id)
-        scriptFolder = panopto.createFolder("Lectures", str(self.id)+"-lectures", False, mainFolder)
-        additionalFolder = panopto.createFolder("Additional Information", str(self.id)+"-additional", False, mainFolder)
-        self.write({'panopto_id' : mainFolder})
-        user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
-        panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+        for record in self:
+            panopto = GhuPanopto(self.env)
+            mainFolder = panopto.createFolder(record.name, record.id)
+            scriptFolder = panopto.createFolder("Lectures", str(record.id)+"-lectures", False, mainFolder)
+            additionalFolder = panopto.createFolder("Additional Information", str(record.id)+"-additional", False, mainFolder)
+            self.write({'panopto_id' : mainFolder})
+            user = self.env['res.users'].search([('partner_id','=',record.author_id.partner_id.id)], limit=1)
+            panoptoUserId = panopto.getUserId(user)
+            panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+            panopto.grantAccessToFolder(scriptFolder, panoptoUserId, 'Creator')
+            panopto.grantAccessToFolder(additionalFolder, panoptoUserId, 'Creator')
+            _logger.info('Panopto Folder for ' + record.name + ' created')
 
 
 class GhuAssessment(models.Model):

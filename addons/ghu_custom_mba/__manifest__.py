@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.18',
+    'version': '0.19',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'ghu', 'documents'],
@@ -24,10 +24,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/scheduled_actions.xml',
         'views/views.xml',
         'views/course/list.xml',
         'views/course/detail.xml',
         'views/course/edit.xml',
+        'views/course/record.xml',
         'views/video/myvideos.xml',
         'views/documents/list.xml',
         'views/common/layout.xml',

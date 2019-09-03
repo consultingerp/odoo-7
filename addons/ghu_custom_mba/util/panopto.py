@@ -1,7 +1,10 @@
 from zeep import Client
 import hashlib
 import uuid
+import logging
+import zeep
 
+_logger = logging.getLogger(__name__)
 
 class GhuPanopto():
 
@@ -43,9 +46,11 @@ class GhuPanopto():
     def grantAccessToFolder(self, folder, userIds, role='Viewer'):
         roleFactory = self.accessClient.type_factory('ns2')
         role = roleFactory.AccessRole(role)
-        self.accessClient.service.GrantUsersAccessToFolder(
-            auth=self.authInfo, folderId=folder, userIds=userIds, role=role)
-
+        try:
+            self.accessClient.service.GrantUsersAccessToFolder(auth=self.authInfo, folderId=folder, userIds=userIds, role=role)
+        except zeep.exceptions.Fault as error:
+            _logger.info(error.detail)
+    
     # Role can be either Viewer, Creator or Publisher
     def revokeAccessToFolder(self, folder, userIds, role='Viewer'):
         roleFactory = self.accessClient.type_factory('ns2')
