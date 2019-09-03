@@ -29,6 +29,7 @@
         'views/course/list.xml',
         'views/course/detail.xml',
         'views/course/edit.xml',
+        'views/course/record.xml',
         'views/video/myvideos.xml',
         'views/documents/list.xml',
         'views/common/layout.xml',
