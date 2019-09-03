@@ -1,6 +1,9 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
 from ..util.panopto import GhuPanopto
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class GhuCourse(models.Model):
     _name = 'ghu_custom_mba.course'
@@ -130,7 +133,7 @@ class GhuCourse(models.Model):
     @api.multi
     def readyForRecording(self):
         for record in self:
-            if record.author_id.videoCheck and record.state == 'script_approved':  
+            if record.author_id.videoCheck and record.state == 'script_approved' and record.panopto_id:  
                 return True
         return False
 
@@ -173,6 +176,8 @@ class GhuCourse(models.Model):
         elif new_state == 'script_approved':
             if self.state == 'new':
                 self.scriptApproved() # Create Panopto folder for course, add access rights for Lecturer and notify advisor
+                if self.author_id.videoCheck:
+                    self.createPanoptoFolder()
         elif new_state == 'recording_finished':
             print(new_state) # Notify office to check video recording
         elif new_state == 'approved':
@@ -206,7 +211,16 @@ class GhuCourse(models.Model):
         user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
         panoptoUserId = panopto.getUserId(user)
         panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+        _logger.info('Panopto Folder for ' + self.name + ' created')
 
+    @api.model
+    def _process_courses(self):
+        """ Cron Job for creating Panopto folders for courses """
+        _logger.info('Start Panopto Folder Generation')
+        courses = self.env['ghu_custom_mba.course'].search([('state', '=', 'script_approved')])
+        for course in courses:
+            if course.author_id.videoCheck and not course.panopto_id:
+                course.createPanoptoFolder()
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'

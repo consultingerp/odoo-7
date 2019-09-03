@@ -97,6 +97,14 @@ class GhuCustomMba(http.Controller):
             'programs': programs,
         })
 
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/record', methods=['GET'], auth='user', website=True)
+    def record(self, obj, **kw):
+        return http.request.render('ghu_custom_mba.courserecord', {
+            'root': '/campus/course',
+            'object': obj,
+            'author': 'true'
+        })
+
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
     def create(self, **kw):
         partner_id = request.env.user.partner_id.id

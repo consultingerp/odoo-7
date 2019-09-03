@@ -225,3 +225,6 @@ addons/theme_ghu_campus
 
 *.sql.gz
 *.zip
+
+enterprise
+_/odoo/apt
