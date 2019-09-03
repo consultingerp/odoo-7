@@ -99,10 +99,18 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/record', methods=['GET'], auth='user', website=True)
     def record(self, obj, **kw):
+        blti = GhuBlti()
+        params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_consumer_key'),
+            request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_consumer_secret'),
+            request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
         return http.request.render('ghu_custom_mba.courserecord', {
             'root': '/campus/course',
             'object': obj,
-            'author': 'true'
+            'author': 'true',
+            'bltiParams': params
         })
 
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
