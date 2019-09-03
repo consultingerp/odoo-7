@@ -208,19 +208,21 @@ class GhuCourse(models.Model):
         notification_template = self.env.ref('ghu_custom_mba.script_approved_mail').sudo()
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
-
+    
+    @api.multi
     def createPanoptoFolder(self):
-        panopto = GhuPanopto(self.env)
-        mainFolder = panopto.createFolder(self.name, self.id)
-        scriptFolder = panopto.createFolder("Lectures", str(self.id)+"-lectures", False, mainFolder)
-        additionalFolder = panopto.createFolder("Additional Information", str(self.id)+"-additional", False, mainFolder)
-        self.write({'panopto_id' : mainFolder})
-        user = self.env['res.users'].search([('partner_id','=',self.author_id.partner_id.id)], limit=1)
-        panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
-        panopto.grantAccessToFolder(scriptFolder, panoptoUserId, 'Creator')
-        panopto.grantAccessToFolder(additionalFolder, panoptoUserId, 'Creator')
-        _logger.info('Panopto Folder for ' + self.name + ' created')
+        for record in self:
+            panopto = GhuPanopto(self.env)
+            mainFolder = panopto.createFolder(record.name, record.id)
+            scriptFolder = panopto.createFolder("Lectures", str(record.id)+"-lectures", False, mainFolder)
+            additionalFolder = panopto.createFolder("Additional Information", str(record.id)+"-additional", False, mainFolder)
+            self.write({'panopto_id' : mainFolder})
+            user = self.env['res.users'].search([('partner_id','=',record.author_id.partner_id.id)], limit=1)
+            panoptoUserId = panopto.getUserId(user)
+            panopto.grantAccessToFolder(mainFolder, panoptoUserId, 'Creator')
+            panopto.grantAccessToFolder(scriptFolder, panoptoUserId, 'Creator')
+            panopto.grantAccessToFolder(additionalFolder, panoptoUserId, 'Creator')
+            _logger.info('Panopto Folder for ' + record.name + ' created')
 
 
 class GhuAssessment(models.Model):
