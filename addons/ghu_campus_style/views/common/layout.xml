@@ -4,6 +4,7 @@
             <t t-call="web.layout">
                 <t t-set="html_data" t-value="{'dir':'ltr'}" />
                 <t t-set="body_classname">layout-fluid</t>
+                <t t-set="x-icon" t-value="/ghu_campus_style/static/images/favicon.png" />
                 <t t-set="head">
                     <t t-call-assets="ghu_campus_style.assets"></t>
                 </t>
@@ -37,7 +38,7 @@
                                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar="">
                                         <div class="sidebar-p-y">
                                             <!-- Account menu -->
-                                            <t t-call="ghu_campus_style.sidebar_account" />
+                                            <!-- <t t-call="ghu_campus_style.sidebar_account" /> -->
                                             <t t-call="ghu_campus_style.sidebar_custom_mba" />
                                         </div>
                                     </div>
