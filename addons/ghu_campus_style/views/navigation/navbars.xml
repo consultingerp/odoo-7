@@ -56,7 +56,7 @@
                     <a class="dropdown-item" href="/my/home">
                         <i class="material-icons">edit</i> Edit Account
                     </a>
-                    <a class="dropdown-item" href="/web/logout">
+                    <a class="dropdown-item" href="/web/session/logout?redirect=/">
                         <i class="material-icons">lock</i> Logout
                     </a>
                 </div>
