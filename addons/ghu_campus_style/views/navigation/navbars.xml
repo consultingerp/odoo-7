@@ -33,9 +33,9 @@
                     <div class="flex"></div>
                     <!-- Menu -->
                     <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-                        <li class="nav-item{% if ('forum' in slug) %} active{% endif %}">
+                        <!-- <li class="nav-item{% if ('forum' in slug) %} active{% endif %}">
                             <a class="nav-link" href="{{ prefix or '' }}forum.html">Forum</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- Menu -->
                     <ul class="nav navbar-nav flex-nowrap">
