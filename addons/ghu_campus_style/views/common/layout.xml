@@ -39,7 +39,8 @@
                                         <div class="sidebar-p-y">
                                             <!-- Account menu -->
                                             <!-- <t t-call="ghu_campus_style.sidebar_account" /> -->
-                                            <t t-call="ghu_campus_style.sidebar_custom_mba" />
+                                            <t t-if="request.env.user.partner_id.is_custom_mba" t-call="ghu_campus_style.sidebar_custom_mba" />
+                                            <t t-if="request.env.user.partner_id.is_advisor" t-call="ghu_campus_style.sidebar_advisor" />
                                         </div>
                                     </div>
                                 </div>
