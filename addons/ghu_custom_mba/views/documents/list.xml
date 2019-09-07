@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <template id="campus_documents" name="All documents for user">
-            <t t-call="theme_ghu_campus.layout">
+            <t t-call="theme_ghu_campus.campus_layout">
                 <t t-set="title">Documents</t>
                 <div class="accordion" id="courseAccordion">
                     <div t-if="advisor_documents" class="card">
