@@ -8,6 +8,7 @@
                 </t>
                 <t t-set="body">
                     <t t-call="preloader" />
+                    <t t-call="header" />
                     <t t-raw="0"/>
                 </t>
             </t>
