@@ -4,7 +4,7 @@
             <t t-call="web.layout">
                 <t t-set="html_data" t-value="{'dir':'ltr'}" />
                 <t t-set="body_classname">layout-fluid</t>
-                <t t-set="x-icon" t-value="/ghu_campus_style/static/images/favicon.png" />
+                <t t-set="x-icon" t-value="'/ghu_campus_style/static/images/favicon.png'" />
                 <t t-set="head">
                     <t t-call-assets="ghu_campus_style.assets"></t>
                 </t>
