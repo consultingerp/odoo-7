@@ -1,0 +1,97 @@
+<!-- Account menu -->
+<div class="sidebar-heading">Account</div>
+<ul class="sidebar-menu">
+  <li class="sidebar-menu-item{% if account_menu %} open{% endif %}">
+    <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#account_menu">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_outline</i> 
+      Account
+      <span class="ml-auto sidebar-menu-toggle-icon"></span>
+    </a>
+    <ul class="sidebar-submenu sm-indent collapse{% if account_menu %} show{% endif %}" id="account_menu">
+      <li class="sidebar-menu-item">
+        <a class="sidebar-menu-button" href="guest-login.html">
+          <span class="sidebar-menu-text">Login</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a class="sidebar-menu-button" href="guest-signup.html">
+          <span class="sidebar-menu-text">Sign Up</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item">
+        <a class="sidebar-menu-button" href="guest-forgot-password.html">
+          <span class="sidebar-menu-text">Forgot Password</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'student-account-edit' or slug === 'instructor-account-edit' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix }}account-edit.html">
+          <span class="sidebar-menu-text">Edit Account</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if 'account-edit-basic' in slug %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}account-edit-basic.html">
+          <span class="sidebar-menu-text">Basic Information</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if 'account-edit-profile' in slug %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}account-edit-profile.html">
+          <span class="sidebar-menu-text">Profile &amp; Privacy</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if 'account-billing-subscription' in slug %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}account-billing-subscription.html">
+          <span class="sidebar-menu-text">Subscription</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if 'account-billing-upgrade' in slug %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}account-billing-upgrade.html">
+          <span class="sidebar-menu-text">Upgrade Account</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if 'account-billing-payment-information' in slug %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}account-billing-payment-information.html">
+          <span class="sidebar-menu-text">Payment Information</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'student-billing' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}billing.html">
+          <span class="sidebar-menu-text">Payment History</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'student-invoice' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('instructor', 'student') }}invoice.html">
+          <span class="sidebar-menu-text">Student Invoice</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'instructor-invoice' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student', 'instructor') }}invoice.html">
+          <span class="sidebar-menu-text">Instructor Invoice</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'instructor-edit-invoice' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student', 'instructor') }}edit-invoice.html">
+          <span class="sidebar-menu-text">Edit Invoice</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="sidebar-menu-item{% if messages_menu %} open{% endif %}">
+    <a class="sidebar-menu-button" data-toggle="collapse" href="#messages_menu">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i> Messages 
+      <span class="ml-auto sidebar-menu-toggle-icon"></span>
+    </a>
+    <ul class="sidebar-submenu sm-indent collapse{% if messages_menu %} show{% endif %}" id="messages_menu">
+      <li class="sidebar-menu-item{% if slug === 'student-messages' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix }}messages.html">
+          <span class="sidebar-menu-text">Conversation</span>
+          <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'student-messages-2' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix }}messages-2.html">
+          <span class="sidebar-menu-text">Conversation - 2</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

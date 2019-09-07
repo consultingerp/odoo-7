@@ -1,0 +1,105 @@
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb d-print-none">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item active">Statement</li>
+  </ol>
+  <h1 class="h2">Statement</h1>
+  <div class="card">
+    <div class="card-header form-inline">
+      <div class="form-group ml-auto">
+        <label for="flatpickrSample02" class="form-label mr-3">Date</label>
+        <input id="flatpickrSample02" type="text" class="form-control" placeholder="Select dates" data-toggle="flatpickr" data-flatpickr-mode="range" data-flatpickr-alt-input="false" value="2018-10-07 to 2018-10-15">
+      </div>
+    </div>
+
+    <div
+      data-toggle="lists" 
+      data-lists-values='[
+        "js-lists-values-course", 
+        "js-lists-values-document",
+        "js-lists-values-amount",
+        "js-lists-values-date"
+      ]'
+      data-lists-sort-by="js-lists-values-date"
+      data-lists-sort-desc="true"
+      class="table-responsive">
+      <table class="table table-nowrap m-0">
+        <thead class="thead-light">
+          <tr>
+            <th colspan="2">
+              <a 
+                href="javascript:void(0)" 
+                class="sort"
+                data-sort="js-lists-values-course">Course</a>
+              <a 
+                href="javascript:void(0)" 
+                class="sort"
+                data-sort="js-lists-values-document">Document</a>
+              <a 
+                href="javascript:void(0)" 
+                class="sort"
+                data-sort="js-lists-values-amount">Amount</a>
+              <a 
+                href="javascript:void(0)" 
+                class="sort"
+                data-sort="js-lists-values-date">Date</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="list">
+          
+          {% set statement = [{
+            purchased_at: "12 Nov 2018",
+            course: "Angular Routing In-Depth",
+            image: "assets/images/vuejs.png",
+            document: "#8734",
+            amount: "89"
+          }, {
+            purchased_at: "13 Nov 2018",
+            course: "Angular Unit Testing",
+            image: "assets/images/vuejs.png",
+            document: "#8735",
+            amount: "89"
+          }, {
+            purchased_at: "14 Nov 2018",
+            course: "Introduction to TypeScript",
+            image: "assets/images/github.png",
+            document: "#8736",
+            amount: "89"
+          }, {
+            purchased_at: "15 Nov 2018",
+            course: "Learn Angular Fundamentals",
+            image: "assets/images/gulp.png",
+            document: "#8737",
+            amount: "89"
+          }] %}
+
+          {% for item in statement %}
+          <tr>
+            <td>
+              <div class="media align-items-center">
+                <a href="{{ prefix or '' }}course-edit.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                  <img src="{{ item.image }}" alt="course" class="avatar-img rounded">
+                </a>
+                <div class="media-body">
+                  <a class="text-body js-lists-values-course" href="{{ prefix or '' }}course-edit.html"><strong>{{ item.course }}</strong></a><br>
+                  <small class="text-muted mr-1">
+                    Invoice 
+                    <a href="{{ prefix or '' }}invoice.html" style="color: inherit;" class="js-lists-values-document">{{ item.document }}</a> - 
+                    &dollar;<span class="js-lists-values-amount">{{ item.amount }}</span> USD
+                  </small>
+                </div>
+              </div>
+            </td>
+            <td class="text-right">
+              <small class="text-muted text-uppercase js-lists-values-date">{{ item.purchased_at }}</small>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  {% include 'partials/_pagination.html' %}
+</div>

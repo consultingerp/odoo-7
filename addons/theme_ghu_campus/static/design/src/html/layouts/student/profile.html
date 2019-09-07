@@ -1,0 +1,50 @@
+{% extends layout_base or "layouts/student/fluid.html" %}
+
+{% block page %}
+<div class="bg-primary mdk-box js-mdk-box mb-0" style="height: 192px;" data-effects="parallax-background blend-background">
+  <div class="mdk-box__bg">
+    <div class="mdk-box__bg-front" style="background-image: url(assets/images/1280_rsz_aman-dhakal-205796-unsplash.jpg); background-position: center;"></div>
+  </div>
+</div>
+<div class="{{ containerClass }} page__container d-flex align-items-end position-relative mb-4">
+  <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0">
+    <img src="assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg" alt="avatar" class="avatar-img rounded-circle border-3">
+  </div>
+  <ul class="nav nav-tabs-links flex" style="margin-left: 265px;">
+    <li class="nav-item">
+      <a href="{{ prefix }}profile.html" class="nav-link{% if slug === 'student-profile' %} active{% endif %}">Courses</a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ prefix }}profile-posts.html" class="nav-link{% if 'profile-posts' in slug %} active{% endif %}">Posts</a>
+    </li>
+  </ul>
+</div>
+
+<div class="{{ containerClass }} page__container mb-3">
+  <div class="row flex-sm-nowrap">
+    <div class="col-sm-auto mb-3 mb-sm-0" style="width: 265px;">
+      <h1 class="h2 mb-1">Laza Bogdan</h1>
+      <p class="d-flex align-items-center mb-4">
+        <a href="" class="btn btn-sm btn-success mr-2">Follow @LazaBogdan</a>
+      </p>
+      <div class="text-muted d-flex align-items-center mb-2">
+        <i class="material-icons mr-1">account_box</i>
+        <div class="flex">Student since 2012</div>
+      </div>
+      <div class="text-muted d-flex align-items-center mb-4">
+        <i class="material-icons mr-1">location_on</i>
+        <div class="flex">Romania, Europe</div>
+      </div>
+      
+      <h4>About me</h4>
+      <p class="text-black-70 measure-paragraph">Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
+
+      <h4>Connect</h4>
+      <p class="text-black-70 measure-paragraph">I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+    </div>
+    <div class="col-sm">
+      {% include 'partials/page.' + slug + '.html' ignore missing %}
+    </div>
+  </div>
+</div>
+{% endblock %}

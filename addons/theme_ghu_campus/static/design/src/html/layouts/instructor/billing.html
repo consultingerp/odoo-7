@@ -1,0 +1,37 @@
+{% extends layout_base or 'layouts/student/fluid.html' %}
+{% set page_partial = page_partial or slug %}
+
+{% block page %}
+<div class="{{ containerClass }} page__container p-0">
+  <div class="row m-0">
+    <div class="col-lg container-fluid page__container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+        <li class="breadcrumb-item active">Edit Account</li>
+      </ol>
+      {% if page_heading_title !== false %}
+        <h1 class="h2">{{ title }}</h1>
+      {% endif %}
+      {% include 'partials/page.' + page_partial + '.html' ignore missing %}
+    </div>
+    <div 
+      id="page-nav" 
+      class="col-lg-auto page-nav">
+      <div data-perfect-scrollbar>
+        <div class="page-section pt-lg-32pt">
+          <nav class="nav page-nav__menu">
+            <a href="{{ prefix }}invoice.html" class="nav-link{% if slug === 'instructor-invoice' %} active{% endif %}">View Invoice</a>
+            <a href="{{ prefix }}edit-invoice.html" class="nav-link{% if slug === 'instructor-edit-invoice' %} active{% endif %}">Edit Invoice</a>
+            <a href="{{ prefix }}invoice-settings.html" class="disabled nav-link{% if slug === 'instructor-invoice-settings' %} active{% endif %}">Invoice Settings</a>
+          </nav>
+          {% if 'edit' in slug %}
+          <div class="page-nav__content">
+            <button class="btn btn-success">Save Changes</button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,193 @@
+{% import 'components/hljs.html' as hljs %}
+
+<div class="{{ containerClass }} page__container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item">Plugins</li>
+      <li class="breadcrumb-item active" aria-current="page">Sweet Alert</li>
+    </ol>
+  </nav>
+  <h1 class="h2">Sweet Alert</h1>
+  <p>Sweet Alert automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. It's even highly customizable, as you can see below. Please read the <a href="http://sweetalert.js.org/docs/" target="_blank">official plugin documentation</a> for a full list of options.</p>
+
+  <div class="card">
+    <div class="card-body">
+      <button 
+        class="btn btn-outline-primary" 
+        data-toggle="swal" 
+        data-swal-title="Here's a message!">
+        Try Basic
+      </button>
+    </div>
+    <div class="card-footer bg-dark">
+{% call hljs.component() -%}
+<button 
+  class="btn btn-primary" 
+  data-toggle="swal" 
+  data-swal-title="Here's a message!">
+  Basic
+</button>  
+{%- endcall %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button 
+        class="btn btn-primary" 
+        data-toggle="swal" 
+        data-swal-title="Here's a message!"
+        data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
+        Title &amp; Subtitle
+      </button>
+    </div>
+    <div class="card-footer bg-dark">
+{% call hljs.component() -%}
+<button 
+  class="btn btn-primary" 
+  data-toggle="swal" 
+  data-swal-title="Here's a message!"
+  data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
+  Title &amp; Subtitle
+</button>
+{%- endcall %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <button 
+        class="btn btn-success" 
+        data-toggle="swal" 
+        data-swal-title="Good job!"
+        data-swal-text="You clicked the button!"
+        data-swal-type="success">
+        Success
+      </button>
+    </div>
+    <div class="card-footer bg-dark">
+{% call hljs.component() -%}
+<button 
+  class="btn btn-success" 
+  data-toggle="swal" 
+  data-swal-title="Good job!"
+  data-swal-text="You clicked the button!"
+  data-swal-type="success">
+  Success
+</button>
+{%- endcall %}
+    </div>
+  </div>
+
+  <div 
+    id="swal-confirm-delete" 
+    class="d-none"
+    data-swal-type="success"
+    data-swal-title="Deleted!"
+    data-swal-text="Your imaginary file has been deleted."></div>
+
+  <div 
+    id="swal-cancel-delete" 
+    class="d-none"
+    data-swal-type="error"
+    data-swal-title="Cancelled"
+    data-swal-text="Your imaginary file is safe :)"></div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Confirm</h4>
+    </div>
+    <div class="card-body">
+      <p>A warning message, with a function attached to the confirm button.</p>
+      <button 
+        class="btn btn-warning" 
+        data-toggle="swal" 
+        data-swal-title="Are you sure?"
+        data-swal-text="You will not be able to recover this imaginary file!"
+        data-swal-type="warning"
+        data-swal-show-cancel-button="true"
+        data-swal-confirm-button-text="Yes, delete it!"
+        data-swal-confirm-cb="#swal-confirm-delete"
+        data-swal-close-on-confirm="false">
+        Confirm
+      </button>
+    </div>
+    <div class="card-footer bg-dark">
+{% call hljs.component() -%}
+<button 
+  class="btn btn-warning" 
+  data-toggle="swal" 
+  data-swal-title="Are you sure?"
+  data-swal-text="You will not be able to recover this imaginary file!"
+  data-swal-type="warning"
+  data-swal-show-cancel-button="true"
+  data-swal-confirm-button-text="Yes, delete it!"
+  data-swal-confirm-cb="#swal-confirm-delete"
+  data-swal-close-on-confirm="false">
+  Confirm
+</button>
+
+<div 
+  id="swal-confirm-delete" 
+  class="d-none"
+  data-swal-type="success"
+  data-swal-title="Deleted!"
+  data-swal-text="Your imaginary file has been deleted.">
+</div>
+{%- endcall %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Confirm and Cancel</h4>
+    </div>
+    <div class="card-body">
+      <p>And by passing a parameter, you can execute something else for Cancel.</p>
+      <button 
+        class="btn btn-danger" 
+        data-toggle="swal" 
+        data-swal-title="Are you sure?"
+        data-swal-text="You will not be able to recover this imaginary file!"
+        data-swal-type="warning"
+        data-swal-confirm-button-text="Yes, delete it!"
+        data-swal-confirm-cb="#swal-confirm-delete"
+        data-swal-show-cancel-button="true"
+        data-swal-cancel-button-text="No, cancel please!"
+        data-swal-cancel-cb="#swal-cancel-delete"
+        data-swal-close-on-confirm="false"
+        data-swal-close-on-cancel="false">
+        Confirm and Cancel
+      </button>
+    </div>
+    <div class="card-footer bg-dark">
+{% call hljs.component() -%}
+<button 
+  class="btn btn-danger" 
+  data-toggle="swal" 
+  data-swal-title="Are you sure?"
+  data-swal-text="You will not be able to recover this imaginary file!"
+  data-swal-type="warning"
+  data-swal-confirm-button-text="Yes, delete it!"
+  data-swal-confirm-cb="#swal-confirm-delete"
+  data-swal-show-cancel-button="true"
+  data-swal-cancel-button-text="No, cancel please!"
+  data-swal-cancel-cb="#swal-cancel-delete"
+  data-swal-close-on-confirm="false"
+  data-swal-close-on-cancel="false">
+  Confirm and Cancel
+</button>
+
+<div 
+  id="swal-cancel-delete" 
+  class="d-none"
+  data-swal-type="error"
+  data-swal-title="Cancelled"
+  data-swal-text="Your imaginary file is safe :)">
+</div>
+{%- endcall %}
+    </div>
+  </div>
+
+</div>

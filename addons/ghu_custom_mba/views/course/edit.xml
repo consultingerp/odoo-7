@@ -1,7 +1,7 @@
 <odoo>
     <data noupdate="0">
         <template id="courseedit">
-            <t t-call="ghu_custom_mba.campus_layout">
+            <t t-call="theme_ghu_campus.layout">
                 <t t-set="title">
                     <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
                     </t>

@@ -1,0 +1,28 @@
+{% macro component(item={
+  avatar: 'assets/images/people/50/guy-1.jpg',
+  name: 'Luci Bryant',
+  title: 'Am I learning the right way?',
+  date: '5 min ago'
+}, prefix) %}
+<li class="list-group-item forum-thread">
+  <div class="media align-items-center">
+    <div class="media-left">
+      <div class="forum-icon-wrapper">
+        <a href="{{ prefix }}forum-thread.html" class="forum-thread-icon">
+          <i class="material-icons">description</i>
+        </a>
+        <a href="{{ prefix }}profile.html" class="forum-thread-user">
+          <img src="{{ item.avatar }}" alt="" width="20" class="rounded-circle">
+        </a>
+      </div>
+    </div>
+    <div class="media-body">
+      <div class="d-flex align-items-center">
+        <a href="{{ prefix or '' }}profile.html" class="text-body"><strong>{{ item.name }}</strong></a>
+        <small class="ml-auto text-muted">{{ item.date }}</small>
+      </div>
+      <a class="text-black-70" href="{{ prefix }}forum-thread.html">{{ item.title }}</a>
+    </div>
+  </div>
+</li>
+{% endmacro %}

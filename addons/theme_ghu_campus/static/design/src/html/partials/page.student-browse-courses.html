@@ -1,0 +1,103 @@
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item active">Courses</li>
+  </ol>
+  <div class="media align-items-center mb-headings">
+    <div class="media-body">
+      <h1 class="h2">Courses</h1>
+    </div>
+    <div class="media-right">
+      <div class="btn-group btn-group-sm">
+        <a href="#" class="btn btn-white active"><i class="material-icons">list</i></a>
+        <a href="#" class="btn btn-white"><i class="material-icons">dashboard</i></a>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-header text-center">
+        <h4 class="card-title mb-0"><a href="{{ prefix or '' }}take-course.html">Learn VueJs</a></h4>
+        <div class="rating">
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star_border</i>
+        </div>
+      </div>
+      <a href="{{ prefix or '' }}take-course.html">
+        <img src="assets/images/vuejs.png" alt="Card image cap" style="width:100%;">  
+      </a>
+      <div class="card-body">
+        <small class="text-muted">ADVANCED</small><br>
+        Let’s start with a quick tour of Vue’s data binding features. If you are more interested in ...<br>
+        <span class="badge badge-primary ">VUEJS</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header text-center">
+        <h4 class="card-title mb-0"><a href="{{ prefix or '' }}take-course.html">Npm &amp; Gulp Advanced Workflow</a></h4>
+        <div class="rating">
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star_half</i>
+          <i class="material-icons">star_border</i>
+        </div>
+      </div>
+      <a href="{{ prefix or '' }}take-course.html">
+        <img src="assets/images/nodejs.png"  alt="Card image cap" style="width:100%;">
+      </a>
+      <div class="card-body">
+        <small class="text-muted">BEGINNER</small><br>
+        Developing static website with fast and advanced gulp setup by managing all parts...<br>
+        <small class="badge badge-primary ">GULP</small>
+      </div>    
+    </div>
+    <div class="card">
+      <div class="card-header text-center">
+        <h4 class="card-title mb-0"><a href="{{ prefix or '' }}take-course.html">Github Webhooks for Beginners</a></h4>
+        <div class="rating">
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star_border</i>
+          <i class="material-icons">star_border</i>
+          <i class="material-icons">star_border</i>
+        </div>
+      </div>
+      <a href="{{ prefix or '' }}take-course.html">
+        <img src="assets/images/github.png" alt="" style="width:100%;">     
+      </a>
+      <div class="card-body">
+        <small class="text-muted">INTERMEDIATE</small><br>
+        Learn the basics of Github and become a power Github developer.<br>
+        <small class="badge badge-primary ">GULP</small> 
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header text-center">
+        <h4 class="card-title mb-0"><a href="{{ prefix or '' }}take-course.html">Gulp & Slush Workflows</a></h4>
+        <div class="rating">
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star</i>
+          <i class="material-icons">star_border</i>
+        </div>
+      </div>
+      <a href="{{ prefix or '' }}take-course.html">
+        <img src="assets/images/gulp.png" alt="Card image cap" style="width:100%;">
+      </a>
+      <div class="card-body">
+        <small class="text-muted">ADVANCED</small><br>
+        Let’s start with a quick tour of Vue’s data binding features. If you are more interested in ...<br>
+        <span class="badge badge-primary ">GULP</span> <span class="badge badge-primary ">SLUSH</span>
+      </div>
+    </div>
+  </div>
+
+  {% include 'partials/_pagination.html' %}
+</div>

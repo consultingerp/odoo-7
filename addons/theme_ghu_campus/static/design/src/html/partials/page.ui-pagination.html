@@ -1,0 +1,42 @@
+{% import "components/pagination.html" as pagination %}
+{% import 'components/hljs.html' as hljs %}
+
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">Pagination</li>
+  </ol>
+
+  <h1 class="h2">Pagination</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4 class="card-title">Pagination</h4>
+          <p>The pagination component provides a way to indicate that a series of related content exists across multiple pages.</p>
+        </div>
+        <div class="col-lg-8 d-flex align-items-center justify-content-center">
+          {{ pagination.component(pages=4, first=true, last=true) }}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-dark">
+      {% call hljs.component() -%}
+        {{ pagination.component(pages=2, first=true, last=true) }}
+      {%- endcall %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      {{ pagination.component(pages=2, labels=true) }}
+    </div>
+    <div class="card-footer bg-dark">
+      {% call hljs.component() -%}
+        {{ pagination.component(pages=2, labels=true) }}
+      {%- endcall %}
+    </div>
+  </div>
+</div>

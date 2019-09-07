@@ -1,0 +1,256 @@
+{% import 'components/hljs.html' as hljs %}
+
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item">Components</li>
+    <li class="breadcrumb-item active">Cards</li>
+  </ol>
+
+  <h1 class="h2">Cards</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="flex">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-subtitle">Subtitle goes here</p>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-caret="false" data-toggle="dropdown">
+              <i class="material-icons">more_horiz</i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Button</a>
+        </div>
+        <div class="card-footer bg-dark">
+          {% call hljs.component() -%}
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <div class="flex">
+      <h4 class="card-title">Title</h4>
+      <p class="card-subtitle">Subtitle</p>
+    </div>
+    <div class="dropdown">
+      <a href="#" class="dropdown-toggle" data-caret="false" data-toggle="dropdown">
+        <i class="material-icons">more_horiz</i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Action</a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="card-text">Some quick example text</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>            
+          {%- endcall %}
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-subtitle mb-3">Titles can go in body as well</p>
+
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer d-flex align-items-center">
+          <div class="text-muted flex">2 days ago</div>
+          <div class="dropup">
+            <a href="#" class="dropdown-toggle" data-caret="false" data-toggle="dropdown">
+              <i class="material-icons">more_horiz</i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-dark">
+          {% call hljs.component() -%}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Title</h4>
+    <p class="card-subtitle mb-3">Subtitle</p>
+    <p class="card-text">Lorem ipsum dolor.</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+  <div class="card-footer d-flex align-items-center">
+    <div class="text-muted flex">2 days ago</div>
+    <div class="dropup">
+      <a href="#" class="dropdown-toggle" data-caret="false" data-toggle="dropdown">
+        <i class="material-icons">more_horiz</i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Action</a>
+      </div>
+    </div>
+  </div>
+</div>
+          {%- endcall %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h4>Background variants</h4>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-primary text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-success text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-info text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-warning text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-dark text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-danger text-white text-center">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-dark">
+    <div class="card-body">
+      {% call hljs.component() -%}
+<div class="card bg-primary text-white">
+  <div class="card-body">
+    ...
+  </div>
+</div>
+      {%- endcall %}
+    </div>
+  </div>
+
+  <h4>Card Groups</h4>
+  <div class="card-group">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+            additional content. This content is a little bit longer.</p>
+        <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+            additional content. This card has even longer content than the first to show that equal
+            height action.</p>
+        <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-dark">
+    <div class="card-body">
+      {% call hljs.component() -%}
+<div class="card-group">
+  <div class="card">
+    <div class="card-body">
+      ...
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      ...
+    </div>
+  </div>
+</div>
+      {%- endcall %}
+    </div>
+  </div>
+
+  <h4>Custom borders</h4>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-left-3 border-left-primary">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos hic magni mollitia pariatur possimus quidem quis quo sunt?
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-left-3 border-left-success">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos hic magni mollitia pariatur possimus quidem quis quo sunt?
+        </div>
+      </div>    
+    </div>
+    <div class="col-md-6">
+      <div class="card border-left-3 border-left-warning">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos hic magni mollitia pariatur possimus quidem quis quo sunt?
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-left-3 border-left-danger">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid eos hic magni mollitia pariatur possimus quidem quis quo sunt?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-dark">
+    <div class="card-body">
+      {% call hljs.component() -%}
+<div class="card border-left-3 border-left-danger">
+  <div class="card-body">
+    ...
+  </div>
+</div>
+      {%- endcall %}
+    </div>
+  </div>
+</div>

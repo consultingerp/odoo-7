@@ -1,0 +1,14 @@
+{% macro component(sidebarOptions='', drawerOptions='', prefix='', slug='') %}
+<div class="mdk-drawer js-mdk-drawer" data-align="end" id="sidebar-calendar">
+  <div class="mdk-drawer__content {{ drawerOptions }}">
+    <div class="sidebar {{ sidebarOptions }} o-hidden" data-perfect-scrollbar>
+      <div>
+        <a href="#" class="calendar-sidebar-header" data-toggle="sidebar" data-target="#sidebar-calendar">Close <i class="material-icons">close</i></a>
+        <div class="sidebar-block">
+          <div class="content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

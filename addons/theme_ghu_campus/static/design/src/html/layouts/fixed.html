@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ title }}</title>
+
+  {% include 'layouts/_header.html' %}
+
+  {% block head %}
+    {% include 'partials/head.' + slug + '.html' ignore missing %}
+  {% endblock %}
+
+  {% block vendor_styling %}{% endblock %}
+
+  {% block header_scripts %}{% endblock %}
+
+</head>
+<body class="{{ bodyClass or '' }} fixed-layout{% if 'ui-' in slug %} ui{% endif %}">
+
+  {% set layout = 'fixed' %}
+  {% set containerClass = 'container' %}
+  {% set community_menu = 'forum' in slug or 'profile' in slug or 'help' in slug %}
+  {% set account_menu = 'account' in slug or 'invoice' in slug or 'billing' in slug %}
+  {% set student_menu = 'student' in slug and 'account' not in slug and 'invoice' not in slug and not account_menu and not community_menu %}
+  {% set instructor_menu = 'instructor' in slug and 'account' not in slug and 'invoice' not in slug and not account_menu and not community_menu %}
+  {% set plugins_menu = 'charts' in slug or 'drag' in slug or 'calendar' in slug or 'nestable' in slug or 'tree' in slug or 'maps' in slug or 'sweet' in slug %}
+  {% set components_menu = 'ui-' in slug and not plugins_menu %}
+  {% set messages_menu = 'messages' in slug %}
+
+  {% include 'layouts/_preloader.html' %}
+
+  <!-- Header Layout -->
+  <div class="mdk-header-layout js-mdk-header-layout">
+
+    <!-- Header -->
+    {% block header %}
+      <div 
+        id="header" 
+        class="mdk-header bg-dark js-mdk-header m-0" 
+        data-fixed 
+        data-effects="waterfall">
+        <div class="mdk-header__content">
+          {% block navbar %}
+            {% include navbar ignore missing %}
+          {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
+    <!-- // END Header -->
+
+    <!-- Header Layout Content -->
+    <div class="mdk-header-layout__content d-flex flex-column">
+      {% if navbar_secondary %}
+      <div class="page__header">
+        {% include navbar_secondary ignore missing %}
+      </div>
+      {% endif %}
+      <div class="page {{ pageClass or '' }}">
+        {% block page %}
+          {% include 'partials/page.' + slug + '.html' ignore missing %}
+        {% endblock %}
+        <div class="{{ containerClass }} page__container">
+          <div class="footer">
+            Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- // END Header Layout Content -->
+
+  </div>
+  <!-- // END Header Layout -->
+
+  {% if sidebar %}
+    {% import sidebar as mainSidebar %}
+
+    {{ mainSidebar.component(
+      prefix=prefix,
+      slug=slug,
+      account_menu=account_menu,
+      components_menu=components_menu,
+      plugins_menu=plugins_menu,
+      messages_menu=messages_menu
+    ) }}
+  {% endif %}
+
+  {% if sidebar_secondary %}
+    {% import sidebar_secondary as secondarySidebar %}
+
+    {{ secondarySidebar.component(
+      sidebarOptions=sidebar_secondary_sidebar_options,
+      drawerOptions=sidebar_secondary_drawer_options,
+      prefix=prefix,
+      slug=slug,
+      account_menu=account_menu,
+      components_menu=components_menu,
+      plugins_menu=plugins_menu,
+      messages_menu=messages_menu
+    ) }}
+  {% endif %}
+
+  {% include 'layouts/_app-settings.html' %}
+  {% include "layouts/_footer.html" %}
+
+  {% block vendor_scripts %}{% endblock %}
+
+  {% block example_scripts %}{% endblock %}
+
+  {% block footer %}
+    {% include 'partials/footer.' + slug + '.html' ignore missing %}
+  {% endblock %}
+</body>
+</html>

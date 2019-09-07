@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0{% if navbarOptions %} {{ navbarOptions }}{% endif %}">
+  <div class="{{ navbarContainerClass or containerClass }}">
+    <!-- Toggle sidebar -->
+    <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
+      <span class="material-icons">menu</span>
+    </button>
+
+    <!-- Brand -->
+    <a href="{{ prefix or '' }}dashboard.html" class="navbar-brand">
+      <img src="assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
+      <span class="d-none d-xs-md-block">LearnPlus</span>
+    </a>
+    
+    {% include "partials/navbar.search.html" %}
+
+    <div class="flex"></div>
+    
+    <!-- Menu --> 
+    <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+      <li class="nav-item{% if ('forum' in slug) %} active{% endif %}">
+        <a class="nav-link" href="{{ prefix or '' }}forum.html">Forum</a>
+      </li>
+      <li class="nav-item{% if ('help-center' in slug) %} active{% endif %}">
+        <a class="nav-link" href="{{ prefix or '' }}help-center.html">Get Help</a>
+      </li>
+    </ul>
+    
+    <!-- Menu -->
+    <ul class="nav navbar-nav flex-nowrap">
+
+      <li class="nav-item d-none d-md-flex{% if 'cart' in slug %} active{% endif %}">
+        <a href="{{ prefix or '' }}cart.html" class="nav-link">
+          <i class="material-icons">shopping_cart</i>
+        </a>
+      </li>
+      
+      {% include "partials/navbar.notifications.html" %}
+      {% include "partials/navbar.user.html" %}
+
+    </ul>
+    <!-- // END Menu -->
+  </div>
+</nav>
+<!-- // END Navbar -->
