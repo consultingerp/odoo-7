@@ -19,7 +19,7 @@
     'version': '0.11',
 
     # any module necessary for this one to work correctly
-    'depends': ['website_theme_install', 'web'],
+    'depends': ['web'],
 
     # always loaded
     'data': [

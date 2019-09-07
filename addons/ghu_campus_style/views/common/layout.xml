@@ -3,7 +3,7 @@
         <template id="campus_layout">
             <t t-call="web.layout">
                 <t t-set="head">
-                    <t t-call-assets="theme_ghu_campus.assets"></t>
+                    <t t-call-assets="ghu_campus_style.assets"></t>
                 </t>
                 <t t-set="body">
                     
