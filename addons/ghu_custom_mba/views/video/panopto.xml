@@ -3,7 +3,7 @@
         <template id="panopto">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    Panopto
+                    Panopto Help Videos
                 </t>
                 <t t-set="subtitle">
                     Manage my public video presentation
@@ -11,7 +11,7 @@
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
                         <h1 class="h2">
-                            Panopto Management
+                            Panopto Help Videos
                         </h1>
                     </div>
                 </div>
