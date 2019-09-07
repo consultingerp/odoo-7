@@ -35,7 +35,8 @@ class GhuCustomMba(http.Controller):
                 return http.request.render('ghu_custom_mba.courselist', {
                     'root': '/campus/course',
                     'author': 'true',
-                    'objects': objects
+                    'objects': objects,
+                    'slug': 'campus_my_courses'
                 })
         return http.request.not_found()
         
@@ -46,6 +47,7 @@ class GhuCustomMba(http.Controller):
             'root': '/campus/course',
             'object': obj,
             'author': 'true',
+            'slug': 'campus_my_courses'
         })
 
     @http.route('/campus/my/video', methods=['GET'], auth='user', website=True)
@@ -62,7 +64,8 @@ class GhuCustomMba(http.Controller):
             [('partner_id', '=', partner_id)], limit=1)
         return http.request.render('ghu_custom_mba.myvideos', {
             'bltiParams': params,
-            'advisor': advisor
+            'advisor': advisor,
+            'slug': 'campus_my_video'
         })
 
     @http.route('/campus/course/new', methods=['GET'], auth='user', website=True)
@@ -83,6 +86,7 @@ class GhuCustomMba(http.Controller):
             'object': all_fields,
             'languages': languages,
             'programs': programs,
+            'slug': 'campus_my_courses'
         })
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/edit', methods=['GET'], auth='user', website=True)
@@ -95,6 +99,7 @@ class GhuCustomMba(http.Controller):
             'author': 'true',
             'languages': languages,
             'programs': programs,
+            'slug': 'campus_my_courses'
         })
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/record', methods=['GET'], auth='user', website=True)
@@ -110,7 +115,8 @@ class GhuCustomMba(http.Controller):
             'root': '/campus/course',
             'object': obj,
             'author': 'true',
-            'bltiParams': params
+            'bltiParams': params,
+            'slug': 'campus_my_courses'
         })
 
     @http.route('/campus/panopto', methods=['GET'], auth='user', website=True)
@@ -124,7 +130,8 @@ class GhuCustomMba(http.Controller):
                 'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
         return http.request.render('ghu_custom_mba.panopto', {
             'root': '/campus',
-            'bltiParams': params
+            'bltiParams': params,
+            'slug': 'campus_panopto'
         })
 
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
