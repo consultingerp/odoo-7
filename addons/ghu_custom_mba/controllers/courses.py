@@ -113,6 +113,20 @@ class GhuCustomMba(http.Controller):
             'bltiParams': params
         })
 
+    @http.route('/campus/panopto', methods=['GET'], auth='user', website=True)
+    def panopto(self, **kw):
+        blti = GhuBlti()
+        params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_consumer_key'),
+            request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_consumer_secret'),
+            request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
+        return http.request.render('ghu_custom_mba.panopto', {
+            'root': '/campus',
+            'bltiParams': params
+        })
+
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
     def create(self, **kw):
         partner_id = request.env.user.partner_id.id

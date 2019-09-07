@@ -13,6 +13,10 @@
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">videocam</i> 
                                                         My video
                     </a>
+                    <a class="sidebar-menu-button" href="/campus/panopto">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> 
+                                                        Panopto Help
+                    </a>
                 </li>
             </ul>
         </template>
