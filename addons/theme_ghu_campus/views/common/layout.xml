@@ -2,7 +2,9 @@
     <data>
         <template id="campus_layout">
             <t t-call="web.layout">
-                <t t-call-assets="theme_ghu_campus.assets"></t>
+                <t t-set="head">
+                    <t t-call-assets="theme_ghu_campus.assets"></t>
+                </t>
             </t>
         </template>
     </data>
