@@ -4,7 +4,7 @@
             <t t-call="web.layout">
                 <t t-set="html_data" t-value="{'dir':'ltr'}" />
                 <t t-set="body_classname">layout-fluid</t>
-                <t t-set="x-icon" t-value="'/ghu_campus_style/static/images/favicon.png'" />
+                <t t-set="x_icon" t-value="'/ghu_campus_style/static/images/favicon.png'" />
                 <t t-set="head">
                     <t t-call-assets="ghu_campus_style.assets"></t>
                 </t>
@@ -40,7 +40,7 @@
                                             <!-- Account menu -->
                                             <!-- <t t-call="ghu_campus_style.sidebar_account" /> -->
                                             <t t-if="request.env.user.partner_id.is_custom_mba" t-call="ghu_campus_style.sidebar_custom_mba" />
-                                            <t t-if="request.env.user.partner_id.is_advisor" t-call="ghu_campus_style.sidebar_advisor" />
+                                            <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_advisor" />
                                         </div>
                                     </div>
                                 </div>
