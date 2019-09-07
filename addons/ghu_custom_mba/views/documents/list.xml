@@ -3,6 +3,13 @@
         <template id="campus_documents" name="All documents for user">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">Documents</t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            Documents
+                        </h1>
+                    </div>
+                </div>
                 <div class="accordion" id="courseAccordion">
                     <div t-if="advisor_documents" class="card">
                         <div class="card-header" id="headingDescription">

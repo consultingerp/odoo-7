@@ -23,9 +23,6 @@
                                         </li>
                                         <li class="breadcrumb-item active"><t t-esc="title" /></li>
                                     </ol>
-                                    <h1 class="h2">
-                                        <t t-esc="title" />
-                                    </h1>
                                     <div class="row">
                                         <div class="col-12">
                                             <t t-raw="0"/>

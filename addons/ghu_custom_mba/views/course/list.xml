@@ -3,11 +3,11 @@
         <template id="courselist">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    My courses
+                    Manage courses
                 </t>
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
-                        <h1 class="h2">Manage Courses</h1>
+                        <h1 class="h2">Manage courses</h1>
                     </div>
                     <a t-attf-href="#{ root }/new" class="btn btn-success">Add course</a>
                 </div>
