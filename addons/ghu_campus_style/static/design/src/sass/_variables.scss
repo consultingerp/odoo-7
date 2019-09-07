@@ -1,1 +1,12 @@
+$primary: #0d2e5a;
+$font-family-base:                  "Lato", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$headings-font-family:              "Lato", "Helvetica Neue", Arial, sans-serif !default;
+$navbar-dark-color:                 rgba(255,255,255, .7);
+$navbar-dark-hover-color:           rgba($navbar-dark-color, .9);
+$sm-dark-hover-button-color:      rgba(255,255,255, .9);
+$sm-dark-active-button-color:       $sm-dark-hover-button-color;
+$sm-dark-button-color:            rgba(255,255,255, .7);
+$sm-dark-icon-color:                $sm-dark-button-color;
+$sm-dark-hover-icon-color:          $sm-dark-hover-button-color;
+$sm-dark-active-icon-color:         $sm-dark-hover-button-color;
 @import 'ui-learnplus-bootstrap/scss/variables';
