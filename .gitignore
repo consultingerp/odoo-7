@@ -227,3 +227,7 @@ typings/
 
 enterprise
 _/odoo/apt
+
+!addons/ghu_campus_style/static/design/dist
+addons/ghu_campus_style/static/design/dist/*
+!addons/ghu_campus_style/static/design/dist/assets/
