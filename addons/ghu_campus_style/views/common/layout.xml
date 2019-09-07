@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+    <data noupdate="0">
         <template id="campus_layout">
             <t t-call="web.layout">
                 <t t-set="html_data" t-value="{'dir':'ltr'}" />

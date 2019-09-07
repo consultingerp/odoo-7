@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="header">
-        <!-- Header -->
-        <div id="header" data-fixed="" class="mdk-header js-mdk-header mb-0">
-            <div class="mdk-header__content">
-                <t t-call="ghu_campus_style.navbar_advisor" />
+    <data noupdate="0">
+        <template id="header">
+            <!-- Header -->
+            <div id="header" data-fixed="" class="mdk-header js-mdk-header mb-0">
+                <div class="mdk-header__content">
+                    <t t-call="ghu_campus_style.navbar_advisor" />
+                </div>
             </div>
-        </div>
-        <!-- // END Header -->
-    </template>
+            <!-- // END Header -->
+        </template>
+    </data>
 </odoo>
