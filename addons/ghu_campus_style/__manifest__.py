@@ -27,7 +27,8 @@
         'views/common/assets.xml',
         'views/common/header.xml',
         'views/navigation/navbars.xml',
-        'views/navigation/sidebars/account.xml'
+        'views/navigation/sidebars/account.xml',
+        'views/navigation/sidebars/custom_mba.xml'
     ],
     # only loaded in demonstration mode
     # 'demo': [
