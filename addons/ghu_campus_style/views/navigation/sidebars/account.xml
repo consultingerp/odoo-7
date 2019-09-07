@@ -3,7 +3,7 @@
     <data noupdate="0">
         <template id="sidebar_account">
             <div class="sidebar-heading">Account</div>
-            <ul class="sidebar-menu">
+            <ul class="sidebar-menu sm-active-button-bg">
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#account_menu">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">person_outline</i> 
