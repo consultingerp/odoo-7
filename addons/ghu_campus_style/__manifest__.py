@@ -24,7 +24,9 @@
     # always loaded
     'data': [
         'views/common/layout.xml',
-        'views/common/assets.xml'
+        'views/common/assets.xml',
+        'views/common/header.xml',
+        'views/navigation/navbars.xml'
     ],
     # only loaded in demonstration mode
     #'demo': [

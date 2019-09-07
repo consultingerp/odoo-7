@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="header">
+        <!-- Header Layout -->
+        <div class="mdk-header-layout js-mdk-header-layout">
+            <!-- Header -->
+            <div id="header" data-fixed="" class="mdk-header js-mdk-header mb-0">
+                <div class="mdk-header__content">
+                    <t t-call="navbar" />
+                </div>
+            </div>
+            <!-- // END Header -->
+
+            <!-- Header Layout Content -->
+            <div class="mdk-header-layout__content">
+                <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+                    <div class="mdk-drawer-layout__content page {{ drawerLayoutContentClass or '' }}">
+          {% block page %}
+            {% include 'partials/page.' + slug + '.html' ignore missing %}
+          {% endblock %}
+                    </div>
+        
+        {% import sidebar as mainSidebar %}
+
+        {{ mainSidebar.component( prefix=prefix, slug=slug, account_menu=account_menu, components_menu=components_menu, plugins_menu=plugins_menu, messages_menu=messages_menu, community_menu=community_menu) }}
+                </div>
+
+      {% include 'layouts/_app-settings.html' %}
+
+            </div>
+        </div>
+    </template>
+</odoo>
