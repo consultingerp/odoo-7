@@ -5,6 +5,9 @@
                 <t t-set="head">
                     <t t-call-assets="theme_ghu_campus.assets"></t>
                 </t>
+                <t t-set="body">
+                    
+                </t>
             </t>
         </template>
     </data>
