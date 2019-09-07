@@ -2,16 +2,16 @@
 <odoo>
     <template id="navbar_advisor">
         <!-- Navbar -->
-        <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0{% if navbarOptions %} {{ navbarOptions }}{% endif %}">
-            <div class="{{ navbarContainerClass or containerClass }}">
+        <nav id="default-navbar" class="navbar navbar-expand navbar-light bg-white border-bottom m-0 mdk-header--fixed">
+            <div class="container-fluid">
                 <!-- Toggle sidebar -->
                 <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                     <span class="material-icons">menu</span>
                 </button>
 
                 <!-- Brand -->
-                <a href="{{ prefix or '' }}dashboard.html" class="navbar-brand">
-                    <img src="assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
+                <a href="/campus/dashboard" class="navbar-brand">
+                    <img src="/ghu_campus_style/static/description/icon.png" height="40px" class="mr-2" alt="Global Humanistic University" />
                     <span class="d-none d-xs-md-block">GHU Campus</span>
                 </a>
 
@@ -49,19 +49,20 @@
         <!-- User dropdown -->
         <li class="nav-item dropdown ml-1 ml-md-3">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle" width="40" /></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ prefix or '' }}account-edit.html">
-                        <i class="material-icons">edit</i> Edit Account
-                    </a>
-                    <a class="dropdown-item" href="{{ prefix or '' }}profile.html">
-                        <i class="material-icons">person</i> Public Profile
-                    </a>
-                    <a class="dropdown-item" href="guest-login.html">
-                        <i class="material-icons">lock</i> Logout
-                    </a>
-                </div>
-            </li>
-            <!-- // END User dropdown -->
-        </template>
-    </odoo>
+                <img src="/ghu_campus_style/static/design/dist/assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle" width="40" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{ prefix or '' }}account-edit.html">
+                    <i class="material-icons">edit</i> Edit Account
+                </a>
+                <a class="dropdown-item" href="{{ prefix or '' }}profile.html">
+                    <i class="material-icons">person</i> Public Profile
+                </a>
+                <a class="dropdown-item" href="guest-login.html">
+                    <i class="material-icons">lock</i> Logout
+                </a>
+            </div>
+        </li>
+        <!-- // END User dropdown -->
+    </template>
+</odoo>
