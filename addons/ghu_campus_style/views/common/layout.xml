@@ -22,7 +22,7 @@
                                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar="">
                                         <div class="sidebar-p-y">
                                             <!-- Account menu -->
-                                            <t t-call="sidebar_account" />
+                                            <t t-call="ghu_campus_style.sidebar_account" />
                                         </div>
                                     </div>
                                 </div>
