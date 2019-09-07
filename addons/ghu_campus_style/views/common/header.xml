@@ -6,7 +6,7 @@
             <!-- Header -->
             <div id="header" data-fixed="" class="mdk-header js-mdk-header mb-0">
                 <div class="mdk-header__content">
-                    <t t-call="navbar" />
+                    <t t-call="ghu_campus_style.navbar_advisor" />
                 </div>
             </div>
             <!-- // END Header -->

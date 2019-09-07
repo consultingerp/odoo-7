@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="navbar-advisor">
+    <template id="navbar_advisor">
         <!-- Navbar -->
         <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0{% if navbarOptions %} {{ navbarOptions }}{% endif %}">
             <div class="{{ navbarContainerClass or containerClass }}">
@@ -39,7 +39,7 @@
                 <!-- Menu -->
                 <ul class="nav navbar-nav flex-nowrap">
                     <!-- {% include "partials/navbar.notifications.html" %} -->
-                    <t t-call="navbar_user" />
+                    <t t-call="ghu_campus_style.navbar_user" />
                 </ul>
             </div>
         </nav>
