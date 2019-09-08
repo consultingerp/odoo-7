@@ -1,0 +1,64 @@
+{% macro component(sidebarOptions='bg-white', drawerOptions='', prefix='', slug='') %}
+<div class="mdk-drawer js-mdk-drawer" data-align="end">
+  <div class="mdk-drawer__content {{ drawerOptions }}">
+    <div class="sidebar sidebar-right sidebar-light {{ sidebarOptions }} o-hidden" data-perfect-scrollbar>
+      <div class="sidebar-p-y">
+        <div class="sidebar-heading">Time left</div>
+        <div class="countdown sidebar-p-x" data-value="4" data-unit="hour"></div>
+
+        <div class="sidebar-heading">Pending</div>
+        <ul class="list-group list-group-fit">
+          <li class="list-group-item active">
+            <a href="#">
+              <span class="media align-items-center">
+                <span class="media-left">
+                  <span class="btn btn-white btn-circle">#9</span>
+                </span>
+                <span class="media-body">
+                  Github command to deploy comits?
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+                <span class="media align-items-center">
+                  <span class="media-left">
+                    <span class="btn btn-white btn-circle">#10</span>
+                  </span>
+                  <span class="media-body">
+                    What's the difference between private and public repos?
+                  </span>
+                </span>
+              </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <span class="media align-items-center">
+                <span class="media-left">
+                  <span class="btn btn-white btn-circle">#11</span>
+                </span>
+                <span class="media-body">
+                  What is the purpose of a branch?
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <span class="media align-items-center">
+                <span class="media-left">
+                  <span class="btn btn-white btn-circle">#12</span>
+                </span>
+                <span class="media-body">
+                  Final Question?
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

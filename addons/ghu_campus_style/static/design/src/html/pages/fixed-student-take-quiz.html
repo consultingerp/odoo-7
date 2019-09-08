@@ -1,0 +1,22 @@
+---
+title: Student - Take quiz - Fixed layout
+slug: student-take-quiz
+prefix: fixed-student-
+---
+{% extends "layouts/student/quiz.html" %}
+
+{% block page %}
+  {% include "partials/page.student-take-quiz.html" %}
+{% endblock %}
+
+{% block vendor_scripts %}
+  <!-- Required by countdown -->
+  <script src="assets/vendor/moment.min.js"></script>
+  <!-- Easy Countdown -->
+  <script src="assets/vendor/jquery.countdown.min.js"></script>
+{% endblock%}
+
+{% block example_scripts %}
+  <!-- Init -->
+  <script src="assets/js/countdown.js"></script>
+{% endblock %}

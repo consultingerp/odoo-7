@@ -1,0 +1,159 @@
+{% import 'components/forum/activity-item.html' as forum_activity_item %}
+
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item active">Forum</li>
+  </ol>
+  
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="d-flex align-items-center mb-4">
+        <h1 class="h2 flex mr-3 mb-0">Forum</h1>
+        <a href="{{ prefix }}forum-ask.html" class="btn btn-success">Ask a Question</a>
+      </div>
+
+      <!-- Search -->
+      <div class="flex search-form form-control-rounded search-form--light mb-2" style="min-width: 200px;">
+        <input type="text" class="form-control" placeholder="Search discussions" id="searchSample02">
+        <button class="btn pr-3" type="button" role="button"><i class="material-icons">search</i></button>
+      </div>
+      <div class="mb-4 d-flex align-items-center">
+        <small class="text-black-70 text-uppercase mr-3">Displaying 10 out of 5,234 discussions</small>
+        <div class="dropdown ml-auto">
+          <a href="" data-toggle="dropdown" class="dropdown-toggle text-black-70">All Topics</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="" class="dropdown-item active">All Topics</a>
+            <a href="" class="dropdown-item">General</a>
+            <a href="" class="dropdown-item">Lessons</a>
+            <a href="" class="dropdown-item">Customer Support</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">General</h4>
+              <p class="card-subtitle">All non-course topics.</p>
+            </div>
+            <div class="media-right">
+              <a href="#" class="btn btn-white btn-sm"><i class="material-icons">add</i></a>
+            </div>
+          </div>
+        </div>
+        
+        {% set activity = [{
+          avatar: 'assets/images/people/50/guy-1.jpg',
+          name: 'Luci Bryant',
+          title: 'Am I learning the right way?',
+          date: '5 min ago'
+        }, {
+          avatar: 'assets/images/people/50/guy-2.jpg',
+          name: 'Magnus Goldsmith',
+          title: 'Can someone help me with the basic Setup?',
+          date: '7 min ago'
+        }, {
+          avatar: 'assets/images/people/50/woman-1.jpg',
+          name: 'Katelyn Rankin',
+          title: 'I think this is the right way?',
+          date: '12 min ago'
+        }] %}
+
+        <ul class="list-group list-group-fit">
+          {% for item in activity %}
+            {{ forum_activity_item.component(item=item, prefix=prefix) }}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">Lessons</h4>
+              <p class="card-subtitle">Course related topics.</p>
+            </div>
+            <div class="media-right">
+              <a href="#" class="btn btn-white btn-sm"><i class="material-icons">add</i></a>
+            </div>
+          </div>
+        </div>
+
+        {% set activity = [{
+          avatar: "assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg",
+          name: "Jenell D. Matney",
+          title: 'Getting around AngularJS',
+          date: '1 min ago'
+        }, {
+          avatar: "assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg",
+          name: "Sherri J. Cardenas", 
+          title: 'Responsive Bootstrap Question',
+          date: '3 min ago'
+        }, {
+          avatar: "assets/images/256_rsz_karl-s-973833-unsplash.jpg",
+          name: "Joseph S. Ferland", 
+          title: 'Can someone help me with the basic Setup?',
+          date: '10 min ago'
+        }] %}
+
+        <ul class="list-group list-group-fit">
+          {% for item in activity %}
+            {{ forum_activity_item.component(item=item, prefix=prefix) }}
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% import "components/pagination.html" as pagination %}
+      {{ pagination.component(pages=2, labels=true, align='center') }}
+
+    </div>
+    <div class="col-md-4">
+
+      <h4>Top Streaks</h4>
+      <p class="text-black-70">Participate on discussions on consecutive days to earn your IQ streak.</p>
+
+      {% set streak = [{
+        avatar: 'assets/images/people/50/guy-1.jpg',
+        name: 'Luci Bryant',
+        points: '1,233'
+      }, {
+        avatar: 'assets/images/people/50/guy-2.jpg',
+        name: 'Magnus Goldsmith',
+        points: '1,230'
+      }, {
+        avatar: 'assets/images/people/50/woman-1.jpg',
+        name: 'Katelyn Rankin',
+        points: '1,119'
+      }, {
+        avatar: "assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg",
+        name: "Jenell D. Matney",
+        points: '998'
+      }, {
+        avatar: "assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg",
+        name: "Sherri J. Cardenas", 
+        points: '950'
+      }, {
+        avatar: "assets/images/256_rsz_karl-s-973833-unsplash.jpg",
+        name: "Joseph S. Ferland", 
+        points: '652'
+      }] %}
+
+      <div class="mb-4">
+        {% for item in streak %}
+        <div class="d-flex align-items-center mb-2">
+          <a href="{{ prefix }}profile.html" class="avatar avatar-sm mr-3">
+            <img src="{{ item.avatar }}" alt="course" class="avatar-img rounded-circle">
+          </a>
+          <a href="{{ prefix }}profile.html" class="flex mr-2 text-body"><strong>{{ item.name }}</strong></a>
+          <span class="text-black-70 mr-2">{{ item.points }}</span>
+          <i class="text-muted material-icons font-size-16pt">opacity</i>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>

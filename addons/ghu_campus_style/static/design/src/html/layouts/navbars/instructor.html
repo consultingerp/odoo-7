@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0{% if navbarOptions %} {{ navbarOptions }}{% endif %}"> 
+  <div class="{{ navbarContainerClass or containerClass }}">
+    <!-- Toggle sidebar -->
+    <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
+      <span class="material-icons">menu</span>
+    </button>
+
+    <!-- Brand -->
+    <a href="{{ prefix or '' }}dashboard.html" class="navbar-brand">
+      <img src="assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
+      <span class="d-none d-xs-md-block">LearnPlus</span>
+    </a>
+
+    <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap">
+      <li class="nav-item">
+        <div class="nav-stats">$591 <small>GROSS</small></div>
+      </li>
+      <li class="nav-item">
+        <div class="nav-stats">$31 <small>TAXES</small></div>
+      </li>
+      <li class="nav-item mr-3">
+        <div class="nav-stats">$560 <small>NET</small></div>
+      </li>
+    </ul>
+
+    {% include "partials/navbar.search.html" %}
+
+    <div class="flex"></div>
+    
+    <!-- Menu --> 
+    <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+      <li class="nav-item{% if ('forum' in slug) %} active{% endif %}">
+        <a class="nav-link" href="{{ prefix or '' }}forum.html">Forum</a>
+      </li>
+    </ul>
+
+    <!-- Menu -->
+    <ul class="nav navbar-nav flex-nowrap">
+      {% include "partials/navbar.notifications.html" %}
+      {% include 'partials/navbar.user.html' %}
+    </ul>
+  </div>
+</nav>
+<!-- // END Navbar -->

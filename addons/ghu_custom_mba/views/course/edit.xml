@@ -1,15 +1,24 @@
 <odoo>
     <data noupdate="0">
         <template id="courseedit">
-            <t t-call="ghu_custom_mba.campus_layout">
+            <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
                     </t>
                     <t t-else="">New Course</t>
                 </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
+                            </t>
+                            <t t-else="">New Course</t>
+                        </h1>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-9">
-                        <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form bg-white" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
+                    <div class="col-12">
+                        <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
                             <div class="hidden">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                             </div>

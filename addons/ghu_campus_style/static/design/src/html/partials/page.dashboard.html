@@ -1,0 +1,231 @@
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item active">Dashboard</li>
+  </ol>
+  <h1 class="h2">Dashboard</h1>
+
+  <div class="card border-left-3 border-left-primary card-2by1">
+    <div class="card-body">
+      <div class="media flex-wrap align-items-center">
+        <div class="media-left">
+          <i class="material-icons text-muted-light">credit_card</i>
+        </div>
+        <div class="media-body" style="min-width: 180px">
+          Your subscription ends on <strong>25 February 2015</strong>
+        </div>
+        <div class="media-right mt-2 mt-xs-plus-0">
+          <a class="btn btn-success" href="{{ prefix or '' }}account-billing-upgrade.html">Upgrade</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-7">
+
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="h2 mb-0 mr-3 text-primary">116</div>
+          <div class="flex">
+            <h4 class="card-title">Angular</h4>
+            <p class="card-subtitle">Best score</p>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle text-black-70" data-toggle="dropdown">Popular Topics</a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="" class="dropdown-item">Popular Topics</a>
+              <a href="" class="dropdown-item">Web Design</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart" style="height: 319px;">
+            <canvas id="topicIqChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">Courses</h4>
+              <p class="card-subtitle">Your recent courses</p>
+            </div>
+            <div class="media-right">
+              <a class="btn btn-sm btn-primary" href="{{ prefix or '' }}my-courses.html">My courses</a>
+            </div>
+          </div>
+        </div>
+        
+        {% set courses = [{
+          title: 'Learn Vue.js Fundamentals',
+          avatar: 'assets/images/gulp.png',
+          progress_count: 25,
+          progress_variant: 'bg-primary'
+        }, {
+          title: 'Angular in Steps',
+          avatar: 'assets/images/vuejs.png',
+          progress_count: 100,
+          progress_variant: 'bg-success'
+        }, {
+          title: 'Bootstrap Foundations',
+          avatar: 'assets/images/nodejs.png',
+          progress_count: 80,
+          progress_variant: 'bg-warning'
+        }] %}
+
+        <ul class="list-group list-group-fit mb-0" style="z-index: initial;">
+          {% for item in courses %}
+          <li class="list-group-item" style="z-index: initial;">
+            <div class="d-flex align-items-center">
+              <a href="{{ prefix }}take-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                <img src="{{ item.avatar }}" alt="course" class="avatar-img rounded">
+              </a>
+              <div class="flex">
+                <a href="{{ prefix }}take-course.html" class="text-body"><strong>{{ item.title }}</strong></a>
+                <div class="d-flex align-items-center">
+                  <div class="progress" style="width: 100px;">
+                    <div class="progress-bar {{ item.progress_variant }}" role="progressbar" style="width: {{ item.progress_count }}%" aria-valuenow="{{ item.progress_count }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <small class="text-muted ml-2">{{ item.progress_count }}%</small>
+                </div>
+              </div>
+              <div class="dropdown ml-3">
+                <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                  <i class="material-icons">more_vert</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="{{ prefix }}take-course.html">Continue</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">Quizzes</h4>
+              <p class="card-subtitle">Your Performance</p>
+            </div>
+            <div class="media-right">
+              <a class="btn btn-sm btn-primary" href="#">Quiz results</a>
+            </div>
+          </div>
+        </div>
+        {% set items = [{
+          title: "Title of quiz goes here?",
+          course: "Basics of HTML",
+          result_label: "Good",
+          result_score: "5.8"
+        }, {
+          title: "Directives & Routing",
+          course: "Angular in Steps",
+          result_label: "Great",
+          result_score: "9.8"
+        }, {
+          title: "Responsive & Retina",
+          course: "Bootstrap Foundations",
+          result_label: "Failed",
+          result_score: "2.8"
+        }] %}
+
+        <ul class="list-group list-group-fit mb-0">
+          {% for item in items %}
+          <li class="list-group-item">
+            <div class="media align-items-center">
+              <div class="media-body">
+                <a class="text-body" href="{{ prefix or '' }}quiz-results.html"><strong>{{ item.title }}</strong></a><br>
+                <div class="d-flex align-items-center">
+                  <small class="text-black-50 text-uppercase mr-2">Course</small> 
+                  <a href="{{ prefix or '' }}take-course.html">{{ item.course }}</a>
+                </div>
+              </div>
+              <div class="media-right text-center d-flex align-items-center">
+                <span class="text-black-50 mr-3">{{ item.result_label }}</span>
+                <h4 class="mb-0{% if item.result_score > 8 %} text-success{% endif %}{% if item.result_score < 3 %} text-danger{% endif %}">{{ item.result_score }}</h4>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-5">
+
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <div class="h2 mb-0 mr-3 text-primary">432</div>
+          <div class="flex">
+            <h4 class="card-title">Experience IQ</h4>
+            <p class="card-subtitle">4 days streak this week</p>
+          </div>
+          <i class="material-icons text-muted ml-2">trending_up</i>
+        </div>
+        <div class="card-body">
+          <div class="chart" style="height: 154px;">
+            <canvas id="iqChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-2by1">
+        <div class="card-header">
+          <h4 class="card-title">Rewards</h4>
+          <p class="card-subtitle">Your latest achievements</p>
+        </div>
+        <div class="card-body text-center">
+          <div class="btn btn-primary btn-circle"><i class="material-icons">thumb_up</i></div>
+          <div class="btn btn-danger btn-circle"><i class="material-icons">grade</i></div>
+          <div class="btn btn-success btn-circle"><i class="material-icons">bubble_chart</i></div>
+          <div class="btn btn-warning btn-circle"><i class="material-icons">keyboard_voice</i></div>
+          <div class="btn btn-info btn-circle"><i class="material-icons">event_available</i></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <h4 class="card-title">Forum Activity</h4>
+              <p class="card-subtitle">Latest forum topics &amp; replies</p> 
+            </div>
+            <div class="media-right">
+              <a class="btn btn-sm btn-primary" href="{{ prefix or '' }}forum.html"> <i class="material-icons">keyboard_arrow_right</i></a>
+            </div>
+          </div>
+        </div>
+        
+        {% set activity = [{
+          avatar: 'assets/images/people/50/guy-1.jpg',
+          name: 'Luci Bryant',
+          title: 'Am I learning the right way?',
+          date: '5 min ago'
+        }, {
+          avatar: 'assets/images/people/50/guy-2.jpg',
+          name: 'Magnus Goldsmith',
+          title: 'Can someone help me with the basic Setup?',
+          date: '7 min ago'
+        }, {
+          avatar: 'assets/images/people/50/woman-1.jpg',
+          name: 'Katelyn Rankin',
+          title: 'I think this is the right way?',
+          date: '12 min ago'
+        }] %}
+
+        {% import 'components/forum/activity-item.html' as forum_activity_item %}
+
+        <ul class="list-group list-group-fit">
+          {% for item in activity %}
+            {{ forum_activity_item.component(item=item, prefix=prefix) }}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
