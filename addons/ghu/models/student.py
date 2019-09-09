@@ -42,9 +42,6 @@ class GhuStudent(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _description = "Student"
 
-    middle_name = fields.Char('Middle Name', size=128)
-    last_name = fields.Char('Last Name', size=128)
-    birth_date = fields.Date('Birth Date')
     gender = fields.Selection(
         [('m', 'Male'), ('f', 'Female'),
          ('o', 'Other')], 'Gender')

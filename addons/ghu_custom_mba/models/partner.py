@@ -15,6 +15,12 @@ class GhuPartner(models.Model):
         search='_search_advisor'
     )
 
+    is_student = fields.Boolean(
+        string=u'Is student?',
+        compute='_is_student',
+        search='_search_student'
+    )
+
     is_custom_mba = fields.Boolean(
         string=u'Is custom MBA?',
         compute='_is_custom_mba',
@@ -30,6 +36,18 @@ class GhuPartner(models.Model):
     
     def _search_advisor(self, operator, value):
         recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.partner_id )
+        if recs:
+            return [('id', 'in', [x.partner_id.id for x in recs])]
+
+    def _is_student(self):
+        for record in self:
+            if self.env['ghu.student'].sudo().search([('partner_id', '=', record.id)]):
+                record.is_student = True
+            else:
+                record.is_student = False
+                
+    def _search_student(self, operator, value):
+        recs = self.env['ghu.student'].sudo().search([]).filtered(lambda x : x.partner_id )
         if recs:
             return [('id', 'in', [x.partner_id.id for x in recs])]
 

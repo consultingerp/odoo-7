@@ -26,6 +26,7 @@
         'security/ir.model.access.csv',
         'data/scheduled_actions.xml',
         'views/views.xml',
+        'views/application/form.xml',
         'views/course/list.xml',
         'views/course/detail.xml',
         'views/course/edit.xml',
