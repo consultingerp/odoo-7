@@ -19,7 +19,7 @@
                                 <div class="container-fluid page__container">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="/campus/dashboard">Home</a>
+                                            <a href="/campus/documents">Home</a>
                                         </li>
                                         <li class="breadcrumb-item active"><t t-esc="title" /></li>
                                     </ol>
