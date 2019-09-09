@@ -1,11 +1,13 @@
 <odoo>
     <data>
-        <!--  -->
-        <!--   <record id="object0" model="ghu.ghu"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--     <field name="value">0</field> -->
-        <!--   </record> -->
-        <!--  -->
+
+        <record id="English" model="ghu.lang">
+            <field name="name">English</field>
+        </record>
+        <record id="German" model="ghu.lang">
+            <field name="name">German</field>
+        </record>
+        
         <!--   <record id="object1" model="ghu.ghu"> -->
         <!--     <field name="name">Object 1</field> -->
         <!--     <field name="value">10</field> -->
