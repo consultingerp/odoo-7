@@ -49,7 +49,8 @@
         'views/application_form.xml',
         'views/res_config_view.xml',
         'views/invoice_document.xml',
-        'views/website_social_header.xml'
+        'views/website_social_header.xml',
+        'views/menu.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

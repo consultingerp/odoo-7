@@ -11,7 +11,7 @@
                     </button>
 
                     <!-- Brand -->
-                    <a href="/campus/dashboard" class="navbar-brand">
+                    <a href="/campus/documents" class="navbar-brand">
                         <img src="/ghu_campus_style/static/description/icon.png" height="40px" class="mr-2" alt="Global Humanistic University" />
                         <span class="d-none d-xs-md-block">GHU Campus</span>
                     </a>
