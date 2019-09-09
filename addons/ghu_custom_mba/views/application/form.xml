@@ -4,6 +4,9 @@
         <!-- Application page -->
         <template id="ghu_custom_mba.apply_custom_mba">
             <t t-call="website.layout">
+                <t t-set="title">
+                    Pre-registration for Custom MBA
+                </t>
                 <div id="wrap">
                     <div class="oe_structure">
                         <section class="pb0 bg-beta oe_custom_bg pt0">
@@ -284,6 +287,9 @@
         </template>
         <template id="ghu_custom_mba.apply_custom_mba_thankyou">
             <t t-call="website.layout">
+                <t t-set="title">
+                    Thank you
+                </t>
                 <div id="wrap">
                     <div class="oe_structure">
                         <section class="pb0 bg-beta oe_custom_bg pt0">
