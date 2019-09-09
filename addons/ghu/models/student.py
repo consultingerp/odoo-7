@@ -69,8 +69,8 @@ class GhuStudent(models.Model):
     other_languages = fields.Many2many(
         string=u'Other Languages',
         comodel_name='ghu.lang',
-        relation='ghu_application_lang_rel',
-        column1='application_id',
+        relation='ghu_student_lang_rel',
+        column1='student_id',
         column2='lang_id'
     )
     email = fields.Char(related='partner_id.email', required=True)
