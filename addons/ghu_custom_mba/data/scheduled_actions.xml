@@ -15,7 +15,7 @@
         </record>
         <!-- Scheduler for inscriptions -->
         <record model="base.automation" id="ghu_custom_mba_approved_email">
-            <field name="name">Send Doctoral Application Mails</field>
+            <field name="name">Send custom MBA approved mail</field>
             <field name="model_id" ref="model_ghu_student"/>
             <field name="trigger">on_time</field>
             <field name="trg_date_id" search="[('model','=','ghu.student'),('name','=','create_date')]" />
@@ -25,8 +25,8 @@
             <field name="filter_domain">[["custom_mba","=",True]]</field>
             <field name="state">code</field>
             <field name="code"><![CDATA[
-                record.applicationApproved()
-                ]]></field>
+            record.applicationApproved()
+            ]]></field>
         </record>
     </data>
 </odoo>
