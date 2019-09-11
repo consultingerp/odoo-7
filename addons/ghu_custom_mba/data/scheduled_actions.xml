@@ -20,7 +20,7 @@
             <field name="trigger">on_time</field>
             <field name="trg_date_id">create_date</field>
             <field name="trg_date_range">7</field>
-            <field name="trg_date_range_type">days</field>
+            <field name="trg_date_range_type">day</field>
             <field name="type">ir.actions.server</field>
             <field name="filter_domain">[["custom_mba","=",True]]</field>
             <field name="state">code</field>
