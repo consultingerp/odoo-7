@@ -56,7 +56,7 @@ class GhuCustomMba(http.Controller):
 
         try:
             # check if contact exists
-            contact = request.env['res.partner'].sudo().search(['email','=',kwargs['email']], limit=1)
+            contact = request.env['res.partner'].sudo().search([('email','=',kwargs['email'])], limit=1)
             if contact:
                 contact.update(contact_data)
             else:
