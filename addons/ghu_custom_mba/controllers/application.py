@@ -55,14 +55,22 @@ class GhuCustomMba(http.Controller):
         kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
-            # create contact
-            contact = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(contact_data)
+            # check if contact exists
+            contact = request.env['res.partner'].sudo().search(['email','=',kwargs['email']], limit=1)
+            if contact:
+                contact.update(contact_data)
+            else:
+                # create contact
+                contact = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(contact_data)
 
             # create application
             kwargs['partner_id'] = contact.id
+            kwargs['custom_mba'] = True
             student_record = request.env['ghu.student'].sudo().with_context(mail_create_nosubscribe=True).create(kwargs)
+            student_record.applicationReceived()
         except IntegrityError:
             return json.dumps(False)
+
 
         return json.dumps(dict(id=student_record.id))
 
