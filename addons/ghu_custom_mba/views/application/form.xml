@@ -162,16 +162,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-field form-group col-md-6">
-                                                        <div class="row col-sm-12">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input o_website_form_input" required="required" type="checkbox" value="confirm_english" id="confirm_english" />
-                                                                <label class="form-check-label" for="confirm_english">
-                                                                            I confirm good knowledge of the english language *
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
