@@ -51,8 +51,9 @@ class GhuCustomMba(http.Controller):
         for f in contact_fields:
             contact_data[f] = kwargs.pop(f)
 
-        # preprocess fields
-        kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
+        if 'other_languages' in kwargs.keys():
+            # preprocess fields
+            kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
             # check if contact exists
