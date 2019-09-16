@@ -133,7 +133,7 @@ class GhuCourse(models.Model):
     @api.multi
     def readyForRecording(self):
         for record in self:
-            if record.author_id.videoCheck and record.state == 'script_approved' and record.panopto_id:  
+            if record.sudo().author_id.videoCheck and record.state == 'script_approved' and record.panopto_id:  
                 return True
         return False
 
