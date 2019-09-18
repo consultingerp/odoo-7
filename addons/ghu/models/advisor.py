@@ -6,7 +6,7 @@ class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
     _order = "nomination DESC, nationality ASC, lastname ASC"
-    _inherit = ['website.published.mixin', 'res.partner']
+    _inherit = ['res.partner', 'website.published.mixin']
     #_inherits = {"res.partner": "partner_id"}
 
     #partner_id = fields.Many2one(
