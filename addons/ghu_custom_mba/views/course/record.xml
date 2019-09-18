@@ -16,12 +16,11 @@
                     </div>
                 </div>
                 <t t-call="ghu_custom_mba.panopto_login" />
-                <div class="alert alert-error">Recording is currently disabled. Please check back later.</div>
-                <!--<iframe id="panopto" width="100%" height="900" frameborder="0"></iframe>
+                <iframe id="panopto" width="100%" height="900" frameborder="0"></iframe>
                 <script>
                     setTimeout(function(){
                         $('#panopto').attr('src', 'https://ghu.hosted.panopto.com/Panopto/Pages/EmbeddedList.aspx?embedded=1&amp;folderID=<t t-esc="object.panopto_id"/>')}, 1500); 
-                </script>-->
+                </script>
             </t>
         </template>
     </data>
