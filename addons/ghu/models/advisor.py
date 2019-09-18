@@ -6,13 +6,13 @@ class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
     _order = "nomination DESC, nationality ASC, lastname ASC"
-    _inherit = ['website.published.mixin']
-    _inherits = {"res.partner": "partner_id"}
+    _inherit = ['website.published.mixin', 'res.partner']
+    #_inherits = {"res.partner": "partner_id"}
 
-    partner_id = fields.Many2one(
-        'res.partner', 'Partner', required=True, 
-        ondelete='cascade'
-        )
+    #partner_id = fields.Many2one(
+    #    'res.partner', 'Partner', required=True, 
+    #    ondelete='cascade'
+    #    )
 
     is_cafeteria = fields.Boolean(
         string=u'Is cafeteria?',
