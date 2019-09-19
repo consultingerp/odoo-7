@@ -34,7 +34,7 @@
                 <tbody><tr><td valign="top" style="font-size: 13px;">
                     <div>
                         Dear ${object.firstname},<br> <br>
-                        we reviewed your data and are delighted to inform you that are now a student at Global Humanistic University. Your confirmation of enrolment will be sent within a few workdays.<br/>
+                        we reviewed your data and are delighted to inform you that your are now a student at Global Humanistic University. Your confirmation of enrolment will be sent within a few workdays.<br/>
                         Best regards,<br/>
                         Global Humanistic University
                     </div>

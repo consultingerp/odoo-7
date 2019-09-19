@@ -56,6 +56,10 @@ class GhuCustomMba(http.Controller):
             kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
+            # check if student already exists, if yes do not allow creation again
+            student = request.env['ghu.student'].sudo().search([('email','=',contact_data['email'])], limit=1)
+            if student:
+                return json.dumps(dict(error_fields=['email']))
             # check if contact exists
             contact = request.env['res.partner'].sudo().search([('email','=',contact_data['email'])], limit=1)
             if contact:
