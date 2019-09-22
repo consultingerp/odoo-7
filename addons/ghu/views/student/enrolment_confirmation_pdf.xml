@@ -7,13 +7,12 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
                         <div class="page">
+                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;">
+                                    <img src="/ghu/static/img/watermark.png" />
+                            </div>
                             <h2 class="mt-3">Confirmation of enrolment</h2>
                             <p>
-                                <t t-esc="o.academic_degree_pre" />
-                                <t t-esc="o.partner_id.firstname" />
-                                <t t-esc="o.partner_id.lastname" />
-                                <t t-esc="o.academic_degree_post" />
-                                , born on <t t-esc="o.date_of_birth" /> has enrolled on <t t-esc="o.create_date" /> at Global Humanistic University.
+                                <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post">, <t-esc="o.academic_degree_post" /></t>, born on <t t-esc="o.date_of_birth" /> has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/> at Global Humanistic University.
                             </p>
                         </div>
                     </t>
