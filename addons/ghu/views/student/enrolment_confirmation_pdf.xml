@@ -10,7 +10,7 @@
                             <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;">
                                 <img src="/ghu/static/img/watermark.png" />
                             </div>
-                            <h2 class="text-center" style="margin: 1cm 0;">Confirmation of enrolment</h2>
+                            <h2 class="text-center" style="margin: 5cm 0 2cm;">Confirmation of enrolment</h2>
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
                                     <p class="h4 text-center">
