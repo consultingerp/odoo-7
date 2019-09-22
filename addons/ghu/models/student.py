@@ -75,14 +75,9 @@ class GhuStudent(models.Model):
     )
     email = fields.Char(related='partner_id.email', required=True)
 
-    student_identification = fields.Char(
-        string=u'Student Identification Number',
+    student_identification = fields.Char(string=u'Student Identification Number',compute='_compute_id', store=True)
 
-    )
-
-    student_identification = fields.Char(compute='_compute_id', store=True)
-
-    @api.depends('create_date', 'id')
+    @api.depends('create_date')
     def _compute_id(self):
         for record in self:
             record.student_identification = "GHU-" + record.create_date.strftime("%Y%m") + '{:08d}'.format(record.id + 900)
