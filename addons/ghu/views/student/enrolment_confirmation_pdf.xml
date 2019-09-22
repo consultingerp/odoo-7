@@ -6,14 +6,58 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
-                        <div class="page">
+                        <div class="page align-center">
                             <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;">
-                                    <img src="/ghu/static/img/watermark.png" />
+                                <img src="/ghu/static/img/watermark.png" />
                             </div>
-                            <h2 class="mt-3">Confirmation of enrolment</h2>
-                            <p>
-                                <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post">, <t t-esc="o.academic_degree_post" /></t>, born on <t t-esc="o.date_of_birth" /> has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/> at Global Humanistic University.
-                            </p>
+                            <h2 class="text-center" style="margin: 1cm 0;">Confirmation of enrolment</h2>
+                            <div class="row" style="margin: 1cm 0;">
+                                <div class="col-8 offset-2">
+                                    <p class="h4 text-center">
+                                        <t t-esc="o.academic_degree_pre" />
+                                        <t t-esc="o.partner_id.firstname" />
+                                        <t t-esc="o.partner_id.lastname" />
+                                        <t t-if="o.academic_degree_post">,                                            <t t-esc="o.academic_degree_post" />
+                                        </t>, born on 
+                                        <span t-field="o.date_of_birth" t-field-options='{"format": "MM/dd/yyyy"}'/>
+                                        has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/>
+                                        at Global Humanistic University.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 2cm 0;">
+                                <div class="col-8 offset-2">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td colspan="3">
+                                                <t t-esc="o.academic_degree_pre" />
+                                                <t t-esc="o.partner_id.firstname" />
+                                                <t t-esc="o.partner_id.lastname" />
+                                                <t t-esc="o.academic_degree_post" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Date of birth</td>
+                                            <td>
+                                                <t t-esc="o.date_of_birth" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nationality</td>
+                                            <td>
+                                                <t t-esc="o.nationality.name" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student ID</td>
+                                            <td>
+                                                <t t-esc="o.student_identification" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </t>
                 </t>
