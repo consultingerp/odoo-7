@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.51',
+    'version': '0.52',
  
     # any module necessary for this one to work correctly
     'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'mass_mailing','theme_treehouse', 'ghu_campus_style'],
@@ -44,6 +44,7 @@
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
+        'views/student/enrolment_confirmation_pdf.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
