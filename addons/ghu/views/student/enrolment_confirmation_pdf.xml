@@ -12,7 +12,7 @@
                             </div>
                             <h2 class="mt-3">Confirmation of enrolment</h2>
                             <p>
-                                <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post">, <t-esc="o.academic_degree_post" /></t>, born on <t t-esc="o.date_of_birth" /> has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/> at Global Humanistic University.
+                                <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post">, <t t-esc="o.academic_degree_post" /></t>, born on <t t-esc="o.date_of_birth" /> has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/> at Global Humanistic University.
                             </p>
                         </div>
                     </t>
