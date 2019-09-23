@@ -7,19 +7,23 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
                         <div class="page align-center">
-                            <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
+                            <div class="watermark" style="position:absolute;opacity:0.15;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
                                 <img src="/ghu/static/img/watermark.png" />
                             </div>
-                            <h1 class="text-center" style="margin: 8cm 0 2cm;">Confirmation of enrolment</h2>
+                            <h1 class="text-center" style="margin: 7.5cm 0 2cm;">Confirmation of enrolment</h1>
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
-                                    <p class="h3 text-center">
-                                        <t t-esc="o.academic_degree_pre" /><br/>
-                                        <div style="margin-bottom: 1cm"><strong><t t-esc="o.partner_id.firstname" />
-                                        <t t-esc="o.partner_id.lastname" /></strong></div>
-                                        <t t-if="o.academic_degree_post"><br/><t t-esc="o.academic_degree_post" /></t><br/><br/>
-                                        born on <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" /> has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> at <strong>Global Humanistic University</strong>.
-                                    </p>
+                                    <div class="h4 text-center">
+                                        <t t-esc="o.academic_degree_pre" />
+                                        <span style="display:block;margin: 0.5cm 0;"> 
+                                            <t t-esc="o.partner_id.firstname" />
+                                            <t t-esc="o.partner_id.lastname" />
+                                        </span>
+                                        <t t-if="o.academic_degree_post"><span><t t-esc="o.academic_degree_post" /></span></t>
+                                        <div style="margin: 1cm 0;">
+                                            born on <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" /> has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> at <br/><strong>Global Humanistic University</strong>.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row" style="margin: 2cm 0;">
