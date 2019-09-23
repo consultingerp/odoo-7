@@ -10,23 +10,21 @@
                             <div class="watermark" style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;">
                                 <img src="/ghu/static/img/watermark.png" />
                             </div>
-                            <h2 class="text-center" style="margin: 5cm 0 2cm;">Confirmation of enrolment</h2>
+                            <h1 class="text-center" style="margin: 8cm 0 2cm;">Confirmation of enrolment</h2>
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
-                                    <p class="h4 text-center">
+                                    <p class="h3 text-center">
                                         <t t-esc="o.academic_degree_pre" /><br/>
-                                        <strong><t t-esc="o.partner_id.firstname" />
-                                        <t t-esc="o.partner_id.lastname" /></strong>
-                                        <t t-if="o.academic_degree_post"><br/><t t-esc="o.academic_degree_post" /></t><br/>, born on 
-                                        <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" />
-                                        has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" />
-                                        at <strong>Global Humanistic University</strong>.
+                                        <div style="margin-bottom: 1cm"><strong><t t-esc="o.partner_id.firstname" />
+                                        <t t-esc="o.partner_id.lastname" /></strong></div>
+                                        <t t-if="o.academic_degree_post"><br/><t t-esc="o.academic_degree_post" /></t><br/>
+                                        born on <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" /> has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> at <strong>Global Humanistic University</strong>.
                                     </p>
                                 </div>
                             </div>
                             <div class="row" style="margin: 2cm 0;">
                                 <div class="col-8 offset-2">
-                                    <table class="table">
+                                    <table class="table h5">
                                         <tr>
                                             <td>Name</td>
                                             <td colspan="3">
