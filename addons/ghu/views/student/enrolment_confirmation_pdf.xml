@@ -14,14 +14,13 @@
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
                                     <p class="h4 text-center">
-                                        <t t-esc="o.academic_degree_pre" />
-                                        <t t-esc="o.partner_id.firstname" />
-                                        <t t-esc="o.partner_id.lastname" />
-                                        <t t-if="o.academic_degree_post">,                                            <t t-esc="o.academic_degree_post" />
-                                        </t>, born on 
-                                        <span t-field="o.date_of_birth" t-field-options='{"format": "MM/dd/yyyy"}'/>
-                                        has enrolled on <span t-field="o.create_date" t-field-options='{"format": "MM/dd/yyyy"}'/>
-                                        at Global Humanistic University.
+                                        <t t-esc="o.academic_degree_pre" /><br/>
+                                        <strong><t t-esc="o.partner_id.firstname" />
+                                        <t t-esc="o.partner_id.lastname" /></strong>
+                                        <t t-if="o.academic_degree_post"><br/><t t-esc="o.academic_degree_post" /></t><br/>, born on 
+                                        <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" />
+                                        has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" />
+                                        at <strong>Global Humanistic University</strong>.
                                     </p>
                                 </div>
                             </div>
@@ -40,7 +39,7 @@
                                         <tr>
                                             <td>Date of birth</td>
                                             <td>
-                                                <t t-esc="o.date_of_birth" />
+                                                <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" />
                                             </td>
                                         </tr>
                                         <tr>
