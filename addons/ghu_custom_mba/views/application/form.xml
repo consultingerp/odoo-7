@@ -146,6 +146,18 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
+                                                        <div class="row col-sm-12">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input o_website_form_input" required="required" type="checkbox" value="confirm_experience" id="confirm_experience" />
+                                                                <label class="form-check-label" for="confirm_experience">
+                                                                            I confirm that I have at least five years of work experience or an academic degree equally to a BSc or higher. *
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="native_language" class="control-label col-sm-3" title="">
                                                                         Native Language
