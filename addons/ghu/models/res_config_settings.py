@@ -41,6 +41,14 @@ class ResConfigSettings(models.TransientModel):
 
     social_researchgate = fields.Char(related='website_id.social_researchgate', readonly=False)
 
+    smarthub_api_key = fields.Char(
+        string='Smarthub API Key',
+        help='The Smarthub API key is needed to automatically import incoming leads.',
+        required=True,
+        default='1234',
+        config_parameter='ghu.smarthub_api_key',
+    )
+
     # @api.depends('website_id', 'social_twitter', 'social_facebook', 'social_github', 'social_linkedin', 'social_youtube', 'social_googleplus', 'social_instagram', 'social_researchgate')
     # def has_social_network(self):
     #     self.has_social_network = self.social_twitter or self.social_facebook or self.social_github \
