@@ -58,6 +58,45 @@ class Lead(models.Model):
                 leadsToImport.append(lead)
             self.env['crm.lead'].create(leadsToImport)
     
+    @api.model
+    def _import_keystone_doctoral(self):
+        url = "https://smarthub.keystoneacademic.com/api/rest/getLead"
+        payload = {"programs": [129183, 129182], "after": "2019-10-02"}
+        headers = {
+            'x-api-key': self.env['ir.config_parameter'].sudo().get_param('ghu.smarthub_api_key'),
+            'cache-control': "no-cache"
+            }
+
+        response = requests.request("POST", url, json=payload, headers=headers)
+        if response.status_code != 200:
+            # This means something went wrong.
+            print('oh no')
+        else:
+            leads = response.json()
+            leadsToImport = []
+
+            sales_team = self.env['crm.team'].search([('name','ilike','Smarthub')], limit=1)
+            
+            for lead in leads['data']:
+                if self.env['crm.lead'].search([('reveal_id', '=', lead['id'])]):
+                    print('Lead {} {} already exists'.format(lead['id'], lead['firstname']))
+                    continue
+                lead = {
+                    'reveal_id': lead['id'],
+                    'name': lead['firstname'] + ' ' + lead['lastname'],
+                    'highest_degree': lead['highest_degree'],
+                    'nationality': self.env['res.country'].search([('code','=',lead['contact']['nationality_country']['iso_3166_1_alpha_2'])], limit=1).id,
+                    'email_from': lead['contact']['email'],
+                    'phone': lead['contact']['phone'],
+                    'team_id': sales_team.id,
+                    'user_id': sales_team.user_id.id,
+                    'stage_id': 1,
+                    'type': 'opportunity',
+                    'description': lead['comment']
+                }
+                leadsToImport.append(lead)
+            self.env['crm.lead'].create(leadsToImport)
+    
 
 
 
