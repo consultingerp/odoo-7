@@ -1,0 +1,10 @@
+<!-- App Settings FAB -->
+<div id="app-settings"> 
+  <app-settings 
+    layout-active="{{ layout }}"
+    :layout-location="{
+      'fixed': 'fixed-{{ slug }}.html',
+      'default': '{{ slug }}.html'
+    }"
+    sidebar-variant="bg-transparent border-0"></app-settings>
+</div>

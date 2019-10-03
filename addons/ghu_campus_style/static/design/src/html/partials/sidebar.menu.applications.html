@@ -1,0 +1,13 @@
+<div class="sidebar-heading">APPLICATIONS</div>
+<ul class="sidebar-menu sm-active-button-bg">
+  <li class="sidebar-menu-item{% if (slug === 'student-dashboard') %} active{% endif %}">
+    <a class="sidebar-menu-button" href="{{ prefix.replace('instructor','student') }}dashboard.html">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
+    </a>
+  </li>
+  <li class="sidebar-menu-item{% if (slug === 'instructor-dashboard') %} active{% endif %}">
+    <a class="sidebar-menu-button" href="{{ prefix.replace('student','instructor') }}dashboard.html">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
+    </a>
+  </li>
+</ul>

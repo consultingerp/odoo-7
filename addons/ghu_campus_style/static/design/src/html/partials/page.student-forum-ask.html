@@ -1,0 +1,106 @@
+<div class="{{ containerClass }} page__container">
+  <div class="row m-0">
+    <div class="col-lg container-fluid page__container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ prefix or '' }}forum.html">Forum</a></li>
+        <li class="breadcrumb-item active">{{ title }}</li>
+      </ol>
+      <h1 class="h2">{{ title }}</h1>
+
+      {% import 'components/forum/activity-item.html' as forum_activity_item %}
+      {% set similar = [{
+        avatar: 'assets/images/people/50/guy-1.jpg',
+        name: 'Luci Bryant',
+        title: 'Using Angular HttpClientModule instead of HttpModule',
+        date: '5 min ago'
+      }, {
+        avatar: 'assets/images/people/50/guy-2.jpg',
+        name: 'Magnus Goldsmith',
+        title: 'Using Angular HttpClientModule instead of HttpModule',
+        date: '7 min ago'
+      }] %}
+
+      <form action="">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group m-0" role="group" aria-labelledby="label-question">
+              <div class="form-row align-items-center">
+                <label id="label-question" for="question" class="col-md-3 col-form-label form-label">Question title</label>
+                <div class="col-md-9">
+                  <input id="question" type="text" placeholder="Your question ..." value="Angular HttpClientModule" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h5 class="text-uppercase mb-0">Similar questions</h5>
+          </div>
+          <ul class="list-group list-group-fit">
+            {% for item in similar %}
+              {{ forum_activity_item.component(item=item, prefix=prefix) }}
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="list-group list-group-fit">
+            <div class="list-group-item">
+              <div role="group" aria-labelledby="label-question" class="m-0 form-group">
+                <div class="form-row">
+                  <label id="label-question" for="question" class="col-md-3 col-form-label form-label">Question details</label>
+                  <div class="col-md-9">
+                    <textarea id="question" placeholder="Describe your question in detail ..." rows="4" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="form-group m-0" role="group" aria-labelledby="label-topic">
+                <div class="form-row align-items-center">
+                  <label id="label-topic" for="topic" class="col-md-3 col-form-label form-label">Topic</label>
+                  <div class="col-md-9">
+                    <select id="topic" class="form-control custom-select w-auto">
+                      <option value="JavaScript">JavaScript</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="notify" type="checkbox" class="custom-control-input" checked="">
+                <label for="notify" class="custom-control-label">Notify me on email when someone replies to my question</label>
+              </div>
+              <small id="description-notify" class="form-text text-muted">If unchecked, you'll still recieve notifications on our website.</small>
+            </div>
+            <div class="list-group-item">
+              <button type="button" class="btn btn-success">Post Question</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div 
+      id="page-nav" 
+      class="col-lg-auto page-nav">
+      <div 
+        data-perfect-scrollbar
+        data-perfect-scrollbar-wheel-propagation="true">
+        <div class="page-section pt-lg-32pt">
+          <div class="nav page-nav__menu">
+            <a href="javascript:void(0)" class="nav-link active">Before you post</a>
+          </div>
+          <div class="page-nav__content">
+            <p class="text-black-70">There may be other students who have asked the same question before.</p>
+            <p class="text-black-70">You should do a quick search first to make sure your question is unique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

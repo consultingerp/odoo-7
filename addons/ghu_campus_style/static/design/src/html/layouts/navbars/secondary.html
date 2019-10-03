@@ -1,0 +1,113 @@
+<div class="navbar bg-dark navbar-dark navbar-expand-sm d-none2 d-md-flex2">
+  <div class="{{ navbarContainerClass or containerClass }}">
+    
+    <div class="navbar-collapse collapse" id="navbarsExample03">
+      <ul class="nav navbar-nav">
+        <li class="nav-item dropdown{% if student_menu and not messages_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'student-dashboard' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}dashboard.html">Dashboard</a>
+            <a class="dropdown-item{% if slug === 'student-browse-courses' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}browse-courses.html">Browse Courses</a>
+            <a class="dropdown-item{% if slug === 'student-view-course' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}view-course.html">View Course</a>
+            <a class="dropdown-item{% if slug === 'student-take-course' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}take-course.html">Take Course</a>
+            <a class="dropdown-item{% if slug === 'student-take-quiz' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}take-quiz.html">Take a Quiz</a>
+            <a class="dropdown-item{% if slug === 'student-quiz-results' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}quiz-results.html">Quiz Results</a>
+            <a class="dropdown-item{% if slug === 'student-my-courses' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}my-courses.html">My Courses</a>
+            <a class="dropdown-item{% if slug === 'student-billing' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}billing.html">Billing</a>
+            <a class="dropdown-item{% if slug === 'student-pay' %} active{% endif %}" href="{{ prefix.replace('instructor','student') }}pay.html">Payment</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown{% if instructor_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Instructor</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'instructor-dashboard' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}dashboard.html">Dashboard</a>
+            <a class="dropdown-item{% if slug === 'instructor-courses' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}courses.html">Course Manager</a>
+            <a class="dropdown-item{% if slug === 'instructor-quizzes' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}quizzes.html">Quiz Manager</a>
+            <a class="dropdown-item{% if slug === 'instructor-earnings' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}earnings.html">Earnings</a>
+            <a class="dropdown-item{% if slug === 'instructor-statement' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}statement.html">Statement</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown{% if account_menu or messages_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'student-account-edit' or slug === 'instructor-account-edit' %} active{% endif %}" href="{{ prefix }}account-edit.html">Edit Account</a>
+            <a class="dropdown-item{% if 'account-edit-basic' in slug %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}account-edit-basic.html">Basic Information</a>
+            <a class="dropdown-item{% if 'account-edit-profile' in slug %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}account-edit-profile.html">Profile &amp; Privacy</a>
+            <a class="dropdown-item{% if 'account-billing-subscription' in slug %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}account-billing-subscription.html">Subscription</a>
+            <a class="dropdown-item{% if 'account-billing-upgrade' in slug %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}account-billing-upgrade.html">Upgrade Account</a>
+            <a class="dropdown-item{% if 'account-billing-payment-information' in slug %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}account-billing-payment-information.html">Payment Information</a>
+            <a class="dropdown-item{% if slug === 'student-billing' %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}billing.html">Payment History</a>
+            <a class="dropdown-item{% if slug === 'student-invoice' %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}invoice.html">Student Invoice</a>
+            <a class="dropdown-item{% if slug === 'instructor-invoice' %} active{% endif %}" href="{{ prefix.replace('student', 'instructor') }}invoice.html">Instructor Invoice</a>
+            <a class="dropdown-item{% if slug === 'instructor-edit-invoice' %} active{% endif %}" href="{{ prefix.replace('student', 'instructor') }}edit-invoice.html">Edit Invoice</a>
+            <a class="dropdown-item{% if 'messages' in slug %} active{% endif %}" href="{{ prefix }}messages.html">Messages</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="guest-login.html">Login</a>
+            <a class="dropdown-item" href="guest-signup.html">Signup</a>
+            <a class="dropdown-item" href="guest-forgot-password.html">Forgot Password</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown{% if community_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Community</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'instructor-forum' or slug === 'student-forum' %} active{% endif %}" href="{{ prefix }}forum.html">Forum</a>
+            <a class="dropdown-item{% if slug === 'instructor-forum-thread' or slug === 'student-forum-thread' %} active{% endif %}" href="{{ prefix }}forum-thread.html">Discussion</a>
+            <a class="dropdown-item{% if slug === 'instructor-forum-ask' or slug === 'student-forum-ask' %} active{% endif %}" href="{{ prefix }}forum-ask.html">Ask Question</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item{% if slug === 'student-profile' %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}profile.html">Student Profile - Courses</a>
+            <a class="dropdown-item{% if slug === 'student-profile-posts' %} active{% endif %}" href="{{ prefix.replace('instructor', 'student') }}profile-posts.html">Student Profile - Posts</a>
+            <a class="dropdown-item{% if slug === 'instructor-profile' %} active{% endif %}" href="{{ prefix.replace('student','instructor') }}profile.html">Instructor Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item{% if 'help' in slug %} active{% endif %}" href="{{ prefix }}help-center.html">Help Center</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown{% if components_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Components</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'ui-avatars' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-avatars.html">Avatars</a>
+            <a class="dropdown-item{% if slug === 'ui-forms' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-forms.html">Forms</a>
+            <a class="dropdown-item{% if slug === 'ui-loaders' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-loaders.html">Loaders</a>
+            <a class="dropdown-item{% if slug === 'ui-tables' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tables.html">Tables</a>
+            <a class="dropdown-item{% if slug === 'ui-cards' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-cards.html">Cards</a>
+            <a class="dropdown-item{% if slug === 'ui-tabs' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tabs.html">Tabs</a>
+            <a class="dropdown-item{% if slug === 'ui-icons' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-icons.html">Icons</a>
+            <a class="dropdown-item{% if slug === 'ui-buttons' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-buttons.html">Buttons</a>
+            <a class="dropdown-item{% if slug === 'ui-alerts' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-alerts.html">Alerts</a>
+            <a class="dropdown-item{% if slug === 'ui-badges' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-badges.html">Badges</a>
+            <!-- <a class="dropdown-item{% if slug === 'ui-modals' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-modals.html">- Modals</a> -->
+            <a class="dropdown-item{% if slug === 'ui-progress' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-progress.html">Progress</a>
+            <a class="dropdown-item{% if slug === 'ui-pagination' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-pagination.html">Pagination</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown{% if plugins_menu %} active{% endif %}">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Plugins</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item{% if slug === 'ui-charts' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-charts.html">Charts</a>
+            <a class="dropdown-item{% if slug === 'ui-drag' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-drag.html">Drag &amp; Drop</a>
+            <a class="dropdown-item{% if slug === 'ui-calendar' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-calendar.html">Calendar</a>
+            <a class="dropdown-item{% if slug === 'ui-nestable' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-nestable.html">Nestable</a>
+            <a class="dropdown-item{% if slug === 'ui-tree' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tree.html">Tree</a>
+            <a class="dropdown-item{% if slug === 'ui-maps-vector' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-maps-vector.html">Vector Maps</a>
+            <a class="dropdown-item{% if slug === 'ui-sweet-alert' %} active{% endif %}" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-sweet-alert.html">Sweet Alert</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layouts</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ slug }}.html">Fluid</a>
+            <a class="dropdown-item active" href="fixed-{{ slug }}.html">Fixed</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
+    <button 
+      class="navbar-toggler" 
+      data-toggle="collapse" 
+      data-target="#navbarsExample03" 
+      type="button">
+      <span class="material-icons">menu</span>
+    </button>
+
+  </div>
+</div>

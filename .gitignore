@@ -220,3 +220,14 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+
+*.sql.gz
+*.zip
+
+enterprise
+_/odoo/apt
+
+!addons/ghu_campus_style/static/design/dist
+addons/ghu_campus_style/static/design/dist/*
+!addons/ghu_campus_style/static/design/dist/assets/

@@ -1,0 +1,22 @@
+{% set navbar = 'layouts/navbars/instructor.html' %}
+{% set sidebar = 'layouts/sidebars/messages.html' %}
+{% set sidebar_secondary = 'layouts/sidebars/instructor.html' %}
+{% set sidebar_secondary_sidebar_options = 'sidebar-dark bg-dark' %}
+{% set navbar_secondary = 'layouts/navbars/secondary.html' %}
+{% set bodyClass = 'app-messages' %}
+
+{% set layout = 'layouts/fluid.html' %}
+
+{% if 'fixed' in prefix %}
+  {% set layout = 'layouts/fixed.html' %}
+{% endif %}
+
+{% extends layout %}
+
+{% block page %}
+  {% include 'partials/page.messages.html' %}
+{% endblock %}
+
+{% block footer %}
+  {% include 'partials/footer.messages.html' %}
+{% endblock %}

@@ -1,0 +1,87 @@
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item active">Cart</li>
+  </ol>
+  <h1 class="h2">Shopping Cart</h1>
+
+  {% set cart = [{
+    title: 'Learn Vue.js Fundamentals',
+    avatar: 'assets/images/gulp.png',
+    qty: 1,
+    amount: '20.00'
+  }, {
+    title: 'Angular in Steps',
+    avatar: 'assets/images/vuejs.png',
+    qty: 2,
+    amount: '20.00'
+  }] %}
+
+  <div class="card table-responsive">
+    <table class="table table-nowrap mb-0 table--elevated">
+      <thead class="thead-light">
+        <tr>
+          <th>Details</th>
+          <th style="width: 100px" class="text-center">Qty</th>
+          <th style="width: 100px" class="text-right">Total</th>
+          <th style="width: 10px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="{{ prefix }}view-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}" class="avatar-img rounded">
+              </a>
+              <div class="media-body">
+                <a href="#" class="text-body"><strong>{{ item.title }}</strong></a>
+              </div>
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="d-flex align-items-center">
+              <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">remove</i></a>
+              <input type="number" class="form-control" style="width: 64px;" value="{{ item.qty }}" />
+              <a href="#" class="text-muted px-2"><i class="material-icons font-size-16pt">add</i></a>
+            </div>
+          </td>
+          <td class="text-right">
+            <p class="mb-0">&dollar;{{ item.amount }} USD</p>
+            {% if item.qty > 1 %}
+            <small class="text-black-50"><strong>Total</strong>: &dollar;{{ item.amount * item.qty }} USD</small>
+            {% endif %}
+          </td>
+          <td class="text-center">
+            <a href="#" class="text-muted"><i class="material-icons font-size-24pt">close</i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table class="table mb-0">
+      <tfoot>
+        <tr>
+          <td class="text-right text-black-70"><strong>Subtotal</strong></td>
+          <td style="width: 100px;" class="text-right"><strong>&dollar;40 USD</strong></td>
+        </tr>
+        <tr>
+          <td class="text-right text-black-70"><strong>20% Discount</strong></td>
+          <td style="width: 100px;" class="text-right"><strong>-&dollar;8 USD</strong></td>
+        </tr>
+        <tr>
+          <td class="text-right text-black-70"><strong>Total</strong></td>
+          <td style="width: 100px;" class="text-right"><strong>&dollar;32 USD</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="card-footer d-flex align-items-center">
+      <a href="{{ prefix or '' }}browse-courses.html" class="btn btn-white">Back to Courses</a>
+      <a href="{{ prefix or '' }}pay.html" class="btn btn-success ml-auto">
+        Pay Now <i class="material-icons btn__icon--right">credit_card</i>
+      </a>
+    </div>
+  </div>
+</div>

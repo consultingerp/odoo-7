@@ -1,0 +1,27 @@
+<odoo>
+    <data noupdate="0">
+        <template id="courserecord">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-esc="object.display_name"/>
+                </t>
+                <t t-if="object.long_name" t-set="subtitle">
+                    <t t-esc="object.long_name"/>
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-esc="object.display_name"/>
+                        </h1>
+                    </div>
+                </div>
+                <t t-call="ghu_custom_mba.panopto_login" />
+                <iframe id="panopto" width="100%" height="900" frameborder="0"></iframe>
+                <script>
+                    setTimeout(function(){
+                        $('#panopto').attr('src', 'https://ghu.hosted.panopto.com/Panopto/Pages/EmbeddedList.aspx?embedded=1&amp;folderID=<t t-esc="object.panopto_id"/>')}, 1500); 
+                </script>
+            </t>
+        </template>
+    </data>
+</odoo>

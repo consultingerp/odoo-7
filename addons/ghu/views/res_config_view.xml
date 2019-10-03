@@ -34,6 +34,21 @@
                             </div>
                             <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
                                 <div class="o_setting_right_pane">
+                                    <label string="API Keys for imports" for="ghu_smarthub_api_key"/>
+                                    <span class="fa fa-lg fa-dollar"/>
+                                    <div class="text-muted">
+                                        Settings for external Lead provider
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label class="col-lg-3 o_light_label" string="Smarthub Apikey" for="ghu_smarthub_api_key"/>
+                                            <field name="ghu_smarthub_api_key" attrs="{'required': False}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="transferwise_settings">
+                                <div class="o_setting_right_pane">
                                     <label string="Doctoral Program" for="ghu_doctoral_application_fee_product"/>
                                     <span class="fa fa-lg fa-graduation-cap"/>
                                     <div class="text-muted">

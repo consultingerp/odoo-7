@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="sidebar_custom_mba">
+            <div class="sidebar-heading">Custom MBA</div>
+            <ul class="sidebar-menu sm-active-button-bg">
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_courses' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/my/courses">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> 
+                                                        My courses
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/my/video">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">videocam</i> 
+                                                        My video
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_panopto' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/panopto">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> 
+                                                        Panopto Help
+                    </a>
+                </li>
+            </ul>
+        </template>
+    </data>
+</odoo>

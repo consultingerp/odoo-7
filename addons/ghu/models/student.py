@@ -21,6 +21,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import datetime
 
 
 class GhuStudentStudy(models.Model):
@@ -42,22 +43,45 @@ class GhuStudent(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _description = "Student"
 
-    middle_name = fields.Char('Middle Name', size=128)
-    last_name = fields.Char('Last Name', size=128)
-    birth_date = fields.Date('Birth Date')
-    gender = fields.Selection(
-        [('m', 'Male'), ('f', 'Female'),
-         ('o', 'Other')], 'Gender')
-    nationality = fields.Many2one('res.country', 'Nationality')
-
-    already_partner = fields.Boolean('Already Partner')
+    firstname = fields.Char(related='partner_id.firstname', required=True)
+    lastname = fields.Char(related='partner_id.lastname', required=True)
+    gender = fields.Selection(related='partner_id.gender', required=True)
+    nationality = fields.Many2one('res.country', 'Nationality', required=True)
+    date_of_birth = fields.Date(
+        string=u'Date of Birth',
+        required=True,
+    )
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
 
-    @api.multi
-    @api.constrains('birth_date')
-    def _check_birthdate(self):
+    academic_degree_pre = fields.Char(
+        'Academic Degrees (Pre)',
+        size=64,
+    )
+    academic_degree_post = fields.Char(
+        'Academic Degrees (Post)',
+        size=64,
+    )
+    native_language = fields.Many2one(
+        string=u'Native Language',
+        comodel_name='ghu.lang',
+        required=True,
+    )
+    other_languages = fields.Many2many(
+        string=u'Other Languages',
+        comodel_name='ghu.lang',
+        relation='ghu_student_lang_rel',
+        column1='student_id',
+        column2='lang_id'
+    )
+    email = fields.Char(related='partner_id.email', required=True)
+
+    student_identification = fields.Char(
+        string=u'Student Identification Number', compute='_compute_id', store=True)
+
+    @api.depends('create_date')
+    def _compute_id(self):
         for record in self:
-            if record.birth_date > fields.Date.today():
-                raise ValidationError(_(
-                    "Birth Date can't be greater than current date!"))
+            record.student_identification = "GHU-" + \
+                record.create_date.strftime(
+                    "%Y%m") + '{:05d}'.format(record.id + 1010)

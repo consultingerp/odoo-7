@@ -1,16 +1,25 @@
 <odoo>
     <data noupdate="0">
         <template id="coursedetail">
-            <t t-call="ghu_custom_mba.campus_layout">
+            <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     <t t-esc="object.display_name"/>
                 </t>
                 <t t-if="object.long_name" t-set="subtitle">
                     <t t-esc="object.long_name"/>
                 </t>
-                <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
-                <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mb-2 mt-2">Edit course</a>
-                <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-esc="object.display_name"/>
+                        </h1>
+                    </div>
+                    <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
+                    <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mb-2 mt-2">Edit course</a>
+                    <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/record" class="btn btn-primary mb-2 mt-2">Record course</a>
+                    <a t-if="author == 'true' and object.state !='draft' and object.state !='script_approved' " class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
+                </div>
+                
                 <div t-if="not object.readyForReview()" class="alert alert-info">
                     To submit a course for review you will have to finish it by filling in the following fields:<br/>
                     <strong>
@@ -19,7 +28,6 @@
                         </t>
                     </strong>
                 </div>
-                <a t-if="author == 'true' and object.state !='draft'" class="btn btn-primary mt-2 mb-2 disabled"><t t-esc="object.state"/></a>
                 <div class="accordion mb-2" id="courseAccordion">
                     <div class="card">
                         <div class="card-header" id="headingDescription">

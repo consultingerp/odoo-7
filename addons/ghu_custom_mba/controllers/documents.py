@@ -29,6 +29,6 @@ class GhuCampus(CustomerPortal):
             values['custom_mba_documents'] = folder.attachment_ids
             for attachment in values['custom_mba_documents']:
                 attachment.generate_access_token()
-        
+        values['slug'] = 'campus_documents' 
         return request.render('ghu_custom_mba.campus_documents', values)
         

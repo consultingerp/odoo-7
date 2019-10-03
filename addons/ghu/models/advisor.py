@@ -9,6 +9,9 @@ class GhuAdvisor(models.Model):
     _inherit = ['website.published.mixin', 'mail.thread']
     _inherits = {"res.partner": "partner_id"}
 
+    partner_id = fields.Many2one(
+        'res.partner', 'Partner', required=True, ondelete="cascade")
+
     is_cafeteria = fields.Boolean(
         string=u'Is cafeteria?',
     )

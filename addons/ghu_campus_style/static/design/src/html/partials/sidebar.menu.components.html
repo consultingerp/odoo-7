@@ -1,0 +1,137 @@
+<!-- Components menu -->
+<div class="sidebar-heading">Components</div>
+<ul class="sidebar-menu">
+  <li class="sidebar-menu-item{% if components_menu %} open{% endif %}">
+    <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#components_menu">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">tune</i> 
+      Components
+      <span class="ml-auto sidebar-menu-toggle-icon"></span>
+    </a>
+    <ul class="sidebar-submenu sm-indent collapse{% if components_menu %} show{% endif %}" id="components_menu">
+      <li class="sidebar-menu-item{% if slug === 'ui-avatars' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-avatars.html">
+          <span class="sidebar-menu-text">Avatars</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-forms' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-forms.html">
+          <span class="sidebar-menu-text">Forms</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-loaders' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-loaders.html">
+          <span class="sidebar-menu-text">Loaders</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-tables' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tables.html">
+          <span class="sidebar-menu-text">Tables</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-cards' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-cards.html">
+          <span class="sidebar-menu-text">Cards</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-tabs' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tabs.html">
+          <span class="sidebar-menu-text">Tabs</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-icons' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-icons.html">
+          <span class="sidebar-menu-text">Icons</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-buttons' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-buttons.html">
+          <span class="sidebar-menu-text">Buttons</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-alerts' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-alerts.html">
+          <span class="sidebar-menu-text">Alerts</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-badges' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-badges.html">
+          <span class="sidebar-menu-text">Badges</span>
+        </a>
+      </li>
+      <!-- <li class="sidebar-menu-item{% if slug === 'ui-modals' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-modals.html">
+          <span class="sidebar-menu-text">- Modals</span>
+        </a>
+      </li> -->
+      <li class="sidebar-menu-item{% if slug === 'ui-progress' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-progress.html">
+          <span class="sidebar-menu-text">Progress Bars</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-pagination' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-pagination.html">
+          <span class="sidebar-menu-text">Pagination</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="sidebar-menu-item{% if plugins_menu %} open{% endif %}">
+    <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#plugins_menu">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">folder</i> 
+      Plugins
+      <span class="ml-auto sidebar-menu-toggle-icon"></span>
+    </a>
+    <ul class="sidebar-submenu sm-indent collapse{% if plugins_menu %} show{% endif %}" id="plugins_menu">
+      <li class="sidebar-menu-item{% if slug === 'ui-charts' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-charts.html">
+          <span class="sidebar-menu-text">Charts</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-drag' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-drag.html">
+          <span class="sidebar-menu-text">Drag &amp; Drop</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-calendar' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-calendar.html">
+          <span class="sidebar-menu-text">Calendar</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-nestable' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-nestable.html">
+          <span class="sidebar-menu-text">Nestable</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-tree' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-tree.html">
+          <span class="sidebar-menu-text">Tree</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-maps-vector' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-maps-vector.html">
+          <span class="sidebar-menu-text">Vector Maps</span>
+        </a>
+      </li>
+      <li class="sidebar-menu-item{% if slug === 'ui-sweet-alert' %} active{% endif %}">
+        <a class="sidebar-menu-button" href="{{ prefix.replace('student-', '').replace('instructor-', '') }}ui-sweet-alert.html">
+          <span class="sidebar-menu-text">Sweet Alert</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!-- // END Components Menu -->
+
+<div class="sidebar-heading">Layout</div>
+<ul class="sidebar-menu">
+  <li class="sidebar-menu-item{% if ('fixed' not in prefix) %} active{% endif %}">
+    <a class="sidebar-menu-button" href="{{ slug }}.html">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fluid Layout
+    </a>
+  </li>
+  <li class="sidebar-menu-item{% if ('fixed' in prefix) %} active{% endif %}">
+    <a class="sidebar-menu-button" href="fixed-{{ slug }}.html">
+      <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fixed Layout
+    </a>
+  </li>
+</ul>

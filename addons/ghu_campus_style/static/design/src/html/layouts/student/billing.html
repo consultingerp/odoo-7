@@ -1,0 +1,43 @@
+{% extends layout_base or 'layouts/student/fluid.html' %}
+
+{% block page %}
+<div class="{{ containerClass }} page__container p-0">
+  <div class="row m-0">
+    <div class="col-lg container-fluid page__container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+        <li class="breadcrumb-item active">Edit Account</li>
+      </ol>
+      {% if page_heading_title !== false %}
+        <h1 class="h2">{{ title }}</h1>
+      {% endif %}
+      {% include 'partials/page.' + slug + '.html' ignore missing %}
+    </div>
+    <div 
+      id="page-nav" 
+      class="col-lg-auto page-nav">
+      <div data-perfect-scrollbar>
+        <div class="page-section pt-lg-32pt">
+          <ul class="nav page-nav__menu">
+            <li class="nav-item">
+              <a href="{{ prefix }}account-billing-subscription.html" class="nav-link{% if 'subscription' in slug %} active{% endif %}">Subscription</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ prefix }}account-billing-upgrade.html" class="nav-link{% if 'upgrade' in slug %} active{% endif %}">Upgrade Account</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ prefix }}account-billing-payment-information.html" class="nav-link{% if 'payment-information' in slug %} active{% endif %}">Payment Information</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ prefix }}billing.html" class="nav-link{% if slug === 'student-billing' %} active{% endif %}">Payment History</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ prefix }}invoice.html" class="nav-link{% if slug === 'student-invoice' %} active{% endif %}">Invoice</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

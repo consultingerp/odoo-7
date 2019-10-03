@@ -9,5 +9,28 @@
             <value eval="[ref('ghu.sale_settings')]"/>
             <value eval="{}"/>
         </function>-->
+        <!-- Scheduler for Lead Generation -->
+        <record id="ir_cron_ghu_import_leads" model="ir.cron">
+            <field name="name">GHU: Import custom mba leads from smarthub keystone</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">model._import_keystone_custom_mba()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+        <record id="ir_cron_ghu_import_leads_doctoral" model="ir.cron">
+            <field name="name">GHU: Import doctoral leads from smarthub keystone</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">model._import_keystone_doctoral()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
     </data>
 </odoo>

@@ -16,24 +16,11 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.42',
+    'version': '0.58',
+ 
+
     # any module necessary for this one to work correctly
-    'depends': [
-        'base',
-        'base_automation',
-        'web',
-        'crm',
-        'account',
-        'website',
-        'website_form',
-        'website_partner',
-        'website_form_editor',
-        'hr',
-        'sign',
-        'mass_mailing',
-        'theme_treehouse',
-        'account_transferwise',
-    ],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'mass_mailing','theme_treehouse', 'ghu_campus_style', 'account_transferwise'],
 
     # always loaded
     'data': [
@@ -58,12 +45,14 @@
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
+        'views/student/enrolment_confirmation_pdf.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',
         'views/res_config_view.xml',
         'views/invoice_document.xml',
-        'views/website_social_header.xml'
+        'views/website_social_header.xml',
+        'views/menu.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

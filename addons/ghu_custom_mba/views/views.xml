@@ -1,5 +1,17 @@
 <odoo>
   <data noupdate="0">
+    <record model="ir.ui.view" id="ghu_custom_mba.advisor_form_extension">
+        <field name="name">ghu_custom_mba.advisor.inherit</field>
+        <field name="model">ghu.advisor</field>
+        <field name="inherit_id" ref="ghu.view_ghu_advisor_form" />
+        <field name="priority" eval="15"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_cafeteria']" position="after">
+                <field name="videoCheck"/>
+            </xpath>                    
+        </field> 
+    </record>
+
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="ghu_custom_mba.list">
       <field name="name">Courses</field>
