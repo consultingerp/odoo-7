@@ -20,7 +20,7 @@
  
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'mass_mailing','theme_treehouse', 'ghu_campus_style'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'mass_mailing','theme_treehouse', 'ghu_campus_style', 'account_transferwise'],
 
     # always loaded
     'data': [

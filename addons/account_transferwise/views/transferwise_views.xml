@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="transferwise_settings_view_form" model="ir.ui.view">
+      <field name="name">ghu.transferwise.settings.view.form</field>
+      <field name="model">account.online.provider</field>
+      <field name="arch" type="xml">
+        <form>
+          <label for="name" />
+          <field name="name" />
+          <br/>
+
+          <label for="transferwise_sandbox_mode" />
+          <field name="transferwise_sandbox_mode" />
+          <br/>
+
+          <label for="transferwise_api_key" />
+          <field name="transferwise_api_key" required="1" />
+          <br/>
+        </form>
+      </field>
+    </record>
+
+    <record id="online_provider_account_form_view_transferwise" model="ir.ui.view">
+      <field name="name">account.online.provider.form.view.transferwise</field>
+      <field name="model">account.online.provider</field>
+      <field name="inherit_id" ref="account_online_sync.online_provider_account_form_view"/>
+      <field name="arch" type="xml">
+        <field name="provider_account_identifier" position="before">
+          <field name="transferwise_sandbox_mode" attrs="{'invisible': [('provider_type', '!=', 'transferwise')]}" />
+          <field name="transferwise_api_key" attrs="{'invisible': [('provider_type', '!=', 'transferwise')]}" />
+        </field>
+      </field>
+    </record>
+  </data>
+</odoo>
