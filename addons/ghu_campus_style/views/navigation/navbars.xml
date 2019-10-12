@@ -3,7 +3,7 @@
     <data noupdate="0">
         <template id="navbar_advisor">
             <!-- Navbar -->
-            <nav id="default-navbar" class="navbar navbar-expand navbar-light bg-white border-bottom m-0 mdk-header--fixed">
+            <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0 mdk-header--fixed">
                 <div class="container-fluid">
                     <!-- Toggle sidebar -->
                     <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">

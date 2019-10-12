@@ -71,6 +71,15 @@ class GhuCourse(models.Model):
 
     creditpoints = fields.Char('Creditpoints Description', size=256, required=False)
 
+    
+    assessment_ids = fields.One2many(
+        string=u'Assessments',
+        comodel_name='ghu_custom_mba.assessment',
+        inverse_name='course_id',
+        limit=2
+    )
+    
+
     # Workflow specifics
     formal_check_done = fields.Boolean(
         string=u'Formal check done?',
@@ -252,7 +261,8 @@ class GhuAssessment(models.Model):
             ('essay', 'Essay'),
             ('report', 'Report'),
             ('case_study', 'Case Study'),
-            ('presentation', 'Presentation'),
+            ('homework', 'Homework'),
+            ('presentation', 'Presentation')
         ]
     )
 

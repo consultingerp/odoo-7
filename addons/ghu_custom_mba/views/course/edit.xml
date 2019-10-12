@@ -7,17 +7,41 @@
                     </t>
                     <t t-else="">New Course</t>
                 </t>
-                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
-                    <div class="flex mb-2 mb-sm-0">
+                <div class="media align-items-center mb-headings">
+                    <div class="media-body">
                         <h1 class="h2">
                             <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
                             </t>
                             <t t-else="">New Course</t>
                         </h1>
                     </div>
+                    <div class="media-right">
+                        <a href="#" class="btn btn-success">SAVE</a>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Basic Information</h4>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    <label class="form-label" for="title">Title</label>
+                                    <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
+                                    <small id="nameHelp" class="form-text text-muted">This is the name used to advertise the module in campus.</small>
+                                </div>
+
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Description</label>
+                                    <div style="height: 150px;" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
+                                        <t t-esc="object['description']" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                         <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
                             <div class="hidden">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
