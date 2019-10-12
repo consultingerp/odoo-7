@@ -130,6 +130,7 @@
                                                             </label>
                                                             <div class="col-sm-9">
                                                                 <select class="form-control o_website_form_input" id="academicdegreespre" name="academic_degree_pre">
+                                                                    <option value=""></option>
                                                                     <option value="Mag.">Mag.</option>
                                                                     <option value="Lic.">Lic.</option>
                                                                     <option value="Dr.">Dr.</option>
@@ -144,6 +145,7 @@
                                                             </label>
                                                             <div class="col-sm-9">
                                                                 <select class="form-control o_website_form_input" id="title_post" name="academic_degree_post">
+                                                                    <option value=""></option>
                                                                     <option value="CAS">CAS</option>
                                                                     <option value="DAS">DAS</option>
                                                                     <option value="Bachelor">Bachelor</option>
