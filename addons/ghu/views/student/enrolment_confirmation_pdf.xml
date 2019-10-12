@@ -3,7 +3,7 @@
     <data noupdate="0">
         <report id="enrolment_confirmation_pdf" model="ghu.student" string="Enrolment Confirmation" report_type="qweb-pdf" name="ghu.enrolment_confirmation" />
         <template id="external_layout_minimal" inherit_id="web.external_layout_background">
-            <xpath expr="//div[@class='footer']/div[@class='text-center']/div[@class='text-muted']" position="replace">
+            <xpath expr="//div[@class='footer o_background_footer']//div[@class='text-center']//div[@class='text-muted']" position="replace">
                 
             </xpath>
         </template>
