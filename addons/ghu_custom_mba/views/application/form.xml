@@ -129,7 +129,11 @@
                                                                         Academic Degrees (Pre)
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input class="form-control o_website_form_input" id="academicdegreespre" type="text" name="academic_degree_pre" value="" />
+                                                                <select class="form-control o_website_form_input" id="academicdegreespre" name="academic_degree_pre">
+                                                                    <option value="Mag.">Mag.</option>
+                                                                    <option value="Lic.">Lic.</option>
+                                                                    <option value="Dr.">Dr.</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -139,7 +143,14 @@
                                                                         Academic Degrees (Post)
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input class="form-control o_website_form_input" id="title_post" type="text" name="academic_degree_post" value="" />
+                                                                <select class="form-control o_website_form_input" id="title_post" name="academic_degree_post">
+                                                                    <option value="CAS">CAS</option>
+                                                                    <option value="DAS">DAS</option>
+                                                                    <option value="Bachelor">Bachelor</option>
+                                                                    <option value="Master">Master</option>
+                                                                    <option value="DBA">DBA</option>
+                                                                    <option value="PhD">PhD</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
