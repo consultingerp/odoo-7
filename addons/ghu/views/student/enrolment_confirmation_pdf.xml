@@ -2,15 +2,10 @@
 <odoo>
     <data noupdate="0">
         <report id="enrolment_confirmation_pdf" model="ghu.student" string="Enrolment Confirmation" report_type="qweb-pdf" name="ghu.enrolment_confirmation" />
-        <template id="external_layout_minimal" inherit_id="web.external_layout_background">
-            <xpath expr="//div[@class='footer o_background_footer']//div[@class='text-center']//div[@class='text-muted']" position="replace">
-                
-            </xpath>
-        </template>
         <template id="enrolment_confirmation">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="ghu.external_layout_background">
+                    <t t-call="web.external_layout">
                         <t t-set="page">False</t>
                         <div class="page">
                             <div class="watermark" style="position:absolute;opacity:0.20;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
@@ -20,8 +15,7 @@
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
                                     <div class="h4 text-center">
-                                        <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /> 
-                                        <t t-if="o.academic_degree_post"><span>, <t t-esc="o.academic_degree_post" /></span></t>
+                                        <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post"><span>, <t t-esc="o.academic_degree_post" /></span></t>
                                         <div style="margin: 1cm 0;">
                                             born on <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" /> has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> at <br/><strong>Global Humanistic University</strong>.
                                         </div>
