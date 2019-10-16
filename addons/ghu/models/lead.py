@@ -36,7 +36,7 @@ class Lead(models.Model):
             leadsToImport = []
 
             sales_team = self.env['crm.team'].search([('name','ilike','Smarthub')], limit=1)
-            study_id = self.env['ghu.study'].search([('code','=','CBA')], limit=1).id
+            study_id = self.env['ghu.study'].search([('code','=','CMBA')], limit=1).id
             for lead in leads['data']:
                 if self.env['crm.lead'].search([('reveal_id', '=', lead['id'])]):
                     print('Lead {} {} already exists'.format(lead['id'], lead['firstname']))

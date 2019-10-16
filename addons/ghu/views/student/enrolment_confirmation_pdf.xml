@@ -15,12 +15,7 @@
                             <div class="row" style="margin: 1cm 0;">
                                 <div class="col-8 offset-2">
                                     <div class="h4 text-center">
-                                        <t t-esc="o.academic_degree_pre" />
-                                        <span style="display:block;margin: 0.5cm 0;"> 
-                                            <t t-esc="o.partner_id.firstname" />
-                                            <t t-esc="o.partner_id.lastname" />
-                                        </span>
-                                        <t t-if="o.academic_degree_post"><span><t t-esc="o.academic_degree_post" /></span></t>
+                                        <t t-esc="o.academic_degree_pre" /> <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" /><t t-if="o.academic_degree_post"><span>, <t t-esc="o.academic_degree_post" /></span></t>
                                         <div style="margin: 1cm 0;">
                                             born on <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" /> has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> at <br/><strong>Global Humanistic University</strong>.
                                         </div>
