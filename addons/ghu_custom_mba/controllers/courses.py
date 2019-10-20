@@ -171,3 +171,24 @@ class GhuCustomMba(http.Controller):
             kw['state'] = 'new'
             obj.write(kw)
         return werkzeug.utils.redirect('/campus/my/courses')
+
+
+
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
+    def newAssessment(self, **kw):
+        assessment_model = request.env['ir.model'].sudo().search(
+            [('model', '=', 'ghu_custom_mba.assessment')])
+        assessment_fields = request.env['ir.model.fields'].sudo().search([
+            ('model_id', '=', assessment_model.id),
+        ])
+        all_fields = dict()
+        for f in assessment_fields:
+            all_fields[f['name']] = ''
+
+        return http.request.render('ghu_custom_mba.assessment_new', {
+            'root': '/campus/course',
+            'new': True,
+            'object': all_fields,
+            'slug': 'campus_my_courses'
+        })
