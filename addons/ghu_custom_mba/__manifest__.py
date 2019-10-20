@@ -31,6 +31,7 @@
         'views/course/detail.xml',
         'views/course/edit.xml',
         'views/course/record.xml',
+        'views/course/assessments/edit.xml',
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',

@@ -255,15 +255,21 @@ class GhuAssessment(models.Model):
 
     name = fields.Char('Name', size=128, required=True)
 
+    types = [
+        ('new', 'New'),
+        ('signed', 'Signed'),
+        ('approved', 'Approved'),
+        ('advisor_search', 'Advisor Search'),
+        ('advisor_matched', 'Advisor Match'),
+        ('advisor_found', 'Advisor agreed'),
+        ('done', 'Done'),
+        ('declined', 'Declined')
+    ]
+
+
     type = fields.Selection(
         string=u'Assessment Type',
-        selection=[
-            ('essay', 'Essay'),
-            ('report', 'Report'),
-            ('case_study', 'Case Study'),
-            ('homework', 'Homework'),
-            ('presentation', 'Presentation')
-        ]
+        selection=types
     )
 
     

@@ -7,13 +7,13 @@
                     </t>
                     <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
                 </t>
-                <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
+                <form t-attf-action="#{ root }/course/#{ course['id'] }/assessment/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data">
                     <div class="media align-items-center mb-headings">
                         <div class="media-body">
                             <h1 class="h2">
-                                <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
+                                <t t-if="object['display_name']">Edit Assessment: <t t-esc="object['display_name']"/> of course <t t-esc="course['display_name']"/> 
                                 </t>
-                                <t t-else="">New Course</t>
+                                <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
                             </h1>
                         </div>
                         <div class="media-right">
@@ -28,69 +28,17 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Basic Information</h4>
+                                    <h4 class="card-title">Configuration</h4>
                                 </div>
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                        <label class="form-label" for="title   ">Title</label>
+                                        <label class="form-label" for="title">Title</label>
                                         <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
-                                        <small id="nameHelp" class="form-text text-muted">This is the name used to advertise the module in campus.</small>
+                                        <small id="nameHelp" class="form-text text-muted">Title of the assessment.</small>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="longName">Long module name</label>
-                                        <input type="text" name="long_name" class="form-control" t-att-value="object['long_name']" id="longName" aria-describedby="longNameHelp" placeholder="Long module name" />
-                                        <small id="longNameHelp" class="form-text text-muted">This is the name used to give more information on the module in campus.</small>
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <label class="form-label">Description</label>
-                                        <textarea class="editor" id="description" name="description">
-                                            <t t-esc="object['description']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="aims">Aims</label>
-                                        <textarea class="editor" id="aims" name="aims">
-                                            <t t-esc="object['aims']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="knowledge">Learning Outcomes: Knowledge</label>
-                                        <textarea class="editor" id="knowledge" name="knowledge">
-                                            <t t-esc="object['knowledge']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="skills">Learning Outcomes: Skills</label>
-                                        <textarea class="editor" id="skills" name="skills">
-                                            <t t-esc="object['skills']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="syllabus">Syllabus</label>
-                                        <textarea class="editor" id="syllabus" name="syllabus">
-                                            <t t-esc="object['syllabus']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="strategies">Learning, Teaching and Assessment Strategies </label>
-                                        <textarea class="editor" id="strategies" name="strategies">
-                                            <t t-esc="object['strategies']" />
-                                        </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="language" title="">Language<span class="mandatory">*</span>
-                                        </label>
-                                        <select required="required" class="form-control-file" id="language" name="language">
-                                            <t t-foreach="languages" t-as="language">
-                                                <option t-att-value="language.id">
-                                                    <t t-esc="language.display_name"/>
-                                                </option>
-                                            </t>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="program_id" class="form-label" title="">Program<span class="mandatory">*</span>
+                                        <label for="program_id" class="form-label" title="">Assessment Type<span class="mandatory">*</span>
                                         </label>
                                         <select required="required" class="form-control-file" id="program_id" name="program_id">
                                             <t t-foreach="programs" t-as="program">
@@ -99,11 +47,6 @@
                                                 </option>
                                             </t>
                                         </select>
-                                    </div>
-                                    <div class="form-field form-group">
-                                        <label for="script" class="form-label" title="As PDF File">Script <span class="mandatory">*</span>
-                                        </label>
-                                        <input accept=".pdf" class="form-control" id="script" type="file" name="script_file" />
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
@@ -173,29 +116,6 @@
                     </div>
                 </form>
             </t>
-            <t t-call-assets="ghu_custom_mba.assets_vue"></t>
-            <script>
-                var editors = document.querySelectorAll( '.editor' );
-                editors.forEach(function(editor){
-                ClassicEditor
-                    .create( editor, {
-                        toolbar: [ 'heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList' ],
-                        heading: {
-                            options: [
-                                { model: 'paragraph', title: 'Paragraph', class: 'p' },
-                                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'h1' },
-                                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'h2' }
-                            ]
-                        }
-                    })
-                    .then( editor => {
-                        console.log( editor );
-                    } )
-                    .catch( error => {
-                        console.error( error );
-                    } );
-            });
-            </script>
         </template>
     </data>
 </odoo>
