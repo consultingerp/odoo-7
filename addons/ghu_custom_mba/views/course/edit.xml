@@ -128,9 +128,9 @@
                                         <div class="form-group">
                                             <label class="form-label" for="category">Category</label>
                                             <select id="category" class="custom-select form-control">
-                                                <option selected="selected" value="#">HTML</option>
+                                                <option value="#">HTML</option>
                                                 <option value="#">Angular JS</option>
-                                                <option value="#" selected>Vue.js</option>
+                                                <option value="#" selected="selected">Vue.js</option>
                                                 <option value="#">CSS / LESS</option>
                                                 <option value="#">Design / Concept</option>
                                             </select>
