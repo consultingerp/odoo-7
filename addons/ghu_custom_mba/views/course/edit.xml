@@ -137,15 +137,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="duration">Duration</label>
-                                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10">
+                                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="start">Start Date</label>
-                                            <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                            <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-label" for="end">End Date</label>
-                                            <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                            <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
                                         </div>
 
                                         <div class="form-group mb-0">
@@ -153,24 +153,16 @@
                                             <div>
                                                 <div data-toggle="buttons">
                                                     <label class="btn btn-primary btn-circle active">
-                                                        <input type="radio" class="d-none" name="options" id="option1" checked>
+                                                        <input type="radio" class="d-none" name="options" id="option1" checked/>
                                                         <i class="material-icons">person</i>
                                                     </label>
                                                     <label class="btn btn-danger btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option2">
+                                                        <input type="radio" class="d-none" name="options" id="option2"/>
                                                         <i class="material-icons">star</i>
                                                     </label>
                                                     <label class="btn btn-success btn-circle">
                                                         <input type="radio" class="d-none" name="options" id="option3">
                                                         <i class="material-icons">shop</i>
-                                                    </label>
-                                                    <label class="btn btn-warning btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option4">
-                                                        <i class="material-icons">monetization_on</i>
-                                                    </label>
-                                                    <label class="btn btn-info btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option5">
-                                                        <i class="material-icons">enhanced_encryption</i>
                                                     </label>
                                                 </div>
                                             </div>
