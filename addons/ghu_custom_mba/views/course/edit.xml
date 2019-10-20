@@ -7,122 +7,179 @@
                     </t>
                     <t t-else="">New Course</t>
                 </t>
-                <div class="media align-items-center mb-headings">
-                    <div class="media-body">
-                        <h1 class="h2">
-                            <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
-                            </t>
-                            <t t-else="">New Course</t>
-                        </h1>
+                <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
+                    <div class="media align-items-center mb-headings">
+                        <div class="media-body">
+                            <h1 class="h2">
+                                <t t-if="object['display_name']">Edit <t t-esc="object['display_name']"/>
+                                </t>
+                                <t t-else="">New Course</t>
+                            </h1>
+                        </div>
+                        <div class="media-right">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </div>
-                    <div class="media-right">
-                        <a href="#" class="btn btn-success">SAVE</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Basic Information</h4>
-                            </div>
-                            <div class="card-body">
 
-                                <div class="form-group">
-                                    <label class="form-label" for="title">Title</label>
-                                    <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
-                                    <small id="nameHelp" class="form-text text-muted">This is the name used to advertise the module in campus.</small>
+                    <div class="hidden">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Basic Information</h4>
                                 </div>
+                                <div class="card-body">
 
-                                <div class="form-group mb-0">
-                                    <label class="form-label">Description</label>
-                                    <div style="height: 150px;" data-toggle="quill" data-quill-placeholder="Quill WYSIWYG editor" data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                        <t t-esc="object['description']" />
+                                    <div class="form-group">
+                                        <label class="form-label" for="title   ">Title</label>
+                                        <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
+                                        <small id="nameHelp" class="form-text text-muted">This is the name used to advertise the module in campus.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="longName">Long module name</label>
+                                        <input type="text" name="long_name" class="form-control" t-att-value="object['long_name']" id="longName" aria-describedby="longNameHelp" placeholder="Long module name" />
+                                        <small id="longNameHelp" class="form-text text-muted">This is the name used to give more information on the module in campus.</small>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <label class="form-label">Description</label>
+                                        <textarea class="editor" id="description" name="description">
+                                            <t t-esc="object['description']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="aims">Aims</label>
+                                        <textarea class="editor" id="aims" name="aims">
+                                            <t t-esc="object['aims']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="knowledge">Learning Outcomes: Knowledge</label>
+                                        <textarea class="editor" id="knowledge" name="knowledge">
+                                            <t t-esc="object['knowledge']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="skills">Learning Outcomes: Skills</label>
+                                        <textarea class="editor" id="skills" name="skills">
+                                            <t t-esc="object['skills']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="syllabus">Syllabus</label>
+                                        <textarea class="editor" id="syllabus" name="syllabus">
+                                            <t t-esc="object['syllabus']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="strategies">Learning, Teaching and Assessment Strategies </label>
+                                        <textarea class="editor" id="strategies" name="strategies">
+                                            <t t-esc="object['strategies']" />
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="language" title="">Language<span class="mandatory">*</span>
+                                        </label>
+                                        <select required="required" class="form-control-file" id="language" name="language">
+                                            <t t-foreach="languages" t-as="language">
+                                                <option t-att-value="language.id">
+                                                    <t t-esc="language.display_name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="program_id" class="form-label" title="">Program<span class="mandatory">*</span>
+                                        </label>
+                                        <select required="required" class="form-control-file" id="program_id" name="program_id">
+                                            <t t-foreach="programs" t-as="program">
+                                                <option t-att-value="program.id">
+                                                    <t t-esc="program.display_name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="form-field form-group">
+                                        <label for="script" class="form-label" title="As PDF File">Script <span class="mandatory">*</span>
+                                        </label>
+                                        <input accept=".pdf" class="form-control" id="script" type="file" name="script_file" />
                                     </div>
                                 </div>
-
-                            </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div> 
                         </div>
-                        <form t-attf-action="#{ root }/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data" data-force_action="create_application" data-success_page="/apply-doctoral-program/thank-you">
-                            <div class="hidden">
-                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="col-md-4">
+                                <div class="card">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+                                    </div>
+                                    <div class="card-body">
+                                        <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Meta</h4>
+                                        <p class="card-subtitle">Extra Options </p>
+                                    </div>
+
+                                    <form class="card-body" action="#">
+                                        <div class="form-group">
+                                            <label class="form-label" for="category">Category</label>
+                                            <select id="category" class="custom-select form-control">
+                                                <option value="#">HTML</option>
+                                                <option value="#">Angular JS</option>
+                                                <option value="#" selected>Vue.js</option>
+                                                <option value="#">CSS / LESS</option>
+                                                <option value="#">Design / Concept</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="duration">Duration</label>
+                                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="start">Start Date</label>
+                                            <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="end">End Date</label>
+                                            <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016">
+                                        </div>
+
+                                        <div class="form-group mb-0">
+                                            <label class="form-label" for="option1">Completion Badge</label>
+                                            <div>
+                                                <div data-toggle="buttons">
+                                                    <label class="btn btn-primary btn-circle active">
+                                                        <input type="radio" class="d-none" name="options" id="option1" checked>
+                                                        <i class="material-icons">person</i>
+                                                    </label>
+                                                    <label class="btn btn-danger btn-circle">
+                                                        <input type="radio" class="d-none" name="options" id="option2">
+                                                        <i class="material-icons">star</i>
+                                                    </label>
+                                                    <label class="btn btn-success btn-circle">
+                                                        <input type="radio" class="d-none" name="options" id="option3">
+                                                        <i class="material-icons">shop</i>
+                                                    </label>
+                                                    <label class="btn btn-warning btn-circle">
+                                                        <input type="radio" class="d-none" name="options" id="option4">
+                                                        <i class="material-icons">monetization_on</i>
+                                                    </label>
+                                                    <label class="btn btn-info btn-circle">
+                                                        <input type="radio" class="d-none" name="options" id="option5">
+                                                        <i class="material-icons">enhanced_encryption</i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="name">Module name</label>
-                                <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
-                                <small id="nameHelp" class="form-text text-muted">This is the name used to advertise the module in campus.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="longName">Long module name</label>
-                                <input type="text" name="long_name" class="form-control" t-att-value="object['long_name']" id="longName" aria-describedby="longNameHelp" placeholder="Long module name" />
-                                <small id="longNameHelp" class="form-text text-muted">This is the name used to give more information on the module in campus.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea class="editor" id="description" name="description">
-                                    <t t-esc="object['description']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="aims">Aims</label>
-                                <textarea class="editor" id="aims" name="aims">
-                                    <t t-esc="object['aims']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="knowledge">Learning Outcomes: Knowledge</label>
-                                <textarea class="editor" id="knowledge" name="knowledge">
-                                    <t t-esc="object['knowledge']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="skills">Learning Outcomes: Skills</label>
-                                <textarea class="editor" id="skills" name="skills">
-                                    <t t-esc="object['skills']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="syllabus">Syllabus</label>
-                                <textarea class="editor" id="syllabus" name="syllabus">
-                                    <t t-esc="object['syllabus']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="strategies">Learning, Teaching and Assessment Strategies </label>
-                                <textarea class="editor" id="strategies" name="strategies">
-                                    <t t-esc="object['strategies']" />
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="language" class="control-label" title="">Language<span class="mandatory">*</span>
-                                </label>
-                                <select required="required" class="form-control-file" id="language" name="language">
-                                    <t t-foreach="languages" t-as="language">
-                                        <option t-att-value="language.id">
-                                            <t t-esc="language.display_name"/>
-                                        </option>
-                                    </t>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="program_id" class="control-label" title="">Program<span class="mandatory">*</span>
-                                </label>
-                                <select required="required" class="form-control-file" id="program_id" name="program_id">
-                                    <t t-foreach="programs" t-as="program">
-                                        <option t-att-value="program.id">
-                                            <t t-esc="program.display_name"/>
-                                        </option>
-                                    </t>
-                                </select>
-                            </div>
-                            <div class="form-field form-group">
-                                <label for="script" class="control-label" title="As PDF File">Script <span class="mandatory">*</span>
-                                </label>
-                                <input accept=".pdf" class="form-control" id="script" type="file" name="script_file" />
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </form>
                     </div>
-                </div>
+                </form>
             </t>
             <t t-call-assets="ghu_custom_mba.assets_vue"></t>
             <script>
