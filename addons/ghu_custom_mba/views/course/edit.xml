@@ -153,7 +153,7 @@
                                             <div>
                                                 <div data-toggle="buttons">
                                                     <label class="btn btn-primary btn-circle active">
-                                                        <input type="radio" class="d-none" name="options" id="option1" checked/>
+                                                        <input type="radio" class="d-none" name="options" id="option1" checked="checked" />
                                                         <i class="material-icons">person</i>
                                                     </label>
                                                     <label class="btn btn-danger btn-circle">
@@ -161,7 +161,7 @@
                                                         <i class="material-icons">star</i>
                                                     </label>
                                                     <label class="btn btn-success btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option3">
+                                                        <input type="radio" class="d-none" name="options" id="option3" />
                                                         <i class="material-icons">shop</i>
                                                     </label>
                                                 </div>
