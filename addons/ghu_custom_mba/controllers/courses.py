@@ -172,11 +172,8 @@ class GhuCustomMba(http.Controller):
             obj.write(kw)
         return werkzeug.utils.redirect('/campus/my/courses')
 
-
-
-
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
-    def newAssessment(self, obj, **kw):
+    def editAssessment(self, obj, **kw):
         assessment_model = request.env['ir.model'].sudo().search(
             [('model', '=', 'ghu_custom_mba.assessment')])
         assessment_fields = request.env['ir.model.fields'].sudo().search([
@@ -190,6 +187,37 @@ class GhuCustomMba(http.Controller):
             'root': '/campus/course',
             'new': True,
             'course': obj,
+            'types': request.env['ghu_custom_mba.assessment'].types,
             'object': all_fields,
             'slug': 'campus_my_courses'
         })
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/create', methods=['POST'], auth='user', website=True)
+    def createAssessment(self, **kw):
+        partner_id = request.env.user.partner_id.id
+        advisor_id = request.env['ghu.advisor'].sudo().search(
+            [('partner_id', '=', partner_id)], limit=1).id
+        kw['author_id'] = advisor_id
+        kw['status'] = 'draft'
+        for key in list(kw.keys()):
+            if hasattr(kw[key], 'filename'):
+                value = kw.pop(key)
+                kw[(key + '_filename')] = value.filename
+                kw[key] = base64.b64encode(value.read())
+        course_record = request.env['ghu_custom_mba.course'].with_context(
+            mail_create_nosubscribe=True).create(kw)
+        return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/<model("ghu_custom_mba.assessment"):obj>', methods=['POST'], auth='user', website=True)
+    def updateAssessment(self, obj, **kw):
+        for key in list(kw.keys()):
+            if hasattr(kw[key], 'filename'):
+                value = kw.pop(key)
+                kw[(key + '_filename')] = value.filename
+                kw[key] = base64.b64encode(value.read())
+        kw['status'] = 'draft'
+        for key in list(kw.keys()):
+            if not kw[key]:
+                del kw[key]
+        obj.write(kw)
+        return werkzeug.utils.redirect('/campus/course/'+str(obj.id))

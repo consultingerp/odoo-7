@@ -31,7 +31,6 @@
                                     <h4 class="card-title">Configuration</h4>
                                 </div>
                                 <div class="card-body">
-
                                     <div class="form-group">
                                         <label class="form-label" for="title">Title</label>
                                         <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
@@ -41,9 +40,9 @@
                                         <label for="program_id" class="form-label" title="">Assessment Type<span class="mandatory">*</span>
                                         </label>
                                         <select required="required" class="form-control-file" id="program_id" name="program_id">
-                                            <t t-foreach="programs" t-as="program">
-                                                <option t-att-value="program.id">
-                                                    <t t-esc="program.display_name"/>
+                                            <t t-foreach="types" t-as="type">
+                                                <option t-att-value="type[0]">
+                                                    <t t-esc="type[1]"/>
                                                 </option>
                                             </t>
                                         </select>
@@ -52,67 +51,6 @@
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div> 
                         </div>
-                        <div class="col-md-4">
-                                <div class="card">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
-                                    </div>
-                                    <div class="card-body">
-                                        <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Meta</h4>
-                                        <p class="card-subtitle">Extra Options </p>
-                                    </div>
-
-                                    <form class="card-body" action="#">
-                                        <div class="form-group">
-                                            <label class="form-label" for="category">Category</label>
-                                            <select id="category" class="custom-select form-control">
-                                                <option value="#">HTML</option>
-                                                <option value="#">Angular JS</option>
-                                                <option value="#" selected="selected">Vue.js</option>
-                                                <option value="#">CSS / LESS</option>
-                                                <option value="#">Design / Concept</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="duration">Duration</label>
-                                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="start">Start Date</label>
-                                            <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="end">End Date</label>
-                                            <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
-                                        </div>
-
-                                        <div class="form-group mb-0">
-                                            <label class="form-label" for="option1">Completion Badge</label>
-                                            <div>
-                                                <div data-toggle="buttons">
-                                                    <label class="btn btn-primary btn-circle active">
-                                                        <input type="radio" class="d-none" name="options" id="option1" checked="checked" />
-                                                        <i class="material-icons">person</i>
-                                                    </label>
-                                                    <label class="btn btn-danger btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option2"/>
-                                                        <i class="material-icons">star</i>
-                                                    </label>
-                                                    <label class="btn btn-success btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option3" />
-                                                        <i class="material-icons">shop</i>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                     </div>
                 </form>
             </t>
