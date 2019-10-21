@@ -19,11 +19,11 @@
                     <div class="col-lg-8">
                         <div class="accordion mb-2" id="courseAccordion">
                             <div class="card">
-                                <div t-if="object.previewVideoId" class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.previewVideoId }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
+                                <div t-if="object.preview_video_id" class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.preview_video_id }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
                                 </div>
                                 <div class="card-body">
-                                    <t t-esc="object.description" />
+                                    <div t-field="object.description"></div>
                                 </div>
                             </div>
                             <div class="card">

@@ -136,7 +136,7 @@ class GhuCourse(models.Model):
     @api.multi
     def accessCheck(self, user):
         for record in self:
-            if user.partner_id == record.author_id.partner_id.id:
+            if user.partner_id.id == record.author_id.partner_id.id:
                 return True
             else:
                 return False
