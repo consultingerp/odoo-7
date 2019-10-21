@@ -198,7 +198,7 @@ class GhuCustomMba(http.Controller):
         return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
-    def editAssessment(self, obj, **kw):
+    def newAssessment(self, obj, **kw):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             assessment_model = request.env['ir.model'].sudo().search(
                 [('model', '=', 'ghu_custom_mba.assessment')])
@@ -215,6 +215,19 @@ class GhuCustomMba(http.Controller):
                 'course': obj,
                 'types': request.env['ghu_custom_mba.assessment'].types,
                 'object': all_fields,
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/edit/<model("ghu_custom_mba.assessment"):ass>', methods=['GET'], auth='user', website=True)
+    def editAssessment(self, obj, ass, **kw):
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            return http.request.render('ghu_custom_mba.assessment_edit', {
+                'root': '/campus/course',
+                'new': True,
+                'course': obj,
+                'types': request.env['ghu_custom_mba.assessment'].types,
+                'object': ass,
                 'slug': 'campus_my_courses'
             })
         return http.request.not_found()

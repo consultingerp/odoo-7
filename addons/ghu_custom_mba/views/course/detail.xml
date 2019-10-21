@@ -118,16 +118,6 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="card">
-                            <div class="card-body text-center">
-                                <p>
-                                    <a href="/" class="btn btn-success btn-block flex-column">
-                                        Purchase Course
-                                        <strong>$990 USD</strong>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card">
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-left">
@@ -150,6 +140,31 @@
                                 <a href="" class="btn btn-light"><i class="fab fa-twitter"></i></a>
                                 <a href="" class="btn btn-light"><i class="fab fa-github"></i></a>
                             </div> -->
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Assessments</h5>
+                                <p class="card-subtitle"></p>
+                            </div>
+                            <ul class="list-group list-group-fit">
+                                <li t-foreach="object.assessment_ids" t-as="assessment" class="list-group-item">
+                                    <div class="media position-relative align-items-center">
+                                        <div class="media-left">
+                                            <i class="material-icons text-muted-light">
+                                                <t t-if="assessment.type == 'essay'">message</t>
+                                                <t t-elif="assessment.type == 'report'">description</t>
+                                                <t t-elif="assessment.type == 'case_study'">question_answer</t>
+                                                <t t-elif="assessment.type == 'homework'">work_outline</t>
+                                                <t t-else="">present_to_all</t>
+                                            </i>
+                                        </div>
+                                        <div class="media-body">
+                                            <t t-esc="assessment.name" />
+                                            <a href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                         <div class="card">
                             <ul class="list-group list-group-fit">
@@ -191,7 +206,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Additional Information</h4>
+                                <h5 class="card-title">Additional Information</h5>
                                 <p class="card-subtitle"></p>
                             </div>
                             <div class="card-body">

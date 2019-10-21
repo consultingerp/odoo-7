@@ -71,6 +71,12 @@ class GhuCourse(models.Model):
 
     preview_video_id = fields.Char('Panopto Video Preview ID', size=256, required=False)
 
+    lecture1_video_id = fields.Char('Panopto Video Lecture 1 ID', size=256, required=False)
+
+    lecture2_video_id = fields.Char('Panopto Video Lecture 2 ID', size=256, required=False)
+    
+    lecture3_video_id = fields.Char('Panopto Video Lecture 3 ID', size=256, required=False)
+    
     creditpoints = fields.Char('Creditpoints Description', size=256, required=False)
 
     
