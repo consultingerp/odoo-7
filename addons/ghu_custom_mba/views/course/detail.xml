@@ -36,7 +36,7 @@
                                     <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.preview_video_id }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
                                 </div>
                                 <div class="card-body">
-                                    <t t-esc="object.description" />
+                                    <div t-field="object.description"></div>
                                 </div>
                             </div>
                             <div class="card">
@@ -160,9 +160,12 @@
                                         </div>
                                         <div class="media-body">
                                             <t t-esc="assessment.name" />
-                                            <a href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link"></a>
+                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link">Edit assessment</a>
                                         </div>
                                     </div>
+                                </li>
+                                <li t-if="len(object.assessment_ids) < 2" class="list-group-item">
+                                    <a t-attf-href="#{ root }/#{ object['id'] }/assessment/new" class="btn btn-primary">Create assessment</a>
                                 </li>
                             </ul>
                         </div>
