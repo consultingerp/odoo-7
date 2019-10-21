@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="media-body">
                                             <t t-esc="assessment.name" />
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link">Edit assessment</a>
+                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link"></a>
                                         </div>
                                     </div>
                                 </li>
