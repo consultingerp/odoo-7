@@ -42,7 +42,7 @@
                                         <input type="text" name="long_name" class="form-control" t-att-value="object['long_name']" id="longName" aria-describedby="longNameHelp" placeholder="Long module name" />
                                         <small id="longNameHelp" class="form-text text-muted">This is the name used to give more information on the module in campus.</small>
                                     </div>
-                                    <div class="form-group mb-0">
+                                    <div class="form-group">
                                         <label class="form-label">Description</label>
                                         <textarea class="editor" id="description" name="description">
                                             <t t-esc="object['description']" />
@@ -78,14 +78,41 @@
                                             <t t-esc="object['strategies']" />
                                         </textarea>
                                     </div>
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <div class="card">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+                                    </div>
+                                    <div class="card-body">
+                                        <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
+                                    </div>
+                                </div> -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Additional</h4>
+                                    <p class="card-subtitle"></p>
+                                </div>
+                                <div class="card-body">
                                     <div class="form-group">
                                         <label class="form-label" for="language" title="">Language<span class="mandatory">*</span>
                                         </label>
                                         <select required="required" class="form-control-file" id="language" name="language">
                                             <t t-foreach="languages" t-as="language">
-                                                <option t-att-value="language.id">
-                                                    <t t-esc="language.display_name"/>
-                                                </option>
+                                                <t t-if="language.id == object['language'].id">
+                                                    <option t-att-value="language.id" selected="true">
+                                                        <t t-esc="language.display_name"/>
+                                                    </option>
+                                                </t>
+                                                <t t-else="">
+                                                    <option t-att-value="language.id">
+                                                        <t t-esc="language.display_name"/>
+                                                    </option>
+                                                </t>
                                             </t>
                                         </select>
                                     </div>
@@ -94,82 +121,28 @@
                                         </label>
                                         <select required="required" class="form-control-file" id="program_id" name="program_id">
                                             <t t-foreach="programs" t-as="program">
-                                                <option t-att-value="program.id">
-                                                    <t t-esc="program.display_name"/>
-                                                </option>
+                                                <t t-if="program.id == object['program_id'].id">
+                                                    <option t-att-value="program.id" selected="true">
+                                                        <t t-esc="program.display_name"/>
+                                                    </option>
+                                                </t>
+                                                <t t-else="">
+                                                    <option t-att-value="program.id">
+                                                        <t t-esc="program.display_name"/>
+                                                    </option>
+                                                </t>
                                             </t>
                                         </select>
                                     </div>
                                     <div class="form-field form-group">
                                         <label for="script" class="form-label" title="As PDF File">Script <span class="mandatory">*</span>
                                         </label>
-                                        <input accept=".pdf" class="form-control" id="script" type="file" name="script_file" />
+                                        <input accept=".pdf" class="form-control-file" id="script" type="file" name="script_file" />
+                                        <small id="scriptHelp" class="form-text text-muted">Adding a file here will overwrite the previous one.</small>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div> 
-                        </div>
-                        <div class="col-md-4">
-                                <div class="card">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
-                                    </div>
-                                    <div class="card-body">
-                                        <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Meta</h4>
-                                        <p class="card-subtitle">Extra Options </p>
-                                    </div>
-
-                                    <form class="card-body" action="#">
-                                        <div class="form-group">
-                                            <label class="form-label" for="category">Category</label>
-                                            <select id="category" class="custom-select form-control">
-                                                <option value="#">HTML</option>
-                                                <option value="#">Angular JS</option>
-                                                <option value="#" selected="selected">Vue.js</option>
-                                                <option value="#">CSS / LESS</option>
-                                                <option value="#">Design / Concept</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="duration">Duration</label>
-                                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="start">Start Date</label>
-                                            <input id="start" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label" for="end">End Date</label>
-                                            <input id="end" type="text" class="form-control" placeholder="Start Date" data-toggle="flatpickr" value="01/28/2016"/>
-                                        </div>
-
-                                        <div class="form-group mb-0">
-                                            <label class="form-label" for="option1">Completion Badge</label>
-                                            <div>
-                                                <div data-toggle="buttons">
-                                                    <label class="btn btn-primary btn-circle active">
-                                                        <input type="radio" class="d-none" name="options" id="option1" checked="checked" />
-                                                        <i class="material-icons">person</i>
-                                                    </label>
-                                                    <label class="btn btn-danger btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option2"/>
-                                                        <i class="material-icons">star</i>
-                                                    </label>
-                                                    <label class="btn btn-success btn-circle">
-                                                        <input type="radio" class="d-none" name="options" id="option3" />
-                                                        <i class="material-icons">shop</i>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </form>
             </t>

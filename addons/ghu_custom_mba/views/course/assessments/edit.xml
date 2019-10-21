@@ -7,7 +7,7 @@
                     </t>
                     <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
                 </t>
-                <form t-attf-action="#{ root }/course/#{ course['id'] }/assessment/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data">
+                <form t-attf-action="#{ root }/#{ course['id'] }/assessment/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data">
                     <div class="media align-items-center mb-headings">
                         <div class="media-body">
                             <h1 class="h2">
@@ -16,9 +16,9 @@
                                 <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
                             </h1>
                         </div>
-                        <div class="media-right">
+                        <!-- <div class="media-right">
                             <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="hidden">
@@ -37,18 +37,26 @@
                                         <small id="nameHelp" class="form-text text-muted">Title of the assessment.</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="program_id" class="form-label" title="">Assessment Type<span class="mandatory">*</span>
+                                        <label for="type" class="form-label" title="">Assessment Type<span class="mandatory">*</span>
                                         </label>
-                                        <select required="required" class="form-control-file" id="program_id" name="program_id">
+                                        <select required="required" class="form-control" id="type" name="type">
                                             <t t-foreach="types" t-as="type">
-                                                <option t-att-value="type[0]">
-                                                    <t t-esc="type[1]"/>
-                                                </option>
+                                                <t t-if="type[0] == object['type']">
+                                                    <option t-att-value="type[0]" selected="true">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
+                                                <t t-else="">
+                                                    <option t-att-value="type[0]">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
                                             </t>
                                         </select>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                
                             </div> 
                         </div>
                     </div>

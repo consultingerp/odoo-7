@@ -43,84 +43,102 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
     def detail(self, obj, **kw):
-        return http.request.render('ghu_custom_mba.coursedetail', {
+        if obj.accessCheck(request.env.user):
+            return http.request.render('ghu_custom_mba.coursedetail', {
+                'root': '/campus/course',
+                'object': obj,
+                'author': 'true',
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/preview', auth='user', website=True)
+    def preview(self, obj, **kw):
+        return http.request.render('ghu_custom_mba.coursepreview', {
             'root': '/campus/course',
             'object': obj,
-            'author': 'true',
             'slug': 'campus_my_courses'
         })
 
     @http.route('/campus/my/video', methods=['GET'], auth='user', website=True)
     def video(self, **kw):
-        blti = GhuBlti()
-        params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_consumer_key'),
-            request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_consumer_secret'),
-            request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
-        partner_id = request.env.user.partner_id.id
-        advisor = request.env['ghu.advisor'].sudo().search(
-            [('partner_id', '=', partner_id)], limit=1)
-        return http.request.render('ghu_custom_mba.myvideos', {
-            'bltiParams': params,
-            'advisor': advisor,
-            'slug': 'campus_my_video'
-        })
+        if request.env.user.partner_id.is_custom_mba:
+            blti = GhuBlti()
+            params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_consumer_key'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_consumer_secret'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
+            partner_id = request.env.user.partner_id.id
+            advisor = request.env['ghu.advisor'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            return http.request.render('ghu_custom_mba.myvideos', {
+                'bltiParams': params,
+                'advisor': advisor,
+                'slug': 'campus_my_video'
+            })
+        return http.request.not_found()
 
     @http.route('/campus/course/new', methods=['GET'], auth='user', website=True)
     def new(self, **kw):
-        course_model = request.env['ir.model'].sudo().search(
-            [('model', '=', 'ghu_custom_mba.course')])
-        course_fields = request.env['ir.model.fields'].sudo().search([
-            ('model_id', '=', course_model.id),
-        ])
-        all_fields = dict()
-        for f in course_fields:
-            all_fields[f['name']] = ''
-        languages = request.env['ghu.lang'].sudo().search([('name', '!=', '')])
-        programs = request.env['ghu.program'].sudo().search([])
-        return http.request.render('ghu_custom_mba.courseedit', {
-            'root': '/campus/course',
-            'new': True,
-            'object': all_fields,
-            'languages': languages,
-            'programs': programs,
-            'slug': 'campus_my_courses'
-        })
+        if request.env.user.partner_id.is_custom_mba:
+            course_model = request.env['ir.model'].sudo().search(
+                [('model', '=', 'ghu_custom_mba.course')])
+            course_fields = request.env['ir.model.fields'].sudo().search([
+                ('model_id', '=', course_model.id),
+            ])
+            all_fields = dict()
+            for f in course_fields:
+                all_fields[f['name']] = ''
+            languages = request.env['ghu.lang'].sudo().search([('name', '!=', '')])
+            programs = request.env['ghu.program'].sudo().search([])
+            return http.request.render('ghu_custom_mba.courseedit', {
+                'root': '/campus/course',
+                'new': True,
+                'object': all_fields,
+                'languages': languages,
+                'programs': programs,
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/edit', methods=['GET'], auth='user', website=True)
     def edit(self, obj, **kw):
-        languages = request.env['ghu.lang'].sudo().search([('name', '!=', '')])
-        programs = request.env['ghu.program'].sudo().search([])
-        return http.request.render('ghu_custom_mba.courseedit', {
-            'root': '/campus/course',
-            'object': obj,
-            'author': 'true',
-            'languages': languages,
-            'programs': programs,
-            'slug': 'campus_my_courses'
-        })
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            languages = request.env['ghu.lang'].sudo().search([('name', '!=', '')])
+            programs = request.env['ghu.program'].sudo().search([])
+            return http.request.render('ghu_custom_mba.courseedit', {
+                'root': '/campus/course',
+                'object': obj,
+                'author': 'true',
+                'languages': languages,
+                'programs': programs,
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/record', methods=['GET'], auth='user', website=True)
     def record(self, obj, **kw):
-        blti = GhuBlti()
-        params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_consumer_key'),
-            request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_consumer_secret'),
-            request.env['ir.config_parameter'].sudo().get_param(
-                'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
-        return http.request.render('ghu_custom_mba.courserecord', {
-            'root': '/campus/course',
-            'object': obj,
-            'author': 'true',
-            'bltiParams': params,
-            'slug': 'campus_my_courses'
-        })
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            blti = GhuBlti()
+            params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_consumer_key'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_consumer_secret'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
+            return http.request.render('ghu_custom_mba.courserecord', {
+                'root': '/campus/course',
+                'object': obj,
+                'author': 'true',
+                'bltiParams': params,
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
 
     @http.route('/campus/panopto', methods=['GET'], auth='user', website=True)
-    def panopto(self, **kw):
+    def panopto(self, **kw): 
         blti = GhuBlti()
         params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.panopto_blti_consumer_key'),
@@ -133,91 +151,99 @@ class GhuCustomMba(http.Controller):
             'bltiParams': params,
             'slug': 'campus_panopto'
         })
+        
 
     @http.route('/campus/course/save/', methods=['POST'], auth='user', website=True)
     def create(self, **kw):
-        partner_id = request.env.user.partner_id.id
-        advisor_id = request.env['ghu.advisor'].sudo().search(
-            [('partner_id', '=', partner_id)], limit=1).id
-        kw['author_id'] = advisor_id
-        kw['status'] = 'draft'
-        for key in list(kw.keys()):
-            if hasattr(kw[key], 'filename'):
-                value = kw.pop(key)
-                kw[(key + '_filename')] = value.filename
-                kw[key] = base64.b64encode(value.read())
-        course_record = request.env['ghu_custom_mba.course'].with_context(
-            mail_create_nosubscribe=True).create(kw)
-        return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
+        if request.env.user.partner_id.is_custom_mba:
+            partner_id = request.env.user.partner_id.id
+            advisor_id = request.env['ghu.advisor'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1).id
+            kw['author_id'] = advisor_id
+            kw['status'] = 'draft'
+            for key in list(kw.keys()):
+                if hasattr(kw[key], 'filename'):
+                    value = kw.pop(key)
+                    kw[(key + '_filename')] = value.filename
+                    kw[key] = base64.b64encode(value.read())
+            course_record = request.env['ghu_custom_mba.course'].with_context(
+                mail_create_nosubscribe=True).create(kw)
+            return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
+        return http.request.not_found()
 
     @http.route('/campus/course/save/<model("ghu_custom_mba.course"):obj>', methods=['POST'], auth='user', website=True)
     def update(self, obj, **kw):
-        for key in list(kw.keys()):
-            if hasattr(kw[key], 'filename'):
-                value = kw.pop(key)
-                kw[(key + '_filename')] = value.filename
-                kw[key] = base64.b64encode(value.read())
-        kw['status'] = 'draft'
-        for key in list(kw.keys()):
-            if not kw[key]:
-                del kw[key]
-        obj.write(kw)
-        return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            for key in list(kw.keys()):
+                if hasattr(kw[key], 'filename'):
+                    value = kw.pop(key)
+                    kw[(key + '_filename')] = value.filename
+                    kw[key] = base64.b64encode(value.read())
+            kw['status'] = 'draft'
+            for key in list(kw.keys()):
+                if not kw[key]:
+                    del kw[key]
+            obj.write(kw)
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+        return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
-        if obj.readyForReview():
-            kw = dict()
-            kw['state'] = 'new'
-            obj.write(kw)
-        return werkzeug.utils.redirect('/campus/my/courses')
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            if obj.readyForReview():
+                kw = dict()
+                kw['state'] = 'new'
+                obj.write(kw)
+            return werkzeug.utils.redirect('/campus/my/courses')
+        return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
     def editAssessment(self, obj, **kw):
-        assessment_model = request.env['ir.model'].sudo().search(
-            [('model', '=', 'ghu_custom_mba.assessment')])
-        assessment_fields = request.env['ir.model.fields'].sudo().search([
-            ('model_id', '=', assessment_model.id),
-        ])
-        all_fields = dict()
-        for f in assessment_fields:
-            all_fields[f['name']] = ''
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            assessment_model = request.env['ir.model'].sudo().search(
+                [('model', '=', 'ghu_custom_mba.assessment')])
+            assessment_fields = request.env['ir.model.fields'].sudo().search([
+                ('model_id', '=', assessment_model.id),
+            ])
+            all_fields = dict()
+            for f in assessment_fields:
+                all_fields[f['name']] = ''
 
-        return http.request.render('ghu_custom_mba.assessment_edit', {
-            'root': '/campus/course',
-            'new': True,
-            'course': obj,
-            'types': request.env['ghu_custom_mba.assessment'].types,
-            'object': all_fields,
-            'slug': 'campus_my_courses'
-        })
+            return http.request.render('ghu_custom_mba.assessment_edit', {
+                'root': '/campus/course',
+                'new': True,
+                'course': obj,
+                'types': request.env['ghu_custom_mba.assessment'].types,
+                'object': all_fields,
+                'slug': 'campus_my_courses'
+            })
+        return http.request.not_found()
 
-    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/create', methods=['POST'], auth='user', website=True)
-    def createAssessment(self, **kw):
-        partner_id = request.env.user.partner_id.id
-        advisor_id = request.env['ghu.advisor'].sudo().search(
-            [('partner_id', '=', partner_id)], limit=1).id
-        kw['author_id'] = advisor_id
-        kw['status'] = 'draft'
-        for key in list(kw.keys()):
-            if hasattr(kw[key], 'filename'):
-                value = kw.pop(key)
-                kw[(key + '_filename')] = value.filename
-                kw[key] = base64.b64encode(value.read())
-        course_record = request.env['ghu_custom_mba.course'].with_context(
-            mail_create_nosubscribe=True).create(kw)
-        return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/', methods=['POST'], auth='user', website=True)
+    def createAssessment(self, obj, **kw):
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            kw['course_id'] = obj.id
+            for key in list(kw.keys()):
+                if hasattr(kw[key], 'filename'):
+                    value = kw.pop(key)
+                    kw[(key + '_filename')] = value.filename
+                    kw[key] = base64.b64encode(value.read())
+            assessment_record = request.env['ghu_custom_mba.assessment'].with_context(
+                mail_create_nosubscribe=True).create(kw)
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+        return http.request.not_found()
 
-    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/<model("ghu_custom_mba.assessment"):obj>', methods=['POST'], auth='user', website=True)
-    def updateAssessment(self, obj, **kw):
-        for key in list(kw.keys()):
-            if hasattr(kw[key], 'filename'):
-                value = kw.pop(key)
-                kw[(key + '_filename')] = value.filename
-                kw[key] = base64.b64encode(value.read())
-        kw['status'] = 'draft'
-        for key in list(kw.keys()):
-            if not kw[key]:
-                del kw[key]
-        obj.write(kw)
-        return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/<model("ghu_custom_mba.assessment"):ass>', methods=['POST'], auth='user', website=True)
+    def updateAssessment(self, obj, ass, **kw):
+        if request.env.user.partner_id.id == obj.author_id.partner_id.id:
+            for key in list(kw.keys()):
+                if hasattr(kw[key], 'filename'):
+                    value = kw.pop(key)
+                    kw[(key + '_filename')] = value.filename
+                    kw[key] = base64.b64encode(value.read())
+            for key in list(kw.keys()):
+                if not kw[key]:
+                    del kw[key]
+            ass.write(kw)
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+        return http.request.not_found()

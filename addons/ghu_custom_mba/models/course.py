@@ -69,6 +69,8 @@ class GhuCourse(models.Model):
 
     panopto_id = fields.Char('Panopto ID', size=256, required=False)
 
+    preview_video_id = fields.Char('Panopto Video Preview ID', size=256, required=False)
+
     creditpoints = fields.Char('Creditpoints Description', size=256, required=False)
 
     
@@ -130,6 +132,15 @@ class GhuCourse(models.Model):
             'program_id',
             'script_file_filename',
         ]
+
+    @api.multi
+    def accessCheck(self, user):
+        for record in self:
+            if user.partner_id == record.author_id.partner_id.id:
+                return True
+            else:
+                return False
+        return False
 
     @api.multi
     def readyForReview(self):

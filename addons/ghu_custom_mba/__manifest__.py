@@ -29,6 +29,7 @@
         'views/application/form.xml',
         'views/course/list.xml',
         'views/course/detail.xml',
+        'views/course/preview.xml',
         'views/course/edit.xml',
         'views/course/record.xml',
         'views/course/assessments/edit.xml',
