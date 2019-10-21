@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li t-if="len(object.assessment_ids) < 2" class="list-group-item">
+                                <li t-if="len(object.assessment_ids) &lt; 2" class="list-group-item">
                                     <a t-attf-href="#{ root }/#{ object['id'] }/assessment/new" class="btn btn-primary">Create assessment</a>
                                 </li>
                             </ul>
