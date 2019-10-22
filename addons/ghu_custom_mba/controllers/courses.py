@@ -329,5 +329,5 @@ class GhuCustomMba(http.Controller):
     def deleteAssessmentQuestion(self, obj, ass, question, **kw):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             question.unlink()
-            return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id))
         return http.request.not_found()
