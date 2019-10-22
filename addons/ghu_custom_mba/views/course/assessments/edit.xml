@@ -56,8 +56,26 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
-                                
                             </div> 
+                            <div class="card mt-5">
+                                <div class="card-header">
+                                    <h4 class="card-title">Questions</h4>
+                                </div>
+                                <ul class="list-group list-group-fit">
+                                    <li t-foreach="object.question_ids" t-as="question" class="list-group-item">
+                                        <div class="media position-relative align-items-center">
+                                            <div class="media-body">
+                                                <t t-esc="question.name" />
+                                                <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ ass['id'] }/question/edit/#{ question['id'] }"><i class="material-icons">edit</i></a>
+                                                <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ ass['id'] }/question/delete/#{ question['id'] }"><i class="material-icons">delete</i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ ass['id'] }/question/new" class="btn btn-primary">Create question</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -1,0 +1,52 @@
+<odoo>
+    <data noupdate="0">
+        <template id="question_edit">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-if="object['display_name']">Edit question 
+                    </t>
+                    <t t-else="">New Question</t>
+                </t>
+                <form t-attf-action="#{ root }/#{ course['id'] }/assessment/#{ ass['id'] }/question/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data">
+                    <div class="media align-items-center mb-headings">
+                        <div class="media-body">
+                            <h1 class="h2">
+                                <t t-if="object['display_name']">Edit Question 
+                                </t>
+                                <t t-else="">New Question</t>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="hidden">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Question</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
+                                        <small id="nameHelp" class="form-text text-muted">Short name of the assessment question</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type" class="form-label" title="">Question (Description of task) <span class="mandatory">*</span>
+                                        </label>
+                                        <textarea name="question" class="form-control" id="question" required="1">
+                                            <t t-field="object['question']" />
+                                        </textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </t>
+        </template>
+    </data>
+</odoo>

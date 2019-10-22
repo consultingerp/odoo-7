@@ -144,7 +144,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Assessments</h5>
-                                <p class="card-subtitle"></p>
+                                <p class="card-subtitle">maximum of 2</p>
                             </div>
                             <ul class="list-group list-group-fit">
                                 <li t-foreach="object.assessment_ids" t-as="assessment" class="list-group-item">
@@ -160,7 +160,8 @@
                                         </div>
                                         <div class="media-body">
                                             <t t-esc="assessment.name" />
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }" class="stretched-link"></a>
+                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }"><i class="material-icons">edit</i></a>
+                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/delete/#{ assessment['id'] }"><i class="material-icons">delete</i></a>
                                         </div>
                                     </div>
                                 </li>
