@@ -41,7 +41,7 @@
                                         </label>
                                         <select required="required" class="form-control" id="type" name="type">
                                             <t t-foreach="types" t-as="type">
-                                                <t t-if="type[0] == object['type']">
+                                                <t t-if="object['type'] and type[0] == object['type']">
                                                     <option t-att-value="type[0]" selected="true">
                                                         <t t-esc="type[1]"/>
                                                     </option>

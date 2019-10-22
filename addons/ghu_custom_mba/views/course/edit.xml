@@ -103,7 +103,7 @@
                                         </label>
                                         <select required="required" class="form-control-file" id="language" name="language">
                                             <t t-foreach="languages" t-as="language">
-                                                <t t-if="language.id == object['language'].id">
+                                                <t t-if="object['language'] and language.id == object['language'].id">
                                                     <option t-att-value="language.id" selected="true">
                                                         <t t-esc="language.display_name"/>
                                                     </option>
@@ -121,7 +121,7 @@
                                         </label>
                                         <select required="required" class="form-control-file" id="program_id" name="program_id">
                                             <t t-foreach="programs" t-as="program">
-                                                <t t-if="program.id == object['program_id'].id">
+                                                <t t-if="object['program_id'] and program.id == object['program_id'].id">
                                                     <option t-att-value="program.id" selected="true">
                                                         <t t-esc="program.display_name"/>
                                                     </option>
