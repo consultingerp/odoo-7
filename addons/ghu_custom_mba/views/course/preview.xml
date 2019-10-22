@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="coursedetail">
+        <template id="coursepreview">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     <t t-esc="object.display_name"/>
@@ -14,19 +14,6 @@
                             <t t-esc="object.display_name"/>
                         </h1>
                     </div>
-                    <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
-                    <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mb-2 mt-2">Edit course</a>
-                    <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/record" class="btn btn-primary mb-2 mt-2">Record course</a>
-                    <a t-if="author == 'true' and object.state !='draft' and object.state !='script_approved' " class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
-                </div>
-                
-                <div t-if="not object.readyForReview()" class="alert alert-info">
-                    To submit a course for review you will have to finish it by filling in the following fields:<br/>
-                    <strong>
-                        <t t-foreach="object.missingFieldsForReview()" t-as="name">
-                            <t t-esc="name" /><t t-if="not name_last">,</t>
-                        </t>
-                    </strong>
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
@@ -118,6 +105,16 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="card">
+                            <div class="card-body text-center">
+                                <p>
+                                    <a href="/" class="btn btn-success btn-block flex-column">
+                                        Purchase Course
+                                        <strong>$990 USD</strong>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-left">
@@ -134,41 +131,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="card-body">
-                                <p>Having over 12 years exp. Adrian is one of the lead UI designers in the industry Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, aut.</p>
-                                <a href="" class="btn btn-light"><i class="fab fa-facebook"></i></a>
-                                <a href="" class="btn btn-light"><i class="fab fa-twitter"></i></a>
-                                <a href="" class="btn btn-light"><i class="fab fa-github"></i></a>
-                            </div> -->
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Assessments</h5>
-                                <p class="card-subtitle">maximum of 2</p>
-                            </div>
-                            <ul class="list-group list-group-fit">
-                                <li t-foreach="object.assessment_ids" t-as="assessment" class="list-group-item">
-                                    <div class="media position-relative align-items-center">
-                                        <div class="media-left">
-                                            <i class="material-icons text-muted-light">
-                                                <t t-if="assessment.type == 'essay'">message</t>
-                                                <t t-elif="assessment.type == 'report'">description</t>
-                                                <t t-elif="assessment.type == 'case_study'">question_answer</t>
-                                                <t t-elif="assessment.type == 'homework'">work_outline</t>
-                                                <t t-else="">present_to_all</t>
-                                            </i>
-                                        </div>
-                                        <div class="media-body">
-                                            <t t-esc="assessment.name" />
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }"><i class="material-icons">edit</i></a>
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/delete/#{ assessment['id'] }"><i class="material-icons">delete</i></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li t-if="len(object.assessment_ids) &lt; 2" class="list-group-item">
-                                    <a t-attf-href="#{ root }/#{ object['id'] }/assessment/new" class="btn btn-primary">Create assessment</a>
-                                </li>
-                            </ul>
                         </div>
                         <div class="card">
                             <ul class="list-group list-group-fit">
@@ -207,15 +169,6 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Additional Information</h5>
-                                <p class="card-subtitle"></p>
-                            </div>
-                            <div class="card-body">
-                                <a class="btn btn-primary" t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true"><i class="material-icons mr-1">cloud_download</i> Script Download</a>
-                            </div>
                         </div>
                     </div>
                 </div>

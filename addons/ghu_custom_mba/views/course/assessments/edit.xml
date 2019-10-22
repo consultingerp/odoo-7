@@ -1,0 +1,85 @@
+<odoo>
+    <data noupdate="0">
+        <template id="assessment_edit">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-if="object['display_name']">Edit Assessment: <t t-esc="object['display_name']"/> of course <t t-esc="course['display_name']"/> 
+                    </t>
+                    <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
+                </t>
+                <form t-attf-action="#{ root }/#{ course['id'] }/assessment/save/#{ object['id'] }" method="post" class="s_website_form" enctype="multipart/form-data">
+                    <div class="media align-items-center mb-headings">
+                        <div class="media-body">
+                            <h1 class="h2">
+                                <t t-if="object['display_name']">Edit Assessment: <t t-esc="object['display_name']"/> of course <t t-esc="course['display_name']"/> 
+                                </t>
+                                <t t-else="">New Assessment in <t t-esc="course['display_name']"/> </t>
+                            </h1>
+                        </div>
+                        <!-- <div class="media-right">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div> -->
+                    </div>
+
+                    <div class="hidden">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Configuration</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" name="name" class="form-control" t-att-value="object['name']" id="name" aria-describedby="nameHelp" placeholder="Enter name" />
+                                        <small id="nameHelp" class="form-text text-muted">Title of the assessment.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type" class="form-label" title="">Assessment Type<span class="mandatory">*</span>
+                                        </label>
+                                        <select required="required" class="form-control" id="type" name="type">
+                                            <t t-foreach="types" t-as="type">
+                                                <t t-if="type[0] == object['type']">
+                                                    <option t-att-value="type[0]" selected="true">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
+                                                <t t-else="">
+                                                    <option t-att-value="type[0]">
+                                                        <t t-esc="type[1]"/>
+                                                    </option>
+                                                </t>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div> 
+                            <div t-if="object['display_name']" class="card mt-5">
+                                <div class="card-header">
+                                    <h4 class="card-title">Questions</h4>
+                                </div>
+                                <ul class="list-group list-group-fit">
+                                    <li t-foreach="object.question_ids" t-as="question" class="list-group-item">
+                                        <div class="media position-relative align-items-center">
+                                            <div class="media-body">
+                                                <t t-esc="question.name" />
+                                                <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ object['id'] }/question/edit/#{ question['id'] }"><i class="material-icons">edit</i></a>
+                                                <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ object['id'] }/question/delete/#{ question['id'] }"><i class="material-icons">delete</i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a t-attf-href="#{ root }/#{ course['id'] }/assessment/#{ object['id'] }/question/new" class="btn btn-primary">Create question</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </t>
+        </template>
+    </data>
+</odoo>

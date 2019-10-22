@@ -16,10 +16,10 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.33',
+    'version': '0.42',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'ghu', 'documents'],
+    'depends': ['ghu', 'documents'],
 
     # always loaded
     'data': [
@@ -29,8 +29,11 @@
         'views/application/form.xml',
         'views/course/list.xml',
         'views/course/detail.xml',
+        'views/course/preview.xml',
         'views/course/edit.xml',
         'views/course/record.xml',
+        'views/course/assessments/edit.xml',
+        'views/course/assessments/question/edit.xml',
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',

@@ -69,7 +69,24 @@ class GhuCourse(models.Model):
 
     panopto_id = fields.Char('Panopto ID', size=256, required=False)
 
+    preview_video_id = fields.Char('Panopto Video Preview ID', size=256, required=False)
+
+    lecture1_video_id = fields.Char('Panopto Video Lecture 1 ID', size=256, required=False)
+
+    lecture2_video_id = fields.Char('Panopto Video Lecture 2 ID', size=256, required=False)
+    
+    lecture3_video_id = fields.Char('Panopto Video Lecture 3 ID', size=256, required=False)
+    
     creditpoints = fields.Char('Creditpoints Description', size=256, required=False)
+
+    
+    assessment_ids = fields.One2many(
+        string=u'Assessments',
+        comodel_name='ghu_custom_mba.assessment',
+        inverse_name='course_id',
+        limit=2
+    )
+    
 
     # Workflow specifics
     formal_check_done = fields.Boolean(
@@ -121,6 +138,15 @@ class GhuCourse(models.Model):
             'program_id',
             'script_file_filename',
         ]
+
+    @api.multi
+    def accessCheck(self, user):
+        for record in self:
+            if user.partner_id.id == record.author_id.partner_id.id:
+                return True
+            else:
+                return False
+        return False
 
     @api.multi
     def readyForReview(self):
@@ -246,14 +272,18 @@ class GhuAssessment(models.Model):
 
     name = fields.Char('Name', size=128, required=True)
 
+    types = [
+        ('essay', 'Essay'),
+        ('report', 'Report'),
+        ('case_study', 'Case Study'),
+        ('homework', 'Homework'),
+        ('presentation', 'Presentation')
+    ]
+
+
     type = fields.Selection(
         string=u'Assessment Type',
-        selection=[
-            ('essay', 'Essay'),
-            ('report', 'Report'),
-            ('case_study', 'Case Study'),
-            ('presentation', 'Presentation'),
-        ]
+        selection=types
     )
 
     

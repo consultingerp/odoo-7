@@ -91,6 +91,10 @@
               <field name="script_file_filename" invisible="1"/>
               <field name="author_id" can_create="true" can_write="true" modifiers="{}"/>
               <field name="panopto_id" modifiers="{}"/>
+              <field name="preview_video_id" modifiers="{}"/>
+              <field name="lecture1_video_id" modifiers="{}"/>
+              <field name="lecture2_video_id" modifiers="{}"/>
+              <field name="lecture3_video_id" modifiers="{}"/>
               <field name="creditpoints" modifiers="{}"/>
               <field name="formal_check_done" modifiers="{}"/>
               <field name="formal_check" modifiers="{}"/>

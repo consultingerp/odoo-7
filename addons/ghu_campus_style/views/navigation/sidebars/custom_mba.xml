@@ -7,13 +7,13 @@
                 <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_courses' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/my/courses">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> 
-                                                        My courses
+                                                        Course Manager
                     </a>
                 </li>
                 <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/my/video">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">videocam</i> 
-                                                        My video
+                                                        Presentation Video
                     </a>
                 </li>
                 <li t-attf-class="sidebar-menu-item#{slug == 'campus_panopto' and ' active' or ''}">
