@@ -36,8 +36,14 @@
                                     <div class="form-group">
                                         <label for="type" class="form-label" title="">Question (Description of task) <span class="mandatory">*</span>
                                         </label>
-                                        <textarea t-field="object['question']" name="question" class="form-control editor" id="question" required="1">
-                                        </textarea>
+                                        <t t-if="object['display_name']">
+                                            <textarea t-field="object.question" name="question" class="form-control editor" id="question" required="1">
+                                            </textarea>
+                                        </t>
+                                        <t t-else="">
+                                            <textarea name="question" class="form-control editor" id="question" required="1">
+                                            </textarea>
+                                        </t>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>

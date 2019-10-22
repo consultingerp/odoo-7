@@ -310,7 +310,7 @@ class GhuCustomMba(http.Controller):
     def createAssessmentQuestion(self, obj, ass, **kw):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             kw['assessment_id'] = ass.id
-            question_record = request.env['ghu_custom_mba.assessment'].with_context(
+            question_record = request.env['ghu_custom_mba.assessment_question'].with_context(
                 mail_create_nosubscribe=True).create(kw)
             return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id) )
         return http.request.not_found()
