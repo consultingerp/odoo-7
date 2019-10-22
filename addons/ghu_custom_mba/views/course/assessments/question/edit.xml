@@ -36,8 +36,7 @@
                                     <div class="form-group">
                                         <label for="type" class="form-label" title="">Question (Description of task) <span class="mandatory">*</span>
                                         </label>
-                                        <textarea name="question" class="form-control" id="question" required="1">
-                                            <t t-field="object['question']" />
+                                        <textarea t-field="object['question']" name="question" class="form-control editor" id="question" required="1">
                                         </textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save</button>
@@ -46,6 +45,29 @@
                         </div>
                     </div>
                 </form>
+                <t t-call-assets="ghu_custom_mba.assets_vue"></t>
+                <script>
+                    var editors = document.querySelectorAll( '.editor' );
+                    editors.forEach(function(editor){
+                    ClassicEditor
+                        .create( editor, {
+                            toolbar: [ 'heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList' ],
+                            heading: {
+                                options: [
+                                    { model: 'paragraph', title: 'Paragraph', class: 'p' },
+                                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'h1' },
+                                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'h2' }
+                                ]
+                            }
+                        })
+                        .then( editor => {
+                            console.log( editor );
+                        } )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                    });
+                </script>
             </t>
         </template>
     </data>
