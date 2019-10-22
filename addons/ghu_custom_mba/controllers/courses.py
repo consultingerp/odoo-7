@@ -325,7 +325,7 @@ class GhuCustomMba(http.Controller):
         return http.request.not_found()
 
     
-    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/delete/<model("ghu_custom_mba.assessment_question"):question>', methods=['GET'], auth='user', website=True)
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/delete/<model("ghu_custom_mba.assessment_question"):question>', methods=['GET'], auth='user', website=True)
     def deleteAssessmentQuestion(self, obj, ass, question, **kw):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             question.unlink()
