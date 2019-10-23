@@ -267,7 +267,7 @@
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class="form-control o_website_form_input" id="phone" type="tel" name="phone" value="" />
+                                                                <input required="required" class="form-control o_website_form_input" id="phone" type="text" name="phone" value="" />
                                                             </div>
                                                         </div>
                                                     </div>
