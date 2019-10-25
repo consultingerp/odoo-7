@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 class GhuCustomMba(http.Controller):
     @http.route('/custom-mba/application/', type='http', auth='public', methods=['GET'], website=True)
-    def render_application(self):
+    def render_application(self, **kwargs):
         return http.request.render('ghu_custom_mba.apply_custom_mba', {})
 
     @http.route('/campus/apply_custom_mba/', type='http', auth='public', methods=['POST'], website=True)

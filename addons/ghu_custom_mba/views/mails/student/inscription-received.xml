@@ -1,54 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <record model="mail.template" id="application_received">
+        <record model="mail.template" id="application_received_en">
             <field name="name">Application received</field>
-            <field name="model_id" ref="model_ghu_student"></field>
+            <field name="model_id" ref="model_res_partner"></field>
             <field name="subject">Application received</field>
             <field name="body_html"><![CDATA[
-<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
-<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
-<tbody>
-    <!-- HEADER -->
-    <tr>
-        <td align="center" style="min-width: 590px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
-                <tbody><tr><td valign="middle">
-                    <span style="font-size: 10px;">Pre-application GHU custom MBA</span><br>
-                    <span style="font-size: 20px; font-weight: bold;">
-                        ${object.firstname} ${object.lastname}
-                    </span>
-                </td><td valign="middle" align="right">
-                    <img src="/logo.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="GHU">
-                </td></tr>
-                <tr><td colspan="2" style="text-align:center;">
-                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;">
-                </td></tr>
-            </tbody></table>
-        </td>
-    </tr>
-    <!-- CONTENT -->
-    <tr>
-        <td align="center" style="min-width: 590px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
-                <tbody><tr><td valign="top" style="font-size: 13px;">
-                    <div>
-                        Dear ${object.firstname},<br> <br>
-                        we have received your application and will now process and review your data. After that you will get your confirmation of enrolment. <br/>
-                        Best regards,<br/>
-                        Global Humanistic University
-                    </div>
-                </td></tr>
-                <tr><td style="text-align:center;">
-                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;">
-                </td></tr>
-            </tbody></table>
-        </td>
-    </tr>
-</tbody>
-</table>
-</td></tr>
-</tbody></table>
+                <table border="0" cellpadding="0" cellspacing="0"
+                    style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                    style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                                    <tbody>
+                                        <!-- HEADER -->
+                                        <tr>
+                                            <td align="center" style="min-width: 590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                    style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="middle">
+                                                                <span style="font-size: 10px;">Pre-application GHU custom MBA</span><br>
+                                                                <span style="font-size: 20px; font-weight: bold;">
+                                                                    ${object.firstname} ${object.lastname}
+                                                                </span>
+                                                            </td>
+                                                            <td valign="middle" align="right">
+                                                                <img src="/logo.png"
+                                                                    style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                                    alt="GHU">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <!-- CONTENT -->
+                                        <tr>
+                                            <td align="center" style="min-width: 590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                    style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" style="font-size: 13px;">
+                                                                <div>
+                                                                    Dear ${object.firstname},<br /> <br />
+                                                                    Thank you very much for officially enrolling into the <b>Global
+                                                                        Humanistic University’s Custom MBA program.</b><br />
+                                                                    We kindly ask you to now send us your C.V. and (if applicable)
+                                                                    copies of your diplomas so that we can have a look at the admission
+                                                                    requirements.<br />
+                                                                    We will have a thorough look at the documentation you have provided
+                                                                    and the GHU office will then send you confirmation of your admission
+                                                                    into the program within the next two weeks.<br />
+                                                                    We will also send you more information on the start of the
+                                                                    <b>MBA</b> and
+                                                                    whether you have qualified for the <b>first cost free course of the
+                                                                        MBA.</b><br />
+                                                                    The <b>Global Humanistic University</b> would like to welcome you
+                                                                    again and
+                                                                    we wish you much success during your study program!<br />
+                                                                    <br />
+                                                                    Kind regards,,<br />
+                                                                    Global Humanistic University
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>            </field>
+            <field name="email_from">office@ghu.edu.cw</field>
+            <field name="use_default_to">false</field>
+            <field name="email_to">${object.email}</field>
+            <field name="user_signature">false</field>
+            <field name="auto_delete">false</field>
+        </record>
+        <record model="mail.template" id="application_received_es">
+            <field name="name">Application received</field>
+            <field name="model_id" ref="model_res_partner"></field>
+            <field name="subject">Application received</field>
+            <field name="body_html"><![CDATA[
+                <table border="0" cellpadding="0" cellspacing="0"
+                    style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                    style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                                    <tbody>
+                                        <!-- HEADER -->
+                                        <tr>
+                                            <td align="center" style="min-width: 590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                    style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="middle">
+                                                                <span style="font-size: 10px;">Pre-application GHU custom MBA</span><br>
+                                                                <span style="font-size: 20px; font-weight: bold;">
+                                                                    ${object.firstname} ${object.lastname}
+                                                                </span>
+                                                            </td>
+                                                            <td valign="middle" align="right">
+                                                                <img src="/logo.png"
+                                                                    style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                                    alt="GHU">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <!-- CONTENT -->
+                                        <tr>
+                                            <td align="center" style="min-width: 590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                    style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" style="font-size: 13px;">
+                                                                <div>
+                                                                    Apreciado ${object.firstname},<br /> <br />
+                                                                    Muchas gracias por inscribirse oficialmente en el programa de
+                                                                    maestría Custom MBA de la Global Humanistic University.<br />
+                                                                    Le pedimos amablemente que nos envíe su C.V. y (si corresponde)
+                                                                    copias de sus diplomas para que podamos averiguar los requisitos de
+                                                                    admisión.<br />
+                                                                    Examinaremos detalladamente la documentación que ha proporcionado y
+                                                                    la oficina de GHU le enviará una confirmación de su admisión al
+                                                                    programa dentro de las próximas dos semanas.<br />
+                                                                    También le enviaremos más información sobre el inicio del MBA y si
+                                                                    ha calificado para el primer curso gratuito del MBA.<br />
+                                                                    ¡La Global Humanistic University quiere darle la bienvenida
+                                                                    nuevamente y le deseamos mucho éxito durante su programa de
+                                                                    estudios!
+                                                                    <br />
+                                                                    <br />
+                                                                    Saludos cordiales,
+                                                                    <br />
+                                                                    Global Humanistic University
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             ]]>            </field>
             <field name="email_from">office@ghu.edu.cw</field>
             <field name="use_default_to">false</field>
