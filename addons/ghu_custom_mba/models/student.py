@@ -14,11 +14,15 @@ class GhuStudent(models.Model):
     )
     @api.multi
     def applicationReceived(self):
-        notification_template = self.env.ref(
-            'ghu_custom_mba.application_received').sudo()
+        notification_template_en = self.env.ref(
+            'ghu_custom_mba.application_received_en').sudo()
+        notification_template_es = self.env.ref(
+            'ghu_custom_mba.application_received_es').sudo()
         for record in self:
-            notification_template.send_mail(
-                record.id, raise_exception=False, force_send=False)
+            if record.native_language.name == 'Spanish':
+                record.partner_id.message_post_with_template(template_id=notification_template_es.id)
+            else:
+                record.partner_id.message_post_with_template(template_id=notification_template_en.id)
             return True
 
     @api.multi
@@ -26,8 +30,7 @@ class GhuStudent(models.Model):
         notification_template = self.env.ref(
             'ghu_custom_mba.application_approved').sudo()
         for record in self:
-            notification_template.send_mail(
-                record.id, raise_exception=False, force_send=False)
+            record.partner_id.message_post_with_template(template_id=notification_template.id)
             return True
 
     @api.multi
@@ -50,6 +53,6 @@ class GhuStudent(models.Model):
                 'ghu_custom_mba.student_enrolled').sudo()
             notification_template.attachment_ids = False
             notification_template.attachment_ids = [(4, attachment.id)]
-            notification_template.send_mail(
-                record.id, raise_exception=False, force_send=False)
+            
+            record.partner_id.message_post_with_template(template_id=notification_template.id)
             return True
