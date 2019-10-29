@@ -34,7 +34,7 @@
                 <tbody><tr><td valign="top" style="font-size: 13px;">
                     <div>
                         Dear ${object.author_id.name},<br> <br>
-                        your course ${object.name} has been reviewed and the script is approved. You will get access to do the video recording in a few workdays.<br>
+                        your course ${object.name} has been reviewed and the script is approved. If you did not record an introduction video already, please do so in Campus. Otherwise you will not get access to do the video recording for courses. If the introduction video is approved by us you will get access the day after.<br>
                     </div>
                 </td></tr>
                 <tr><td style="text-align:center;">
