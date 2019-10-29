@@ -191,7 +191,11 @@ class GhuCustomMba(http.Controller):
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
-            if obj.readyForReview():
+            if obj.readyForReview() and obj.readyForRecording():
+                kw = dict()
+                kw['state'] = 'recording_finished'
+                obj.write(kw)
+            elif obj.readyForReview():
                 kw = dict()
                 kw['state'] = 'new'
                 obj.write(kw)

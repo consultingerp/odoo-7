@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.45',
+    'version': '0.46',
 
 
     # any module necessary for this one to work correctly
@@ -48,6 +48,7 @@
         'views/mails/student/inscription-received.xml',
         'views/mails/student/student-enrolled.xml',
         'views/mails/workflow/review-needed.xml',
+        'views/mails/workflow/recording-review-needed.xml',
         'views/mails/workflow/script-approved.xml',
         'views/mails/workflow/correction-needed.xml',
     ],

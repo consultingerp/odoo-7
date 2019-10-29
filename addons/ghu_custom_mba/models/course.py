@@ -212,6 +212,8 @@ class GhuCourse(models.Model):
                 if self.author_id.videoCheck:
                     self.createPanoptoFolder()
         elif new_state == 'recording_finished':
+            if self.state == 'script_approved':
+                self.recordingReviewNeeded()
             print(new_state) # Notify office to check video recording
         elif new_state == 'approved':
             print(new_state) # Publish course on campus, notify Lecturer
@@ -235,6 +237,11 @@ class GhuCourse(models.Model):
         notification_template.send_mail(self.id, raise_exception=False, force_send=False)
         return True
     
+    def recordingReviewNeeded(self):
+        notification_template = self.env.ref('ghu_custom_mba.recording_review_needed_mail').sudo()
+        notification_template.send_mail(self.id, raise_exception=False, force_send=False)
+        return True
+
     @api.multi
     def createPanoptoFolder(self):
         for record in self:
