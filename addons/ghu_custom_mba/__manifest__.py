@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.46',
+    'version': '0.47',
 
 
     # any module necessary for this one to work correctly
@@ -29,13 +29,14 @@
         'data/scheduled_actions.xml',
         'views/views.xml',
         'views/application/form.xml',
-        'views/course/list.xml',
-        'views/course/detail.xml',
-        'views/course/preview.xml',
-        'views/course/edit.xml',
-        'views/course/record.xml',
-        'views/course/assessments/edit.xml',
-        'views/course/assessments/question/edit.xml',
+        'views/course/advisor/list.xml',
+        'views/course/advisor/detail.xml',
+        'views/course/advisor/edit.xml',
+        'views/course/advisor/record.xml',
+        'views/course/advisor/assessments/edit.xml',
+        'views/course/advisor/assessments/question/edit.xml',
+        'views/course/student/overview.xml',
+        'views/course/student/preview.xml',
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',

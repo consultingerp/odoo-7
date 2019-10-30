@@ -52,14 +52,6 @@ class GhuCustomMba(http.Controller):
             })
         return http.request.not_found()
 
-    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/preview', auth='user', website=True)
-    def preview(self, obj, **kw):
-        return http.request.render('ghu_custom_mba.coursepreview', {
-            'root': '/campus/course',
-            'object': obj,
-            'slug': 'campus_my_courses'
-        })
-
     @http.route('/campus/my/video', methods=['GET'], auth='user', website=True)
     def video(self, **kw):
         if request.env.user.partner_id.is_custom_mba:
