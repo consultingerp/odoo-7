@@ -107,11 +107,11 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <p>
-                                    <form action="/shop/cart/update" method="post">
+                                    <form id="add-to-cart" action="/shop/cart/update" method="post">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                         <input name="product_id" t-att-value="object.product_ref.id" type="hidden" />
                                         <t t-if="object.product_ref.id">
-                                            <a href="/" class="btn btn-success btn-block flex-column a-submit">
+                                            <a onclick="document.getElementById('add-to-cart').submit();" href="#" class="btn btn-success btn-block flex-column a-submit">
                                                 Purchase Course
                                                 <strong>$<t t-esc="object.product_ref.lst_price" /> USD</strong>
                                             </a>
