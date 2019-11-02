@@ -107,10 +107,17 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <p>
-                                    <a href="/" class="btn btn-success btn-block flex-column">
-                                        Purchase Course
-                                        <strong>$990 USD</strong>
-                                    </a>
+                                    <form action="/shop/cart/update" method="post">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                        <t t-set="product_variant_id" t-value="object.product_ref._get_first_possible_variant_id()"/>
+                                        <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                                        <t t-if="product_variant_id">
+                                            <a href="/" class="btn btn-success btn-block flex-column a-submit">
+                                                Purchase Course
+                                                <strong>$<t t-esc="object.product_ref.lst_price"> USD</strong>
+                                            </a>
+                                        </t>
+                                    </form>
                                 </p>
                             </div>
                         </div>
@@ -123,7 +130,8 @@
                                     <div class="media-body">
                                         <h4 class="card-title">
                                             <a t-attf-href="/campus/advisor/{{ object.author_id.id }}">
-                                                <t t-esc="object.author_id.nomination" /><br/>
+                                                <t t-esc="object.author_id.nomination" />
+                                                <br/>
                                                 <t t-esc="object.author_id.name" />
                                             </a>
                                         </h4>
