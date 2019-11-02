@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_cart" inherit_id="website_sale.cart">
+            <xpath expr="//t[@name='website.layout']" position="attributes">
+                <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
+             </xpath>
+        </template>
+    </data>
+</odoo>
