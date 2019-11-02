@@ -11,17 +11,6 @@ _logger = logging.getLogger(__name__)
 
 
 class GhuCustomMba(http.Controller):
-    @http.route('/campus/course/', auth='user')
-    def index(self, **kw):
-        return "Hello, world"
-
-    # @http.route('/campus/courses/', auth='user', website=True)
-    # def list(self, **kw):
-    #    return http.request.render('ghu_custom_mba.courselist', {
-    #        'root': '/campus/course',
-    #        'objects': http.request.env['ghu_custom_mba.course'].search([]),
-    #    })
-
     @http.route('/campus/my/courses/', auth='user', website=True)
     def listMyCourses(self, **kw):
         if request.env.user.partner_id.is_custom_mba:
