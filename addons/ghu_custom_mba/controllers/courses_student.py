@@ -41,19 +41,19 @@ class GhuCustomMbaStudent(http.Controller):
     @http.route('/campus/course/buy/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
     def buyCourse(self, obj, **kw):
         invoice_partners = request.env.user.partner_id.child_ids.filtered(lambda p: p.type == 'invoice')
-        invoice = self.env['account.invoice'].create(dict(
+        invoice = request.env['account.invoice'].create(dict(
             partner_id=invoice_partners[0].id if invoice_partners else request.env.user.partner_id.id, # customer (billing address)
             partner_shipping_id=request.env.user.partner_id.id, # customer (applicant)
             type='out_invoice',
             date_invoice=datetime.datetime.utcnow().date(), # invoice date
             date_due=(datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).date(), # due date
-            user_id=self.env().user.id, # salesperson
+            user_id=request.env().user.id, # salesperson
             invoice_line_ids=[], # invoice lines
             name=obj.product_ref.name, # name for account move lines
-            partner_bank_id=self.env['ir.config_parameter'].get_param('ghu.automated_invoice_bank_account'), # company bank account
+            partner_bank_id=request.env['ir.config_parameter'].get_param('ghu.automated_invoice_bank_account'), # company bank account
         ))
 
-        invoice_line = self.env['account.invoice.line'].with_context(
+        invoice_line = request.env['account.invoice.line'].with_context(
                 type=invoice.type, 
                 journal_id=invoice.journal_id.id, 
                 default_invoice_id=invoice.id
@@ -65,7 +65,7 @@ class GhuCustomMbaStudent(http.Controller):
 
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
-        invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
+        invoice_template = request.env.ref('ghu.ghu_invoice_email_template')
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
