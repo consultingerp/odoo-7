@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.26',
+    'version': '0.261',
 
     # any module necessary for this one to work correctly
     'depends': ['web'],
@@ -29,7 +29,8 @@
         'views/navigation/navbars.xml',
         'views/navigation/sidebars/account.xml',
         'views/navigation/sidebars/custom_mba.xml',
-        'views/navigation/sidebars/advisor.xml'
+        'views/navigation/sidebars/advisor.xml',
+        'views/navigation/sidebars/student.xml'
     ],
     # only loaded in demonstration mode
     # 'demo': [
