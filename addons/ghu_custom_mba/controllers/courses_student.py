@@ -38,7 +38,7 @@ class GhuCustomMbaStudent(http.Controller):
             # TODO: Get all courses a partner/student bought
         return http.request.not_found()
 
-    @http.route('campus/course/buy/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
+    @http.route('/campus/course/buy/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
     def buyCourse(self, obj, **kw):
         invoice_partners = request.env.user.partner_id.child_ids.filtered(lambda p: p.type == 'invoice')
         invoice = self.env['account.invoice'].create(dict(
