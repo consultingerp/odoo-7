@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="sidebar_student">
+            <div class="sidebar-heading">My Campus</div>
+            <ul class="sidebar-menu sm-active-button-bg">
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_courses' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/courses">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> 
+                                                        Course Overview
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_courses' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/my/courses">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> 
+                                                        My Courses
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_student_help' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/student/help">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> 
+                                                        Get Help
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item">
+                    <a class="sidebar-menu-button" href="/web/logout">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> 
+                                                        Logout
+                    </a>
+                </li>
+            </ul>
+        </template>
+    </data>
+</odoo>

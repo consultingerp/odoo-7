@@ -28,3 +28,11 @@ class GhuCustomMbaStudent(http.Controller):
                 'slug': 'campus_courses'
             })
         return http.request.not_found()
+
+
+    @http.route('/campus/my/courses/', auth='user', website=True)
+    def myCourses(self, **kw):
+        if request.env.user.partner_id.is_student:
+            partner_id = request.env.user.partner_id.id
+            # TODO: Get all courses a partner/student bought
+        return http.request.not_found()

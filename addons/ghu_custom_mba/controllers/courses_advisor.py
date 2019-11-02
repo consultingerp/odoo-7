@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class GhuCustomMba(http.Controller):
-    @http.route('/campus/my/courses/', auth='user', website=True)
+    @http.route('/campus/manage/courses/', auth='user', website=True)
     def listMyCourses(self, **kw):
         if request.env.user.partner_id.is_custom_mba:
             partner_id = request.env.user.partner_id.id
@@ -180,7 +180,7 @@ class GhuCustomMba(http.Controller):
                 kw = dict()
                 kw['state'] = 'new'
                 obj.write(kw)
-            return werkzeug.utils.redirect('/campus/my/courses')
+            return werkzeug.utils.redirect('/campus/manage/courses')
         return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
