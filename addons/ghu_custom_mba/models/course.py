@@ -309,7 +309,7 @@ class GhuCourse(models.Model):
     def create_product(self):
         for record in self:
             vals = {
-                'name': record.name,
+                'name': 'Course ' + record.name,
                 'purchase_ok': False,
                 'type': 'service',
                 'lst_price': 990
@@ -330,7 +330,7 @@ class GhuCourse(models.Model):
                 record.create_product()
             else:
                 product = record.product_ref
-                product.sudo().write({'name': record.name})
+                product.sudo().write({'name': 'Course ' + record.name})
                 _logger.info('Product updated for course: ' + record.name)
 
 
