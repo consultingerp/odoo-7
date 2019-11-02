@@ -1,9 +1,36 @@
 <odoo>
     <data noupdate="0">
         <template id="campus_cart" inherit_id="website_sale.cart">
-            <t t-call="ghu_campus_style.campus_layout">
-            test
-            </t>
+            <xpath expr="//t[@t-call='website.layout']" position="attributes">
+                <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
+            </xpath>
+        </template>
+        <template id="campus_payment" inherit_id="website_sale.payment">
+            <xpath expr="//t[@t-call='website.layout']" position="attributes">
+                <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
+            </xpath>
+        </template>
+        <template id="campus_confirmation" inherit_id="website_sale.payment">
+            <xpath expr="//t[@t-call='website.layout']" position="attributes">
+                <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
+            </xpath>
+        </template>
+        <template id="campus_cart" inherit_id="ghu_campus_style.assets">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/web/static/lib/es6-promise/es6-promise-polyfill.js"></script>
+                <script type="text/javascript" src="/web/static/lib/unhandled-rejection-polyfill/unhandled-rejection-polyfill.js"></script>
+                <script type="text/javascript" src="/web/static/src/js/promise_extension.js"></script>
+                <script type="text/javascript" src="/web/static/src/js/boot.js"></script>
+
+                <script type="text/javascript" src="/sale/static/src/js/variant_mixin.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/variant_mixin.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale_utils.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale_payment.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale_validate.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale_recently_viewed.js"></script>
+                <script type="text/javascript" src="/website_sale/static/src/js/website_sale_tracking.js"></script>
+            </xpath>
         </template>
     </data>
 </odoo>
