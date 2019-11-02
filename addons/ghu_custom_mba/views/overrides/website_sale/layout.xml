@@ -10,7 +10,7 @@
                 <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
             </xpath>
         </template>
-        <template id="campus_confirmation" inherit_id="website_sale.payment">
+        <template id="campus_confirmation" inherit_id="website_sale.confirmation">
             <xpath expr="//t[@t-call='website.layout']" position="attributes">
                 <attribute name="t-call">ghu_campus_style.campus_layout</attribute>
             </xpath>
