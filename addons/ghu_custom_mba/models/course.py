@@ -317,6 +317,7 @@ class GhuCourse(models.Model):
             if not record.product_ref:
                 record.product_ref = self.env['product.product'].sudo().create(
                     vals)
+                _logger.info('Product created for course: ' + record.name)
 
     # Update product when name changes
     @api.multi
@@ -325,9 +326,12 @@ class GhuCourse(models.Model):
         # Update referenced product name
         for record in self:
             _logger.info('Course name changed: ' + record.name)
-            if record.product_ref:
+            if not record.product_ref:
+                record.create_product()
+            else:
                 product = record.product_ref
-                product.write({'name': record.name})
+                product.sudo().write({'name': record.name})
+                _logger.info('Product updated for course: ' + record.name)
 
 
 class GhuAssessment(models.Model):
