@@ -6,7 +6,7 @@
                     <t t-esc="object.display_name"/>
                 </t>
                 <t t-if="object.long_name" t-set="subtitle">
-                    <t t-esc="object.long_name"/>
+                    <t t-esc="object.long_name"/> 
                 </t>
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
