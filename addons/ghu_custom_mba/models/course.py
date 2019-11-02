@@ -314,21 +314,20 @@ class GhuCourse(models.Model):
                 'type': 'service',
                 'lst_price': 990
             }
-            if record.product_ref:
-                product = record.product_ref
-                product.name = record.name
-                product.lst_price = 990
-                product.write(vals)
-            else:
+            if not record.product_ref:
                 record.product_ref = self.env['product.product'].sudo().create(
                     vals)
 
     # Update product when name changes
+    @api.multi
     @api.onchange('name')  # if these fields are changed, call method
-    def check_change(self):
-        if self.product_ref and self.product_ref.name != self.name:
-            product = self.product_ref
-            product.write({'name': self.name})
+    def _name_changed(self):
+        # Update referenced product name
+        for record in self:
+            _logger.info('Course name changed: ' + record.name)
+            if record.product_ref:
+                product = record.product_ref
+                product.write({'name': record.name})
 
 
 class GhuAssessment(models.Model):
