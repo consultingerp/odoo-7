@@ -109,12 +109,12 @@
                                 <p>
                                     <form action="/shop/cart/update" method="post">
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-                                        <t t-set="product_variant_id" t-value="object.product_ref._get_first_possible_variant_id()"/>
-                                        <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+                                        <t t-set="product_variant_id" t-value="object.product_ref._get_first_possible_variant_id()" />
+                                        <input name="product_id" t-att-value="product_variant_id" type="hidden" />
                                         <t t-if="product_variant_id">
                                             <a href="/" class="btn btn-success btn-block flex-column a-submit">
                                                 Purchase Course
-                                                <strong>$<t t-esc="object.product_ref.lst_price"> USD</strong>
+                                                <strong>$<t t-esc="object.product_ref.lst_price" /> USD</strong>
                                             </a>
                                         </t>
                                     </form>
