@@ -15,9 +15,11 @@
                         <div class="card mt-3">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <i t-if="object.program_id.code == 'finance'" class="fas fa-landmark"></i>
-                                    <i t-elif="object.program_id.code == 'law'" class="fas fa-gavel"></i>
-                                    <i t-else="" class="fas fa-building"></i>
+                                    <i class="material-icons text-muted-light">
+                                        <t t-if="object.program_id.code == 'finance'">account_balance</t>
+                                        <t t-elif="object.program_id.code == 'law'">gavel</t>
+                                        <t t-else="">supervisor_account</t>
+                                    </i>
                                     <a t-attf-href="#{ root }/#{ object.id }">
                                         <t t-esc="object.display_name"/>
                                     </a>
