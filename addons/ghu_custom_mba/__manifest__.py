@@ -21,7 +21,7 @@
 
 
     # any module necessary for this one to work correctly
-    'depends': ['ghu', 'documents'],
+    'depends': ['ghu', 'documents', 'website_sale'],
 
     # always loaded
     'data': [

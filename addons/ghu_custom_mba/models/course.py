@@ -67,6 +67,11 @@ class GhuCourse(models.Model):
         domain=[('is_cafeteria', '=', 'True')],
     )
 
+    product_ref = fields.Reference(
+        string=u'Product',
+        selection=[('product.product', 'Product')]
+    )
+
     panopto_id = fields.Char('Panopto ID', size=256, required=False)
 
     preview_video_id = fields.Char('Panopto Video Preview ID', size=256, required=False)
@@ -263,6 +268,27 @@ class GhuCourse(models.Model):
             panopto.grantAccessToFolder(scriptFolder3, panoptoUserId, 'Creator')
             _logger.info('Panopto Folder for ' + record.name + ' created')
 
+
+
+    # Create corresponding product to buy in campus
+    @api.model
+    def create(self, vals):
+        res = super(GhuCourse, self).create(vals)
+        res.create_product() # call your method
+        return res
+
+    @api.multi
+    def create_product(self):
+        for record in self:
+            record.product_ref = self.env['product.product'].sudo().create({
+                'name': record.name
+            })
+
+    # Update product when name changes
+    @api.onchange('name') # if these fields are changed, call method
+    def check_change(self):
+        if self.product_ref.name != self.name:
+            self.product_ref.name = self.name
 
 class GhuAssessment(models.Model):
     _name = 'ghu_custom_mba.assessment'
