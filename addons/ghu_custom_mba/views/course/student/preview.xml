@@ -110,7 +110,7 @@
                                     <t t-if="object.product_ref.id">
                                         <a t-attf-href="/campus/course/buy/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
                                             Purchase Course
-                                            <strong>$<t t-esc="object.product_ref.lst_price" /> USD</strong>
+                                            <strong>$<t t-esc="object.product_ref.list_price" /> USD</strong>
                                         </a>
                                     </t>
                                 </p>

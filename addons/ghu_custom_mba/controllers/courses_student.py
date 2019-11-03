@@ -46,7 +46,7 @@ class GhuCustomMbaStudent(http.Controller):
     def buyCourse(self, obj, **kw):
         invoice_partners = request.env.user.partner_id.child_ids.filtered(
             lambda p: p.type == 'invoice')
-        invoice = request.env['account.invoice'].create(dict(
+        invoice = request.env['account.invoice'].sudo().create(dict(
             # customer (billing address)
             partner_id=invoice_partners[0].id if invoice_partners else request.env.user.partner_id.id,
             # customer (applicant)
@@ -62,7 +62,7 @@ class GhuCustomMbaStudent(http.Controller):
                 'ghu.automated_invoice_bank_account'),  # company bank account
         ))
 
-        invoice_line = request.env['account.invoice.line'].with_context(
+        invoice_line = request.env['account.invoice.line'].sudo().with_context(
             type=invoice.type,
             journal_id=invoice.journal_id.id,
             default_invoice_id=invoice.id
