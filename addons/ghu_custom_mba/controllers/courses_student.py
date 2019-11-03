@@ -44,6 +44,7 @@ class GhuCustomMbaStudent(http.Controller):
 
     @http.route('/campus/course/buy/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
     def buyCourse(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         invoice_partners = request.env.user.partner_id.child_ids.filtered(
             lambda p: p.type == 'invoice')
         invoice = request.env['account.invoice'].sudo().create(dict(
@@ -58,7 +59,7 @@ class GhuCustomMbaStudent(http.Controller):
             user_id=request.env().user.id,  # salesperson
             invoice_line_ids=[],  # invoice lines
             name=obj.product_ref.name,  # name for account move lines
-            partner_bank_id=request.env['ir.config_parameter'].get_param(
+            partner_bank_id=request.env['ir.config_parameter'].sudo().get_param(
                 'ghu.automated_invoice_bank_account'),  # company bank account
         ))
 
@@ -74,16 +75,16 @@ class GhuCustomMbaStudent(http.Controller):
 
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
-        invoice_template = request.env.ref('ghu.ghu_invoice_email_template')
+        invoice_template = request.env.ref('ghu.ghu_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
         student = request.env['ghu.student'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)], limit=1)
 
         enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().create(dict(
-            invoice_ref=invoice.id,
-            course_ref=obj.id,
-            student_ref=student.id,
+            invoice_ref='%s,%s' % ('account.invoice', invoice.id),
+            course_ref='%s,%s' % ('ghu_custom_mba.course', obj.id),
+            student_ref='%s,%s' % ('ghu.student', student.id),
             name=obj.name + '-' + student.name
         ))
 
