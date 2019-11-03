@@ -26,7 +26,26 @@ class GhuCustomMba(http.Controller):
                     'root': '/campus/course',
                     'author': 'true',
                     'objects': objects,
-                    'slug': 'campus_my_courses'
+                    'slug': 'campus_manage_courses'
+                })
+        return http.request.not_found()
+
+    @http.route('/campus/grading/courses/', auth='user', website=True)
+    def gradeMyCourses(self, **kw):
+        if request.env.user.partner_id.is_custom_mba:
+            partner_id = request.env.user.partner_id.id
+            advisor = request.env['ghu.advisor'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            advisor_id = advisor.id
+            if advisor_id:
+                objects = request.env['ghu_custom_mba.course'].search(
+                    [('author_id', '=', advisor_id)])
+                _logger.info('fetch of courses succeeded')
+                return http.request.render('ghu_custom_mba.coursegradinglist', {
+                    'root': '/campus/course',
+                    'author': 'true',
+                    'objects': objects,
+                    'slug': 'campus_grading_courses'
                 })
         return http.request.not_found()
 
@@ -37,7 +56,7 @@ class GhuCustomMba(http.Controller):
                 'root': '/campus/course',
                 'object': obj,
                 'author': 'true',
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -81,7 +100,7 @@ class GhuCustomMba(http.Controller):
                 'object': all_fields,
                 'languages': languages,
                 'programs': programs,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -97,7 +116,7 @@ class GhuCustomMba(http.Controller):
                 'author': 'true',
                 'languages': languages,
                 'programs': programs,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -116,7 +135,7 @@ class GhuCustomMba(http.Controller):
                 'object': obj,
                 'author': 'true',
                 'bltiParams': params,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -201,7 +220,7 @@ class GhuCustomMba(http.Controller):
                 'course': obj,
                 'types': request.env['ghu_custom_mba.assessment'].types,
                 'object': all_fields,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -214,7 +233,7 @@ class GhuCustomMba(http.Controller):
                 'course': obj,
                 'types': request.env['ghu_custom_mba.assessment'].types,
                 'object': ass,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -273,7 +292,7 @@ class GhuCustomMba(http.Controller):
                 'course': obj,
                 'ass': ass,
                 'object': all_fields,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 
@@ -286,7 +305,7 @@ class GhuCustomMba(http.Controller):
                 'course': obj,
                 'ass': ass,
                 'object': question,
-                'slug': 'campus_my_courses'
+                'slug': 'campus_manage_courses'
             })
         return http.request.not_found()
 

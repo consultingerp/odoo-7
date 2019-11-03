@@ -4,10 +4,16 @@
         <template id="sidebar_custom_mba">
             <div class="sidebar-heading">Custom MBA</div>
             <ul class="sidebar-menu sm-active-button-bg">
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_courses' and ' active' or ''}">
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_manage_courses' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/manage/courses">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> 
                                                         Course Manager
+                    </a>
+                </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_grading_courses' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/grading/courses">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> 
+                                                        Grading
                     </a>
                 </li>
                 <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
