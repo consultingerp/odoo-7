@@ -10,6 +10,12 @@
                                                         Documents
                     </a>
                 </li>
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_help' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/help/">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> 
+                                                        Help Center
+                    </a>
+                </li>
             </ul>
         </template>
     </data>
