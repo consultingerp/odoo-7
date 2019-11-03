@@ -36,6 +36,7 @@
     # 'demo': [
     #    'demo/demo.xml',
     # ],
+    'application': True,
     'category': 'Theme/Creative',
   
 }

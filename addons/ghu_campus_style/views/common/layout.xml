@@ -1,13 +1,10 @@
 <odoo>
     <data noupdate="0">
-        <template id="campus_layout">
-            <t t-call="web.layout">
+        <template id="campus_layout" inherit_id="website.layout">
+            <xpath expr="//div[@id='wrapwrap']" position="replace">
                 <t t-set="html_data" t-value="{'dir':'ltr'}" />
                 <t t-set="body_classname">layout-fluid</t>
                 <t t-set="x_icon" t-value="'/ghu_campus_style/static/images/favicon.png'" />
-                <t t-set="head">
-                    <t t-call-assets="ghu_campus_style.assets"></t>
-                </t>
                 <t t-call="ghu_campus_style.preloader" />
                 <!-- Header Layout -->
                 <div class="mdk-header-layout js-mdk-header-layout">
@@ -47,7 +44,7 @@
                         <!-- {% include 'layouts/_app-settings.html' %} -->
                     </div>
                 </div>
-            </t>
+            </xpath>                
         </template>
         <template id="preloader">
             <div class="preloader">
