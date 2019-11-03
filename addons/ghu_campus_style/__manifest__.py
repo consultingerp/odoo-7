@@ -19,7 +19,7 @@
     'version': '0.263',
 
     # any module necessary for this one to work correctly
-    'depends': ['web', 'website'],
+    'depends': ['web'],
 
     # always loaded
     'data': [
@@ -36,6 +36,5 @@
     # 'demo': [
     #    'demo/demo.xml',
     # ],
-    'category': 'Theme/Creative',
-  
+    'application': True
 }

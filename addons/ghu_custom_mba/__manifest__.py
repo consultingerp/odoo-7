@@ -21,7 +21,7 @@
 
 
     # any module necessary for this one to work correctly
-    'depends': ['ghu', 'documents'],
+    'depends': ['ghu', 'documents', 'website_sale'],
 
     # always loaded
     'data': [
@@ -53,7 +53,8 @@
         'views/mails/workflow/review-needed.xml',
         'views/mails/workflow/recording-review-needed.xml',
         'views/mails/workflow/script-approved.xml',
-        'views/mails/workflow/correction-needed.xml'
+        'views/mails/workflow/correction-needed.xml',
+        'views/overrides/website_sale/layout.xml',
     ],
     # only loaded in demonstration mode
     #'demo': [
