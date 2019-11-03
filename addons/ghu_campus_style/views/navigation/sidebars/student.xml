@@ -16,18 +16,6 @@
                                                         My Courses
                     </a>
                 </li>
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_student_help' and ' active' or ''}">
-                    <a class="sidebar-menu-button" href="/campus/student/help">
-                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> 
-                                                        Get Help
-                    </a>
-                </li>
-                <li t-attf-class="sidebar-menu-item">
-                    <a class="sidebar-menu-button" href="/web/session/logout?redirect=/">
-                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> 
-                                                        Logout
-                    </a>
-                </li>
             </ul>
         </template>
     </data>

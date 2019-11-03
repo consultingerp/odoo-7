@@ -3,10 +3,10 @@
         <template id="helpcenter">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    <t t-esc="object.display_name"/>
+                    Help Center
                 </t>
                 <t t-if="object.long_name" t-set="subtitle">
-                    <t t-esc="object.long_name"/>
+                    Help Center
                 </t>
                 <div class="media mb-headings align-items-center">
                     <div class="media-body">
