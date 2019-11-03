@@ -102,8 +102,7 @@ class GhuCustomMbaStudent(http.Controller):
                 return http.request.render('ghu_custom_mba.student_takecourse', {
                     'root': '/campus/course',
                     'object': obj,
-                    'enrollment': enrollment
-                    'author': 'true',
+                    'enrollment': enrollment,
                     'slug': 'campus_my_course'
                 })
         return http.request.not_found()
