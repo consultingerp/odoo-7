@@ -35,7 +35,7 @@ class GhuCustomMbaStudent(http.Controller):
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
-            enrollments = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', student.id)])
+            enrollments = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', 'ghu.student,'+str(student.id))])
             return http.request.render('ghu_custom_mba.student_mycourses', {
                 'root': '/campus/course',
                 'objects': enrollments,
@@ -89,3 +89,21 @@ class GhuCustomMbaStudent(http.Controller):
         ))
 
         return http.request.redirect('/my/invoices/' + str(invoice.id))
+
+
+    @http.route('/campus/course/take/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
+    def detail(self, obj, **kw):
+        if request.env.user.partner_id.is_student:
+            obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            if enrollment and enrollment.state != 'new':
+                return http.request.render('ghu_custom_mba.student_takecourse', {
+                    'root': '/campus/course',
+                    'object': obj,
+                    'enrollment': enrollment
+                    'author': 'true',
+                    'slug': 'campus_my_course'
+                })
+        return http.request.not_found()
