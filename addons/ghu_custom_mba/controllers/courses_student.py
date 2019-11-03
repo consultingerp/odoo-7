@@ -83,7 +83,8 @@ class GhuCustomMbaStudent(http.Controller):
         enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().create(dict(
             invoice_ref=invoice.id,
             course_ref=obj.id,
-            student_ref=student.id
+            student_ref=student.id,
+            name=obj.name + '-' + student.name
         ))
 
         return http.request.redirect('/my/invoices/' + str(invoice.id))

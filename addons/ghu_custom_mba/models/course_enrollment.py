@@ -11,6 +11,10 @@ class GhuCourseEnrollment(models.Model):
     _rec_name = 'name'
     _description = "Course Enrollment"
 
+    name = fields.Char(
+        string=u'Name',
+    )
+    
     invoice_ref = fields.Reference(
         string=u'Invoice',
         selection=[('account.invoice', 'Invoice')]
