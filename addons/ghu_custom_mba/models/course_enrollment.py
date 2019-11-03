@@ -21,6 +21,11 @@ class GhuCourseEnrollment(models.Model):
         selection=[('ghu_custom_mba.course', 'Course')]
     )
 
+    student_ref = fields.Reference(
+        string=u'Student',
+        selection=[('ghu.student', 'Student')]
+    )
+
     states = [
         ('new', 'New'),
         ('paid', 'Paid'),

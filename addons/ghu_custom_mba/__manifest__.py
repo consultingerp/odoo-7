@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.517',
+    'version': '0.518',
 
 
     # any module necessary for this one to work correctly
@@ -38,6 +38,7 @@
         'views/course/advisor/assessments/question/edit.xml',
         'views/course/student/overview.xml',
         'views/course/student/preview.xml',
+        'views/course/student/my_courses.xml',
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',

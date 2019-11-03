@@ -34,7 +34,12 @@ class GhuCustomMbaStudent(http.Controller):
     def myCourses(self, **kw):
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
-            # TODO: Get all courses a partner/student bought
+            student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
+            enrollments = request.env['ghu_custom_mba.course_enrollment'].search(['student_ref', '=', student.id])
+            return http.request.render('ghu_custom_mba.student_mycourses', {
+                'root': '/campus/course',
+                'objects': enrollments,
+            })
         return http.request.not_found()
 
     @http.route('/campus/course/buy/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
@@ -72,5 +77,13 @@ class GhuCustomMbaStudent(http.Controller):
         invoice_template = request.env.ref('ghu.ghu_invoice_email_template')
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
+
+        student = request.env['ghu.student'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)], limit=1)
+
+        enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().create(dict(
+            invoice_ref=invoice.id,
+            course_ref=obj.id,
+            student_ref=student.id
+        ))
 
         return http.request.redirect('/my/invoices/' + str(invoice.id))

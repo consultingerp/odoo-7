@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="courselist">
+        <template id="student_mycourses">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     My Courses
@@ -16,15 +16,14 @@
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <i class="material-icons text-muted-light">
-                                        <t t-if="object.program_id.code == 'finance'">account_balance</t>
-                                        <t t-elif="object.program_id.code == 'law'">gavel</t>
+                                        <t t-if="object.course_ref.program_id.code == 'finance'">account_balance</t>
+                                        <t t-elif="object.course_ref.program_id.code == 'law'">gavel</t>
                                         <t t-else="">supervisor_account</t>
                                     </i>
-                                    <a t-attf-href="#{ root }/#{ object.id }">
-                                        <t t-esc="object.display_name"/>
-                                    </a>
+                                    <t t-esc="object.course_ref.display_name"/>
                                 </h5>
-                                <a t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">See details</a>
+                                <a t-if="object.state == 'paid'" t-attf-href="#{ root }/#{ object.id }" class="btn btn-primary">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                <a t-if="object.state == 'new'" disabled="disabled" class="btn btn-primary disabled">Payment pending</a>
                             </div>
                         </div>
                     </div>
