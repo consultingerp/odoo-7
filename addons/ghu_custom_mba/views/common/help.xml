@@ -5,9 +5,6 @@
                 <t t-set="title">
                     Help Center
                 </t>
-                <t t-if="object.long_name" t-set="subtitle">
-                    Help Center
-                </t>
                 <div class="media mb-headings align-items-center">
                     <div class="media-body">
                         <h1 class="h2">Help center</h1>
