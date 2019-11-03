@@ -160,7 +160,7 @@
     </record>
 
 
-    <record model="ir.actions.act_window" id="ghu_custom_mba.action_window">
+    <record model="ir.actions.act_window" id="ghu_custom_mba.action_window_enrollments">
       <field name="name">Custom MBA enrollments</field>
       <field name="res_model">ghu_custom_mba.course_enrollment</field>
       <field name="type">ir.actions.act_window</field>
