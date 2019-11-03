@@ -25,7 +25,7 @@ class GhuCustomMbaStudent(http.Controller):
         if obj.state == 'approved':
             return http.request.render('ghu_custom_mba.student_coursepreview', {
                 'root': '/campus/course',
-                'object': obj,
+                'object': request.env['ghu_custom_mba.course'].sudo().browse(obj.id),
                 'slug': 'campus_courses'
             })
         return http.request.not_found()
@@ -35,7 +35,7 @@ class GhuCustomMbaStudent(http.Controller):
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
-            enrollments = request.env['ghu_custom_mba.course_enrollment'].search(['student_ref', '=', student.id])
+            enrollments = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', student.id)])
             return http.request.render('ghu_custom_mba.student_mycourses', {
                 'root': '/campus/course',
                 'objects': enrollments,
