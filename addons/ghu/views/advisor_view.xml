@@ -215,7 +215,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="view_ghu_advisor_search"/>
-            <field name="domain">[('advisor_id','<','999')]</field>
+            <field name="domain">[('advisor_id','!=','999')]</field>
             <field name="context">{}</field>
         </record>
 
