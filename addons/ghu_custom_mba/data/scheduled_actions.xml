@@ -14,7 +14,7 @@
             <field name="doall" eval="False"/>
         </record>
         <!-- Scheduler for inscriptions -->
-        <record model="base.automation" id="ghu_custom_mba_approved_email">
+        <!--<record model="base.automation" id="ghu_custom_mba_approved_email">
             <field name="name">Send custom MBA approved mail (Success)</field>
             <field name="model_id" ref="model_ghu_student"/>
             <field name="trigger">on_time</field>
@@ -27,9 +27,9 @@
             <field name="code"><![CDATA[
             record.applicationApproved()
             ]]></field>
-        </record>
+        </record>-->
         <!-- Scheduler for inscriptions -->
-        <record model="base.automation" id="ghu_custom_mba_approved_email">
+        <!--<record model="base.automation" id="ghu_custom_mba_approved_email">
             <field name="name">Send 2nd custom MBA approved mail (Enrollment)</field>
             <field name="model_id" ref="model_ghu_student"/>
             <field name="trigger">on_time</field>
@@ -42,6 +42,6 @@
             <field name="code"><![CDATA[
             record.studentEnrolled()
             ]]></field>
-        </record>
+        </record>-->
     </data>
 </odoo>
