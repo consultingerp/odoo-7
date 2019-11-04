@@ -15,6 +15,10 @@ class GhuAdvisor(models.Model):
     is_cafeteria = fields.Boolean(
         string=u'Is cafeteria?',
     )
+
+    is_advisor = fields.Boolean(
+        string=u'Is Phd/DBA advisor?',
+    )
     
     advisor_id = fields.Char('Advisor ID', size=12)
 

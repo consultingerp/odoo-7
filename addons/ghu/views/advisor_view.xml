@@ -111,8 +111,9 @@
                             <page name="personal_information" string="Personal Information">
                                 <group col="4" colspan="4" name="personal_detail">
                                     <field name="partner_id" readonly="1"/>
-                                    <field name="advisor_id" required="1"/>
+                                    <field name="advisor_id"/>
                                     <field name="is_cafeteria"/>
+                                    <field name="is_advisor"/>
                                     <field name="nomination"/>
                                     <field name="academic_degree"/>
                                     <field name="gender" required="1"/>
@@ -212,6 +213,20 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ghu.advisor</field>
             <field name="view_type">form</field>
+            <field name="domain">[('advisor_id','<',999) ]</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="view_ghu_advisor_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="act_open_ghu_advisor_view_2">
+            <field name="name">Lecturers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ghu.advisor</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('is_cafeteria','=','1') ]</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="view_ghu_advisor_search"/>
             <field name="domain">[]</field>
