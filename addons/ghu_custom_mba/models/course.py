@@ -232,6 +232,8 @@ class GhuCourse(models.Model):
                 self.recordingReviewNeeded()
             print(new_state)  # Notify office to check video recording
         elif new_state == 'approved':
+            if self.state == 'recording_finished':
+                self.publishCourse()
             print(new_state)  # Publish course on campus, notify Lecturer
         elif new_state == 'declined':
             print(new_state)  # Notify lecturer of reason why he was declined
@@ -245,6 +247,15 @@ class GhuCourse(models.Model):
         notification_template.send_mail(
             self.id, raise_exception=False, force_send=False)
         return True
+
+    # Publish course on campus, grab ids of panopto lectures and assign them correctly, notify Lecturer
+    def publishCourse(self):
+        notification_template = self.env.ref(
+            'ghu_custom_mba.course_approved_mail').sudo()
+        notification_template.send_mail(
+            self.id, raise_exception=False, force_send=False)
+        return True
+
 
     def correctionNeeded(self):
         notification_template = self.env.ref(
