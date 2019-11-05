@@ -79,10 +79,10 @@ class GhuAdvisor(models.Model):
     )
     
     agreement = fields.Binary(
-        string=u'Agreement',
+        string=u'Doctoral Program Agreement',
     )
     agreement_filename = fields.Char(
-        string=u'Agreement Filename',
+        string=u'Doctoral Program Agreement Filename',
     )
 
         
