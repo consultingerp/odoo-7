@@ -26,6 +26,45 @@
                                     <div t-field="object.description"></div>
                                 </div>
                             </div>
+                            <ul class="card list-group list-group-fit">
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="text-muted">1.</div>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture1_video_id }}" target="_blank">Lecture 1</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small class="text-muted-light"></small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">2.</div>
+                                        <div class="media-body">
+                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture2_video_id }}" target="_blank">Lecture 2</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="text-muted">3.</div>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture3_video_id }}" target="_blank">Lecture 3</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small class="text-muted-light"></small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                             <div class="card">
                                 <div class="card-header" id="headingAims">
                                     <h5 class="mb-0">
@@ -113,7 +152,8 @@
                                     <div class="media-body">
                                         <h4 class="card-title">
                                             <a t-attf-href="/campus/advisor/{{ object.author_id.id }}">
-                                                <t t-esc="object.author_id.nomination" /><br/>
+                                                <t t-esc="object.author_id.nomination" />
+                                                <br/>
                                                 <t t-esc="object.author_id.name" />
                                             </a>
                                         </h4>
@@ -131,7 +171,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Assessments</h5>
-                                <p class="card-subtitle">maximum of 2</p>
                             </div>
                             <ul class="list-group list-group-fit">
                                 <li t-foreach="object.assessment_ids" t-as="assessment" class="list-group-item">
@@ -196,7 +235,8 @@
                                 <p class="card-subtitle"></p>
                             </div>
                             <div class="card-body">
-                                <a class="btn btn-primary" t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true"><i class="material-icons mr-1">cloud_download</i> Script Download</a>
+                                <a class="btn btn-primary" t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true">
+                                    <i class="material-icons mr-1">cloud_download</i> Script Download</a>
                             </div>
                         </div>
                     </div>
