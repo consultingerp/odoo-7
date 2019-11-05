@@ -34,8 +34,10 @@ class GhuCustomMbaStudent(http.Controller):
     def myCourses(self, **kw):
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
-            student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
-            enrollments = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', 'ghu.student,'+str(student.id))])
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollments = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id))])
             return http.request.render('ghu_custom_mba.student_mycourses', {
                 'root': '/campus/course',
                 'objects': enrollments,
@@ -75,11 +77,13 @@ class GhuCustomMbaStudent(http.Controller):
 
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
-        invoice_template = request.env.ref('ghu.ghu_invoice_email_template').sudo()
+        invoice_template = request.env.ref(
+            'ghu.ghu_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
-        student = request.env['ghu.student'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)], limit=1)
+        student = request.env['ghu.student'].sudo().search(
+            [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
 
         enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().create(dict(
             invoice_ref='%s,%s' % ('account.invoice', invoice.id),
@@ -90,16 +94,25 @@ class GhuCustomMbaStudent(http.Controller):
 
         return http.request.redirect('/my/invoices/' + str(invoice.id))
 
-
     @http.route('/campus/course/take/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
     def detail(self, obj, **kw):
         if request.env.user.partner_id.is_student:
+            blti = GhuBlti()
+            params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
+                'ghu.panopto_blti_consumer_key'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_consumer_secret'),
+                request.env['ir.config_parameter'].sudo().get_param(
+                    'ghu.panopto_blti_launch_url'), 'private-'+str(request.env.user.id), request.env.user.id, request.env.user.name, request.env.user.firstname, request.env.user.lastname, request.env.user.email)
             obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
             partner_id = request.env.user.partner_id.id
-            student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
-            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
             if enrollment and enrollment.state != 'new':
                 return http.request.render('ghu_custom_mba.student_takecourse', {
+                    'bltiParams': params,
                     'root': '/campus/course',
                     'object': obj,
                     'enrollment': enrollment,
