@@ -250,12 +250,37 @@ class GhuCourse(models.Model):
 
     # Publish course on campus, grab ids of panopto lectures and assign them correctly, notify Lecturer
     def publishCourse(self):
+        # Find all 3 lectures and add ids to model
+        panopto = GhuPanopto(self.env)
+        mainFolder = panopto.createFolder(self.name, self.id)
+        scriptFolder = panopto.createFolder(
+            "Lectures", str(self.id)+"-lectures", False, mainFolder)
+
+        scriptFolder1 = panopto.createFolder("Lecture 1", str(
+            self.id)+"-lectures1", False, scriptFolder)
+        lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
+
+        scriptFolder2 = panopto.createFolder("Lecture 2", str(
+            self.id)+"-lectures2", False, scriptFolder)
+        lecture2 = panopto.getFirstSessionOfFolder(scriptFolder2)
+
+        scriptFolder3 = panopto.createFolder("Lecture 3", str(
+            self.id)+"-lectures3", False, scriptFolder)
+        lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
+
+        vals = {
+            'lecture1_video_id': lecture1.Id if lecture1 else '',
+            'lecture2_video_id': lecture2.Id if lecture2 else '',
+            'lecture3_video_id': lecture3.Id if lecture3 else ''
+        }
+
+        self.write(vals)
+
         notification_template = self.env.ref(
             'ghu_custom_mba.course_approved_mail').sudo()
         notification_template.send_mail(
             self.id, raise_exception=False, force_send=False)
         return True
-
 
     def correctionNeeded(self):
         notification_template = self.env.ref(

@@ -75,3 +75,10 @@ class GhuPanopto():
             return panoptoUser
         else:
             return None
+
+    
+    def getFirstSessionOfFolder(self, folderId):
+        sessions = self.sessionClient.service.GetSessionsList(auth=self.authInfo, request={'FolderId':folderId})
+        if session.TotalNumberResults > 0:
+            return sessions.Results.Session[0]
+        return False
