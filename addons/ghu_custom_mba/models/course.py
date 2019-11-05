@@ -267,11 +267,14 @@ class GhuCourse(models.Model):
         scriptFolder3 = panopto.createFolder("Lecture 3", str(
             self.id)+"-lectures3", False, scriptFolder)
         lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
+        if lecture1 == False or lecture2 == False or lecture3 == False:
+            raise ValidationError(
+                _('Lectures missing in Panopto, not possible to approve this.'))
 
         vals = {
-            'lecture1_video_id': lecture1.Id if lecture1 else '',
-            'lecture2_video_id': lecture2.Id if lecture2 else '',
-            'lecture3_video_id': lecture3.Id if lecture3 else ''
+            'lecture1_video_id': lecture1.Id,
+            'lecture2_video_id': lecture2.Id,
+            'lecture3_video_id': lecture3.Id
         }
 
         self.write(vals)
