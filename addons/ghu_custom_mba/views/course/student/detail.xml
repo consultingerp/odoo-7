@@ -19,22 +19,14 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="accordion mb-2" id="courseAccordion">
-                            <div class="card">
-                                <div t-if="object.preview_video_id" class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.preview_video_id }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
-                                </div>
-                                <div class="card-body">
-                                    <div t-field="object.description"></div>
-                                </div>
-                            </div>
                             <ul class="card list-group list-group-fit">
                                 <li class="list-group-item">
                                     <div class="media">
                                         <div class="media-left">
-                                            <div class="text-muted">1.</div>
+                                           1.
                                         </div>
                                         <div class="media-body">
-                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture1_video_id }}" target="_blank">Lecture 1</a>
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture1_video_id }}" target="_blank">Lecture 1</a>
                                         </div>
                                         <div class="media-right">
                                             <small class="text-muted-light"></small>
@@ -45,7 +37,7 @@
                                     <div class="media">
                                         <div class="media-left">2.</div>
                                         <div class="media-body">
-                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture2_video_id }}" target="_blank">Lecture 2</a>
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture2_video_id }}" target="_blank">Lecture 2</a>
                                         </div>
                                         <div class="media-right">
                                             <small></small>
@@ -55,10 +47,10 @@
                                 <li class="list-group-item">
                                     <div class="media">
                                         <div class="media-left">
-                                            <div class="text-muted">3.</div>
+                                            3.
                                         </div>
                                         <div class="media-body">
-                                            <a href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture3_video_id }}" target="_blank">Lecture 3</a>
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture3_video_id }}" target="_blank">Lecture 3</a>
                                         </div>
                                         <div class="media-right">
                                             <small class="text-muted-light"></small>
@@ -66,6 +58,11 @@
                                     </div>
                                 </li>
                             </ul>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div t-field="object.description"></div>
+                                </div>
+                            </div>
                             <div class="card">
                                 <div class="card-header" id="headingAims">
                                     <h5 class="mb-0">
