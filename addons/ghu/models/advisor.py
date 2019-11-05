@@ -13,7 +13,7 @@ class GhuAdvisor(models.Model):
         'res.partner', 'Partner', required=True, ondelete="cascade")
 
     is_cafeteria = fields.Boolean(
-        string=u'Is cafeteria?',
+        string=u'Is Custom MBA?',
     )
 
     is_advisor = fields.Boolean(
@@ -83,6 +83,14 @@ class GhuAdvisor(models.Model):
     )
     agreement_filename = fields.Char(
         string=u'Agreement Filename',
+    )
+
+        
+    cmba_agreement = fields.Binary(
+        string=u'Custom MBA Agreement',
+    )
+    cmba_agreement_filename = fields.Char(
+        string=u'Custom MBA Agreement Filename',
     )
 
     programs = fields.Many2many(
