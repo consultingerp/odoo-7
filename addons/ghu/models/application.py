@@ -185,7 +185,7 @@ class GhuApplication(models.Model):
     def create_sign_request(self, record):
         pdf = self.env.ref('ghu.application_agreement_pdf').sudo().render_qweb_pdf([self.id])[0]
         attachmentName = 'Application-'+self.lastname+'-'+str(self.id)+'.pdf'
-        attachment = self.env['ir.attachment'].create({
+        attachment = self.env['ir.attachment'].sudo().create({
             'name': attachmentName,
             'type': 'binary',
             'datas': base64.encodestring(pdf),
@@ -194,13 +194,13 @@ class GhuApplication(models.Model):
             'res_id': self.id,
             'mimetype': 'application/x-pdf'
         })
-        template = self.env['sign.template'].create(
+        template = self.env['sign.template'].sudo().create(
             {
                 'attachment_id': attachment.id,
                 'active': 'true'
             }
         )
-        signature = self.env['sign.item'].create(
+        signature = self.env['sign.item'].sudo().create(
             {
                 'template_id' : template.id,
                 'height': 0.05,
@@ -214,10 +214,10 @@ class GhuApplication(models.Model):
                 'width': 0.2
             }
         )
-        res = self.env['sign.request'].sudo(self.env['res.users'].search([('email', 'like', 'office@ghu.edu.cw')], limit=1)).initialize_new(
+        res = self.env['sign.request'].sudo(self.env['res.users'].sudo().search([('email', 'like', 'office@ghu.edu.cw')], limit=1)).initialize_new(
             template.id,
             [
-                {'role': self.env.ref('sign.sign_item_role_customer').id, 'partner_id': self.partner_id.id}
+                {'role': self.env.ref('sign.sign_item_role_customer').sudo().id, 'partner_id': self.partner_id.id}
             ],
             [],
             'Application finalization',
