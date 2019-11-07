@@ -225,13 +225,13 @@ class GhuApplication(models.Model):
             '<p>We are pleased to inform you, ' + self.partner_id.firstname + ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only your signature missing, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
             True
         )
-        sign_request = self.env['sign.request'].browse(res['id']).sudo()
+        sign_request = self.env['sign.request'].sudo().browse(res['id'])
         sign_request.toggle_favorited()
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
 
-        application = self.env['ghu.application'].browse(self.id).sudo()
+        application = self.env['ghu.application'].sudo().browse(self.id)
         application.sign_request_id = sign_request.id
     
 
