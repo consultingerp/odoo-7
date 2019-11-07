@@ -86,7 +86,7 @@
                                                                     </label>
                                                                     <div class="col-sm-9">
                                                                         <div class="input-group">
-                                                                            <input type="date" class="form-control o_website_form_input" name="date_of_birth" required="required" />
+                                                                            <input type="date" class="form-control o_website_form_input" name="date_of_birth" placeholder="" required="required" />
                                                                             <div class="input-group-append">
                                                                                 <div class="input-group-text">
                                                                                     <i class="fa fa-calendar"></i>
@@ -161,10 +161,9 @@
                                                                 <div class="row">
                                                                     <label for="title_post" class="control-label col-sm-3" title="">
                                                                         Academic Degrees (Post)
-                                                                        <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <input required="required" class="form-control o_website_form_input" id="title_post" type="text" name="academic_degree_post" value="" />
+                                                                        <input class="form-control o_website_form_input" id="title_post" type="text" name="academic_degree_post" value="" />
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -83,7 +83,8 @@ class Ghu(http.Controller):
         # preprocess fields
         kwargs['ever_applied_at_ghu'] = bool(int(kwargs['ever_applied_at_ghu']))
         kwargs['ever_applied_doctoral'] = bool(int(kwargs['ever_applied_doctoral']))
-        kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
+        if 'other_languages' in kwargs.keys():
+            kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
             # create contact
