@@ -74,4 +74,4 @@ class GhuCourseEnrollment(models.Model):
         panopto = GhuPanopto(self.env)
         user = self.env['res.users'].search([('partner_id','=',self.student_ref.partner_id.id)], limit=1)
         panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToFolder(self.course_ref.panopto_id, panoptoUserId, 'Viewer')
+        panopto.grantAccessToSession(self.course_ref.panopto_id, panoptoUserId)

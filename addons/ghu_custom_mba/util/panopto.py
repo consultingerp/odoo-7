@@ -52,6 +52,13 @@ class GhuPanopto():
             _logger.info(error.detail)
     
     # Role can be either Viewer, Creator or Publisher
+    def grantAccessToSession(self, session, userIds):
+        try:
+            self.accessClient.service.GrantUsersViewerAccessToSession(auth=self.authInfo, sessionId=session, userIds=userIds)
+        except zeep.exceptions.Fault as error:
+            _logger.info(error.detail)
+
+    # Role can be either Viewer, Creator or Publisher
     def revokeAccessToFolder(self, folder, userIds, role='Viewer'):
         roleFactory = self.accessClient.type_factory('ns2')
         role = roleFactory.AccessRole(role)
