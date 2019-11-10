@@ -1,0 +1,181 @@
+<odoo>
+    <data noupdate="0">
+        <template id="student_coursepreview">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-esc="object.display_name"/>
+                </t>
+                <t t-if="object.long_name" t-set="subtitle">
+                    <t t-esc="object.long_name"/> 
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-esc="object.display_name"/>
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="accordion mb-2" id="courseAccordion">
+                            <div class="card">
+                                <div t-if="object.preview_video_id" class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.preview_video_id }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
+                                </div>
+                                <div class="card-body">
+                                    <div t-field="object.description"></div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingAims">
+                                    <h5 class="mb-0">
+                                        <a href="#" data-toggle="collapse" data-target="#aims" aria-expanded="true" aria-controls="aims">
+                                                    Aims
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="aims" class="collapse" aria-labelledby="headingAims" data-parent="#courseAccordion">
+                                    <div class="card-body">
+                                        <div t-field="object.aims">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingKnowledge">
+                                    <h5 class="mb-0">
+                                        <a href="#" data-toggle="collapse" data-target="#knowledge" aria-expanded="true" aria-controls="knowledge">
+                                                    Learning Outcomes: Knowledge
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="knowledge" class="collapse" aria-labelledby="headingKnowledge" data-parent="#courseAccordion">
+                                    <div class="card-body">
+                                        <div t-field="object.knowledge">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSkills">
+                                    <h5 class="mb-0">
+                                        <a href="#" data-toggle="collapse" data-target="#skills" aria-expanded="true" aria-controls="skills">
+                                                    Learning Outcomes: Skills
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="skills" class="collapse" aria-labelledby="headingSkills" data-parent="#courseAccordion">
+                                    <div class="card-body">
+                                        <div t-field="object.skills">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSyllabus">
+                                    <h5 class="mb-0">
+                                        <a href="#" data-toggle="collapse" data-target="#syllabus" aria-expanded="true" aria-controls="syllabus">
+                                                    Syllabus
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="syllabus" class="collapse" aria-labelledby="headingSyllabus" data-parent="#courseAccordion">
+                                    <div class="card-body">
+                                        <div t-field="object.syllabus">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingAssessment">
+                                    <h5 class="mb-0">
+                                        <a href="#" data-toggle="collapse" data-target="#assessment" aria-expanded="true" aria-controls="assessment">
+                                                    Learning, Teaching and Assessment Strategies
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="assessment" class="collapse" aria-labelledby="headingAssessment" data-parent="#courseAccordion">
+                                    <div class="card-body">
+                                        <div t-field="object.strategies">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p>
+                                    <t t-if="object.product_ref.id">
+                                        <a t-attf-href="/campus/course/buy/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
+                                            Purchase Course
+                                            <strong>$<t t-esc="object.sudo().product_ref.list_price" /> USD</strong>
+                                        </a>
+                                    </t>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-left">
+                                        <img t-attf-src="/web/image?model=ghu.advisor&amp;id={{ object.author_id.id }}&amp;field=image_medium&amp;unique=09182019211333" t-attf-alt="About {{ object.author_id.name }}" width="50" class="rounded-circle" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="card-title">
+                                            <a t-attf-href="/campus/advisor/{{ object.author_id.id }}">
+                                                <t t-esc="object.author_id.nomination" />
+                                                <br/>
+                                                <t t-esc="object.author_id.name" />
+                                            </a>
+                                        </h4>
+                                        <p class="card-subtitle">Advisor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <ul class="list-group list-group-fit">
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <i class="material-icons text-muted-light">assessment</i>
+                                        </div>
+                                        <div class="media-body">
+                                            Information
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <i class="material-icons text-muted-light">language</i>
+                                        </div>
+                                        <div class="media-body">
+                                            <t t-esc="object.language.display_name"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <i class="material-icons text-muted-light">
+                                                <t t-if="object.program_id.code == 'finance'">account_balance</t>
+                                                <t t-elif="object.program_id.code == 'law'">gavel</t>
+                                                <t t-else="">supervisor_account</t>
+                                            </i>
+                                        </div>
+                                        <div class="media-body">
+                                            <t t-esc="object.program_id.display_name"/>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

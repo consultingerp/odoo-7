@@ -29,7 +29,7 @@
                                 <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mt-2">Submit for review</a>
                                 <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/record" class="btn btn-primary mb-2 mt-2">Record course</a>
                                 <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit recordings for review</a>
-                                <a t-if="author == 'true' and object.state !='draft' and object.state !='script_approved'" class="btn btn-primary mt-2 disabled">
+                                <a t-if="author == 'true' and object.state !='draft' and object.state !='script_approved'" href="#" class="btn btn-primary mt-2 disabled">
                                     <t t-esc="object._stateLabel()"/>
                                 </a>
                             </div>

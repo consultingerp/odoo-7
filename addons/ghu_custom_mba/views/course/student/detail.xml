@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="coursedetail">
+        <template id="student_takecourse">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     <t t-esc="object.display_name"/>
@@ -8,34 +8,57 @@
                 <t t-if="object.long_name" t-set="subtitle">
                     <t t-esc="object.long_name"/>
                 </t>
+                <t t-call="ghu_custom_mba.panopto_login" />
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
                         <h1 class="h2">
                             <t t-esc="object.display_name"/>
                         </h1>
                     </div>
-                    <a t-if="author == 'true' and object.state =='draft' and object.readyForReview()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit for review</a>
-                    <a t-if="author == 'true' and object.state =='draft'" t-attf-href="#{ root }/#{ object.id }/edit" class="btn btn-primary mb-2 mt-2">Edit course</a>
-                    <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/record" class="btn btn-primary mb-2 mt-2">Record course</a>
-                    <a t-if="author == 'true' and object.readyForRecording()" t-attf-href="#{ root }/#{ object.id }/review" class="btn btn-primary mb-2 mt-2">Submit recordings for review</a>
-                    <a t-if="author == 'true' and object.state !='draft' and object.state !='script_approved' " class="btn btn-primary mt-2 disabled"><t t-esc="object._stateLabel()"/></a>
-                </div>
-                
-                <div t-if="not object.readyForReview()" class="alert alert-info">
-                    To submit a course for review you will have to finish it by filling in the following fields:<br/>
-                    <strong>
-                        <t t-foreach="object.missingFieldsForReview()" t-as="name">
-                            <t t-esc="name" /><t t-if="not name_last">,</t>
-                        </t>
-                    </strong>
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="accordion mb-2" id="courseAccordion">
+                            <ul class="card list-group list-group-fit">
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">
+                                           1.
+                                        </div>
+                                        <div class="media-body">
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture1_video_id }}" target="_blank">Lecture 1</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small class="text-muted-light"></small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">2.</div>
+                                        <div class="media-body">
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture2_video_id }}" target="_blank">Lecture 2</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small></small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            3.
+                                        </div>
+                                        <div class="media-body">
+                                            <a t-attf-href="https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id={{ object.lecture3_video_id }}" target="_blank">Lecture 3</a>
+                                        </div>
+                                        <div class="media-right">
+                                            <small class="text-muted-light"></small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                             <div class="card">
-                                <div t-if="object.preview_video_id" class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" t-attf-src="https://ghu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id={{ object.preview_video_id }}&amp;v=1" width="720" height="405" style="padding: 0px; border: 1px solid #464646;" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
-                                </div>
                                 <div class="card-body">
                                     <div t-field="object.description"></div>
                                 </div>
@@ -127,7 +150,8 @@
                                     <div class="media-body">
                                         <h4 class="card-title">
                                             <a t-attf-href="/campus/advisor/{{ object.author_id.id }}">
-                                                <t t-esc="object.author_id.nomination" /><br/>
+                                                <t t-esc="object.author_id.nomination" />
+                                                <br/>
                                                 <t t-esc="object.author_id.name" />
                                             </a>
                                         </h4>
@@ -145,7 +169,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Assessments</h5>
-                                <p class="card-subtitle">maximum of 2</p>
                             </div>
                             <ul class="list-group list-group-fit">
                                 <li t-foreach="object.assessment_ids" t-as="assessment" class="list-group-item">
@@ -161,13 +184,8 @@
                                         </div>
                                         <div class="media-body">
                                             <t t-esc="assessment.name" />
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/edit/#{ assessment['id'] }"><i class="material-icons">edit</i></a>
-                                            <a t-attf-href="#{ root }/#{ object['id'] }/assessment/delete/#{ assessment['id'] }"><i class="material-icons">delete</i></a>
                                         </div>
                                     </div>
-                                </li>
-                                <li t-if="len(object.assessment_ids) &lt; 2" class="list-group-item">
-                                    <a t-attf-href="#{ root }/#{ object['id'] }/assessment/new" class="btn btn-primary">Create assessment</a>
                                 </li>
                             </ul>
                         </div>
@@ -215,7 +233,8 @@
                                 <p class="card-subtitle"></p>
                             </div>
                             <div class="card-body">
-                                <a class="btn btn-primary" t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true"><i class="material-icons mr-1">cloud_download</i> Script Download</a>
+                                <a class="btn btn-primary" t-if="object.script_file" target="_blank" t-attf-href="/web/content/ghu_custom_mba.course/#{object.id}/script_file/#{object.script_file_filename}?download=true">
+                                    <i class="material-icons mr-1">cloud_download</i> Script Download</a>
                             </div>
                         </div>
                     </div>

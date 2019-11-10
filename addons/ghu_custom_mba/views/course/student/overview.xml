@@ -1,0 +1,41 @@
+<odoo>
+    <data noupdate="0">
+        <template id="student_courselist">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    Courses
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">Courses</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" t-foreach="objects" t-as="object">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="material-icons text-muted-light">
+                                        <t t-if="object.program_id.code == 'finance'">account_balance</t>
+                                        <t t-elif="object.program_id.code == 'law'">gavel</t>
+                                        <t t-else="">supervisor_account</t>
+                                    </i>
+                                    <a t-attf-href="#{ root }/#{ object.id }">
+                                        <t t-esc="object.display_name"/>
+                                    </a>
+                                </h5>
+                                <a t-attf-href="#{ root }/preview/#{ object.id }" class="btn btn-primary">See details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="not objects" class="alert alert-light alert-dismissible border-1 border-left-3 border-left-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <div class="text-black-70">Ohh no! No courses to display. Currently we are offering no courses.</div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
