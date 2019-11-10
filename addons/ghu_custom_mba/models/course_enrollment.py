@@ -55,3 +55,23 @@ class GhuCourseEnrollment(models.Model):
     def _read_group_stage_ids(self, stages, domain, order):
         return [k for k, v in self.states]
 
+
+    @api.multi
+    def write(self, values):
+        if 'state' in values:
+            self.on_state_change(values['state'])
+        super(GhuCourseEnrollment, self).write(values)
+
+
+    def on_state_change(self, new_state):
+        # generate invoice
+        if new_state == 'paid':
+            if self.state == 'new':
+                self.enrollmentFinished()  # Send mail to advisor to review
+
+    def enrollmentFinished(self):
+        # Find all 3 lectures and add ids to model
+        panopto = GhuPanopto(self.env)
+        user = self.env['res.users'].search([('partner_id','=',self.student_ref.partner_id.id)], limit=1)
+        panoptoUserId = panopto.getUserId(user)
+        panopto.grantAccessToFolder(self.course_ref.panopto_id, panoptoUserId, 'Viewer')
