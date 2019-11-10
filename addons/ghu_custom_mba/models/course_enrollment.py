@@ -74,4 +74,6 @@ class GhuCourseEnrollment(models.Model):
         panopto = GhuPanopto(self.env)
         user = self.env['res.users'].search([('partner_id','=',self.student_ref.partner_id.id)], limit=1)
         panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToSession(self.course_ref.panopto_id, panoptoUserId)
+        panopto.grantAccessToSession(self.course_ref.lecture1_video_id, panoptoUserId)
+        panopto.grantAccessToSession(self.course_ref.lecture2_video_id, panoptoUserId)
+        panopto.grantAccessToSession(self.course_ref.lecture3_video_id, panoptoUserId)
