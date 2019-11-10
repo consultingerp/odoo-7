@@ -51,6 +51,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
     def detail(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if obj.accessCheck(request.env.user):
             return http.request.render('ghu_custom_mba.coursedetail', {
                 'root': '/campus/course',
@@ -106,6 +107,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/edit', methods=['GET'], auth='user', website=True)
     def edit(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             languages = request.env['ghu.lang'].sudo().search(
                 [('name', '!=', '')])
@@ -122,6 +124,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/record', methods=['GET'], auth='user', website=True)
     def record(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             blti = GhuBlti()
             params = blti.createParams(request.env['ir.config_parameter'].sudo().get_param(
@@ -174,6 +177,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/save/<model("ghu_custom_mba.course"):obj>', methods=['POST'], auth='user', website=True)
     def update(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             for key in list(kw.keys()):
                 if hasattr(kw[key], 'filename'):
@@ -190,6 +194,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/review', methods=['GET'], auth='user', website=True)
     def review(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             if obj.readyForReview() and obj.readyForRecording():
                 kw = dict()
@@ -204,6 +209,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/new', methods=['GET'], auth='user', website=True)
     def newAssessment(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             assessment_model = request.env['ir.model'].sudo().search(
                 [('model', '=', 'ghu_custom_mba.assessment')])
@@ -226,6 +232,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/edit/<model("ghu_custom_mba.assessment"):ass>', methods=['GET'], auth='user', website=True)
     def editAssessment(self, obj, ass, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             return http.request.render('ghu_custom_mba.assessment_edit', {
                 'root': '/campus/course',
@@ -239,6 +246,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/delete/<model("ghu_custom_mba.assessment"):ass>', methods=['GET'], auth='user', website=True)
     def deleteAssessment(self, obj, ass, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             ass.unlink()
             return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
@@ -246,6 +254,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/', methods=['POST'], auth='user', website=True)
     def createAssessment(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             kw['course_id'] = obj.id
             for key in list(kw.keys()):
@@ -260,6 +269,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/save/<model("ghu_custom_mba.assessment"):ass>', methods=['POST'], auth='user', website=True)
     def updateAssessment(self, obj, ass, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             for key in list(kw.keys()):
                 if hasattr(kw[key], 'filename'):
@@ -276,6 +286,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/new', methods=['GET'], auth='user', website=True)
     def newAssessmentQuestion(self, obj, ass, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             question_model = request.env['ir.model'].sudo().search(
                 [('model', '=', 'ghu_custom_mba.assessment_question')])
@@ -298,6 +309,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/edit/<model("ghu_custom_mba.assessment_question"):question>', methods=['GET'], auth='user', website=True)
     def editAssessmentQuestion(self, obj, ass, question, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             return http.request.render('ghu_custom_mba.question_edit', {
                 'root': '/campus/course',
@@ -312,6 +324,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/save/', methods=['POST'], auth='user', website=True)
     def createAssessmentQuestion(self, obj, ass, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             kw['assessment_id'] = ass.id
             question_record = request.env['ghu_custom_mba.assessment_question'].with_context(
@@ -322,6 +335,7 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/save/<model("ghu_custom_mba.assessment_question"):question>', methods=['POST'], auth='user', website=True)
     def updateAssessmentQuestion(self, obj, ass, question, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             kw['assessment_id'] = ass.id
             question.write(kw)
@@ -331,6 +345,7 @@ class GhuCustomMba(http.Controller):
     
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/delete/<model("ghu_custom_mba.assessment_question"):question>', methods=['GET'], auth='user', website=True)
     def deleteAssessmentQuestion(self, obj, ass, question, **kw):
+        obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             question.unlink()
             return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id))
