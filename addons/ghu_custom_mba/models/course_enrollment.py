@@ -10,6 +10,7 @@ class GhuCourseEnrollment(models.Model):
     _name = 'ghu_custom_mba.course_enrollment'
     _rec_name = 'name'
     _description = "Course Enrollment"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(
         string=u'Name',

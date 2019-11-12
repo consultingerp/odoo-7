@@ -1,0 +1,3034 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ghu
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-12 19:17+0000\n"
+"PO-Revision-Date: 2019-11-12 19:17+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ghu
+#: model:mail.template,body_html:ghu.ghu_invoice_email_template
+msgid "\n"
+"                <p>\n"
+"                    Dear ${object.partner_id.name},\n"
+"                </p>\n"
+"                <p>\n"
+"                    Here is your \n"
+"                    %if object.number:\n"
+"                        invoice <strong>${object.number}</strong>\n"
+"                    %else:\n"
+"                        invoice\n"
+"                    %endif\n"
+"                    %if object.origin:\n"
+"                        (with reference: ${object.origin})\n"
+"                    %endif\n"
+"                    amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong> \n"
+"                    from ${object.company_id.name}.\n"
+"                    %if object.state=='paid':\n"
+"                        This invoice is already paid.\n"
+"                    %else:\n"
+"                        Please remit payment at your earliest convenience.\n"
+"                    %endif\n"
+"                </p>\n"
+"                <p>\n"
+"                    Do not hesitate to contact us if you have any question.\n"
+"                </p>\n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.ghu.edu.cw/\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg\" height=\"110px\" title=\"GHU\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png\" height=\"55px\" title=\"Ministry of Curacao\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png\" height=\"55px\" title=\"AACSB\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"http://www.aac.cw/\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg\" height=\"55px\" title=\"AAC\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf\" target=\"_blank\">\n"
+"                                    <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aqas.png' height=\"55px\" title=\"AQAS\"/>\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ciqg.png\" height=\"55px\" title=\"CIQG\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"https://iacbe.org/accreditation/member-status%20information/results/?BCountry=&amp;BState=&amp;BStatus=&amp;BAlpha=G\" target=\"_blank\">\n"
+"                                    <img src='https://www.ghu.edu.cw/ghu/static/img/mails/iacbe.png' height=\"55px\" title=\"IACBE\"/>\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.inqaahe.org/global-humanistic-university\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/inqaahe.png\" height=\"55px\" title=\"INQAAHE\" />\n"
+"                                </a>\n"
+"                            </td>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg\" height=\"55px\" title=\"ASIC\" class=\"align-left\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"            "
+msgstr ""
+
+#. module: ghu
+#: model:mail.template,body_html:ghu.ghu_new_doctoral_application_template
+msgid "\n"
+"                <p>We are pleased to inform you that ${object.firstname} ${object.lastname} has submitted an application to the Global Humanistic University.</p>\n"
+"                <p>Please find all the provided information below and get in contact with Zareska if you need further information</p>\n"
+"            \n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                    <tbody><tr>\n"
+"                        <td>\n"
+"                            <a href=\"https://www.ghu.edu.cw/\" target=\"_blank\">\n"
+"                                <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg\" height=\"110px\" title=\"GHU\">\n"
+"                            </a>\n"
+"                        </td>\n"
+"                    </tr>\n"
+"                </tbody></table>\n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                <tbody><tr>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png\" height=\"55px\" title=\"Ministry of Curacao\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png\" height=\"55px\" title=\"AACSB\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"http://www.aac.cw/\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg\" height=\"55px\" title=\"AAC\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf\" target=\"_blank\">\n"
+"                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aqas.png' height=\"55px\" title=\"AQAS\"/>\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ciqg.png\" height=\"55px\" title=\"CIQG\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://iacbe.org/accreditation/member-status%20information/results/?BCountry=&amp;BState=&amp;BStatus=&amp;BAlpha=G\" target=\"_blank\">\n"
+"                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/iacbe.png' height=\"55px\" title=\"IACBE\"/>\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.inqaahe.org/global-humanistic-university\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/inqaahe.png\" height=\"55px\" title=\"INQAAHE\" />\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg\" height=\"55px\" title=\"ASIC\" class=\"align-left\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    </tr>\n"
+"                </tbody></table>\n"
+"            "
+msgstr ""
+
+#. module: ghu
+#: model:mail.template,body_html:ghu.ghu_doctoral_application_confirmation_template
+msgid "\n"
+"                <p>We are pleased to inform you, ${object.firstname}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>\n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                    <tbody>\n"
+"                        <tr>\n"
+"                            <td>\n"
+"                                <a href=\"https://www.ghu.edu.cw/\" target=\"_blank\">\n"
+"                                    <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ghu.jpg\" height=\"110px\" title=\"GHU\">\n"
+"                                </a>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"                <table style=\"border:0;padding-top:15px;\">\n"
+"                <tbody><tr>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/GHU_UNI_CHARTER.pdf\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ministry.png\" height=\"55px\" title=\"Ministry of Curacao\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.aacsb.edu/membership/listings/all-educational-members?F_Country=Curaçao\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aacsb.png\" height=\"55px\" title=\"AACSB\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"http://www.aac.cw/\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/aac.jpg\" height=\"55px\" title=\"AAC\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/AQAS-Bachelor-Accreditation.pdf\" target=\"_blank\">\n"
+"                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/aqas.png' height=\"55px\" title=\"AQAS\"/>\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/ciqg.png\" height=\"55px\" title=\"CIQG\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://iacbe.org/accreditation/member-status%20information/results/?BCountry=&amp;BState=&amp;BStatus=&amp;BAlpha=G\" target=\"_blank\">\n"
+"                            <img src='https://www.ghu.edu.cw/ghu/static/img/mails/iacbe.png' height=\"55px\" title=\"IACBE\"/>\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.inqaahe.org/global-humanistic-university\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/inqaahe.png\" height=\"55px\" title=\"INQAAHE\" />\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    <td>\n"
+"                        <a href=\"https://www.ghu.edu.cw/ghu/static/files/Certificate-ASIC-GHU.pdf\" target=\"_blank\">\n"
+"                            <img src=\"https://www.ghu.edu.cw/ghu/static/img/mails/asic.jpg\" height=\"55px\" title=\"ASIC\" class=\"align-left\">\n"
+"                        </a>\n"
+"                    </td>\n"
+"                    </tr>\n"
+"                </tbody></table>\n"
+"            "
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__meeting_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__meeting_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__meeting_count
+msgid "# Meetings"
+msgstr "Nº reuniones"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signature_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signature_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signature_count
+msgid "# Signatures"
+msgstr "# Firmas"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "#{advisor.name}"
+msgstr ""
+
+#. module: ghu
+#: model:mail.template,subject:ghu.ghu_invoice_email_template
+msgid "${object.company_id.name} Invoice (Ref ${object.number or 'n/a'})"
+msgstr "${object.company_id.name} Factura (Ref ${object.number or 'n/a'})"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.report_invoice_document_with_bank_account
+msgid "<b>Bank:</b>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.report_invoice_document_with_bank_account
+msgid "<br/>\n"
+"                        <b>Account Holder:</b>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.report_invoice_document_with_bank_account
+msgid "<br/>\n"
+"                        <b>BIC:</b>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.report_invoice_document_with_bank_account
+msgid "<br/>\n"
+"                    Please transfer the invoice total amount to the following bank account:"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "<br/>En la<br/><strong>Global Humanistic University</strong>."
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "<font style=\"font-size: 62px;\">Application for Doctoral Program</font>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.sign_template_mail_request_extend
+msgid "<strong>Warning</strong> do not forward this email to other people!<br/>\n"
+"                            They will be able to access this document and sign it as yourself."
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "AAC"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "AACSB"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "API Keys for imports"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "AQAS"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "ASIC"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__academic_degree
+msgid "Academic Degree"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__academic_degree_post
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__academic_degree_post
+msgid "Academic Degrees (Post)"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Academic Degrees (Post)\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__academic_degree_pre
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__academic_degree_pre
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Academic Degrees (Pre)"
+msgstr "Títulos obtenidos"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_account_payable_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_account_payable_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_account_payable_id
+msgid "Account Payable"
+msgstr "Cuenta a pagar"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_account_receivable_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_account_receivable_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_account_receivable_id
+msgid "Account Receivable"
+msgstr "Cuenta a cobrar"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_needaction
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_needaction
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__active
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__active
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_state
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_state
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Address Detail"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__type
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__type
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__type
+msgid "Address Type"
+msgstr "Tipo de dirección"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_advisor
+#: model:ir.ui.menu,name:ghu.menu_ghu_advisor_root
+#: model_terms:ir.ui.view,arch_db:ghu.kanban_view_advisor
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_tree
+msgid "Advisor"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__advisor_id
+msgid "Advisor ID"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Advisor Match"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Advisor Search"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Advisor agreed"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_advisor_view
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_advisor_view_2
+msgid "Advisors"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__lang
+#: model:ir.model.fields,help:ghu.field_ghu_student__lang
+#: model:ir.model.fields,help:ghu.field_ghu_university__lang
+msgid "All the emails and documents sent to this contact will be translated in this language."
+msgstr "Todos los correos electrónicos y documentos enviados a este contacto se traducirán en este idioma."
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_kanban
+msgid "Applicant"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__application_fee_invoice_id
+msgid "Application Fee Invoice"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Application Fee Product"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.report,name:ghu.application_agreement_pdf
+msgid "Application Submission"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Application for doctoral program"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_application_view
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_application_view_2
+#: model:ir.ui.menu,name:ghu.menu_ghu_application
+msgid "Applications"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Approved"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Approved by registrar"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "As one ZIP file"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_attachment_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_attachment_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Auomated Invoice Bank Account"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_res_config_settings__ghu_automated_invoice_bank_account
+msgid "Automated Invoice Partner Bank"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__bank_account_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__bank_account_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__bank_account_count
+msgid "Bank"
+msgstr "Banco"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__bank_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__bank_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__barcode
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__barcode
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Billing address"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__birth_date
+msgid "Birthday"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_blacklisted
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__is_blacklisted
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__is_blacklisted
+msgid "Blacklist"
+msgstr "Lista negra"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_bounce
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_bounce
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_bounce
+msgid "Bounce"
+msgstr "Rebote"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+msgid "CIQG"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__certificate_file_filename
+msgid "Certificate Filename"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__certificate_original_file_filename
+msgid "Certificate Filename Word"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__certificate_file
+msgid "Certificate PDF"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__certificate_original_file
+msgid "Certificate Word"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__channel_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__channel_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__channel_ids
+msgid "Channels"
+msgstr "Canales"
+
+#. module: ghu
+#: model:base.automation,name:ghu.ghu_doctoral_application_send_application
+#: model:ir.actions.server,name:ghu.ghu_doctoral_application_send_application_ir_actions_server
+msgid "Check if signed document is application"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__is_company
+#: model:ir.model.fields,help:ghu.field_ghu_student__is_company
+#: model:ir.model.fields,help:ghu.field_ghu_university__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Marque esta casilla si el contacto es una compañía. En caso contrario, es una persona."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__customer
+#: model:ir.model.fields,help:ghu.field_ghu_student__customer
+#: model:ir.model.fields,help:ghu.field_ghu_university__customer
+msgid "Check this box if this contact is a customer. It can be selected in sales orders."
+msgstr "Marque esta casilla si este contacto es un cliente. Puede ser seleccionado en órdenes de venta. "
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__supplier
+#: model:ir.model.fields,help:ghu.field_ghu_student__supplier
+#: model:ir.model.fields,help:ghu.field_ghu_university__supplier
+msgid "Check this box if this contact is a vendor. It can be selected in purchase orders."
+msgstr "Marque esta casilla si este contacto es un proveedor. Puede ser seleccionado en órdenes de compra. "
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__employee
+#: model:ir.model.fields,help:ghu.field_ghu_student__employee
+#: model:ir.model.fields,help:ghu.field_ghu_university__employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Marque si el contacto es un empleado"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__city
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__city
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__city
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__city
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "City"
+msgstr "Ciudad"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "City\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__code
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__code
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__code
+msgid "Code"
+msgstr "Código"
+
+#. module: ghu
+#: sql_constraint:ghu.program:0
+msgid "Code should be unique per program!"
+msgstr ""
+
+#. module: ghu
+#: sql_constraint:ghu.study:0
+#: sql_constraint:ghu.university:0
+msgid "Code should be unique per study!"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__color
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__color
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__color
+msgid "Color Index"
+msgstr "Índice de Colores"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__commercial_partner_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__commercial_partner_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Entidad comercial"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__ref_company_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__ref_company_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__ref_company_ids
+msgid "Companies that refers to partner"
+msgstr "Compañías que se refieren a la empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__company_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__company_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__company_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__company_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__company_name
+msgid "Company Name"
+msgstr "Nombre de la compañía"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__commercial_company_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__commercial_company_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__commercial_company_name
+msgid "Company Name Entity"
+msgstr "Entidad del nombre de la compañía"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__company_type
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__company_type
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__company_type
+msgid "Company Type"
+msgstr "Tipo de compañía"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__contact_address
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__contact_address
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__contact_address
+msgid "Complete Address"
+msgstr "Dirección completa"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "Confirmation of enrolment"
+msgstr "Confirmación de Inscripción"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__child_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__child_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__child_ids
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__contracts_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__contracts_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__contracts_count
+msgid "Contracts Count"
+msgstr "Numero de contratos"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__degrees_file
+msgid "Copies of degrees"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Copies of degrees\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__passport_file
+msgid "Copy of Passport"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Copy of Passport\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__payment_token_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__payment_token_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__payment_token_count
+msgid "Count Payment Token"
+msgstr "Cuenta Token de Pago"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_bounce
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_bounce
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_bounce
+msgid "Counter of the number of bounced emails for this contact"
+msgstr "Contador del número de correos electrónicos rebotados de este contacto"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__country_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__country_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__country_id
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Country"
+msgstr "País"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Country\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__study_id
+msgid "Course"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__create_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__create_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__credit_limit
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__credit_limit
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__credit_limit
+msgid "Credit Limit"
+msgstr "Crédito límite"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__credit_points
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Credit Points"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__currency_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__currency_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__vita_file
+msgid "Curriculum Vitae"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Curriculum vitae\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__cmba_agreement
+msgid "Custom MBA Agreement"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__cmba_agreement_filename
+msgid "Custom MBA Agreement Filename"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_payment_term_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_payment_term_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr "Plazo de pago de cliente"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__date
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__date_of_birth
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__date_of_birth
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Date of Birth\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "Date of birth"
+msgstr "Fecha de nacimiento"
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Declined"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__degree_filename
+msgid "Degree Filename"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__degree
+msgid "Degree GHU"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__trust
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__trust
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__trust
+msgid "Degree of trust you have in this debtor"
+msgstr "Grado de confianza para este deudor"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Desired Study Field"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Desired Study Field\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__diploma
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Diploma"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__display_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: ghu
+#: selection:ghu.application,marital_status:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Divorced"
+msgstr ""
+
+#. module: ghu
+#: model:product.product,name:ghu.ghu_doctoral_application_fee
+#: model:product.template,name:ghu.ghu_doctoral_application_fee_product_template
+msgid "Doctoral Application Fee"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_res_config_settings__ghu_doctoral_application_fee_product
+msgid "Doctoral Application Fee Product"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Doctoral Program"
+msgstr "Programa de doctorado"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__agreement
+msgid "Doctoral Program Agreement"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__agreement_filename
+msgid "Doctoral Program Agreement Filename"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Done"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Download CV"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__partner_share
+#: model:ir.model.fields,help:ghu.field_ghu_student__partner_share
+#: model:ir.model.fields,help:ghu.field_ghu_university__partner_share
+msgid "Either customer (not a user), either shared user. Indicated the current partner is a customer without access or with a limited access created for sharing data."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__email
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__email
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__email
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__email
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Email\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_hr_employee
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__employee
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__employee
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: ghu
+#: model:ir.actions.report,name:ghu.enrolment_confirmation_pdf
+msgid "Enrolment Confirmation"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__ever_applied_at_ghu
+msgid "Ever applied to GHU"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "False"
+msgstr "Falso"
+
+#. module: ghu
+#: selection:ghu.advisor,gender:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Female"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Filter all advisors by country:"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Filter all advisors by language:"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Filter all advisors by study field:"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "First Name"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "First Name\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__firstname
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__firstname
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__firstname
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__firstname
+msgid "First name"
+msgstr "Nombre"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_account_position_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_account_position_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_account_position_id
+msgid "Fiscal Position"
+msgstr "Posición fiscal"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_follower_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_follower_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_channel_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_channel_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_partner_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_partner_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__followup_status
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__followup_status
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__followup_status
+msgid "Followup status"
+msgstr "Estatus de seguimiento"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Foreign Languages"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__email_formatted
+#: model:ir.model.fields,help:ghu.field_ghu_student__email_formatted
+#: model:ir.model.fields,help:ghu.field_ghu_university__email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr "Dirección de email con formato \"Nombre <email@domain>\""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__email_formatted
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__email_formatted
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__email_formatted
+msgid "Formatted Email"
+msgstr "Email formateado"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__from_date
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "From"
+msgstr "De"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Full Name"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Full Name\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.ui.menu,name:ghu.menu_ghu
+#: model:ir.ui.menu,name:ghu.menu_ghu_config
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "GHU"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_application
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__application_id
+msgid "GHU Application"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_application_study
+msgid "GHU Application Preliminary Studies"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "GHU Settings"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.student_window
+msgid "GHU Students"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.server,name:ghu.ir_cron_ghu_import_leads_ir_actions_server
+#: model:ir.cron,cron_name:ghu.ir_cron_ghu_import_leads
+#: model:ir.cron,name:ghu.ir_cron_ghu_import_leads
+msgid "GHU: Import custom mba leads from smarthub keystone"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.server,name:ghu.ir_cron_ghu_import_leads_doctoral_ir_actions_server
+#: model:ir.cron,cron_name:ghu.ir_cron_ghu_import_leads_doctoral
+#: model:ir.cron,name:ghu.ir_cron_ghu_import_leads_doctoral
+msgid "GHU: Import doctoral leads from smarthub keystone"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__gender
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__gender
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__gender
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__gender
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Gender"
+msgstr "Sexo"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Gender\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Great people for great students"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_search
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__has_unreconciled_entries
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__has_unreconciled_entries
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__has_unreconciled_entries
+msgid "Has Unreconciled Entries"
+msgstr "Tiene entradas no conciliadas"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__ever_applied_doctoral
+msgid "Has ever applied for a doctoral degree"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Have you ever applied for a doctoral degree?\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Have you ever applied to Global Humanistic University?\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_crm_lead__highest_degree
+msgid "Highest Degree"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "I confirm good knowledge of the english language *"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "I have read the"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "IACBE"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__id
+msgid "ID"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__im_status
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__im_status
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__im_status
+msgid "IM Status"
+msgstr "Estado del chat"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "INQAAHE"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_unread
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_unread
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_needaction
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_needaction
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_has_error
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_has_error
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__team_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__team_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__team_id
+msgid "If set, this Sales Team will be used for sales and assignations related to this partner"
+msgstr "Si establecido, este Equipo de Ventas sera utilizado para ventas y asignaciones relacionadas a este partner"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__is_blacklisted
+#: model:ir.model.fields,help:ghu.field_ghu_student__is_blacklisted
+#: model:ir.model.fields,help:ghu.field_ghu_university__is_blacklisted
+msgid "If the email address is on the blacklist, the contact won't receive mass mailing anymore, from any list"
+msgstr "Si la dirección de email esta en la lista negra, el contacto ya no recibirá correo masivo de cualquier lista."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__image
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__image
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__industry_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__industry_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__industry_id
+msgid "Industry"
+msgstr "Sector"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_form
+msgid "Information"
+msgstr "Información"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Initial Payment\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__institution
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Institution"
+msgstr "Institución"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__ref
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__ref
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__ref
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__invoice_warn
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__invoice_warn
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__invoice_warn
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: ghu
+#: model:mail.template,report_name:ghu.ghu_invoice_email_template
+msgid "Invoice_${(object.number or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}"
+msgstr "Factura_${(object.number or '').replace('/','_')}${object.state == 'draft' and '_borrador' or ''}"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__invoice_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__invoice_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__invoice_ids
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Invoicing and Payment"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_cafeteria
+msgid "Is Custom MBA?"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_is_follower
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_is_follower
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_advisor
+msgid "Is Phd/DBA advisor?"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_company
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__is_company
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__is_company
+msgid "Is a Company"
+msgstr "Es una compañia"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__customer
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__customer
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__customer
+msgid "Is a Customer"
+msgstr "Es Cliente"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__supplier
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__supplier
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__supplier
+msgid "Is a Vendor"
+msgstr "Es proveedor"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_published
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__is_published
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__is_published
+msgid "Is published"
+msgstr "Es Publicado"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__function
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__function
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__function
+msgid "Job Position"
+msgstr "Puesto de trabajo"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__journal_item_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__journal_item_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__journal_item_count
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_lang_view
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_lang_view_2
+msgid "Langs"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_lang
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__lang
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__lang
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__lang
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_search
+msgid "Language"
+msgstr "Idioma"
+
+#. module: ghu
+#: model:ir.ui.menu,name:ghu.menu_ghu_lang
+msgid "Languages"
+msgstr "Idiomas"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_application____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_program____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_student____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_study____last_update
+#: model:ir.model.fields,field_description:ghu.field_ghu_university____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Last Name"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Last Name\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__write_uid
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__write_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__lastname
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__lastname
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__lastname
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__lastname
+msgid "Last name"
+msgstr "Apellido"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__calendar_last_notif_ack
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__calendar_last_notif_ack
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__calendar_last_notif_ack
+msgid "Last notification marked as read from base Calendar"
+msgstr "Última notificación marcada como leída desde el calendario base"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__last_time_entries_checked
+#: model:ir.model.fields,help:ghu.field_ghu_student__last_time_entries_checked
+#: model:ir.model.fields,help:ghu.field_ghu_university__last_time_entries_checked
+msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+msgstr "Última vez que se conciliaros facturas y pagos de este asociado. Se configura incluso si no hay ningún débito o crédito por conciliar, o si pulsa el botón \"Hecho\"."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__last_time_entries_checked
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__last_time_entries_checked
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr "Fecha de la última conciliación de facturas y pagos"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: ghu
+#: model:ir.ui.menu,name:ghu.menu_ghu_lecturer_root
+msgid "Lecturer"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_advisor_view_3
+msgid "Lecturers"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_main_attachment_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_main_attachment_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: ghu
+#: selection:ghu.advisor,gender:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Male"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__marital_status
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Marital Status"
+msgstr "Estado civil"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Marital Status\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,marital_status:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Married"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__image_medium
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__image_medium
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__image_medium
+msgid "Medium-sized image"
+msgstr "Imagen de tamaño mediano"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__image_medium
+#: model:ir.model.fields,help:ghu.field_ghu_student__image_medium
+#: model:ir.model.fields,help:ghu.field_ghu_university__image_medium
+msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Imagen mediana de este contacto. Se redimensiona automáticamente a 128x128px, con el ratio de aspecto preservado. Se usa este campo en las vistas formulario y en algunas vistas kanban."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__meeting_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__meeting_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__meeting_ids
+msgid "Meetings"
+msgstr "Reuniones"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_has_error
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_has_error
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__invoice_warn_msg
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__invoice_warn_msg
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__invoice_warn_msg
+msgid "Message for Invoice"
+msgstr "Mensaje para factura"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__sale_warn_msg
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__sale_warn_msg
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__sale_warn_msg
+msgid "Message for Sales Order"
+msgstr "Mensaje para el pedido de venta"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.brand_promotion
+#: model_terms:ir.ui.view,arch_db:ghu.mail_signature
+#: model_terms:ir.ui.view,arch_db:ghu.s_mail_block_footer_social_left
+msgid "Ministry of Curacao"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__mobile
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__mobile
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__name
+#: model:ir.model.fields,field_description:ghu.field_ghu_lang__name
+#: model:ir.model.fields,field_description:ghu.field_ghu_program__name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__name
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__name
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_crm_lead__nationality
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__nationality
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__nationality
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__nationality
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_search
+msgid "Nationality"
+msgstr "Nacionalidad"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Nationality\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__native_language
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__native_language
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__native_language
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_search
+msgid "Native Language"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Native Language\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "New"
+msgstr ""
+
+#. module: ghu
+#: model:mail.template,subject:ghu.ghu_new_doctoral_application_template
+msgid "New Application at Global Humanistic University"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__payment_next_action_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__payment_next_action_date
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__payment_next_action_date
+msgid "Next Action Date"
+msgstr "Fecha próxima acción"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_date_deadline
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_date_deadline
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_summary
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_summary
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_type_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_type_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "No"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__nomination
+msgid "Nomination"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__comment
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__comment
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__comment
+msgid "Notes"
+msgstr "Notas"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_needaction_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_needaction_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_has_error_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_has_error_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_needaction_counter
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_needaction_counter
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_has_error_counter
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_has_error_counter
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__message_unread_counter
+#: model:ir.model.fields,help:ghu.field_ghu_student__message_unread_counter
+#: model:ir.model.fields,help:ghu.field_ghu_university__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__ocn_token
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__ocn_token
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__ocn_token
+msgid "OCN Token"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,payment_method:0
+msgid "One-time payment"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "One-time payment USD 24,500.-- (at the beginning)"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__online_partner_bank_account
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__online_partner_bank_account
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__online_partner_bank_account
+msgid "Online Partner Bank Account"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__online_partner_vendor_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__online_partner_vendor_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__online_partner_vendor_name
+msgid "Online Partner Vendor Name"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__opportunity_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__opportunity_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__opportunity_ids
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__opportunity_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__opportunity_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__opportunity_count
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_hr_employee__website_order
+msgid "Order"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.advisor,gender:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Other"
+msgstr "Otro"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__other_languages
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__other_languages
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Other Languages"
+msgstr "Otros idiomas"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.advisor
+#: model_terms:website.page,arch_db:ghu.advisor_page
+msgid "Our advisors"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__parent_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__parent_name
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__parent_name
+msgid "Parent name"
+msgstr "Nombre del padre"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Partial payment USD 500.— for advisor procedure"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__partner_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__partner_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__partner_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__contract_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__contract_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__contract_ids
+msgid "Partner Contracts"
+msgstr "Contratos de la Empresa "
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__partner_ledger_label
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__partner_ledger_label
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__partner_ledger_label
+msgid "Partner Ledger Label"
+msgstr "Etiqueta del Libro mayor de Empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__debit_limit
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__debit_limit
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__debit_limit
+msgid "Payable Limit"
+msgstr "Límite a pagar"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Payment Data"
+msgstr "Datos de pago"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__payment_method
+msgid "Payment Method"
+msgstr "Método de pago"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__payment_token_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__payment_token_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__payment_token_ids
+msgid "Payment Tokens"
+msgstr "Tableros de pago"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Payment method\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Personal Data"
+msgstr "Datos Personales"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Personal Information"
+msgstr "Información personal"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__phone
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__phone
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__phone
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Phone\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__photo_file
+msgid "Photo"
+msgstr "Foto"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Photo\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__preliminary_studies
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Preliminary Studies"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Preliminary studies"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_product_pricelist
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_product_pricelist
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_product_pricelist
+msgid "Pricelist"
+msgstr "Tarifa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_program
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__program_id
+msgid "Program"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_program_view
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_program_view_2
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__programs
+#: model:ir.ui.menu,name:ghu.menu_ghu_program
+msgid "Programs"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_id
+msgid "Registration Website"
+msgstr "Sitio web de registro"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__parent_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__parent_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__parent_id
+msgid "Related Company"
+msgstr "Empresa relacionada"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Required Documents"
+msgstr "Documentos Requeridoss"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Research Gate"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_res_company__social_researchgate
+#: model:ir.model.fields,field_description:ghu.field_res_config_settings__social_researchgate
+#: model:ir.model.fields,field_description:ghu.field_website__social_researchgate
+msgid "Researchgate Account"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Residential Address"
+msgstr "Dirección residencial"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__activity_user_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__activity_user_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__is_seo_optimized
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__is_seo_optimized
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__is_seo_optimized
+msgid "SEO optimized"
+msgstr "Optimizado para SEO"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__sale_order_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__sale_order_count
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__sale_order_count
+msgid "Sale Order Count"
+msgstr "Recuento de pedidos de venta"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__sale_order_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__sale_order_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__sale_order_ids
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__team_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__team_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__team_id
+msgid "Sales Team"
+msgstr "Equipo de ventas"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__sale_warn
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__sale_warn
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__sale_warn
+msgid "Sales Warnings"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__user_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__user_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__user_id
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_study__section
+msgid "Section"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__invoice_warn
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__sale_warn
+#: model:ir.model.fields,help:ghu.field_ghu_student__invoice_warn
+#: model:ir.model.fields,help:ghu.field_ghu_student__sale_warn
+#: model:ir.model.fields,help:ghu.field_ghu_university__invoice_warn
+#: model:ir.model.fields,help:ghu.field_ghu_university__sale_warn
+msgid "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
+msgstr "Si selecciona la opción \"Aviso\" se notificará a los usuarios con el mensaje, si selecciona \"Mensaje de bloqueo\" se lanzará una excepción con el mensaje y se bloqueará el flujo. El mensaje debe escribirse en el siguiente campo."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__self
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__self
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__self
+msgid "Self"
+msgstr "Sí mismo"
+
+#. module: ghu
+#: model:base.automation,name:ghu.ghu_doctoral_application_send_new_email
+#: model:ir.actions.server,name:ghu.ghu_doctoral_application_send_new_email_ir_actions_server
+msgid "Send Doctoral Application Mails"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Send signature request again"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,marital_status:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Separated"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.action_ghu_config
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Settings for GHU Doctoral Program"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Settings for Invoicing and Payment"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Settings for external Lead provider"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__partner_share
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__partner_share
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__partner_share
+msgid "Share Partner"
+msgstr "Compartir empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__sign_request_id
+msgid "Sign Request"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.sign_template_mail_request_extend
+msgid "Sign document now"
+msgstr "Firmar el documento ahora"
+
+#. module: ghu
+#: selection:ghu.application,state:0
+msgid "Signed"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signup_expiration
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signup_expiration
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signup_expiration
+msgid "Signup Expiration"
+msgstr "Expiración del ingreso"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signup_token
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signup_token
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signup_token
+msgid "Signup Token"
+msgstr "Palabra de ingreso"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signup_type
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signup_type
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signup_type
+msgid "Signup Token Type"
+msgstr "Tipo de la palabra de ingreso"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signup_valid
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signup_valid
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signup_valid
+msgid "Signup Token is Valid"
+msgstr "La palabra de ingreso es válida"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__signup_url
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__signup_url
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__signup_url
+msgid "Signup URL"
+msgstr "URL de ingreso"
+
+#. module: ghu
+#: selection:ghu.application,marital_status:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Single"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__skype
+#: model:ir.model.fields,field_description:ghu.field_hr_employee__skype
+msgid "Skype"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__image_small
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__image_small
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__image_small
+msgid "Small-sized image"
+msgstr "Imagen de tamaño pequeño"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__image_small
+#: model:ir.model.fields,help:ghu.field_ghu_student__image_small
+#: model:ir.model.fields,help:ghu.field_ghu_university__image_small
+msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automáticamente a 64x64 px, con el ratio de aspecto preservado. Use este campo donde se requiera una imagen pequeña."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_res_config_settings__ghu_smarthub_api_key
+msgid "Smarthub API Key"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Smarthub Apikey"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__state_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__state
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__state_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__state_id
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "State"
+msgstr "Estado"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__activity_state
+#: model:ir.model.fields,help:ghu.field_ghu_student__activity_state
+#: model:ir.model.fields,help:ghu.field_ghu_university__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__street
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__street
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__street
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "Street"
+msgstr "Calle"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Street\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Street..."
+msgstr "Calle..."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__street2
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__street2
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__street2
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_student
+#: model:ir.model.fields,field_description:ghu.field_ghu_student_study__student_id
+msgid "Student"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "Student ID"
+msgstr "ID de Estudiante"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__student_identification
+msgid "Student Identification Number"
+msgstr "ID de Estudiante"
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_student_study
+msgid "Student Study Details"
+msgstr ""
+
+#. module: ghu
+#: sql_constraint:ghu.student.study:0
+msgid "Student can only study a study once!"
+msgstr ""
+
+#. module: ghu
+#: model:ir.ui.menu,name:ghu.students
+msgid "Students"
+msgstr ""
+
+#. module: ghu
+#: model:ir.ui.menu,name:ghu.menu_ghu_study
+msgid "Studies"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_study
+#: model:ir.model.fields,field_description:ghu.field_crm_lead__study_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__study_id
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Study"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+msgid "Study Information"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Study Program"
+msgstr "Programa de estudios"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__faculty_study_ids
+msgid "Study(s)"
+msgstr ""
+
+#. module: ghu
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_study_view
+#: model:ir.actions.act_window,name:ghu.act_open_ghu_study_view_2
+msgid "Studys"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__subject
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Subject"
+msgstr "Asunto"
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Submit Application"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__category_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__category_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__category_id
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__vat
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__vat
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__vat
+msgid "Tax ID"
+msgstr "NIF"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__foreign_languages
+msgid "Teaching Languages"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__online_partner_bank_account
+#: model:ir.model.fields,help:ghu.field_ghu_student__online_partner_bank_account
+#: model:ir.model.fields,help:ghu.field_ghu_university__online_partner_bank_account
+msgid "Technical field used to store information from plaid/yodlee to match partner"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__online_partner_vendor_name
+#: model:ir.model.fields,help:ghu.field_ghu_student__online_partner_vendor_name
+#: model:ir.model.fields,help:ghu.field_ghu_university__online_partner_vendor_name
+msgid "Technical field used to store information from plaid/yodlee to match partner (used when a purchase is made)"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_thankyou_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_thankyou_page
+msgid "Thank you"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_thankyou_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_thankyou_page
+msgid "Thank you for your application. We will now process your submitted information and get in contact with you as soon as possible."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_res_config_settings__ghu_smarthub_api_key
+msgid "The Smarthub API key is needed to automatically import incoming leads."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__vat
+#: model:ir.model.fields,help:ghu.field_ghu_student__vat
+#: model:ir.model.fields,help:ghu.field_ghu_university__vat
+msgid "The Tax Identification Number. Complete it if the contact is subjected to government taxes. Used in some legal statements."
+msgstr "El número de identificación de impuesto. Complételo si el contacto está sujeto a los impuestos del gobierno. Utilizado en algunas declaraciones legales."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_res_config_settings__ghu_transferwise_api_key
+msgid "The Transferwise API key is needed to automatically handle incoming payments."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__payment_next_action_date
+#: model:ir.model.fields,help:ghu.field_ghu_student__payment_next_action_date
+#: model:ir.model.fields,help:ghu.field_ghu_university__payment_next_action_date
+msgid "The date before which no action should be taken."
+msgstr "La fecha antes de la cual no se debe tomar ninguna acción."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_account_position_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_account_position_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_account_position_id
+msgid "The fiscal position determines the taxes/accounts used for this contact."
+msgstr "La posición fiscal determina los impuestos/cuentas utilizados para este contacto. "
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__website_url
+#: model:ir.model.fields,help:ghu.field_ghu_student__website_url
+#: model:ir.model.fields,help:ghu.field_ghu_university__website_url
+msgid "The full URL to access the document through the website."
+msgstr "La URL completa para acceder al documento a través del sitio web."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__user_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__user_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__user_id
+msgid "The internal user in charge of this contact."
+msgstr "El usuario interno a cargo de este contacto."
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "The listed tuition fee includes all digital learning materials,\n"
+"                                                        including software and user data for the online portals, as well\n"
+"                                                        as exam fees for the first entrance to each module. For each\n"
+"                                                        further examination in a subject due to non-existence of the\n"
+"                                                        first entrance, a fee of USD 100, - will be due. The activation\n"
+"                                                        of the learning documents will only take place after the payment\n"
+"                                                        of the tuition fee."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__has_unreconciled_entries
+#: model:ir.model.fields,help:ghu.field_ghu_student__has_unreconciled_entries
+#: model:ir.model.fields,help:ghu.field_ghu_university__has_unreconciled_entries
+msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+msgstr "El asociado tiene al menos un débito o crédito no conciliado desde la última vez que se realizó la conciliación de facturas y pagos."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__tz
+#: model:ir.model.fields,help:ghu.field_ghu_student__tz
+#: model:ir.model.fields,help:ghu.field_ghu_university__tz
+msgid "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
+msgstr "Zona horaria de la empresa, usada para mostrar la fecha y hora adecuadas en los informes. Es importante establecer un valor para este campo. Debería usar la misma zona horaria que se coge en cualquier caso para mostrar los valores de fecha y hora: la zona horaria de su ordenador."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_account_payable_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_account_payable_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_account_payable_id
+msgid "This account will be used instead of the default one as the payable account for the current partner"
+msgstr "Esta cuenta se utilizará en lugar de la cuenta por defecto como la cuenta pendiente de pago del asociado actual."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_account_receivable_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_account_receivable_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_account_receivable_id
+msgid "This account will be used instead of the default one as the receivable account for the current partner"
+msgstr "Esta cuenta se utilizará en lugar de la cuenta por defecto como la cuenta pendiente de cobro del asociado actual."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__image
+#: model:ir.model.fields,help:ghu.field_ghu_student__image
+#: model:ir.model.fields,help:ghu.field_ghu_university__image
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, limitada a 1024x1024px"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_res_config_settings__ghu_doctoral_application_fee_product
+msgid "This is the initial application fee product for the automated invoice."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_supplier_payment_term_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_supplier_payment_term_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_supplier_payment_term_id
+msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
+msgstr "Se utilizará esta condición de pago, en lugar de la predeterminada, para los pedidos de compra y las facturas de proveedor."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_payment_term_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_payment_term_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_payment_term_id
+msgid "This payment term will be used instead of the default one for sales orders and customer invoices"
+msgstr "Este término de pago se utilizará en lugar del predeterminado para pedidos de cliente y facturas de clientes"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__property_product_pricelist
+#: model:ir.model.fields,help:ghu.field_ghu_student__property_product_pricelist
+#: model:ir.model.fields,help:ghu.field_ghu_university__property_product_pricelist
+msgid "This pricelist will be used, instead of the default one, for sales to the current partner"
+msgstr "Esta tarifa se utilizará, en lugar de la por defecto, para las ventas de la empresa actual."
+
+#. module: ghu
+#: selection:ghu.application,payment_method:0
+msgid "Three-time payment"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__tz
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__tz
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__tz
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__tz_offset
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__tz_offset
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__tz_offset
+msgid "Timezone offset"
+msgstr "Compensación de zona horaria"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__title
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__title
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__title
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "Title"
+msgstr "Título"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__research_abstract_file
+msgid "Title and Abstract of intended research"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Title and Abstract of intended research\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application_study__to_date
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "To"
+msgstr "Para"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__total_due
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__total_due
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__total_due
+msgid "Total Due"
+msgstr "Adeudo Total"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__total_invoiced
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__total_invoiced
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__total_invoiced
+msgid "Total Invoiced"
+msgstr "Total facturado"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__total_overdue
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__total_overdue
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__total_overdue
+msgid "Total Overdue"
+msgstr "Total de Vencido"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__debit
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__debit
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__debit
+msgid "Total Payable"
+msgstr "Total a pagar"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__credit
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__credit
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__credit
+msgid "Total Receivable"
+msgstr "Total a cobrar"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__credit
+#: model:ir.model.fields,help:ghu.field_ghu_student__credit
+#: model:ir.model.fields,help:ghu.field_ghu_university__credit
+msgid "Total amount this customer owes you."
+msgstr "Importe total que le debe el cliente."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__debit
+#: model:ir.model.fields,help:ghu.field_ghu_student__debit
+#: model:ir.model.fields,help:ghu.field_ghu_university__debit
+msgid "Total amount you have to pay to this vendor."
+msgstr "Importe total a pagar a este proveedor."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_res_config_settings__ghu_transferwise_api_key
+msgid "Transferwise API Key"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.res_config_settings_view_form
+msgid "Transferwise Apikey"
+msgstr ""
+
+#. module: ghu
+#: selection:ghu.application,payment_method:0
+msgid "Two-time payment"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "USD 12,500.-- at the beginning; USD 12,500. -- after 12 months"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "USD 9,000.-- at the beginning; 9,000.-- after 12 months, 8,000.-- after Phase 1"
+msgstr ""
+
+#. module: ghu
+#: model:product.product,uom_name:ghu.ghu_doctoral_application_fee
+#: model:product.template,uom_name:ghu.ghu_doctoral_application_fee_product_template
+msgid "Unit(s)"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_ghu_university
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "University"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__ever_applied_doctoral_university_name
+msgid "University name where applied for doctoral degree"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_unread
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_unread
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes sin leer"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__message_unread_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__message_unread_counter
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__unreconciled_aml_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__unreconciled_aml_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__unreconciled_aml_ids
+msgid "Unreconciled Aml"
+msgstr "Aml no reconciliado"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__barcode
+#: model:ir.model.fields,help:ghu.field_ghu_student__barcode
+#: model:ir.model.fields,help:ghu.field_ghu_university__barcode
+msgid "Use a barcode to identify this contact from the Point of Sale."
+msgstr "Use un código de barras para identificar este contacto desde el punto de venta."
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__type
+#: model:ir.model.fields,help:ghu.field_ghu_student__type
+#: model:ir.model.fields,help:ghu.field_ghu_university__type
+msgid "Used by Sales and Purchase Apps to select the relevant address depending on the context."
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__ocn_token
+#: model:ir.model.fields,help:ghu.field_ghu_student__ocn_token
+#: model:ir.model.fields,help:ghu.field_ghu_university__ocn_token
+msgid "Used for sending notification to registered devices"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "User"
+msgstr "Usuario"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__user_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__user_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__currency_id
+#: model:ir.model.fields,help:ghu.field_ghu_student__currency_id
+#: model:ir.model.fields,help:ghu.field_ghu_university__currency_id
+msgid "Utility field to express amount currency"
+msgstr "Campo útil para expresar importe en divisa."
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__property_supplier_payment_term_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__property_supplier_payment_term_id
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr "Términos de Pago"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_published
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_published
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_published
+msgid "Visible on current website"
+msgstr "Visible en el sitio web actual"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__vita
+msgid "Vita"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__vita_filename
+msgid "Vita Filename"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model,name:ghu.model_website
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: ghu
+#: model:ir.actions.act_url,name:ghu.action_open_website
+msgid "Website Advisor"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_message_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_message_ids
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_description
+msgid "Website Partner Full Description"
+msgstr "Descripción completa de la página web de la empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_short_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_short_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_short_description
+msgid "Website Partner Short Description"
+msgstr "Descripción corta de la página web de la empresa"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_url
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_url
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_url
+msgid "Website URL"
+msgstr "URL del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,help:ghu.field_ghu_advisor__website_message_ids
+#: model:ir.model.fields,help:ghu.field_ghu_student__website_message_ids
+#: model:ir.model.fields,help:ghu.field_ghu_university__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_meta_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_meta_description
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_meta_description
+msgid "Website meta description"
+msgstr "Meta descripción del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_meta_keywords
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_meta_keywords
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_meta_keywords
+msgid "Website meta keywords"
+msgstr "Meta palabras clave del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_meta_title
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_meta_title
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_meta_title
+msgid "Website meta title"
+msgstr "Meta título del sitio web"
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__website_meta_og_img
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__website_meta_og_img
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__website_meta_og_img
+msgid "Website opengraph image"
+msgstr "Imagen del Open Graph del sitio"
+
+#. module: ghu
+#: selection:ghu.application,marital_status:0
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Widowed"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "Yes"
+msgstr ""
+
+#. module: ghu
+#: code:addons/ghu/models/application.py:172
+#, python-format
+msgid "You're not allowed to skip stages in this kanban!"
+msgstr ""
+
+#. module: ghu
+#: model:mail.template,subject:ghu.ghu_doctoral_application_confirmation_template
+msgid "Your Application at Global Humanistic University"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_form
+msgid "ZIP"
+msgstr "C.P."
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "ZIP\n"
+"                                                                        <span class=\"mandatory\">*</span>"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_advisor__zip
+#: model:ir.model.fields,field_description:ghu.field_ghu_student__zip
+#: model:ir.model.fields,field_description:ghu.field_ghu_university__zip
+msgid "Zip"
+msgstr "C.P."
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_tree
+msgid "application"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__degrees_file_filename
+msgid "degrees_filename"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation
+msgid "has enrolled on"
+msgstr "Fecha de Inscripción"
+
+#. module: ghu
+#: model:product.product,weight_uom_name:ghu.ghu_doctoral_application_fee
+#: model:product.template,weight_uom_name:ghu.ghu_doctoral_application_fee_product_template
+msgid "kg"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_tree
+msgid "lang"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__passport_file_filename
+msgid "passport_filename"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__photo_file_filename
+msgid "photo_filename"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_tree
+msgid "program"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__research_abstract_file_filename
+msgid "research_abstract_filename"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_form
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_search
+#: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_tree
+msgid "study"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "terms\n"
+"                                                                        and conditions"
+msgstr ""
+
+#. module: ghu
+#: model:ir.model.fields,field_description:ghu.field_ghu_application__vita_file_filename
+msgid "vita_filename"
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
+#: model_terms:website.page,arch_db:ghu.application_doctoral_program_page
+msgid "with today's date\n"
+"                                                                    including resignation of the Global Humanistic\n"
+"                                                                    University, I agree with these and accept with\n"
+"                                                                    my submission that these are the basis for my\n"
+"                                                                    study contract.\n"
+"                                                                                <br/>\n"
+"                                                                                With my\n"
+"                                                                    submission, I also confirm the accuracy of my\n"
+"                                                                    information."
+msgstr ""
+
+#. module: ghu
+#: model_terms:ir.ui.view,arch_db:ghu.application_agreement
+msgid "✔ I confirm good knowledge of the english language"
+msgstr ""
+
