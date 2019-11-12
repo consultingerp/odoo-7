@@ -4,60 +4,64 @@
         <report id="enrolment_confirmation_pdf" model="ghu.student" string="Enrolment Confirmation" report_type="qweb-pdf" name="ghu.enrolment_confirmation" />
         <template id="enrolment_confirmation">
             <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
-                        <t t-set="page">False</t>
-                        <div class="page">
-                            <div class="watermark" style="position:absolute;opacity:0.20;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
-                                <img src="/ghu/static/img/watermark.png" />
-                            </div>
-                            <h1 class="text-center" style="margin: 7.5cm 0 2cm;">Confirmation of enrolment</h1>
-                            <div class="row" style="margin: 1cm 0;">
-                                <div class="col-8 offset-2">
-                                    <div class="h4 text-center">
-                                        <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" />
-                                        <div style="margin: 1cm 0;line-height:1.5em;">
-                                            has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> <br/>at the<br/><strong>Global Humanistic University</strong>.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" style="margin: 2cm 0;">
-                                <div class="col-8 offset-2">
-                                    <table class="table h5">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>
-                                                <t t-esc="o.academic_degree_pre" />
-                                                <t t-esc="o.partner_id.firstname" />
-                                                <t t-esc="o.partner_id.lastname" />
-                                                <t t-esc="o.academic_degree_post" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Date of birth</td>
-                                            <td>
-                                                <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nationality</td>
-                                            <td>
-                                                <t t-esc="o.nationality.name" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Student ID</td>
-                                            <td>
-                                                <t t-esc="o.student_identification" />
-                                            </td>
-                                        </tr>
-                                    </table>
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="ghu.enrolment_confirmation_pdf" t-lang="doc.lang" />
+                </t>
+            </t>
+        </template>
+        <template id="enrolment_confirmation_pdf">
+            <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
+            <t t-call="web.external_layout">
+                <t t-set="page">False</t>
+                <div class="page">
+                    <div class="watermark" style="position:absolute;opacity:0.20;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
+                        <img src="/ghu/static/img/watermark.png" />
+                    </div>
+                    <h1 class="text-center" style="margin: 7.5cm 0 2cm;">Confirmation of enrolment</h1>
+                    <div class="row" style="margin: 1cm 0;">
+                        <div class="col-8 offset-2">
+                            <div class="h4 text-center">
+                                <t t-esc="o.partner_id.firstname" /> <t t-esc="o.partner_id.lastname" />
+                                <div style="margin: 1cm 0;line-height:1.5em;">
+                                    has enrolled on <t t-esc="o.create_date.strftime('%m/%d/%Y')" /> <br/>at the<br/><strong>Global Humanistic University</strong>.
                                 </div>
                             </div>
                         </div>
-                    </t>
-                </t>
+                    </div>
+                    <div class="row" style="margin: 2cm 0;">
+                        <div class="col-8 offset-2">
+                            <table class="table h5">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>
+                                        <t t-esc="o.academic_degree_pre" />
+                                        <t t-esc="o.partner_id.firstname" />
+                                        <t t-esc="o.partner_id.lastname" />
+                                        <t t-esc="o.academic_degree_post" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date of birth</td>
+                                    <td>
+                                        <t t-esc="o.date_of_birth.strftime('%m/%d/%Y')" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nationality</td>
+                                    <td>
+                                        <t t-esc="o.nationality.name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Student ID</td>
+                                    <td>
+                                        <t t-esc="o.student_identification" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </t>
         </template> 
     </data>
