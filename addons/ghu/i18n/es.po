@@ -276,8 +276,8 @@ msgstr ""
 
 #. module: ghu
 #: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_pdf
-msgid "<br/>En la<br/><strong>Global Humanistic University</strong>."
-msgstr ""
+msgid "<br/>at the<br/><strong>Global Humanistic University</strong>."
+msgstr "<br/>En la<br/><strong>Global Humanistic University</strong>."
 
 #. module: ghu
 #: model_terms:ir.ui.view,arch_db:ghu.application_doctoral_program_page_ir_ui_view
