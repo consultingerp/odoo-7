@@ -5,12 +5,12 @@
         <template id="enrolment_confirmation">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="ghu.enrolment_confirmation_pdf" t-lang="doc.lang" />
+                    <t t-call="ghu.enrolment_confirmation_pdf" t-lang="doc.partner_id.lang" />
                 </t>
             </t>
         </template>
         <template id="enrolment_confirmation_pdf">
-            <t t-set="o" t-value="doc.with_context({'lang':doc.lang})" />
+            <t t-set="o" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
             <t t-call="web.external_layout">
                 <t t-set="page">False</t>
                 <div class="page">
