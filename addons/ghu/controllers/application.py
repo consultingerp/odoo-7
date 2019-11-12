@@ -57,8 +57,8 @@ class Ghu(http.Controller):
 
             if hasattr(kwargs[key], 'filename'):
                 value = kwargs.pop(key)
-                kwargs[(key[:-3] + '_filename')] = value.filename
-                kwargs[key[:-3]] = base64.b64encode(value.read())
+                kwargs[(key[:-6] + '_filename')] = value.filename
+                kwargs[key[:-6]] = base64.b64encode(value.read())
 
         # set default fields
         kwargs['state'] = 'new'
@@ -83,7 +83,8 @@ class Ghu(http.Controller):
         # preprocess fields
         kwargs['ever_applied_at_ghu'] = bool(int(kwargs['ever_applied_at_ghu']))
         kwargs['ever_applied_doctoral'] = bool(int(kwargs['ever_applied_doctoral']))
-        kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
+        if 'other_languages' in kwargs.keys():
+            kwargs['other_languages'] = [(4, l) for l in kwargs['other_languages'].split(',')]
 
         try:
             # create contact
