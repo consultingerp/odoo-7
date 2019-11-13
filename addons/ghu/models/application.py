@@ -360,19 +360,17 @@ class GhuApplicationStudy(models.Model):
     _description = 'GHU Application Preliminary Studies'
     _log_access = False
 
-    institution = fields.Char('Institution', size=256, required=True)
-    city = fields.Char('City', size=128, required=True)
+    institution = fields.Char('Institution', size=256, required=False)
+    city = fields.Char('City', size=128, required=False)
     from_date = fields.Date(
-        string=u'From',
-        required=True,
+        string=u'From', required=False
     )
     to_date = fields.Date(
-        string=u'To',
-        required=True,
+        string=u'To', required=False
     )
-    subject = fields.Char('Subject', size=256, required=True)
-    diploma = fields.Char('Diploma', size=256, required=True)
-    credit_points = fields.Integer('Credit Points', required=True)
+    subject = fields.Char('Subject', size=256, required=False)
+    diploma = fields.Char('Diploma', size=256, required=False)
+    credit_points = fields.Integer('Credit Points', required=False)
 
     application_id = fields.Many2one(
         'ghu.application',
