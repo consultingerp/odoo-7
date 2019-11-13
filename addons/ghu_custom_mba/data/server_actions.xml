@@ -3,7 +3,7 @@
     <data noupdate="0">
         <record model="ir.actions.server" id="send_enrolment">
             <field name="name">Send Enrolment Confirmation</field>
-            <field name="model_id" ref="ghu_student"/>
+            <field name="model_id" ref="ghu_ghu_student"/>
             <field name="code">
                 record.studentEnrolled()
             </field>
