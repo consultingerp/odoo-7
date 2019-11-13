@@ -345,10 +345,10 @@
                                                             <div class="row">
                                                                 <div class="form-field form-group col-md-6">
                                                                     <div class="row">
-                                                                        <label t-attf-for="studies-from-{{ i }}" class="control-label col-form-label col-sm-3" title="">From</label>
+                                                                        <label t-attf-for="studies-from_date-{{ i }}" class="control-label col-form-label col-sm-3" title="">From</label>
                                                                         <div class="col-sm-9">
                                                                             <div class="input-group">
-                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="studies-from-{{ i }}" t-attf-name="studies-from_date-{{ i }}" />
+                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="studies-from_date-{{ i }}" t-attf-name="studies-from_date-{{ i }}" />
                                                                                 <div class="input-group-append">
                                                                                     <div class="input-group-text">
                                                                                         <i class="fa fa-calendar"></i>
@@ -360,10 +360,10 @@
                                                                 </div>
                                                                 <div class="form-field form-group col-md-6">
                                                                     <div class="row">
-                                                                        <label t-attf-for="studies-to-{{ i }}" class="control-label col-form-label col-sm-3" title="">To</label>
+                                                                        <label t-attf-for="studies-to_date-{{ i }}" class="control-label col-form-label col-sm-3" title="">To</label>
                                                                         <div class="col-sm-9">
                                                                             <div class="input-group">
-                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="studies-to-{{ i }}" t-attf-name="studies-to_date-{{ i }}" />
+                                                                                <input type="date" class="form-control o_website_form_input" t-attf-id="studies-to_date-{{ i }}" t-attf-name="studies-to_date-{{ i }}" />
                                                                                 <div class="input-group-append">
                                                                                     <div class="input-group-text">
                                                                                         <i class="fa fa-calendar"></i>
@@ -377,9 +377,9 @@
                                                             <div class="row">
                                                                 <div class="form-field form-group col-md-6">
                                                                     <div class="row">
-                                                                        <label t-attf-for="studies-majorsubject-{{ i }}" class="control-label col-form-label col-sm-3" title="">Subject</label>
+                                                                        <label t-attf-for="studies-subject-{{ i }}" class="control-label col-form-label col-sm-3" title="">Subject</label>
                                                                         <div class="col-sm-9">
-                                                                            <input class="form-control o_website_form_input" t-attf-id="studies-majorsubject-{{ i }}" type="text" t-attf-name="studies-subject-{{ i }}" value="" />
+                                                                            <input class="form-control o_website_form_input" t-attf-id="studies-subject-{{ i }}" type="text" t-attf-name="studies-subject-{{ i }}" value="" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,9 +395,9 @@
                                                             <div class="row">
                                                                 <div class="form-field form-group col-md-6">
                                                                     <div class="row">
-                                                                        <label t-attf-for="studies-creditpoints-{{ i }}" class="control-label col-form-label col-sm-3" title="">Credit Points</label>
+                                                                        <label t-attf-for="studies-credit_points-{{ i }}" class="control-label col-form-label col-sm-3" title="">Credit Points</label>
                                                                         <div class="col-sm-9">
-                                                                            <input class="form-control o_website_form_input" t-attf-id="studies-creditpoints-{{ i }}" type="text" t-attf-name="studies-credit_points-{{ i }}" value="" />
+                                                                            <input class="form-control o_website_form_input" t-attf-id="studies-credit_points-{{ i }}" type="text" t-attf-name="studies-credit_points-{{ i }}" value="" />
                                                                         </div>
                                                                     </div>
                                                                 </div>

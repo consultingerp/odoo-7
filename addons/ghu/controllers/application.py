@@ -75,7 +75,8 @@ class Ghu(http.Controller):
         for f in required_fields:
             if f not in kwargs:
                 missing_fields[f] = "This field is required."
-        for idx, study in enumerate(studies, start=0):
+        _logger.info(studies)
+        for idx, study in studies.items():
             for f in required_study_fields:
                 if f not in study:
                     missing_fields['studies-' + f + '-' + str(idx)] = "This field is required."
