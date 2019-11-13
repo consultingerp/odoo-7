@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="view_ghu_student_form" model="ir.ui.view">
+            <field name="name">ghu.student.form</field>
+            <field name="model">ghu.student</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <header>
+                        <button string="Send enrolment confirmation" type="object" name="studentEnrolled"/>
+                    </header>
+                    <sheet string="Student" modifiers="{}">
+                        <group col="4" modifiers="{}">
+                            <field name="firstname" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="lastname" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="gender" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="nationality" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="date_of_birth" modifiers="{'required':true}"/>
+                            <field name="partner_id" on_change="1" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="academic_degree_pre" modifiers="{}"/>
+                            <field name="academic_degree_post" modifiers="{}"/>
+                            <field name="native_language" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="other_languages" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="email" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="student_identification" modifiers="{'readonly':true}"/>
+                            <field name="custom_mba" modifiers="{}"/>
+                            <field name="date" modifiers="{}"/>
+                            <field name="title" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="parent_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="parent_name" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="child_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="ref" modifiers="{}"/>
+                            <field name="lang" modifiers="{}"/>
+                            <field name="tz" modifiers="{}"/>
+                            <field name="tz_offset" modifiers="{'readonly':true}"/>
+                            <field name="user_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="vat" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="bank_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="comment" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="category_id" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="credit_limit" modifiers="{}"/>
+                            <field name="barcode" modifiers="{}"/>
+                            <field name="active" modifiers="{}"/>
+                            <field name="customer" modifiers="{}"/>
+                            <field name="supplier" modifiers="{}"/>
+                            <field name="employee" modifiers="{}"/>
+                            <field name="function" modifiers="{}"/>
+                            <field name="type" modifiers="{}"/>
+                            <field name="street" modifiers="{}"/>
+                            <field name="street2" modifiers="{}"/>
+                            <field name="zip" modifiers="{}"/>
+                            <field name="city" modifiers="{}"/>
+                            <field name="state_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="country_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="email_formatted" modifiers="{'readonly':true}"/>
+                            <field name="phone" modifiers="{}"/>
+                            <field name="mobile" modifiers="{}"/>
+                            <field name="is_company" modifiers="{}"/>
+                            <field name="industry_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="company_type" modifiers="{}"/>
+                            <field name="company_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="color" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="user_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="partner_share" modifiers="{'readonly':true}"/>
+                            <field name="contact_address" modifiers="{'readonly':true}"/>
+                            <field name="commercial_partner_id" can_create="true" can_write="true" modifiers="{'readonly':true}"/>
+                            <field name="commercial_company_name" modifiers="{'readonly':true}"/>
+                            <field name="company_name" modifiers="{}"/>
+                            <field name="image" modifiers="{}"/>
+                            <field name="image_medium" modifiers="{}"/>
+                            <field name="image_small" modifiers="{}"/>
+                            <field name="self" can_create="true" can_write="true" modifiers="{'readonly':true}"/>
+                            <field name="im_status" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="activity_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="activity_state" modifiers="{'readonly':true}"/>
+                            <field name="activity_user_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="activity_type_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="activity_date_deadline" modifiers="{'readonly':true}"/>
+                            <field name="activity_summary" modifiers="{}"/>
+                            <field name="message_is_follower" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="message_follower_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="message_partner_ids" colspan="4" can_create="true" can_write="true" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="message_channel_ids" colspan="4" can_create="true" can_write="true" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="message_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="message_unread" modifiers="{'readonly':true}"/>
+                            <field name="message_unread_counter" modifiers="{'readonly':true}"/>
+                            <field name="message_needaction" modifiers="{'readonly':true}"/>
+                            <field name="message_needaction_counter" modifiers="{'readonly':true}"/>
+                            <field name="message_has_error" modifiers="{'readonly':true}"/>
+                            <field name="message_has_error_counter" modifiers="{'readonly':true}"/>
+                            <field name="message_attachment_count" modifiers="{'readonly':true}"/>
+                            <field name="message_main_attachment_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="is_blacklisted" modifiers="{'readonly':true}"/>
+                            <field name="message_bounce" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="channel_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="name" modifiers="{}"/>
+                            <field name="signup_token" modifiers="{}"/>
+                            <field name="signup_type" modifiers="{}"/>
+                            <field name="signup_expiration" modifiers="{}"/>
+                            <field name="signup_valid" modifiers="{'readonly':true}"/>
+                            <field name="signup_url" modifiers="{'readonly':true}"/>
+                            <field name="calendar_last_notif_ack" modifiers="{}"/>
+                            <field name="ocn_token" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website_message_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="property_product_pricelist" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="signature_count" modifiers="{'readonly':true}"/>
+                            <field name="is_seo_optimized" modifiers="{'readonly':true}"/>
+                            <field name="website_meta_title" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website_meta_description" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website_meta_keywords" modifiers="{}"/>
+                            <field name="website_meta_og_img" modifiers="{}"/>
+                            <field name="website_published" modifiers="{}"/>
+                            <field name="is_published" modifiers="{}"/>
+                            <field name="website_url" modifiers="{'readonly':true}"/>
+                            <field name="website_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="payment_token_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="payment_token_count" modifiers="{'readonly':true}"/>
+                            <field name="credit" modifiers="{'readonly':true}"/>
+                            <field name="debit" modifiers="{'readonly':true}"/>
+                            <field name="debit_limit" modifiers="{}"/>
+                            <field name="total_invoiced" modifiers="{'readonly':true}"/>
+                            <field name="currency_id" can_create="true" can_write="true" modifiers="{'readonly':true}"/>
+                            <field name="contracts_count" modifiers="{'readonly':true}"/>
+                            <field name="journal_item_count" modifiers="{'readonly':true}"/>
+                            <field name="property_account_payable_id" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="property_account_receivable_id" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="property_account_position_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="property_payment_term_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="property_supplier_payment_term_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="ref_company_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="has_unreconciled_entries" modifiers="{'readonly':true}"/>
+                            <field name="last_time_entries_checked" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="invoice_ids" colspan="4" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="contract_ids" colspan="4" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="bank_account_count" modifiers="{'readonly':true}"/>
+                            <field name="trust" modifiers="{}"/>
+                            <field name="invoice_warn" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="invoice_warn_msg" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="team_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="opportunity_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="meeting_ids" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="opportunity_count" modifiers="{'readonly':true}"/>
+                            <field name="meeting_count" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website_description" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="website_short_description" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="online_partner_vendor_name" modifiers="{'readonly':true}"/>
+                            <field name="online_partner_bank_account" modifiers="{'readonly':true}"/>
+                            <field name="payment_next_action_date" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="unreconciled_aml_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="partner_ledger_label" modifiers="{'readonly':true}"/>
+                            <field name="total_due" modifiers="{'readonly':true}"/>
+                            <field name="total_overdue" modifiers="{'readonly':true}"/>
+                            <field name="followup_status" modifiers="{'readonly':true}"/>
+                            <field name="sale_order_count" modifiers="{'readonly':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="sale_order_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="sale_warn" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="sale_warn_msg" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="is_advisor" modifiers="{'readonly':true}"/>
+                            <field name="is_student" modifiers="{'readonly':true}"/>
+                            <field name="is_custom_mba" modifiers="{'readonly':true}"/>
+                            <separator modifiers="{}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ghu_student_view_form">
+            <field name="act_window_id" ref="ghu.student_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ghu_student_form"/>
+        </record>
+    </data>
+</odoo>
