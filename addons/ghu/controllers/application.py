@@ -74,12 +74,12 @@ class Ghu(http.Controller):
         missing_fields = dict()
         for f in required_fields:
             if f not in kwargs:
-                missing_fields[f] = "This field is required."
+                missing_fields[f] = True
         _logger.info(studies)
         for idx, study in studies.items():
             for f in required_study_fields:
                 if f not in study:
-                    missing_fields['studies-' + f + '-' + str(idx)] = "This field is required."
+                    missing_fields['studies-' + f + '-' + str(idx)] = True
         if missing_fields:
             return json.dumps(dict(error_fields=missing_fields))
 
