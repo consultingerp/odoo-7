@@ -17,8 +17,13 @@ class Ghu(http.Controller):
         application_fields = request.env['ir.model.fields'].sudo().search([
             ('model_id', '=', application_model.id),
         ])
+        application_study_model = request.env['ir.model'].sudo().search([('model', '=', 'ghu.application_study')])
+        application_study_fields = request.env['ir.model.fields'].sudo().search([
+            ('model_id', '=', application_study_model.id),
+        ])
 
         required_fields = [f['name'] for f in application_fields if f['required'] and not f['related']]
+        required_study_fields = [f['name'] for f in application_study_fields if f['required'] and not f['related']]
         
         # add required fields for partner
         contact_fields = [
@@ -66,7 +71,15 @@ class Ghu(http.Controller):
         kwargs['partner_id'] = True
 
         # check missing fields
-        missing_fields = [f for f in required_fields if f not in kwargs]
+        missing_fields = dict()
+        for f in required_fields:
+            if f not in kwargs:
+                missing_fields[f] = True
+        _logger.info(studies)
+        for idx, study in studies.items():
+            for f in required_study_fields:
+                if f not in study:
+                    missing_fields['studies-' + f + '-' + str(idx)] = True
         if missing_fields:
             return json.dumps(dict(error_fields=missing_fields))
 

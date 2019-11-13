@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.533',
+    'version': '0.536',
 
 
     # any module necessary for this one to work correctly
@@ -27,6 +27,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/scheduled_actions.xml',
+        'data/server_actions.xml',
         'views/views.xml',
         'views/application/form.xml',
         'views/course/advisor/list.xml',
