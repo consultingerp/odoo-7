@@ -219,10 +219,12 @@
             </field>
         </record>
         <record model="ir.actions.act_window.view" id="act_open_ghu_student_view_form">
-            <field name="act_window_id" ref="ghu.ghu_student_window"/>
+            <field name="act_window_id" ref="ghu_student_window"/>
             <field name="sequence" eval="20"/>
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_ghu_student_form"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
         </record>
     </data>
 </odoo>
