@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.533',
+    'version': '0.534',
 
 
     # any module necessary for this one to work correctly
@@ -56,7 +56,8 @@
         'views/mails/workflow/recording-review-needed.xml',
         'views/mails/workflow/script-approved.xml',
         'views/mails/workflow/correction-needed.xml',
-        'views/mails/workflow/course-approved.xml'
+        'views/mails/workflow/course-approved.xml',
+        'views/backend/student/views.xml'
     ],
     # only loaded in demonstration mode
     #'demo': [
