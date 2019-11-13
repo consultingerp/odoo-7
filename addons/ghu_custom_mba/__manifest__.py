@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Uncategorized',
 
-    'version': '0.535',
+    'version': '0.536',
 
 
     # any module necessary for this one to work correctly
@@ -27,6 +27,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/scheduled_actions.xml',
+        'data/server_actions.xml',
         'views/views.xml',
         'views/application/form.xml',
         'views/course/advisor/list.xml',
@@ -56,8 +57,7 @@
         'views/mails/workflow/recording-review-needed.xml',
         'views/mails/workflow/script-approved.xml',
         'views/mails/workflow/correction-needed.xml',
-        'views/mails/workflow/course-approved.xml',
-        'views/backend/student/views.xml'
+        'views/mails/workflow/course-approved.xml'
     ],
     # only loaded in demonstration mode
     #'demo': [
