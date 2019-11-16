@@ -1,5 +1,6 @@
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
+from odoo import _
 from ..util.panopto import GhuPanopto
 import logging
 
@@ -279,6 +280,15 @@ class GhuCourse(models.Model):
 
         self.write(vals)
 
+        if len(self.assessment_ids) != 1:
+            raise ValidationError(
+                _('Assessments missing, not possible to approve this.'))
+
+        for ass in self.assessment_ids:
+            if len(ass.question_ids) < 2:
+                raise ValidationError(
+                _('Assessment %s is missing questions, not possible to approve this.'))
+
         notification_template = self.env.ref(
             'ghu_custom_mba.course_approved_mail').sudo()
         notification_template.send_mail(
@@ -388,6 +398,7 @@ class GhuAssessment(models.Model):
 
     types = [
         ('essay', 'Essay'),
+        ('analysis', 'Analysis'),
         ('report', 'Report'),
         ('case_study', 'Case Study'),
         ('homework', 'Homework'),
