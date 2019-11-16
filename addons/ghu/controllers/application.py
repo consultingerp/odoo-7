@@ -81,6 +81,12 @@ class Ghu(http.Controller):
                 if f not in study:
                     missing_fields['studies-' + f + '-' + str(idx)] = True
         if missing_fields:
+            request.env['mail.message'].sudo().create({'message_type':"notification",
+                "subtype": request.env.ref("mail.mt_comment").id,
+                'body': "Application failed<br/><br/>Missing fields:<br/>" + str(missing_fields),
+                'subject': "Application failed",
+                'needaction_partner_ids': [(4, 3)]
+            })
             return json.dumps(dict(error_fields=missing_fields))
 
         # extract contact fields
@@ -110,7 +116,13 @@ class Ghu(http.Controller):
             for study in studies.values():
                 study['application_id'] = application_record.id
                 request.env['ghu.application_study'].sudo().with_context(mail_create_nosubscribe=True).create(study)
-        except IntegrityError:
+        except IntegrityError as e:
+            request.env['mail.message'].sudo().create({'message_type':"notification",
+                "subtype": request.env.ref("mail.mt_comment").id,
+                'body': "Application failed<br/><br/>Integrity Error:<br/>" + str(e),
+                'subject': "Application failed",
+                'needaction_partner_ids': [(4, 3)]
+            })
             return json.dumps(False)
 
         return json.dumps(dict(id=application_record.id))
