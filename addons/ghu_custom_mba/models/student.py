@@ -23,7 +23,7 @@ class GhuStudent(models.Model):
                 record.partner_id.message_post_with_template(template_id=notification_template_es.id)
             else:
                 record.partner_id.message_post_with_template(template_id=notification_template_en.id)
-            return True
+        return True
 
     @api.multi
     def applicationApproved(self):
@@ -31,7 +31,7 @@ class GhuStudent(models.Model):
             'ghu_custom_mba.application_approved').sudo()
         for record in self:
             record.partner_id.message_post_with_template(template_id=notification_template.id)
-            return True
+        return True
 
     @api.multi
     def studentEnrolled(self):
@@ -55,4 +55,4 @@ class GhuStudent(models.Model):
             notification_template.attachment_ids = [(4, attachment.id)]
             
             record.partner_id.message_post_with_template(template_id=notification_template.id)
-            return True
+        return True

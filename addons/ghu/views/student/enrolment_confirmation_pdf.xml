@@ -34,10 +34,8 @@
                                 <tr>
                                     <td>Name</td>
                                     <td>
-                                        <t t-esc="o.academic_degree_pre" />
                                         <t t-esc="o.partner_id.firstname" />
                                         <t t-esc="o.partner_id.lastname" />
-                                        <t t-esc="o.academic_degree_post" />
                                     </td>
                                 </tr>
                                 <tr>
