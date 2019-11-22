@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
+
 class GhuApplication(models.Model):
     _name = 'ghu.application'
     _description = 'GHU Application'
@@ -34,11 +35,11 @@ class GhuApplication(models.Model):
         ]
     )
     academic_degree_pre = fields.Char(
-        'Academic Degrees (Pre)', 
+        'Academic Degrees (Pre)',
         size=64,
     )
     academic_degree_post = fields.Char(
-        'Academic Degrees (Post)', 
+        'Academic Degrees (Post)',
         size=64,
     )
     native_language = fields.Many2one(
@@ -61,7 +62,6 @@ class GhuApplication(models.Model):
     # country_id = fields.Many2one(related='partner_id.country_id', required=True)
     # phone = fields.Char(related='partner_id.phone', required=True)
     email = fields.Char(related='partner_id.email', required=True)
-
 
     # STUDY PROGRAM FIELDS
     study_id = fields.Many2one(
@@ -92,23 +92,24 @@ class GhuApplication(models.Model):
     photo_file_filename = fields.Char(
         string=u'photo_filename',
     )
-    
+
     vita_file = fields.Binary('Curriculum Vitae', required=True)
     vita_file_filename = fields.Char(
         string=u'vita_filename',
     )
-    
+
     passport_file = fields.Binary('Copy of Passport', required=True)
     passport_file_filename = fields.Char(
         string=u'passport_filename',
     )
-    
+
     degrees_file = fields.Binary('Copies of degrees', required=True)
     degrees_file_filename = fields.Char(
         string=u'degrees_filename',
     )
-    
-    research_abstract_file = fields.Binary('Title and Abstract of intended research', required=True)
+
+    research_abstract_file = fields.Binary(
+        'Title and Abstract of intended research', required=True)
     research_abstract_file_filename = fields.Char(
         string=u'research_abstract_filename',
     )
@@ -144,7 +145,7 @@ class GhuApplication(models.Model):
 
     @api.one
     def approved_registrar(self, record):
-        self.write({'state' : 'approved'})
+        self.write({'state': 'approved'})
 
     partner_id = fields.Many2one(
         'res.partner',
@@ -164,28 +165,35 @@ class GhuApplication(models.Model):
         'Application Fee Invoice',
     )
 
-    @api.multi
-    def write(self, values):
-        if 'state' in values:
-            states = [k for k, v in self.states]
-            if abs(states.index(self.state) - states.index(values['state'])) > 1:
-                raise ValidationError(_('You\'re not allowed to skip stages in this kanban!'))
-
-            self.on_state_change(values['state'])
-
-        super(GhuApplication, self).write(values)
-
     sign_request_id = fields.Many2one(
         'sign.request',
         'Sign Request',
         states={'done': [('readonly', True)]},
     )
 
+    @api.multi
+    def write(self, values):
+        if 'state' in values:
+            states = [k for k, v in self.states]
+            if abs(states.index(self.state) - states.index(values['state'])) > 1:
+                raise ValidationError(
+                    _('You\'re not allowed to skip stages in this kanban!'))
+
+            self.on_state_change(values['state'])
+
+        super(GhuApplication, self).write(values)
+
+    def on_creation(self, record):
+        self_sudo = self.sudo(self.env['res.users'].sudo().search(
+            [('email', 'like', 'office@ghu.edu.cw')], limit=1))
+        self_sudo.create_sign_request(record)
+
     @api.one
     def create_sign_request(self, record):
-        pdf = self.env.ref('ghu.application_agreement_pdf').sudo().render_qweb_pdf([self.id])[0]
+        pdf = self.env.ref('ghu.application_agreement_pdf').sudo(
+        ).render_qweb_pdf([self.id])[0]
         attachmentName = 'Application-'+self.lastname+'-'+str(self.id)+'.pdf'
-        attachment = self.env['ir.attachment'].sudo().create({
+        attachment = self.env['ir.attachment'].create({
             'name': attachmentName,
             'type': 'binary',
             'datas': base64.encodestring(pdf),
@@ -194,15 +202,15 @@ class GhuApplication(models.Model):
             'res_id': self.id,
             'mimetype': 'application/x-pdf'
         })
-        template = self.env['sign.template'].sudo().create(
+        template = self.env['sign.template'].create(
             {
                 'attachment_id': attachment.id,
                 'active': 'true'
             }
         )
-        signature = self.env['sign.item'].sudo().create(
+        signature = self.env['sign.item'].create(
             {
-                'template_id' : template.id,
+                'template_id': template.id,
                 'height': 0.05,
                 'name': "Signature",
                 'page': "1",
@@ -214,145 +222,175 @@ class GhuApplication(models.Model):
                 'width': 0.2
             }
         )
-        res = self.env['sign.request'].sudo(self.env['res.users'].sudo().search([('email', 'like', 'office@ghu.edu.cw')], limit=1)).initialize_new(
+        res = self.env['sign.request'].initialize_new(
             template.id,
             [
-                {'role': self.env.ref('sign.sign_item_role_customer').sudo().id, 'partner_id': self.partner_id.id}
+                {'role': self.env.ref(
+                    'sign.sign_item_role_customer').id, 'partner_id': self.partner_id.id}
             ],
             [],
             'Application finalization',
             'Your Application at GHU',
-            '<p>We are pleased to inform you, ' + self.partner_id.firstname + ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only your signature missing, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
+            '<p>We are pleased to inform you, ' + self.partner_id.firstname +
+            ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only your signature missing, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
             True
         )
-        sign_request = self.env['sign.request'].sudo().browse(res['id'])
+        sign_request = self.env['sign.request'].browse(res['id'])
         sign_request.toggle_favorited()
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
 
-        application = self.env['ghu.application'].sudo().browse(self.id)
+        application = self.env['ghu.application'].browse(self.id)
         application.sign_request_id = sign_request.id
-    
 
-    def on_creation(self, record):
-        self.create_sign_request(record)
-
-    # Check if signed request is one of an application
-    def check_signature(self, record):
-        if record.state == "signed":
-            application = self.search([('sign_request_id','=',record.id)])
-            if application:
-                if application.state == "new":
-                    self.signed_by_applicant(application)
+    def on_state_change(self, new_state):
+        # generate invoice
+        self_sudo = self.sudo()
+        if new_state == 'approved' and not self.application_fee_invoice_id:
+            self_sudo.send_application_fee_invoice()
+        elif new_state == 'advisor_search':
+            self_sudo.send_advisor_search_notification()
+        elif new_state == 'signed':
+            self_sudo.signed_by_applicant()
 
     def signed_by_applicant(self, record):
-        record.state = "signed"
         # attach signed pdf to mail
-        
-        email_template = self.env.ref('ghu.ghu_new_doctoral_application_template')
+        email_template = self.env.ref(
+            'ghu.ghu_new_doctoral_application_template')
 
         application_id = self.env['ir.attachment'].create(
             {
-                    'name': "Application",
-                    'datas': record.sign_request_id.completed_document,
-                    'datas_fname': "application.pdf",
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': "Application",
+                'datas': record.sign_request_id.completed_document,
+                'datas_fname': "application.pdf",
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
 
         photo_id = self.env['ir.attachment'].create(
             {
-                    'name': record.photo_file_filename,
-                    'datas': record.photo_file,
-                    'datas_fname': record.photo_file_filename,
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': record.photo_file_filename,
+                'datas': record.photo_file,
+                'datas_fname': record.photo_file_filename,
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
         cv_id = self.env['ir.attachment'].create(
             {
-                    'name': record.vita_file_filename,
-                    'datas': record.vita_file,
-                    'datas_fname': record.vita_file_filename,
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': record.vita_file_filename,
+                'datas': record.vita_file,
+                'datas_fname': record.vita_file_filename,
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
         pp_id = self.env['ir.attachment'].create(
             {
-                    'name': record.passport_file_filename,
-                    'datas': record.passport_file,
-                    'datas_fname': record.passport_file_filename,
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': record.passport_file_filename,
+                'datas': record.passport_file,
+                'datas_fname': record.passport_file_filename,
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
         degree_id = self.env['ir.attachment'].create(
             {
-                    'name': record.degrees_file_filename,
-                    'datas': record.degrees_file,
-                    'datas_fname': record.degrees_file_filename,
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': record.degrees_file_filename,
+                'datas': record.degrees_file,
+                'datas_fname': record.degrees_file_filename,
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
         abstract_id = self.env['ir.attachment'].create(
             {
-                    'name': record.research_abstract_file_filename,
-                    'datas': record.research_abstract_file,
-                    'datas_fname': record.research_abstract_file_filename,
-                    'res_model': 'ghu.application',
-                    'type': 'binary'
+                'name': record.research_abstract_file_filename,
+                'datas': record.research_abstract_file,
+                'datas_fname': record.research_abstract_file_filename,
+                'res_model': 'ghu.application',
+                'type': 'binary'
             }
         )
-        email_template.attachment_ids =  False
-        email_template.attachment_ids = [(4, application_id.id),(4, photo_id.id),(4, cv_id.id),(4, pp_id.id),(4, degree_id.id),(4, abstract_id.id)]
-        email_template.send_mail(record.id, raise_exception=False, force_send=False)
+        email_template.attachment_ids = False
+        email_template.attachment_ids = [(4, application_id.id), (4, photo_id.id), (
+            4, cv_id.id), (4, pp_id.id), (4, degree_id.id), (4, abstract_id.id)]
+        email_template.send_mail(
+            record.id, raise_exception=False, force_send=False)
 
-        notification_template = self.env.ref('ghu.ghu_doctoral_application_confirmation_template')
-        notification_template.send_mail(record.id, raise_exception=False, force_send=False)
+        notification_template = self.env.ref(
+            'ghu.ghu_doctoral_application_confirmation_template')
+        notification_template.send_mail(
+            record.id, raise_exception=False, force_send=False)
 
-    def on_state_change(self, new_state):
-        # generate invoice
-        if new_state == 'approved' and not self.application_fee_invoice_id:
-            # get proper product
-            product = self.env['product.product'].search([('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
+    def send_application_fee_invoice(self):
+        # get proper product
+        product = self.env['product.product'].search(
+            [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
 
-            invoice_partners = self.partner_id.child_ids.filtered(lambda p: p.type == 'invoice')
+        invoice_partners = self.partner_id.child_ids.filtered(
+            lambda p: p.type == 'invoice')
 
-            invoice = self.env['account.invoice'].create(dict(
-                partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id, # customer (billing address)
-                partner_shipping_id=self.partner_id.id, # customer (applicant)
-                type='out_invoice',
-                date_invoice=datetime.datetime.utcnow().date(), # invoice date
-                date_due=(datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).date(), # due date
-                user_id=self.env().user.id, # salesperson
-                invoice_line_ids=[], # invoice lines
-                name='Doctoral Program Application Fee', # name for account move lines
-                partner_bank_id=self.env['ir.config_parameter'].get_param('ghu.automated_invoice_bank_account'), # company bank account
-            ))
+        invoice = self.env['account.invoice'].create(dict(
+            # customer (billing address)
+            partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
+            partner_shipping_id=self.partner_id.id,  # customer (applicant)
+            type='out_invoice',
+            date_invoice=datetime.datetime.utcnow().date(),  # invoice date
+            date_due=(datetime.datetime.utcnow() + \
+                      datetime.timedelta(weeks=1)).date(),  # due date
+            user_id=self.env().user.id,  # salesperson
+            invoice_line_ids=[],  # invoice lines
+            name='Doctoral Program Application Fee',  # name for account move lines
+            partner_bank_id=self.env['ir.config_parameter'].get_param(
+                'ghu.automated_invoice_bank_account'),  # company bank account
+        ))
 
-            invoice_line = self.env['account.invoice.line'].with_context(
-                    type=invoice.type, 
-                    journal_id=invoice.journal_id.id, 
-                    default_invoice_id=invoice.id
-                ).create(dict(
-                    product_id=product.id,
-                    name='Doctoral Program Application Fee',
-                    price_unit=product.lst_price,
-                ))
+        invoice_line = self.env['account.invoice.line'].with_context(
+            type=invoice.type,
+            journal_id=invoice.journal_id.id,
+            default_invoice_id=invoice.id
+        ).create(dict(
+            product_id=product.id,
+            name='Doctoral Program Application Fee',
+            price_unit=product.lst_price,
+        ))
 
-            invoice.invoice_line_ids = [(4, invoice_line.id)]
+        invoice.invoice_line_ids = [(4, invoice_line.id)]
 
-            invoice.action_invoice_open()
+        invoice.action_invoice_open()
 
-            invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
-            invoice_template.send_mail(invoice.id)
-            invoice.write({'sent': True})
+        invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
+        invoice_template.send_mail(invoice.id)
+        invoice.write({'sent': True})
 
-            self.application_fee_invoice_id = invoice.id
+        self.application_fee_invoice_id = invoice.id
+
+    def send_advisor_search_notification(self):
+        # attach signed pdf to mail
+        email_template = self.env.ref(
+            'ghu.mail_application_advisor_search_notification')
+        email_template.send_mail(
+            self.id, raise_exception=False, force_send=False)
+
+    # Check if signed request is one of an application
+    def check_signature(self, record):
+        if record.state == "signed":
+            application = self.search([('sign_request_id', '=', record.id)])
+            if application:
+                if application.state == "new":
+                    application.write({'state': 'signed'})
+
+    # Check if paid invoice is one of an application
+    def check_invoice(self, record):
+        if record.state == "paid":
+            application = self.search(
+                [('application_fee_invoice_id', '=', record.id)])
+            if application:
+                if application.state == "approved":
+                    application.write({'state': 'advisor_search'})
 
 
 class GhuApplicationStudy(models.Model):

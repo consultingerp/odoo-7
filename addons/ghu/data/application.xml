@@ -254,6 +254,17 @@ tool = env["ghu.application"]
 tool.check_signature(record)
 ]]></field>
         </record>
+        <record model="base.automation" id="ghu_doctoral_check_invoices">
+            <field name="name">Check if paid invoice is application</field>
+            <field name="model_id" ref="account.invoice"/>
+            <field name="trigger">on_write</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+tool = env["ghu.application"]
+tool.check_invoice(record)
+]]></field>
+        </record>
         <record model="product.product" id="ghu_doctoral_application_fee">
             <field name="default_code">Doctoral Application Fee</field>
             <field name="name">Doctoral Application Fee</field>
