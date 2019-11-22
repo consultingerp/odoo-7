@@ -143,10 +143,6 @@ class GhuApplication(models.Model):
     def _read_group_stage_ids(self, stages, domain, order):
         return [k for k, v in self.states]
 
-    @api.one
-    def approved_registrar(self, record):
-        self.write({'state': 'approved'})
-
     partner_id = fields.Many2one(
         'res.partner',
         'Partner',
@@ -171,6 +167,15 @@ class GhuApplication(models.Model):
         states={'done': [('readonly', True)]},
     )
 
+    advisor_ref = fields.Reference(
+        string=u'Advisor',
+        selection=[('ghu.advisor', 'Advisor')]
+    )
+
+    advisor_matching_count = fields.Integer(
+        string=u'Advisor Matching Count',
+    )
+
     @api.multi
     def write(self, values):
         if 'state' in values:
@@ -180,7 +185,6 @@ class GhuApplication(models.Model):
                     _('You\'re not allowed to skip stages in this kanban!'))
 
             self.on_state_change(values['state'])
-
         super(GhuApplication, self).write(values)
 
     def on_creation(self, record):
@@ -247,12 +251,20 @@ class GhuApplication(models.Model):
     def on_state_change(self, new_state):
         # generate invoice
         self_sudo = self.sudo()
-        if new_state == 'approved' and not self.application_fee_invoice_id:
-            self_sudo.send_application_fee_invoice()
-        elif new_state == 'advisor_search':
-            self_sudo.send_advisor_search_notification()
-        elif new_state == 'signed':
+        if new_state == 'signed':
             self_sudo.signed_by_applicant()
+        elif new_state == 'approved' and not self.application_fee_invoice_id:
+            self_sudo.send_application_fee_invoice()
+        elif new_state == 'advisor_search' and self.state == '':
+            self_sudo.send_advisor_search_notification()
+        elif new_state == 'advisor_matched':
+            self_sudo.notify_advisor()
+        elif new_state == 'advisor_found':
+            self_sudo.send_first_fee_invoice()
+        elif new_state == 'done':
+            self_sudo.finish_application()
+        elif new_state == 'declined':
+            self_sudo.end_application()
 
     def signed_by_applicant(self, record):
         # attach signed pdf to mail
@@ -391,6 +403,28 @@ class GhuApplication(models.Model):
             if application:
                 if application.state == "approved":
                     application.write({'state': 'advisor_search'})
+
+    @api.one
+    def approved_registrar(self, record):
+        self.write({'state': 'approved'})
+
+    @api.one
+    def advisor_has_matched(self):
+        self_sudo = self.sudo()
+        self_sudo.write({'state': 'advisor_matched'})
+
+    @api.one
+    def advisor_has_approved(self):
+        self_sudo = self.sudo()
+        self_sudo.write({'state': 'advisor_found'})
+
+    @api.one
+    def advisor_has_declined(self):
+        self_sudo = self.sudo()
+        if self.advisor_matching_count < 2:
+            self_sudo.write({'state': 'advisor_found'})
+        else:
+            self_sudo.write({'state': 'declined'})
 
 
 class GhuApplicationStudy(models.Model):

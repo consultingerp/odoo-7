@@ -71,6 +71,9 @@
                     <header>
                         <button string="Send signature request again" type="object" name="create_sign_request" attrs="{'invisible': [('state', '!=', 'new')]}"/>
                         <button string="Approved by registrar" type="object" name="approved_registrar" attrs="{'invisible': [('state', '!=', 'signed')]}"/>
+                        <button string="Advisor matched" type="object" name="advisor_has_matched" attrs="{'invisible': [('state', '!=', 'advisor_search')]}"/>
+                        <button string="Advisor approved" type="object" name="advisor_has_approved" attrs="{'invisible': [('state', '!=', 'advisor_found')]}"/>
+                        <button string="Advisor declined" type="object" name="advisor_has_declined" attrs="{'invisible': [('state', '!=', 'advisor_found')]}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
