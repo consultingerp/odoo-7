@@ -146,6 +146,8 @@
                     Dear ${object.partner_id.name},
                 </p>
                 <p>
+                    Congratulations, our registrar has approved your application to our doctoral program. After payment of the application fee we will start find the best advisor for your intended research. 
+                    <br/>
                     Here is your 
                     %if object.number:
                         invoice <strong>${object.number}</strong>
