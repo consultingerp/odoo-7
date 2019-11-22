@@ -256,7 +256,7 @@ tool.check_signature(record)
         </record>
         <record model="base.automation" id="ghu_doctoral_check_invoices">
             <field name="name">Check if paid invoice is application</field>
-            <field name="model_id" ref="account.invoice"/>
+            <field name="model_id" ref="account.move"/>
             <field name="trigger">on_write</field>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
