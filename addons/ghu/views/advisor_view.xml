@@ -71,7 +71,6 @@
                     <field name="lastname"/>
                     <field name="nomination"/>
                     <field name="lang"/>
-                    <field name="foreign_languages"/>
                     <field name="nationality"/>
                     <field name="country_id"/>
                     <field name="programs"/>
