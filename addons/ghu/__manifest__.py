@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.645',
+    'version': '0.646',
  
 
     # any module necessary for this one to work correctly
@@ -47,6 +47,7 @@
         'views/web_style.xml',
         'views/student/enrolment_confirmation_pdf.xml',
         'views/mails/application/advisor_search_notification.xml',
+        'views/mails/application/notify_advisor.xml',
         'menu/ghu_menu.xml',
         'menu/advisor_menu.xml',
         'views/application_form.xml',

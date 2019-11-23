@@ -69,8 +69,13 @@
                     <field name="title"/>
                     <field name="firstname"/>
                     <field name="lastname"/>
-                    <field name="nationality"/>
+                    <field name="nomination"/>
                     <field name="lang"/>
+                    <field name="foreign_languages"/>
+                    <field name="nationality"/>
+                    <field name="country_id"/>
+                    <field name="programs"/>
+                    <field name="partner_id.function"/>
                 </tree>
             </field>
         </record>
@@ -169,6 +174,12 @@
             <field name="arch" type="xml">
                 <search string="Advisor">
                     <field name="name"/>
+                    <field name="language"/>
+                    <field name="foreign_languages"/>
+                    <field name="nationality"/>
+                    <field name="country_id"/>
+                    <field name="programs"/>
+                    <field name="partner_id.function"/>
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>

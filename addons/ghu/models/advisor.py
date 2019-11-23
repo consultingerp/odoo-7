@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class GhuAdvisor(models.Model):
     _name = 'ghu.advisor'
     _description = "Advisor"
@@ -19,7 +20,7 @@ class GhuAdvisor(models.Model):
     is_advisor = fields.Boolean(
         string=u'Is Phd/DBA advisor?',
     )
-    
+
     advisor_id = fields.Char('Advisor ID', size=12)
 
     nomination = fields.Char('Nomination', size=128)
@@ -32,7 +33,7 @@ class GhuAdvisor(models.Model):
         string=u'Nationality',
         comodel_name='res.country'
     )
-        
+
     native_language = fields.Many2one(
         string=u'Native Language',
         comodel_name='res.lang'
@@ -45,12 +46,12 @@ class GhuAdvisor(models.Model):
         column1='advisor_id',
         column2='lang_id'
     )
-    
+
     gender = fields.Selection(
         [('m', 'Male'), ('f', 'Female'), ('o', 'Other')],
         string='Gender',
         required=True)
-        
+
     birth_date = fields.Date(
         string=u'Birthday',
         default=fields.Date.context_today
@@ -67,7 +68,7 @@ class GhuAdvisor(models.Model):
     degree_filename = fields.Char(
         string=u'Degree Filename',
     )
-        
+
     certificate_file = fields.Binary('Certificate PDF')
     certificate_file_filename = fields.Char(
         string=u'Certificate Filename',
@@ -77,7 +78,7 @@ class GhuAdvisor(models.Model):
     certificate_original_file_filename = fields.Char(
         string=u'Certificate Filename Word',
     )
-    
+
     agreement = fields.Binary(
         string=u'Doctoral Program Agreement',
     )
@@ -85,7 +86,6 @@ class GhuAdvisor(models.Model):
         string=u'Doctoral Program Agreement Filename',
     )
 
-        
     cmba_agreement = fields.Binary(
         string=u'Custom MBA Agreement',
     )
@@ -101,12 +101,42 @@ class GhuAdvisor(models.Model):
         column2='program_id',
     )
 
+    pts = fields.Integer(
+        string=u'PTS',
+        help=u'Publication Total Score'
+    )
+
+    pts_p = fields.Integer(
+        string=u'PTS-P',
+        help=u'Publication Score Professional'
+    )
+
+    pts_r = fields.Integer(
+        string=u'PTS-R',
+        help=u'Publication Score Academic/Research'
+    )
+
+    pes = fields.Integer(
+        string=u'PES',
+        help=u'Professional Experience Score'
+    )
+
+    tes = fields.Integer(
+        string=u'TES',
+        help=u'Teaching Experience Score'
+    )
+
+    ets = fields.Integer(
+        string=u'Total Score',
+        help=u'Evaluation Total Score'
+    )
+
     @api.multi
     def all_languages(self):
         res = set()
         for advisor in self:
             res.update(advisor.foreign_languages)
-        
+
         return sorted(res, key=lambda lang: lang.name.lower() if lang.name else "")
 
     @api.multi
@@ -114,7 +144,7 @@ class GhuAdvisor(models.Model):
         res = set()
         for advisor in self:
             res.add(advisor.nationality)
-        
+
         return sorted(res, key=lambda nationality: nationality.name.lower() if nationality.name else "")
 
     @api.multi

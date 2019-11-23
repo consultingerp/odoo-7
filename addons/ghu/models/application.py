@@ -381,9 +381,14 @@ class GhuApplication(models.Model):
         self.application_fee_invoice_id = invoice.id
 
     def send_advisor_search_notification(self):
-        # attach signed pdf to mail
         email_template = self.env.ref(
             'ghu.mail_application_advisor_search_notification')
+        email_template.send_mail(
+            self.id, raise_exception=False, force_send=False)
+
+    def notify_advisor(self):
+        email_template = self.env.ref(
+            'ghu.mail_application_notify_advisor')
         email_template.send_mail(
             self.id, raise_exception=False, force_send=False)
 
@@ -406,12 +411,18 @@ class GhuApplication(models.Model):
 
     @api.one
     def approved_registrar(self, record):
-        self.write({'state': 'approved'})
+        self_sudo = self.sudo()
+        self_sudo.write({'state': 'approved'})
 
     @api.one
     def advisor_has_matched(self):
         self_sudo = self.sudo()
-        self_sudo.write({'state': 'advisor_matched'})
+        self_sudo.write(
+            {
+                'advisor_matching_count': self.advisor_matching_count+1,
+                'state': 'advisor_matched'
+            }
+        )
 
     @api.one
     def advisor_has_approved(self):
