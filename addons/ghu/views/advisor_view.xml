@@ -132,7 +132,7 @@
                                     <field name="user_id" string="User" readonly="1"/>
                                     <field name="email" required="1"/>
                                     <field name="skype" />
-                                    <field name="native_language"/>
+                                    <field name="lang"/>
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
                                     <field name="vita" widget="binary" filename="vita_filename"/>
@@ -187,7 +187,7 @@
             <field name="arch" type="xml">
                 <search string="Advisor">
                     <field name="name"/>
-                    <field name="language"/>
+                    <field name="lang"/>
                     <field name="foreign_languages"/>
                     <field name="nationality"/>
                     <field name="country_id"/>
@@ -196,7 +196,7 @@
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>
-                        <filter name="language" string="Language" domain="[]" context="{'group_by':'lang'}"/>
+                        <filter name="lang" string="Language" domain="[]" context="{'group_by':'lang'}"/>
                     </group>
                 </search>
             </field>
