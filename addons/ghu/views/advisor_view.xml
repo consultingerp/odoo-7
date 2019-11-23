@@ -75,7 +75,12 @@
                     <field name="nationality"/>
                     <field name="country_id"/>
                     <field name="programs"/>
-                    <field name="function"/>
+                    <field name="pts"/>
+                    <field name="pts_r"/>
+                    <field name="pts_p"/>
+                    <field name="pes"/>
+                    <field name="tes"/>
+                    <field name="ets"/>
                 </tree>
             </field>
         </record>
