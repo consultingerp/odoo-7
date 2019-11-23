@@ -69,8 +69,17 @@
                     <field name="title"/>
                     <field name="firstname"/>
                     <field name="lastname"/>
-                    <field name="nationality"/>
+                    <field name="nomination"/>
                     <field name="lang"/>
+                    <field name="nationality"/>
+                    <field name="country_id"/>
+                    <field name="programs"/>
+                    <field name="pts"/>
+                    <field name="pts_r"/>
+                    <field name="pts_p"/>
+                    <field name="pes"/>
+                    <field name="tes"/>
+                    <field name="ets"/>
                 </tree>
             </field>
         </record>
@@ -122,7 +131,7 @@
                                     <field name="user_id" string="User" readonly="1"/>
                                     <field name="email" required="1"/>
                                     <field name="skype" />
-                                    <field name="native_language"/>
+                                    <field name="lang"/>
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
                                     <field name="vita" widget="binary" filename="vita_filename"/>
@@ -137,6 +146,14 @@
                                     <field name="certificate_file_filename" invisible="1"/>
                                     <field name="certificate_original_file" widget="binary" filename="certificate_original_file_filename"/>
                                     <field name="certificate_original_file_filename" invisible="1"/>
+                                </group>
+                                <group string="Scoring" name="scoring">
+                                    <field name="pts" />
+                                    <field name="pts_r" />
+                                    <field name="pts_p" />
+                                    <field name="pes" />
+                                    <field name="tes" />
+                                    <field name="ets" />
                                 </group>
                                 <group string="Address Detail" name="address">
                                     <label for="type"/>
@@ -169,10 +186,16 @@
             <field name="arch" type="xml">
                 <search string="Advisor">
                     <field name="name"/>
+                    <field name="lang"/>
+                    <field name="foreign_languages"/>
+                    <field name="nationality"/>
+                    <field name="country_id"/>
+                    <field name="programs"/>
+                    <field name="function"/>
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>
-                        <filter name="language" string="Language" domain="[]" context="{'group_by':'lang'}"/>
+                        <filter name="lang" string="Language" domain="[]" context="{'group_by':'lang'}"/>
                     </group>
                 </search>
             </field>
