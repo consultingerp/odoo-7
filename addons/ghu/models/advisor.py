@@ -35,8 +35,13 @@ class GhuAdvisor(models.Model):
     )
 
     native_language = fields.Many2one(
-        string=u'Native Language',
+        string=u'Campus Language',
         comodel_name='res.lang'
+    )
+    
+    mother_language = fields.Many2one(
+        string=u'Native Language',
+        comodel_name='ghu.lang'
     )
 
     foreign_languages = fields.Many2many(
