@@ -156,7 +156,7 @@
                <t t-call="web.external_layout">
                   <div class="page">
                      <h2 class="mt-3">Advisor Student Agreement</h2>
-                     <h3 style="margin-top: 1cm;">Personal Details (Student)</h2>
+                     <h3 style="margin-top: 1cm;">Personal Details (Student)</h3>
                      <table class="table">
                         <tr>
                            <td>Name</td>
@@ -172,7 +172,7 @@
                            </td>
                         </tr>
                      </table>
-                     <h3 style="margin-top: 1cm;">Personal Details (Advisor)</h2>
+                     <h3 style="margin-top: 1cm;">Personal Details (Advisor)</h3>
                      <table class="table">
                         <tr>
                            <td>Name</td>
