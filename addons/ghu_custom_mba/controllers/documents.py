@@ -29,7 +29,7 @@ class GhuCampus(CustomerPortal):
             values['custom_mba_documents'] = folder.attachment_ids
             for attachment in values['custom_mba_documents']:
                 attachment.generate_access_token()
-        if partner.is_cba_student or request.env.user.has_group('base.group_user'):
+        if partner.is_custom_mba_student or request.env.user.has_group('base.group_user'):
             folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_student_custom_mba'))
             folder = request.env['documents.folder'].sudo().browse(folder_id)
             values['student_custom_mba_documents'] = folder.attachment_ids
