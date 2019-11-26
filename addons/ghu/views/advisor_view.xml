@@ -70,7 +70,7 @@
                     <field name="firstname"/>
                     <field name="lastname"/>
                     <field name="nomination"/>
-                    <field name="lang"/>
+                    <field name="mother_language"/>
                     <field name="nationality"/>
                     <field name="country_id"/>
                     <field name="programs"/>
@@ -132,6 +132,7 @@
                                     <field name="email" required="1"/>
                                     <field name="skype" />
                                     <field name="lang"/>
+                                    <field name="mother_language"/>
                                     <field name="foreign_languages"/>
                                     <field name="programs"/>
                                     <field name="vita" widget="binary" filename="vita_filename"/>
