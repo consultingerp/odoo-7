@@ -130,7 +130,6 @@ class GhuApplication(models.Model):
         required=False,
         help='Will be printed in student-advisor agreement'
     )
-    
 
     states = [
         ('new', 'New'),
@@ -169,12 +168,17 @@ class GhuApplication(models.Model):
         'Application Fee Invoice',
     )
 
+
+    first_fee_invoice_id = fields.Many2one(
+        'account.invoice',
+        'First Fee Invoice',
+    )
+
     sign_request_id = fields.Many2one(
         'sign.request',
         'Sign Request',
         states={'done': [('readonly', True)]},
     )
-
 
     agreement_request_id = fields.Many2one(
         'sign.request',
@@ -210,7 +214,8 @@ class GhuApplication(models.Model):
     @api.one
     def create_sign_request(self, record):
         self = self.sudo()
-        pdf = self.env.ref('ghu.application_agreement_pdf').render_qweb_pdf([self.id])[0]
+        pdf = self.env.ref(
+            'ghu.application_agreement_pdf').render_qweb_pdf([self.id])[0]
         attachmentName = 'Application-'+self.lastname+'-'+str(self.id)+'.pdf'
         attachment = self.env['ir.attachment'].create({
             'name': attachmentName,
@@ -266,7 +271,8 @@ class GhuApplication(models.Model):
     @api.one
     def create_agreement_request(self, record):
         self = self.sudo()
-        pdf = self.env.ref('ghu.student_advisor_agreement_pdf').render_qweb_pdf([self.id])[0]
+        pdf = self.env.ref(
+            'ghu.student_advisor_agreement_pdf').render_qweb_pdf([self.id])[0]
         attachmentName = 'Agreement-'+self.lastname+'-'+str(self.id)+'.pdf'
         attachment = self.env['ir.attachment'].create({
             'name': attachmentName,
@@ -336,7 +342,6 @@ class GhuApplication(models.Model):
 
         application = self.env['ghu.application'].browse(self.id)
         application.agreement_request_id = sign_request.id
-
 
     def on_state_change(self, new_state):
         # generate invoice
@@ -484,6 +489,51 @@ class GhuApplication(models.Model):
             self.id, raise_exception=False, force_send=False)
 
     def send_first_fee_invoice(self):
+        invoice_partners = self.partner_id.child_ids.filtered(
+            lambda p: p.type == 'invoice')
+        invoice = self.env['account.invoice'].create(dict(
+            # customer (billing address)
+            partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
+            # customer (applicant)
+            partner_shipping_id=self.partner_id.id,
+            type='out_invoice',
+            date_invoice=datetime.datetime.utcnow().date(),  # invoice date
+            date_due=(datetime.datetime.utcnow() + \
+                      datetime.timedelta(weeks=1)).date(),  # due date
+            user_id=1,  # salesperson
+            invoice_line_ids=[],  # invoice lines
+            name="First payment",  # name for account move lines
+            partner_bank_id=self.env['ir.config_parameter'].get_param(
+                'ghu.automated_invoice_bank_account'),  # company bank account
+        ))
+
+        if self.payment_method == 'one_time':
+            payment = 24500
+        elif self.payment_method == 'two_times':
+            payment = 12500
+        else:
+            payment = 9000
+
+        product = self.env['product.product'].search(
+            [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
+        invoice_line = self.env['account.invoice.line'].sudo().with_context(
+            type=invoice.type,
+            journal_id=invoice.journal_id.id,
+            default_invoice_id=invoice.id
+        ).create(dict(
+            product_id=product.id,
+            name="First Fee",
+            price_unit=payment,
+        ))
+
+        invoice.invoice_line_ids = [(4, invoice_line.id)]
+        invoice.action_invoice_open()
+        invoice_template = self.env.ref(
+            'ghu.ghu_invoice_email_template').sudo()
+        invoice_template.send_mail(invoice.id)
+        invoice.write({'sent': True})
+
+        self.first_fee_invoice_id = invoice.id
 
 
     # Check if signed request is one of an application
