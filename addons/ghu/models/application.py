@@ -295,8 +295,8 @@ class GhuApplication(models.Model):
                 'height': 0.05,
                 'name': "Signature",
                 'page': "2",
-                'posX': 0.166,
-                'posY': 0.142,
+                'posX': 0.056,
+                'posY': 0.789,
                 'required': 'true',
                 'responsible_id': self.env.ref(
                     'ghu.sign_item_role_student').id,
@@ -310,8 +310,8 @@ class GhuApplication(models.Model):
                 'height': 0.05,
                 'name': "Signature",
                 'page': "2",
-                'posX': 0.166,
-                'posY': 0.242,
+                'posX': 0.737,
+                'posY': 0.789,
                 'required': 'true',
                 'responsible_id': self.env.ref(
                     'ghu.sign_item_role_advisor').id,
