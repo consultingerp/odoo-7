@@ -118,6 +118,7 @@ class Lead(models.Model):
             custom_values = {}
         body = msg_dict.get('body')
         clean = re.compile('<.*?>')
+        defaults = {}
         if re.search(r'\S+@zapiermail.com', msg_dict.get('from')):
             defaults = {
                 'name':  re.search(r'First and Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
