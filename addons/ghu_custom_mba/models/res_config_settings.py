@@ -20,6 +20,18 @@ class ResConfigSettings(models.TransientModel):
         config_parameter='ghu.documents_custom_mba'
     )
 
+    ghu_documents_student_doctoral = fields.Many2one(
+        'documents.folder',
+        string=u'General Information for doctoral students',
+        config_parameter='ghu.documents_student_doctoral',
+    )
+
+    ghu_documents_student_custom_mba = fields.Many2one(
+        'documents.folder',
+        string='General Information for custom MBA students',
+        config_parameter='ghu.documents_student_custom_mba'
+    )
+
     ghu_panopto_user = fields.Char(
         string='Panopto Username',
         config_parameter='ghu.panopto_user'

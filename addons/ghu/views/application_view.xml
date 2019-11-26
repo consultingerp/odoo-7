@@ -70,10 +70,11 @@
                 <form string="application">
                     <header>
                         <button string="Send signature request again" type="object" name="create_sign_request" attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <button string="Send agreement request again" type="object" name="create_agreement_request" attrs="{'invisible': [('state', '!=', 'advisor_found')]}"/>
                         <button string="Approved by registrar" type="object" name="approved_registrar" attrs="{'invisible': [('state', '!=', 'signed')]}"/>
                         <button string="Advisor matched" type="object" name="advisor_has_matched" attrs="{'invisible': [('state', '!=', 'advisor_search')]}"/>
-                        <button string="Advisor approved" type="object" name="advisor_has_approved" attrs="{'invisible': [('state', '!=', 'advisor_found')]}"/>
-                        <button string="Advisor declined" type="object" name="advisor_has_declined" attrs="{'invisible': [('state', '!=', 'advisor_found')]}"/>
+                        <button string="Advisor approved" type="object" name="advisor_has_approved" attrs="{'invisible': [('state', '!=', 'advisor_matched')]}"/>
+                        <button string="Advisor declined" type="object" name="advisor_has_declined" attrs="{'invisible': [('state', '!=', 'advisor_matched')]}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -101,18 +102,16 @@
                                     <field name="academic_degree_post" />                                    
                                     <field name="native_language"/>
                                     <field name="other_languages"/>
-                                                                      
-                                    
-                                    
-
                                 </group>
 
                                 <group col="4" colspan="4"  string="Study Information" name="program">
                                     <field name="study_id"/>
+                                    <field name="thesis_title"/>
                                     <field name="preliminary_studies"/>
                                     <field name="ever_applied_at_ghu"/>
                                     <field name="ever_applied_doctoral"/>
                                     <field name="ever_applied_doctoral_university_name"/>
+                                    <field name="advisor_ref"/>
                                 </group>
                                 <group col="4" colspan="4"  string="Documents" name="documents">
                                     <field name="photo_file" widget="binary" filename="photo_file_filename"/>

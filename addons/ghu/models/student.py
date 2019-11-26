@@ -43,6 +43,10 @@ class GhuStudent(models.Model):
     _inherits = {'res.partner': 'partner_id'}
     _description = "Student"
 
+    doctoral_student = fields.Boolean(
+        string=u'Doctoral Program?',
+    )
+
     firstname = fields.Char(related='partner_id.firstname', required=True)
     lastname = fields.Char(related='partner_id.lastname', required=True)
     gender = fields.Selection(related='partner_id.gender', required=True)

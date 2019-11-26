@@ -26,8 +26,24 @@
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <div class="col-12">
-                                                <label class="o_light_label" string="Custom MBA General Information Folder" for="ghu_documents_custom_mba"/>
+                                                <label class="o_light_label" string="Lecturer Custom MBA General Information Folder" for="ghu_documents_custom_mba"/>
                                                 <field name="ghu_documents_custom_mba"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Student - Doctoral General Information Folder" for="ghu_documents_student_doctoral"/>
+                                                <field name="ghu_documents_student_doctoral"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <div class="col-12">
+                                                <label class="o_light_label" string="Student - Custom MBA General Information Folder" for="ghu_documents_student_custom_mba"/>
+                                                <field name="ghu_documents_student_custom_mba"/>
                                             </div>
                                         </div>
                                     </div>

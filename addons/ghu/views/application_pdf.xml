@@ -88,7 +88,9 @@
                         <tr>
                            <td>Desired Study Field</td>
                            <td>
-                              <strong><t t-esc="o.study_id.name" /></strong>
+                              <strong>
+                                 <t t-esc="o.study_id.name" />
+                              </strong>
                            </td>
                         </tr>
                         <tr>
@@ -100,7 +102,7 @@
                            <tr>
                               <th colspan="4">
                                     Study
-                                    <t t-esc="study_index + 1" />
+                                 <t t-esc="study_index + 1" />
                               </th>
                            </tr>
                            <tr>
@@ -143,6 +145,125 @@
                         </t>
                         <!-- TODO: Finish mail-->
                      </table>
+                  </div>
+               </t>
+            </t>
+         </t>
+      </template>
+      <template id="student_advisor_agreement">
+         <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+               <t t-call="web.external_layout">
+                  <div class="page">
+                     <h2 class="mt-3">Advisor Student Agreement</h2>
+                     <h3 style="margin-top: 1cm;">Personal Details (Student)</h3>
+                     <table class="table">
+                        <tr>
+                           <td>Name</td>
+                           <td colspan="3">
+                              <t t-esc="o.partner_id.firstname" />
+                              <t t-esc="o.partner_id.lastname" />
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Date of birth</td>
+                           <td>
+                              <t t-esc="o.date_of_birth" />
+                           </td>
+                        </tr>
+                     </table>
+                     <h3 style="margin-top: 1cm;">Personal Details (Advisor)</h3>
+                     <table class="table">
+                        <tr>
+                           <td>Name</td>
+                           <td colspan="3">
+                              <t t-esc="o.advisor_ref.firstname" />
+                              <t t-esc="o.advisor_ref.lastname" />
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Date of birth</td>
+                           <td>
+                              <t t-esc="o.advisor_ref.birth_date" />
+                           </td>
+                        </tr>
+                     </table>
+                     <h3 style="margin-top: 1cm;">Agreement</h3>
+
+                     <h4>Structure of the Doctoral Program:</h4>
+                     <h5>Phase 1:</h5>
+                     <table class="table table-striped">
+                        <tbody>
+                           <tr>
+                              <th>Module</th>
+                              <th>ECTS</th>
+                           </tr>
+                           <tr>
+                              <td> Research Proposal*</td>
+                              <td> 5 </td>
+                           </tr>
+                           <tr>
+                              <td> Academic Writing/Methods Skills*<br/>
+                              </td>
+                              <td> 15</td>
+                           </tr>
+                           <tr>
+                              <td> Review of Professional Capability (Reflection)*<br/>
+                              </td>
+                              <td> 10</td>
+                           </tr>
+                           <tr>
+                              <td> Planning an advanced Practitioner Research Programme (Exposé)<br/>
+                              </td>
+                              <td> 30</td>
+                           </tr>
+                           <tr class="info">
+                              <td>* Any order</td>
+                              <td>60</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <h5>Phase 2:</h5>
+                     <table class="table table-striped">
+                        <tbody>
+                           <tr>
+                              <th>Module</th>
+                              <th>ECTS</th>
+                           </tr>
+                           <tr>
+                              <td>Project Report (Thesis - Dissertation)<br/>
+                              </td>
+                              <td>85 </td>
+                           </tr>
+                           <tr>
+                              <td>Research Paper<br/>
+                              </td>
+                              <td> 15</td>
+                           </tr>
+                           <tr>
+                              <td>Oral Presentation and Viva Voce (Defensio)<br/>
+                              </td>
+                              <td>5</td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <br/>
+                              </td>
+                              <td> 120</td>
+                           </tr>
+                           <tr class="info">
+                              <th>Total</th>
+                              <th>180</th>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <p>The Academic Board reserves the right to request a progress report from the participant and/or their advisor at any time during the Doctoral Program.</p>
+                     <p>The Advisor undertakes to engage in continuous supervision and to provide oral and/or written feedback on the participant’s work (e.g. drafts and coursework) normally within two weeks (in exceptional cases four weeks). </p>
+                     <p>Supervision will be provided in a variety of ways, such as via the virtual classroom, Skype, telephone, email, and in face-to-face meetings including group work with peers.</p>
+                     <p>The student will record their progress with their research in a Project Progress Report on a monthly basis, recording communications/meetings with their Advisor, agreed targets, and engagement with their research program in terms of study hours and progress achieved. The Advisor will scrutinise the project progress report at least once a year. The purpose of the Project Progress Report, together with coursework assignments and drafts of participants’ work submitted to the Advisor, is to ensure the progress and development of the research project. The participant is responsible for maintaining regular contact with their Advisor, and all other forms of communication to support the progress of the project can be freely agreed by both parties.</p>
+                     <p>The student undertakes to comply with the rules of good academic practice in accordance with the regulations.</p>
+                     <h3>Signatures</h3>
+                     
                   </div>
                </t>
             </t>

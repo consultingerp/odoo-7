@@ -11,6 +11,76 @@
                     </div>
                 </div>
                 <div class="accordion" id="courseAccordion">
+                    <div t-if="student_doctoral_documents" class="card">
+                        <div class="card-header" id="headingDescription">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                    Doctoral program information
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="description" class="collapse show" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                            <div class="card-body">
+                                <t t-call="portal.portal_table">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Document</th>
+                                            <th>Publication Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="student_doctoral_documents" t-as="document">
+                                            <tr>
+                                                <td>
+                                                    <a t-attf-href="/web/content/#{document.id}?download=true&amp;access_token=#{document.access_token}" t-att-title="document.name">
+                                                        <t t-esc="document.name"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span t-field="document.__last_update"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="student_custom_mba_documents" class="card">
+                        <div class="card-header" id="headingDescription">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                    Custom MBA information
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="description" class="collapse show" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                            <div class="card-body">
+                                <t t-call="portal.portal_table">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Document</th>
+                                            <th>Publication Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="student_custom_mba_documents" t-as="document">
+                                            <tr>
+                                                <td>
+                                                    <a t-attf-href="/web/content/#{document.id}?download=true&amp;access_token=#{document.access_token}" t-att-title="document.name">
+                                                        <t t-esc="document.name"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span t-field="document.__last_update"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
                     <div t-if="advisor_documents" class="card">
                         <div class="card-header" id="headingDescription">
                             <h5 class="mb-0">
