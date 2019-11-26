@@ -269,7 +269,7 @@ class GhuApplication(models.Model):
         application.sign_request_id = sign_request.id
 
     @api.one
-    def create_agreement_request(self, record):
+    def create_agreement_request(self):
         self = self.sudo()
         pdf = self.env.ref(
             'ghu.student_advisor_agreement_pdf').render_qweb_pdf([self.id])[0]
@@ -577,7 +577,7 @@ class GhuApplication(models.Model):
     def advisor_has_declined(self):
         self_sudo = self.sudo()
         if self.advisor_matching_count < 2:
-            self_sudo.write({'state': 'advisor_found'})
+            self_sudo.write({'state': 'advisor_search'})
         else:
             self_sudo.write({'state': 'declined'})
 
