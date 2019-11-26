@@ -32,5 +32,14 @@
             <field name="numbercall">-1</field>
             <field name="doall" eval="False"/>
         </record>
+        <record model="sign.item.role" id="sign_item_role_student">
+            <field name="name">Student</field>
+        </record>
+        <record model="sign.item.role" id="sign_item_role_advisor">
+            <field name="name">Advisor</field>
+        </record>
+        <record model="sign.item.role" id="sign_item_role_academic_board">
+            <field name="name">Academic Board</field>
+        </record>
     </data>
 </odoo>

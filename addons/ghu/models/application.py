@@ -124,6 +124,14 @@ class GhuApplication(models.Model):
         ]
     )
 
+    # Thesis title
+    thesis_title = fields.Char(
+        string='Thesis Title',
+        required=False,
+        help='Will be printed in student-advisor agreement'
+    )
+    
+
     states = [
         ('new', 'New'),
         ('signed', 'Signed'),
@@ -167,6 +175,13 @@ class GhuApplication(models.Model):
         states={'done': [('readonly', True)]},
     )
 
+
+    agreement_request_id = fields.Many2one(
+        'sign.request',
+        'Student-Advisor Agreement',
+        states={'done': [('readonly', True)]},
+    )
+
     advisor_ref = fields.Reference(
         string=u'Advisor',
         selection=[('ghu.advisor', 'Advisor')]
@@ -194,8 +209,8 @@ class GhuApplication(models.Model):
 
     @api.one
     def create_sign_request(self, record):
-        pdf = self.env.ref('ghu.application_agreement_pdf').sudo(
-        ).render_qweb_pdf([self.id])[0]
+        self = self.sudo()
+        pdf = self.env.ref('ghu.application_agreement_pdf').render_qweb_pdf([self.id])[0]
         attachmentName = 'Application-'+self.lastname+'-'+str(self.id)+'.pdf'
         attachment = self.env['ir.attachment'].create({
             'name': attachmentName,
@@ -248,6 +263,81 @@ class GhuApplication(models.Model):
         application = self.env['ghu.application'].browse(self.id)
         application.sign_request_id = sign_request.id
 
+    @api.one
+    def create_agreement_request(self, record):
+        self = self.sudo()
+        pdf = self.env.ref('ghu.student_advisor_agreement_pdf').render_qweb_pdf([self.id])[0]
+        attachmentName = 'Agreement-'+self.lastname+'-'+str(self.id)+'.pdf'
+        attachment = self.env['ir.attachment'].create({
+            'name': attachmentName,
+            'type': 'binary',
+            'datas': base64.encodestring(pdf),
+            'datas_fname': attachmentName,
+            'res_model': 'ghu.application',
+            'res_id': self.id,
+            'mimetype': 'application/x-pdf'
+        })
+        template = self.env['sign.template'].create(
+            {
+                'attachment_id': attachment.id,
+                'active': 'true'
+            }
+        )
+        signature_student = self.env['sign.item'].create(
+            {
+                'template_id': template.id,
+                'height': 0.05,
+                'name': "Signature",
+                'page': "2",
+                'posX': 0.166,
+                'posY': 0.142,
+                'required': 'true',
+                'responsible_id': self.env.ref(
+                    'ghu.sign_item_role_student').id,
+                'type_id': 1,
+                'width': 0.2
+            }
+        )
+        signature_advisor = self.env['sign.item'].create(
+            {
+                'template_id': template.id,
+                'height': 0.05,
+                'name': "Signature",
+                'page': "2",
+                'posX': 0.166,
+                'posY': 0.242,
+                'required': 'true',
+                'responsible_id': self.env.ref(
+                    'ghu.sign_item_role_advisor').id,
+                'type_id': 1,
+                'width': 0.2
+            }
+        )
+        res = self.env['sign.request'].initialize_new(
+            template.id,
+            [
+                {'role': self.env.ref(
+                    'ghu.sign_item_role_student').id, 'partner_id': self.partner_id.id},
+                {'role': self.env.ref(
+                    'ghu.sign_item_role_advisor').id, 'partner_id': self.advisor_ref.partner_id.id}
+            ],
+            [],
+            'Advisor-Student-Agreement',
+            'Advisor-Student-Agreement at GHU',
+            '<p>We are pleased to inform you, ' + self.partner_id.firstname +
+            ', that we have successfully found your advisor for your doctoral program.</p><p>There is only your signature missing, so please sign the document via the link below to finish the application processing on your side.<p><br></p><p>Global Humanistic University</p>',
+            True
+        )
+        sign_request = self.env['sign.request'].browse(res['id'])
+        sign_request.toggle_favorited()
+        sign_request.action_sent()
+        sign_request.write({'state': 'sent'})
+        sign_request.request_item_ids.write({'state': 'sent'})
+
+        application = self.env['ghu.application'].browse(self.id)
+        application.agreement_request_id = sign_request.id
+
+
     def on_state_change(self, new_state):
         # generate invoice
         self_sudo = self.sudo()
@@ -260,6 +350,7 @@ class GhuApplication(models.Model):
         elif new_state == 'advisor_matched':
             self_sudo.notify_advisor()
         elif new_state == 'advisor_found':
+            self_sudo.create_agreement_request()
             self_sudo.send_first_fee_invoice()
         elif new_state == 'done':
             self_sudo.finish_application()
@@ -391,6 +482,9 @@ class GhuApplication(models.Model):
             'ghu.mail_application_notify_advisor')
         email_template.send_mail(
             self.id, raise_exception=False, force_send=False)
+
+    def send_first_fee_invoice(self):
+
 
     # Check if signed request is one of an application
     def check_signature(self, record):

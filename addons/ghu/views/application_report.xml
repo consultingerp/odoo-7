@@ -9,5 +9,12 @@
             report_type="qweb-pdf"
             name="ghu.application_agreement"
         />
+        <report
+            id="student_advisor_agreement_pdf"
+            model="ghu.application"
+            string="Advisor-Student-Agreement"
+            report_type="qweb-pdf"
+            name="ghu.student_advisor_agreement"
+        />
     </data>
 </odoo>

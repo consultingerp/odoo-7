@@ -27,6 +27,19 @@ class GhuPartner(models.Model):
         search='_search_custom_mba'
     )
 
+    is_custom_mba_student = fields.Boolean(
+        string=u'Is custom MBA student?',
+        compute='_is_cba_student',
+        search='_search_cba_student'
+    )
+
+
+    is_doctoral_student = fields.Boolean(
+        string=u'Is doctoral student?',
+        compute='_is_doctoral_student',
+        search='_search_doctoral_student'
+    )
+
     def _is_advisor(self):
         for record in self:
             if self.env['ghu.advisor'].sudo().search([('partner_id', '=', record.id)]):
@@ -48,6 +61,32 @@ class GhuPartner(models.Model):
                 
     def _search_student(self, operator, value):
         recs = self.env['ghu.student'].sudo().search([]).filtered(lambda x : x.partner_id )
+        if recs:
+            return [('id', 'in', [x.partner_id.id for x in recs])]
+
+    
+    def _is_cba_student(self):
+        for record in self:
+            if self.env['ghu.student'].sudo().search([('partner_id', '=', record.id),('custom_mba','=',True)]):
+                record.is_cba_student = True
+            else:
+                record.is_cba_student = False
+                
+    def _search_cba_student(self, operator, value):
+        recs = self.env['ghu.student'].sudo().search([('custom_mba','=',True)]).filtered(lambda x : x.partner_id )
+        if recs:
+            return [('id', 'in', [x.partner_id.id for x in recs])]
+
+        
+    def _is_doctoral_student(self):
+        for record in self:
+            if self.env['ghu.student'].sudo().search([('partner_id', '=', record.id),('doctoral_student','=',True)]):
+                record.is_doctoral_student = True
+            else:
+                record.is_doctoral_student = False
+                
+    def _search_doctoral_student(self, operator, value):
+        recs = self.env['ghu.student'].sudo().search([('doctoral_student','=',True)]).filtered(lambda x : x.partner_id )
         if recs:
             return [('id', 'in', [x.partner_id.id for x in recs])]
 
