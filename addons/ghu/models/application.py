@@ -543,6 +543,10 @@ class GhuApplication(models.Model):
             if application:
                 if application.state == "new":
                     application.write({'state': 'signed'})
+            application = self.search([('agreement_request_id', '=', record.id)])
+            if application:
+                if application.state == "advisor_found" and application.first_fee_invoice_id.state == 'paid':
+                    application.write({'state': 'done'})
 
     # Check if paid invoice is one of an application
     def check_invoice(self, record):
@@ -552,6 +556,11 @@ class GhuApplication(models.Model):
             if application:
                 if application.state == "approved":
                     application.write({'state': 'advisor_search'})
+            application = self.search(
+                [('first_fee_invoice_id', '=', record.id)])
+            if application:
+                if application.state == "advisor_found" and application.agreement_request_id.state == 'signed':
+                    application.write({'state': 'done'})
 
     @api.one
     def approved_registrar(self, record):
