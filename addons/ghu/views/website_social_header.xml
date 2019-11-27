@@ -1,6 +1,3 @@
 <?xml version="1.0"?>
 <odoo>
-    <template id="preheader" name="Research Gate Logo" inherit_id="theme_treehouse.preheader">
-
-    </template>
 </odoo>
