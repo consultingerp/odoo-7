@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="preHeader" inherit_id="website.layout" name="Nano preHeader">
+        <template id="preHeader" inherit_id="website.layout" name="Campus Preheader">
             <xpath expr="//div[@id='wrapwrap']/header/nav" position="before">
                 <nav id="preheader" class="bg-alpha">
                     <!-- Languages -->
