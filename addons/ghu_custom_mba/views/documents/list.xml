@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <template id="campus_documents" name="All documents for user">
-            <t t-call="ghu_campus_style.campus_layout">
+            <t t-call="website.layout">
                 <t t-set="title">Documents</t>
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
