@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Theme/Creative',
-    'depends': ['theme_common'],
+    'depends': ['web','website','website_theme_install','theme_common'],
     'version': '0.264',
 
     # any module necessary for this one to work correctly
