@@ -19,9 +19,6 @@
     'depends': ['web','website','website_theme_install','theme_common'],
     'version': '0.264',
 
-    # any module necessary for this one to work correctly
-    'depends': ['web'],
-
     # always loaded
     'data': [
         'views/common/layout.xml',
