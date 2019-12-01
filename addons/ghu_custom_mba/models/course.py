@@ -280,14 +280,14 @@ class GhuCourse(models.Model):
 
         self.write(vals)
 
-        if len(self.assessment_ids) != 1:
-            raise ValidationError(
-                _('Assessments missing, not possible to approve this.'))
+        #if len(self.assessment_ids) != 1:
+        #    raise ValidationError(
+        #        _('Assessments missing, not possible to approve this.'))
 
-        for ass in self.assessment_ids:
-            if len(ass.question_ids) < 2:
-                raise ValidationError(
-                _('Assessment %s is missing questions, not possible to approve this.'))
+        #for ass in self.assessment_ids:
+        #    if len(ass.question_ids) < 2:
+        #        raise ValidationError(
+        #        _('Assessment %s is missing questions, not possible to approve this.'))
 
         notification_template = self.env.ref(
             'ghu_custom_mba.course_approved_mail').sudo()
