@@ -38,7 +38,7 @@
                 <div class="oe_kanban_details">
                   <h4>
                     <a type="open">
-                      <field name="name"/>
+                      <field name="id"/> - <field name="name"/>
                     </a>
                   </h4>
                 </div>
@@ -61,6 +61,7 @@
           </header>
           <sheet string="Course" modifiers="{}">
             <group col="4" modifiers="{}">
+              <field name="id" can_create="false" can_write="false"/>
               <field name="name" modifiers="{'required':true}"/>
               <field name="long_name" modifiers="{'required':true}"/>
               <newline modifiers="{}"/>
