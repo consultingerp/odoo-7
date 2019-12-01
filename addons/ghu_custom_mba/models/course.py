@@ -400,7 +400,6 @@ class GhuAssessment(models.Model):
         ('essay', 'Essay'),
         ('analysis', 'Analysis'),
         ('report', 'Report'),
-        ('case_study', 'Case Study'),
         ('homework', 'Homework'),
         ('presentation', 'Presentation')
     ]
