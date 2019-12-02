@@ -202,7 +202,7 @@ class GhuApplication(models.Model):
     def write(self, values):
         if 'state' in values:
             states = [k for k, v in self.states]
-            if abs(states.index(self.state) - states.index(values['state'])) > 1:
+            if values['state'] != 'declined' and abs(states.index(self.state) - states.index(values['state'])) > 1:
                 raise ValidationError(
                     _('You\'re not allowed to skip stages in this kanban!'))
 
