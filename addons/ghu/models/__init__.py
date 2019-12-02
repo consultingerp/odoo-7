@@ -11,3 +11,4 @@ from . import lead
 from . import res_config_settings
 from . import company
 from . import website
+from . import menu
