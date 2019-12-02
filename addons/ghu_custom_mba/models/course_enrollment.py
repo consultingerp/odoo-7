@@ -126,7 +126,7 @@ class GhuExamination(models.Model):
     @api.depends('request_date')
     def _compute_enddate(self):
         for rec in self:
-            rec.name = rec.request_date + datetime.timedelta(days=21)
+            rec.end_date = rec.request_date + datetime.timedelta(days=21)
     
     @api.one
     def isActive(self):
