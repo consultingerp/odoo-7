@@ -4,7 +4,7 @@ import logging
 from odoo import api, fields, models
 
 class CampusMenu(models.Model):
-    _inherit = 'theme.website.menu'
+    _inherit = 'website.menu'
 
     
     icon = fields.Char(
