@@ -95,7 +95,7 @@ class GhuCourse(models.Model):
         string=u'Assessments',
         comodel_name='ghu_custom_mba.assessment',
         inverse_name='course_id',
-        limit=2
+        limit=1
     )
 
     # Workflow specifics

@@ -188,6 +188,9 @@
                                     </div>
                                 </li>
                             </ul>
+                            <a t-attf-href="/campus/course/request_assessment/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
+                                Request assessment
+                            </a>
                         </div>
                         <div class="card">
                             <ul class="list-group list-group-fit">

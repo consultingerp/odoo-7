@@ -6,6 +6,7 @@ import logging
 import json
 import base64
 import werkzeug
+import random
 from ..util.blti import GhuBlti
 
 _logger = logging.getLogger(__name__)
@@ -119,3 +120,58 @@ class GhuCustomMbaStudent(http.Controller):
                     'slug': 'campus_my_course'
                 })
         return http.request.not_found()
+
+    @http.route('/campus/course/request_assessment/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
+    def requestAssessment(self, obj, **kw):
+        if request.env.user.partner_id.is_student:
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            if enrollment and enrollment.state != 'new':
+                return http.request.render('ghu_custom_mba.student_requestassessment', {
+                    'root': '/campus/course',
+                    'object': obj,
+                    'enrollment': enrollment,
+                    'slug': 'campus_my_course'
+                })
+
+    @http.route('/campus/course/create_assessment/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
+    def createAssessment(self, obj, **kw):
+        if request.env.user.partner_id.is_student:
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            if enrollment and enrollment.state != 'new':
+                assessment = enrollment.assessment_ids[0]
+                question = random.choice(assessment.question_ids)
+                ex = request.env['ghu_custom_mba.examination'].create({
+                    'type': assessment.type,
+                    'question_title': question.name,
+                    'question': question.question,
+                    'enrollment': enrollment.id
+                })
+                enrollment.write({
+                    'state': 'examination'
+                })
+                return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/'+str(ex.id))
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.examination"):ex>', auth='user', website=True)
+    def showAssessment(self, obj, ex, **kw):
+        if request.env.user.partner_id.is_student:
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            if enrollment and enrollment.state == 'examination':
+                return http.request.render('ghu_custom_mba.student_showexamination', {
+                    'root': '/campus/course',
+                    'object': obj,
+                    'enrollment': enrollment,
+                    'examination': ex,
+                    'slug': 'campus_my_course'
+                })
