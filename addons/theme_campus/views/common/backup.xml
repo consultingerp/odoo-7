@@ -1,0 +1,49 @@
+<template id="campus_layout" in>
+            <t t-call="web.layout">
+                <t t-set="html_data" t-value="{'dir':'ltr'}" />
+                <t t-set="body_classname">layout-fluid</t>
+                <t t-set="x_icon" t-value="'/theme_campus/static/images/favicon.png'" />
+                <t t-set="head">
+                    <t t-call-assets="theme_campus.assets"></t>
+                </t>
+                <t t-call="theme_campus.preloader" />
+                <!-- Header Layout -->
+                <div class="mdk-header-layout js-mdk-header-layout">
+                    <t t-call="theme_campus.header" />
+                    <!-- Header Layout Content -->
+                    <div class="mdk-header-layout__content">
+                        <div data-push="" data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+                            <div class="mdk-drawer-layout__content page">
+                                <div class="container-fluid page__container">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="/campus/documents">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item active"><t t-esc="title" /></li>
+                                    </ol>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <t t-raw="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+                                <div class="mdk-drawer__content">
+                                    <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar="">
+                                        <div class="sidebar-p-y">
+                                            <!-- Account menu -->
+                                            <!-- <t t-call="theme_campus.sidebar_account" /> -->
+                                            <t t-if="request.env.user.partner_id.is_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_student" />
+                                            <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_custom_mba" />
+                                            <t t-call="theme_campus.sidebar_advisor" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- {% include 'layouts/_app-settings.html' %} -->
+                    </div>
+                </div>
+            </t>
+        </template>

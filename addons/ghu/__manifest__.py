@@ -27,6 +27,7 @@
     'data': [
         'data/application.xml',
         'data/ghu_data.xml',
+        'data/campus.xml',
         'data/website_ghu_data.xml',
         'security/ir.model.access.csv',
         'security/advisor_security.xml',
