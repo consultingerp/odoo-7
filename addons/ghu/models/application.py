@@ -11,6 +11,9 @@ _logger = logging.getLogger(__name__)
 
 class GhuApplication(models.Model):
     _name = 'ghu.application'
+    
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    
     _description = 'GHU Application'
     _rec_name = 'lastname'
 
