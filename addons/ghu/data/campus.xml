@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
+        <record id="campus_menu" model="website.menu">
+            <field name="name">GHU Campus Menu</field>
+            <field name="url">/</field>
+        </record>
         <record id="campus" model="website">
             <field name="name">GHU Campus</field>
             <field name="domain">ghu-campus.odoo.com</field>
             <field name="default_lang_id" ref="base.lang_en"/>
+            <field name="menu_id" ref="campus_menu"/>
         </record>
     </data>
 </odoo>

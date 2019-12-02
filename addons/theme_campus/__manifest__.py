@@ -21,14 +21,13 @@
 
     # always loaded
     'data': [
-        'views/common/layout.xml',
-        'views/common/assets.xml',
-        'views/common/header.xml',
-        'views/navigation/navbars.xml',
-        'views/navigation/sidebars/account.xml',
-        'views/navigation/sidebars/custom_mba.xml',
-        'views/navigation/sidebars/advisor.xml',
-        'views/navigation/sidebars/student.xml'
+        'views/assets.xml',
+        'views/images_library.xml',
+        'views/images_content.xml',
+        'views/layout.xml',
+        'views/snippets.xml',
+        'views/snippets_options.xml',
+        'views/customize_modal.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [
