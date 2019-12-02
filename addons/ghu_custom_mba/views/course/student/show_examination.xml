@@ -45,7 +45,7 @@
                                             <input type="file" name="attachment" class="file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="examination.id"/>
                                             <button type="submit" name="Submit" style="margin-top:20px;" class="fa fa-upload">
                                                 Submit final document
-                                            </button>
+                                            </button> 
                                         </div>
                                     </div>
                                 </form>
