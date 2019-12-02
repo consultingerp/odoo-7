@@ -1,0 +1,31 @@
+<odoo>
+    <data noupdate="0">
+        <template id="student_examination_submitted">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-esc="object.display_name"/>
+                </t>
+                <t t-if="object.long_name" t-set="subtitle">
+                    <t t-esc="object.long_name"/>
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-esc="object.display_name"/>
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Submission received</h2>
+                                <p>Thank you for your submission. The lecturer will now grade your work in the upcoming 6 weeks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

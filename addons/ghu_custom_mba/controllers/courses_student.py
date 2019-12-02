@@ -204,6 +204,6 @@ class GhuCustomMbaStudent(http.Controller):
                         'res_id': examination_id,
                         'datas': attachment.encode('base64'),
                     })
-                    
+                    enrollment.sudo().write({'state':'grading'})
                     return request.render('ghu_custom_mba.student_examination_submitted')
         return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/'+str(ex.id))

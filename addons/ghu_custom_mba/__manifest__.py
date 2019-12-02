@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.545',
+    'version': '0.546',
 
 
 
@@ -40,6 +40,7 @@
         'views/course/student/overview.xml',
         'views/course/student/preview.xml',
         'views/course/student/request_assessment.xml',
+        'views/course/student/examination_submitted.xml',
         'views/course/student/show_examination.xml',
         'views/course/student/my_courses.xml',
         'views/course/student/detail.xml',
