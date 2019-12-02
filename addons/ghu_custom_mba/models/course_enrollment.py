@@ -102,10 +102,9 @@ class GhuExamination(models.Model):
 
     name = fields.Char('Name', compute='_compute_name')
 
-    @api.depends('type', 'request_date')
+    @api.depends('request_date')
     def _compute_name(self):
-        self_sudo = self.sudo()
-        for rec in self_sudo:
+        for rec in self:
             rec.name = rec.request_date.strftime("%b %d %Y")
 
     type = fields.Char('Type', size=128, required=True)
