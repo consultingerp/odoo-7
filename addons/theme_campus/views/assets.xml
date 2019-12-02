@@ -2,12 +2,12 @@
 <odoo>
     <template id="_assets_primary_variables" inherit_id="website._assets_primary_variables" priority="1">
         <xpath expr="//link[last()]" position="after">
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/primary_variables.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/primary_variables.scss"/>
         </xpath>
     </template>
     <template id="_assets_frontend_helpers" inherit_id="website._assets_frontend_helpers" priority="1">
         <xpath expr="//link[last()]" position="after">
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/bootstrap_overridden.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/bootstrap_overridden.scss"/>
         </xpath>
     </template>
 
@@ -23,15 +23,15 @@
             <link rel="stylesheet" type="text/scss" href="/theme_common/static/src/scss/s_progress_bar.scss"/>
             <link rel="stylesheet" type="text/scss" href="/theme_common/static/src/scss/s_team_profiles.scss"/>
             <!-- Snippets - NANO -->
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/snippets/s_big_message.scss"/>
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/snippets/s_panel_extended.scss"/>
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/snippets/s_share_extended.scss"/>
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/snippets/s_well_extended.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/snippets/s_big_message.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/snippets/s_panel_extended.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/snippets/s_share_extended.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/snippets/s_well_extended.scss"/>
             <!-- Theme NANO -->
-            <link rel="stylesheet" type="text/scss" href="/theme_nano/static/src/scss/theme.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/theme.scss"/>
         </xpath>
         <xpath expr="//script[last()]" position="after">
-            <script type="text/javascript" src="/theme_nano/static/src/js/nano.frontend.js"/>
+            <script type="text/javascript" src="/theme_campus/static/src/js/nano.frontend.js"/>
         </xpath>
     </template>
 

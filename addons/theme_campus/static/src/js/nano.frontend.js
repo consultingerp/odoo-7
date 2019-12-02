@@ -1,4 +1,4 @@
-odoo.define('theme_nano.frontend', function (require) {
+odoo.define('theme_campus.frontend', function (require) {
 'use strict';
 
 var sAnimation = require('website.content.snippets.animation');

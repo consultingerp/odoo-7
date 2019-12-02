@@ -386,20 +386,20 @@ header .navbar {
 }
 
 @include o-theme-nmi-bg-image-classes((
-    url('/web/image/theme_nano.bg_img_01') left center, url('/web/image/theme_nano.bg_img_02') right center,
-    url('/web/image/theme_nano.bg_img_03') right center, url('/web/image/theme_nano.bg_img_04') right bottom,
-    url('/web/image/theme_nano.bg_img_05') right center, url('/web/image/theme_nano.bg_img_06') left center,
-    url('/web/image/theme_nano.bg_img_07') left bottom, url('/web/image/theme_nano.bg_img_08') right center,
-    url('/web/image/theme_nano.bg_img_09') right center, url('/web/image/theme_nano.bg_img_10') center center,
-    url('/web/image/theme_nano.bg_img_11') right center, url('/web/image/theme_nano.bg_img_12') center center,
-    url('/web/image/theme_nano.bg_img_13') right center, url('/web/image/theme_nano.bg_img_14') center center,
-    url('/web/image/theme_nano.bg_img_15') right bottom, url('/web/image/theme_nano.bg_img_16') left bottom
+    url('/web/image/theme_campus.bg_img_01') left center, url('/web/image/theme_campus.bg_img_02') right center,
+    url('/web/image/theme_campus.bg_img_03') right center, url('/web/image/theme_campus.bg_img_04') right bottom,
+    url('/web/image/theme_campus.bg_img_05') right center, url('/web/image/theme_campus.bg_img_06') left center,
+    url('/web/image/theme_campus.bg_img_07') left bottom, url('/web/image/theme_campus.bg_img_08') right center,
+    url('/web/image/theme_campus.bg_img_09') right center, url('/web/image/theme_campus.bg_img_10') center center,
+    url('/web/image/theme_campus.bg_img_11') right center, url('/web/image/theme_campus.bg_img_12') center center,
+    url('/web/image/theme_campus.bg_img_13') right center, url('/web/image/theme_campus.bg_img_14') center center,
+    url('/web/image/theme_campus.bg_img_15') right bottom, url('/web/image/theme_campus.bg_img_16') left bottom
 ), auto);
 
 @include o-theme-nmi-bg-pattern-classes((
-    url('/web/image/theme_nano.bg_pattern_01'), url('/web/image/theme_nano.bg_pattern_02'), url('/web/image/theme_nano.bg_pattern_03'),
-    url('/web/image/theme_nano.bg_pattern_04'), url('/web/image/theme_nano.bg_pattern_05'), url('/web/image/theme_nano.bg_pattern_06'),
-    url('/web/image/theme_nano.bg_pattern_07'), url('/web/image/theme_nano.bg_pattern_08'), url('/web/image/theme_nano.bg_pattern_09')
+    url('/web/image/theme_campus.bg_pattern_01'), url('/web/image/theme_campus.bg_pattern_02'), url('/web/image/theme_campus.bg_pattern_03'),
+    url('/web/image/theme_campus.bg_pattern_04'), url('/web/image/theme_campus.bg_pattern_05'), url('/web/image/theme_campus.bg_pattern_06'),
+    url('/web/image/theme_campus.bg_pattern_07'), url('/web/image/theme_campus.bg_pattern_08'), url('/web/image/theme_campus.bg_pattern_09')
 ));
 
 /* Fix non-clickable input */
