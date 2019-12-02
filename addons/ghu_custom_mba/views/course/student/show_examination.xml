@@ -20,7 +20,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- <h2><t t-esc="ex.question_title"/></h2> -->
-                                <h2><t t-esc="request.env['ghu_custom_mba.assessment'].sudo().types[ex.type]"/></h2>
+                                <h2>
+                                    <t t-foreach="request.env['ghu_custom_mba.assessment'].sudo().types" as="type">
+                                        <t t-if="type[0] == ex.type" t-esc="type[1]"/>
+                                    </t>
+                                </h2>
                                 <h3>Task description</h3>
                                 <t t-raw="ex.question"/>
                             </div>
