@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <record id="campus_menu" model="website.menu">
-            <field name="name">GHU Campus Menu</field>
-            <field name="url">/</field>
-        </record>
         <record id="campus" model="website">
             <field name="name">GHU Campus</field>
             <field name="domain">ghu-campus.odoo.com</field>
             <field name="default_lang_id" ref="base.lang_en"/>
             <field name="language_ids" eval="[(4, ref('base.lang_en'), False),(4, ref('base.lang_es'), False)]"/>
             <field name="menu_id" ref="campus_menu"/>
+        </record>
+        <record id="campus_menu" model="website.menu">
+            <field name="name">GHU Campus Menu</field>
+            <field name="url">/</field>
+            <field name="website_id" ref="campus"/>
         </record>
     </data>
 </odoo>
