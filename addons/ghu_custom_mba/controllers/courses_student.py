@@ -155,6 +155,7 @@ class GhuCustomMbaStudent(http.Controller):
                     'enrollment': enrollment.id
                 })
                 enrollment.write({
+                    'examination_count': enrollment.examination_count + 1,
                     'state': 'examination'
                 })
                 return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/'+str(ex.id))
