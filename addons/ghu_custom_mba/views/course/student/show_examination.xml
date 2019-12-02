@@ -36,7 +36,7 @@
                                 Use the following template for your work: 
                                 <a t-attf-href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx" t-if="ex.type == 'analysis' or ex.type == 'report' or ex.type == 'homework'">Template</a>
                                 <a t-attf-href="/ghu_custom_mba/static/files/Essay_Examination-number_Student-ID.docx" t-if="ex.type == 'essay'">Template</a><br/>
-                                You have to submit the finalized document at latest on <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/> at midnight.
+                                You have to submit the document at latest on <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/> at midnight. Please keep in mind that only one submission is possible.
                             </div>
                         </div>
                     </div>
