@@ -165,6 +165,7 @@ class GhuCustomMbaStudent(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.examination"):ex>', auth='user', website=True)
     def showAssessment(self, obj, ex, **kw):
+        ex = request.env['ghu_custom_mba.examination'].sudo().browse(ex.id)
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search(
@@ -176,12 +177,13 @@ class GhuCustomMbaStudent(http.Controller):
                     'root': '/campus/course',
                     'object': obj.sudo(),
                     'enrollment': enrollment,
-                    'ex': ex.sudo(),
+                    'ex': ex,
                     'slug': 'campus_my_course'
                 })
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/examination/submit/<model("ghu_custom_mba.examination"):ex>', type='http', auth="user", methods=['POST'], website=True)
     def saveSubmission(self, obj, ex, **post):
+        ex = request.env['ghu_custom_mba.examination'].sudo().browse(ex.id)
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search(
