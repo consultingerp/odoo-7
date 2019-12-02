@@ -10,14 +10,14 @@
         <record id="campus_mycampus_overview" model="website.menu">
             <field name="name">Course Overview</field>
             <field name="url">/campus/courses</field>
-            <field name="parent_id" ref="cba_campus_menu"/>
+            <field name="parent_id" ref="ghu_custom_mba.cba_campus_menu"/>
             <field name="sequence">11</field>
         </record>
 
         <record id="campus_mycampus_mycourses" model="website.menu">
             <field name="name">My Courses</field>
             <field name="url">/campus/my/courses</field>
-            <field name="parent_id" ref="cba_campus_menu"/>
+            <field name="parent_id" ref="ghu_custom_mba.cba_campus_menu"/>
             <field name="sequence">12</field>
         </record>
     </data>
