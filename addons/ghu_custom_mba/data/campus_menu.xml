@@ -4,7 +4,6 @@
         <record id="campus_menu" model="website.menu">
             <field name="name">My Campus</field>
             <field name="url"></field>
-            <field name="icon"></field>
             <field name="parent_id" ref="ghu.campus_menu"/>
             <field name="sequence">11</field>
         </record>

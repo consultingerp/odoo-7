@@ -9,6 +9,7 @@
             <field name="name">GHU Campus</field>
             <field name="domain">ghu-campus.odoo.com</field>
             <field name="default_lang_id" ref="base.lang_en"/>
+            <field name="language_ids" eval="[(4, ref('base.lang_en'), False),(4, ref('academy.base.lang_es'), False)]"/>
             <field name="menu_id" ref="campus_menu"/>
         </record>
     </data>
