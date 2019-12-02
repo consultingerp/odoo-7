@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data noupdate="0">
-        <record id="campus_menu" model="website.menu">
+        <record id="cba_campus_menu" model="website.menu">
             <field name="name">My Campus</field>
             <field name="url"></field>
             <field name="parent_id" ref="ghu.campus_menu"/>
@@ -10,14 +10,14 @@
         <record id="campus_mycampus_overview" model="website.menu">
             <field name="name">Course Overview</field>
             <field name="url">/campus/courses</field>
-            <field name="parent_id" ref="ghu_custom_mba.campus_menu"/>
+            <field name="parent_id" ref="cba_campus_menu"/>
             <field name="sequence">11</field>
         </record>
 
         <record id="campus_mycampus_mycourses" model="website.menu">
             <field name="name">My Courses</field>
             <field name="url">/campus/my/courses</field>
-            <field name="parent_id" ref="ghu_custom_mba.campus_menu"/>
+            <field name="parent_id" ref="cba_campus_menu"/>
             <field name="sequence">12</field>
         </record>
     </data>
