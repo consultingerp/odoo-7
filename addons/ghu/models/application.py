@@ -538,6 +538,9 @@ class GhuApplication(models.Model):
 
         self.first_fee_invoice_id = invoice.id
 
+    def end_application(self):
+        # do things when application is declined
+        print("Application declined")
 
     # Check if signed request is one of an application
     def check_signature(self, record):
