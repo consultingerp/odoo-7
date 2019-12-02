@@ -37,6 +37,18 @@
                                 <a t-attf-href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx" t-if="ex.type == 'analysis' or ex.type == 'report' or ex.type == 'homework'">Template</a>
                                 <a t-attf-href="/ghu_custom_mba/static/files/Essay_Examination-number_Student-ID.docx" t-if="ex.type == 'essay'">Template</a><br/>
                                 You have to submit the document at latest on <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/> at midnight. Please keep in mind that only one submission is possible.
+                                <form t-attf-action="/campus/course/#{ object.id }/examination/save/#{ ex.id }" method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form">
+                                    <div t-attf-class="form-group">
+                                        <div class="col-md-7 col-sm-8">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <input type="hidden" name="examination_id" t-att-value="examination.id"/>
+                                            <input type="file" name="attachment" class="file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="examination.id"/>
+                                            <button type="submit" name="Submit" style="margin-top:20px;" class="fa fa-upload">
+                                                Submit final document
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

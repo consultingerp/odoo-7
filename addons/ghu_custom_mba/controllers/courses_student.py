@@ -178,3 +178,30 @@ class GhuCustomMbaStudent(http.Controller):
                     'ex': ex.sudo(),
                     'slug': 'campus_my_course'
                 })
+
+    @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/examination/submit/<model("ghu_custom_mba.examination"):ex>', type='http', auth="user", methods=['POST'], website=True)
+    def saveSubmission(self, obj, ex, **post):
+        if request.env.user.partner_id.is_student:
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
+            enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
+                [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
+            if enrollment and enrollment.state == 'examination':
+                if post.get('attachment',False):
+                    attachments = request.env['ir.attachment']
+                    name = post.get('attachment').filename      
+                    file = post.get('attachment')
+                    examination_id = post.get('examination_id')
+                    attachment = file.read() 
+                    attachment_id = attachments.sudo().create({
+                        'name':name,
+                        'datas_fname': name,
+                        'res_name': name,
+                        'type': 'binary',   
+                        'res_model': 'ghu_custom_mba.examination',
+                        'res_id': examination_id,
+                        'datas': attachment.encode('base64'),
+                    })
+                    return request.render('ghu_custom_mba.student_examination_submitted')
+        return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/'+str(ex.id))
