@@ -193,16 +193,10 @@ class GhuCustomMbaStudent(http.Controller):
                     attachments = request.env['ir.attachment']
                     name = post.get('attachment').filename      
                     file = post.get('attachment')
-                    examination_id = post.get('examination_id')
                     attachment = file.read() 
-                    attachment_id = attachments.sudo().create({
-                        'name':name,
-                        'datas_fname': name,
-                        'res_name': name,
-                        'type': 'binary',   
-                        'res_model': 'ghu_custom_mba.examination',
-                        'res_id': examination_id,
-                        'datas': base64.b64encode(attachment)
+                    ex.sudo().write({
+                        'submission': base64.b64encode(attachment),
+                        'submission_filename': name
                     })
                     enrollment.sudo().write({'state':'grading'})
                     return request.render('ghu_custom_mba.student_examination_submitted',{

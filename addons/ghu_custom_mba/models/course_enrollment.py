@@ -136,6 +136,8 @@ class GhuExamination(models.Model):
 
 
     submission = fields.Binary(string='Submission', attachment=True)
+    submission_filename = fields.Char(string='Submission Filename')
+
 
     # Grading section
 
