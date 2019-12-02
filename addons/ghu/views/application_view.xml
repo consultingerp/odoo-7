@@ -99,12 +99,12 @@
                                     <field name="marital_status"/>
                                     <field name="gender"/>
                                     <field name="academic_degree_pre" />
-                                    <field name="academic_degree_post" />                                    
+                                    <field name="academic_degree_post" />
                                     <field name="native_language"/>
                                     <field name="other_languages"/>
                                 </group>
 
-                                <group col="4" colspan="4"  string="Study Information" name="program">
+                                <group col="4" colspan="4" string="Study Information" name="program">
                                     <field name="study_id"/>
                                     <field name="thesis_title"/>
                                     <field name="preliminary_studies"/>
@@ -113,7 +113,7 @@
                                     <field name="ever_applied_doctoral_university_name"/>
                                     <field name="advisor_ref"/>
                                 </group>
-                                <group col="4" colspan="4"  string="Documents" name="documents">
+                                <group col="4" colspan="4" string="Documents" name="documents">
                                     <field name="photo_file" widget="binary" filename="photo_file_filename"/>
                                     <field name="photo_file_filename" invisible="1"/>
                                     <field name="vita_file" widget="binary" filename="vita_file_filename"/>
@@ -133,6 +133,10 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
