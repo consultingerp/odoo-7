@@ -192,7 +192,7 @@
                                 Request assessment
                             </a>
                             <t t-if="enrollment.state != 'paid'">
-                                <a t-foreach="enrollment.examination_ids" t-as="ex" t-attf-href="/campus/course/{{ object.id }}/assessment/{{ enrollment.examination_ids.id}}" class="btn btn-success btn-block flex-column a-submit">
+                                <a t-foreach="enrollment.examination_ids" t-as="ex" t-attf-href="/campus/course/{{ object.id }}/assessment/{{ ex.id}}" class="btn btn-success btn-block flex-column a-submit">
                                     Show assessment from <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/>
                                 </a>
                             </t>

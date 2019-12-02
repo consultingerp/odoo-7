@@ -202,8 +202,10 @@ class GhuCustomMbaStudent(http.Controller):
                         'type': 'binary',   
                         'res_model': 'ghu_custom_mba.examination',
                         'res_id': examination_id,
-                        'datas': attachment.encode('base64'),
+                        'datas': base64.b64encode(attachment)
                     })
                     enrollment.sudo().write({'state':'grading'})
-                    return request.render('ghu_custom_mba.student_examination_submitted')
+                    return request.render('ghu_custom_mba.student_examination_submitted',{
+                        'object': obj.sudo()
+                    })
         return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/'+str(ex.id))
