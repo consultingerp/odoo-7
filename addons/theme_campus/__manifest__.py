@@ -17,7 +17,7 @@
     # for the full list
     'category': 'Theme/Creative',
     'depends': ['web','website','website_theme_install','theme_common'],
-    'version': '0.264',
+    'version': '0.265',
 
     # always loaded
     'data': [

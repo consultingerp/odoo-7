@@ -17,12 +17,6 @@
             </xpath>
             
             <xpath expr="script[last()]" position="after">
-                <script src="/theme_campus/static/design/dist/assets/vendor/jquery.min.js"></script>
-
-                <!-- Bootstrap -->
-                <script src="/theme_campus/static/design/dist/assets/vendor/popper.min.js"></script>
-                <script src="/theme_campus/static/design/dist/assets/vendor/bootstrap.min.js"></script>
-
                 <!-- Perfect Scrollbar -->
                 <script src="/theme_campus/static/design/dist/assets/vendor/perfect-scrollbar.min.js"></script>
 
