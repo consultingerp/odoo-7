@@ -119,7 +119,6 @@ class GhuExamination(models.Model):
         default=fields.Date.context_today,
     )
 
-
     end_date = fields.Date(
         string='End Date',
         compute='_compute_enddate'
@@ -128,6 +127,12 @@ class GhuExamination(models.Model):
     def _compute_enddate(self):
         for rec in self:
             rec.name = rec.request_date + datetime.timedelta(days=21)
+    
+    @api.one
+    def isActive(self):
+        if fields.Date.context_today >= self.request_date and fields.Date.context_today <= self.end_date:
+            return True
+        return False
 
 
     submission = fields.Binary(string='Submission', attachment=True)

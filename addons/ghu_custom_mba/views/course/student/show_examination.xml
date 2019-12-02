@@ -19,9 +19,16 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <h2><t t-esc="ex.question_title"/></h2>
+                                <!-- <h2><t t-esc="ex.question_title"/></h2> -->
+                                <h2><t t-esc="request.env['ghu_custom_mba.assessment'].sudo().types[ex.type]"/></h2>
+                                <h3>Task description</h3>
                                 <t t-raw="ex.question"/>
-                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
                                 Use the following template for your work:<br/>
                                 <a t-attf-href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx" t-if="ex.type == 'analysis' or ex.type == 'report' or ex.type == 'homework'">Template</a>
                                 <a t-attf-href="/ghu_custom_mba/static/files/Essay_Examination-number_Student-ID.docx" t-if="ex.type == 'essay'">Template</a><br/>

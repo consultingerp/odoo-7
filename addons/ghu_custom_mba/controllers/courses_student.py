@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import http
+from odoo import api, fields, models, tools
 from odoo.http import request
 import datetime
 import logging
@@ -152,6 +153,7 @@ class GhuCustomMbaStudent(http.Controller):
                     'type': assessment.type,
                     'question_title': question.name,
                     'question': question.question,
+                    'request_date': fields.Date.context_today,
                     'enrollment_id': enrollment.id
                 })
                 enrollment.sudo().write({
