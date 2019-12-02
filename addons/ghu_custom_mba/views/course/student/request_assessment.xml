@@ -19,9 +19,9 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                By clicking the button below you are requesting the assessment for this course.<br/>
-                                You will immediately get access to the assessment questions.<br/>
-                                Assignments must be submitted via campus by midnight on the 21st day after you got the questions.<br/> 
+                                <p>By clicking the button below you are requesting the assessment for this course.</p>
+                                <p>You will immediately get access to the assessment questions.</p>
+                                <p>Assignments must be submitted via campus by midnight on the 21st day after you got the questions.</p>
                                 <a t-attf-href="/campus/course/create_assessment/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
                                     Request assessment
                                 </a>

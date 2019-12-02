@@ -146,15 +146,15 @@ class GhuCustomMbaStudent(http.Controller):
             enrollment = request.env['ghu_custom_mba.course_enrollment'].sudo().search(
                 [('student_ref', '=', 'ghu.student,'+str(student.id)), ('course_ref', '=', 'ghu_custom_mba.course,'+str(obj.id))], limit=1)
             if enrollment and enrollment.state != 'new':
-                assessment = enrollment.assessment_ids[0]
+                assessment = enrollment.course_ref.assessment_ids[0]
                 question = random.choice(assessment.question_ids)
-                ex = request.env['ghu_custom_mba.examination'].create({
+                ex = request.env['ghu_custom_mba.examination'].sudo().create({
                     'type': assessment.type,
                     'question_title': question.name,
                     'question': question.question,
-                    'enrollment': enrollment.id
+                    'enrollment_id': enrollment.id
                 })
-                enrollment.write({
+                enrollment.sudo().write({
                     'examination_count': enrollment.examination_count + 1,
                     'state': 'examination'
                 })
@@ -171,8 +171,8 @@ class GhuCustomMbaStudent(http.Controller):
             if enrollment and enrollment.state == 'examination':
                 return http.request.render('ghu_custom_mba.student_showexamination', {
                     'root': '/campus/course',
-                    'object': obj,
+                    'object': obj.sudo(),
                     'enrollment': enrollment,
-                    'examination': ex,
+                    'ex': ex.sudo(),
                     'slug': 'campus_my_course'
                 })

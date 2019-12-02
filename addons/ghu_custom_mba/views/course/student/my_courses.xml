@@ -22,7 +22,7 @@
                                     </i>
                                     <t t-esc="object.course_ref.display_name"/>
                                 </h5>
-                                <a t-if="object.state == 'paid'" t-attf-href="/campus/course/take/#{ object.course_ref.id }" class="btn btn-primary">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                <a t-if="object.state != 'new'" t-attf-href="/campus/course/take/#{ object.course_ref.id }" class="btn btn-primary">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
                                 <a t-if="object.state == 'new'" href='#' disabled="disabled" class="btn btn-primary disabled">Payment pending</a>
                             </div>
                         </div>
