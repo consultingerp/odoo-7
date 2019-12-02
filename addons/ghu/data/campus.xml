@@ -3,8 +3,7 @@
     <data noupdate="0">
         <record id="campus" model="website">
             <field name="name">GHU Campus</field>
-            <field name="domain">campus.ghu.edu.cw</field> 
-            <field name="language_ids"  ref="base.lang_en" />
+            <field name="domain">ghu-campus.odoo.com</field>
             <field name="default_lang_id" ref="base.lang_en"/>
         </record>
     </data>
