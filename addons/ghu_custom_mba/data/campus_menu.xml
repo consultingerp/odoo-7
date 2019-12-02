@@ -10,7 +10,6 @@
         <record id="campus_menu" model="website.menu">
             <field name="name">Course Overview</field>
             <field name="url">/campus/courses</field>
-            <field name="icon">search</field>
             <field name="parent_id" ref="ghu_custom_mba.campus_menu"/>
             <field name="sequence">11</field>
         </record>
@@ -18,7 +17,6 @@
         <record id="campus_menu" model="website.menu">
             <field name="name">My Courses</field>
             <field name="url">/campus/my/courses</field>
-            <field name="icon">school</field>
             <field name="parent_id" ref="ghu_custom_mba.campus_menu"/>
             <field name="sequence">12</field>
         </record>
