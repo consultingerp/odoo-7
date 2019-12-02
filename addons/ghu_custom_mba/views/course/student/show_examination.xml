@@ -8,7 +8,6 @@
                 <t t-if="object.long_name" t-set="subtitle">
                     <t t-esc="object.long_name"/>
                 </t>
-                <t t-call="ghu_custom_mba.panopto_login" />
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
                         <h1 class="h2">
