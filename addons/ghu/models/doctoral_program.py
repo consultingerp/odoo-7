@@ -342,10 +342,10 @@ class GhuExpose(models.Model):
         compute='_compute_total_score'
     )
 
-    @api.depends('guidelines_score', 'competences_score', 'organization_score', 'readability_score', 'formatting_score')
+    @api.depends('guidelines_score', 'components_score', 'organization_score', 'readability_score', 'formatting_score')
     def _compute_total_score(self):
         for record in self:
-            record.total_score = record.guidelines_score + record.competences_score + \
+            record.total_score = record.guidelines_score + record.components_score + \
                 record.organization_score + record.readability_score + record.formatting_score
 
     @api.onchange('total_score')  # if these fields are changed, call method
@@ -538,10 +538,10 @@ class GhuPaper(models.Model):
         compute='_compute_total_score'
     )
 
-    @api.depends('guidelines_score', 'competences_score', 'organization_score', 'readability_score', 'formatting_score')
+    @api.depends('guidelines_score', 'components_score', 'organization_score', 'readability_score', 'formatting_score')
     def _compute_total_score(self):
         for record in self:
-            record.total_score = record.guidelines_score + record.competences_score + \
+            record.total_score = record.guidelines_score + record.components_score + \
                 record.organization_score + record.readability_score + record.formatting_score
 
     @api.onchange('total_score')  # if these fields are changed, call method
