@@ -50,7 +50,6 @@
         'views/mails/application/advisor_search_notification.xml',
         'views/mails/application/notify_advisor.xml',
         'menu/ghu_menu.xml',
-        'menu/advisor_menu.xml',
         'views/application_form.xml',
         'views/res_config_view.xml',
         'views/invoice_document.xml',

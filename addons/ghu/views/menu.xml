@@ -14,5 +14,27 @@
 
         <menuitem name="Students" id="ghu.students" parent="ghu.menu_ghu" action="ghu_student_window" />
 
+        <menuitem name="Doctoral program" id="ghu.doctoral_program" parent="ghu.menu_ghu" />
+
+        <record model="ir.actions.act_window" id="ghu_doctoral_program_window">
+            <field name="name"></field>
+            <field name="res_model">ghu.doctoral_program</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_ghu_application" parent="ghu.doctoral_program" name="Applications" sequence="10" action="act_open_ghu_application_view_2"/>
+        <menuitem id="menu_ghu_enrollment" parent="ghu.doctoral_program" name="Enrollments" sequence="10" action="ghu_doctoral_program_window"/>
+        <menuitem id="menu_ghu_advisor_root" parent="ghu.doctoral_program" name="Advisor" sequence="15" action="act_open_ghu_advisor_view_2"/>
+        <menuitem id="menu_ghu_program" parent="ghu.doctoral_program" name="Programs" sequence="20" action="act_open_ghu_program_view_2"/>
+        <menuitem id="menu_ghu_study" parent="ghu.doctoral_program" name="Studies" sequence="25" action="act_open_ghu_study_view_2"/>
+        
+        
+        <menuitem id="menu_ghu_lecturer_root" parent="menu_ghu" name="Lecturer" sequence="15" action="act_open_ghu_advisor_view_3"/>
+
+        <menuitem id="menu_ghu_lang" parent="menu_ghu" name="Languages" sequence="30" action="act_open_ghu_lang_view_2"/>
     </data>
 </odoo>
