@@ -552,8 +552,7 @@ class GhuApplication(models.Model):
                     application.write({'state': 'signed'})
             application = self.search([('agreement_request_id', '=', record.id)])
             if application:
-                if application.state == "advisor_found" and application.first_fee_invoice_id.state == 'paid':
-                    application.write({'state': 'done'})
+                if application.state == "advisor_found":
                     application.sudo().send_first_fee_invoice()
 
     # Check if paid invoice is one of an application

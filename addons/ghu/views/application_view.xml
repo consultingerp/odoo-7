@@ -125,10 +125,12 @@
                                     <field name="research_abstract_file" widget="binary" filename="research_abstract_file_filename"/>
                                     <field name="research_abstract_file_filename" invisible="1"/>
                                     <field name="sign_request_id"/>
+                                    <field name="agreement_request_id"/>
                                 </group>
 
                                 <group col="4" colspan="4" string="Invoices" name="invoices">
                                     <field name="application_fee_invoice_id"/>
+                                    <field name="first_fee_invoice_id"/>
                                 </group>
                             </page>
                         </notebook>
