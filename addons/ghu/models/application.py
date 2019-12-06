@@ -353,13 +353,14 @@ class GhuApplication(models.Model):
             self_sudo.signed_by_applicant()
         elif new_state == 'approved' and not self.application_fee_invoice_id:
             self_sudo.send_application_fee_invoice()
-        elif new_state == 'advisor_search' and self.state == '':
-            self_sudo.send_advisor_search_notification()
+        elif new_state == 'advisor_search':
+            print('advisor_search')
+            #self_sudo.send_advisor_search_notification()
         elif new_state == 'advisor_matched':
-            self_sudo.notify_advisor()
+            print('advisor_matched')
+            #self_sudo.notify_advisor()
         elif new_state == 'advisor_found':
             self_sudo.create_agreement_request()
-            self_sudo.send_first_fee_invoice()
         elif new_state == 'done':
             self_sudo.finish_application()
         elif new_state == 'declined':
@@ -532,7 +533,7 @@ class GhuApplication(models.Model):
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
         invoice_template = self.env.ref(
-            'ghu.ghu_invoice_email_template').sudo()
+            'ghu.ghu_first_fee_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
@@ -553,6 +554,7 @@ class GhuApplication(models.Model):
             if application:
                 if application.state == "advisor_found" and application.first_fee_invoice_id.state == 'paid':
                     application.write({'state': 'done'})
+                    application.sudo().send_first_fee_invoice()
 
     # Check if paid invoice is one of an application
     def check_invoice(self, record):
