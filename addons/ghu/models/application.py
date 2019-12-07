@@ -356,7 +356,7 @@ class GhuApplication(models.Model):
         # generate invoice
         self_sudo = self.sudo()
         if new_state == 'signed':
-            self_sudo.signed_by_applicant()
+            self_sudo.signed_by_applicant(self)
         elif new_state == 'approved' and not self.application_fee_invoice_id:
             self_sudo.send_application_fee_invoice()
         elif new_state == 'advisor_search':
@@ -439,7 +439,7 @@ class GhuApplication(models.Model):
             record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref(
-            'ghu.ghu_doctoral_application_confirmation_template')
+            'ghu.ghu_new_doctoral_application_template')
         notification_template.send_mail(
             record.id, raise_exception=False, force_send=False)
 
