@@ -127,6 +127,12 @@ class GhuApplication(models.Model):
         ]
     )
 
+    
+    scholarship = fields.Float(
+        string='Scholarship (in $)',
+    )
+    
+
     # Thesis title
     thesis_title = fields.Char(
         string='Thesis Title',
@@ -511,12 +517,18 @@ class GhuApplication(models.Model):
                 'ghu.automated_invoice_bank_account'),  # company bank account
         ))
 
+
+
+        total_amount = 25000 - self.scholarship
+
         if self.payment_method == 'one_time':
-            payment = 24500
+            payment = total_amount - 500
         elif self.payment_method == 'two_times':
-            payment = 12500
+            total_amount = total_amount + 500
+            payment = total_amount/2 - 500
         else:
-            payment = 9000
+            total_amount = total_amount + 1000
+            payment = total_amount/3 - 500
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
@@ -526,7 +538,7 @@ class GhuApplication(models.Model):
             default_invoice_id=invoice.id
         ).create(dict(
             product_id=product.id,
-            name="First Fee",
+            name="Doctoral Program - First Fee",
             price_unit=payment,
         ))
 
