@@ -538,7 +538,7 @@ class GhuApplication(models.Model):
             default_invoice_id=invoice.id
         ).create(dict(
             product_id=product.id,
-            name="First Fee",
+            name="Doctoral Program - First Fee",
             price_unit=payment,
         ))
 
