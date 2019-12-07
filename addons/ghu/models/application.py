@@ -454,7 +454,6 @@ class GhuApplication(models.Model):
         invoice = self.env['account.invoice'].create(dict(
             # customer (billing address)
             partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
-            partner_shipping_id=self.partner_id.id,  # customer (applicant)
             type='out_invoice',
             date_invoice=datetime.datetime.utcnow().date(),  # invoice date
             date_due=(datetime.datetime.utcnow() + \
@@ -504,8 +503,6 @@ class GhuApplication(models.Model):
         invoice = self.env['account.invoice'].create(dict(
             # customer (billing address)
             partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
-            # customer (applicant)
-            partner_shipping_id=self.partner_id.id,
             type='out_invoice',
             date_invoice=datetime.datetime.utcnow().date(),  # invoice date
             date_due=(datetime.datetime.utcnow() + \
