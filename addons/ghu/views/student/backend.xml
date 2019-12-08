@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_ghu_student_form" model="ir.ui.view">
+            <field name="name">ghu.student_form</field>
+            <field name="model">ghu.student</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <sheet string="Student" modifiers="{}">
+                        <group col="4" modifiers="{}">
+                            <field name="doctoral_student" modifiers="{}"/>
+                            <field name="firstname" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="lastname" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="gender" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="nationality" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="date_of_birth" modifiers="{'required':true}"/>
+                            <field name="partner_id" on_change="1" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="academic_degree_pre" modifiers="{}"/>
+                            <field name="academic_degree_post" modifiers="{}"/>
+                            <field name="native_language" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="other_languages" colspan="4" can_create="true" can_write="true" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="email" modifiers="{'readonly':true,'required':true}"/>
+                            <field name="student_identification" modifiers="{'readonly':true}"/>
+                            <field name="date" modifiers="{}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_ghu_student_tree" model="ir.ui.view">
+            <field name="name">ghu.student.tree</field>
+            <field name="model">ghu.student</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="name"/>
+                    <field name="nationality"/>
+                    <field name="student_identification"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
