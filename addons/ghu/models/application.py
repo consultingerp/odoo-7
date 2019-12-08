@@ -8,6 +8,10 @@ from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
+def extract_email(email):
+    """ extract the email address from a user-friendly email address """
+    addresses = email_split(email)
+    return addresses[0] if addresses else ''
 
 class GhuApplication(models.Model):
     _name = 'ghu.application'
@@ -548,8 +552,52 @@ class GhuApplication(models.Model):
 
         self.first_fee_invoice_id = invoice.id
 
+    @api.one
+    def finish_application(self):
+        print('Finish application')
+        # Create doctoral program model
+        student = self.env['ghu.student'].create(dict(
+            doctoral_student=True,
+            partner_id=self.partner_id.id,
+            date_of_birth=self.date_of_birth,
+            nationality=self.nationality.id,
+            academic_degree_pre=self.academic_degree_pre,
+            academic_degree_post=self.academic_degree_post,
+            native_language=self.native_language.id,
+            other_languages=(6, False, [v.id for v in self.other_languages])
+        ))
+
+        enrollment = self.env['ghu.doctoral_program'].create(dict(
+            advisor_ref='%s,%s' % ('ghu.advisor', self.advisor_ref.id),
+            student_ref='%s,%s' % ('ghu.student', student.id)
+        ))
+        # Create Portal Access for both (Advisor and Student) if there is no one yet
+        group_portal = self.env.ref('base.group_portal')
+        user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
+        if not user:
+            user = self.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
+                'email': extract_email(student.partner_id.email),
+                'login': extract_email(student.partner_id.email),
+                'partner_id': student.partner_id.id,
+                'company_id': self.env.context.get('company_id'),
+                'company_ids': [(6, 0, [self.env.context.get('company_id')])],
+            })
+            template = self.env.ref('portal.mail_template_data_doctoral_campus_welcome')
+            lang = student.partner_id.user_id.lang
+            partner = student.partner_id
+
+            portal_url = partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[partner.id]
+            partner.signup_prepare()
+
+            if template:
+                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(student.partner_id.id, force_send=True)
+            else:
+                _logger.warning("No email template found for sending email to the portal user")
+
+        # Send notifications
+
     def end_application(self):
-        # do things when application is declined
+        # do things when application is declined (Notification to student)
         print("Application declined")
 
     # Check if signed request is one of an application
