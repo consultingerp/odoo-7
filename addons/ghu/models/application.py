@@ -592,7 +592,7 @@ class GhuApplication(models.Model):
             partner.signup_prepare()
 
             if template:
-                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(student.partner_id.id, force_send=True)
+                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(user, force_send=True)
             else:
                 _logger.warning("No email template found for sending email to the portal user")
 
