@@ -584,7 +584,7 @@ class GhuApplication(models.Model):
                 'company_id': 1,
                 'company_ids': [(6, 0, [1])],
             })
-            template = self.env.ref('portal.mail_template_data_doctoral_campus_welcome')
+            template = self.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
             lang = student.partner_id.user_id.lang
             partner = student.partner_id
 
