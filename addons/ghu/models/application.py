@@ -585,7 +585,7 @@ class GhuApplication(models.Model):
                 'company_ids': [(6, 0, [1])],
             })
             template = self.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
-            lang = student.partner_id.user_id.lang
+            lang = user.lang
             partner = student.partner_id
 
             portal_url = partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[partner.id]
