@@ -5,6 +5,8 @@ import logging
 import base64
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from odoo.tools import email_split
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
