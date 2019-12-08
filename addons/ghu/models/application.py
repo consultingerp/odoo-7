@@ -581,8 +581,8 @@ class GhuApplication(models.Model):
                 'email': extract_email(student.partner_id.email),
                 'login': extract_email(student.partner_id.email),
                 'partner_id': student.partner_id.id,
-                'company_id': self.env.context.get('company_id'),
-                'company_ids': [(6, 0, [self.env.context.get('company_id')])],
+                'company_id': 1,
+                'company_ids': [(6, 0, [1])],
             })
             template = self.env.ref('portal.mail_template_data_doctoral_campus_welcome')
             lang = student.partner_id.user_id.lang
