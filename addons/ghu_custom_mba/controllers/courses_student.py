@@ -81,7 +81,7 @@ class GhuCustomMbaStudent(http.Controller):
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
         invoice_template = request.env.ref(
-            'ghu.ghu_invoice_email_template').sudo()
+            'ghu_custom_mba.course_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
