@@ -36,9 +36,9 @@ class GhuStudent(models.Model):
     @api.multi
     def studentEnrolled(self):
         for record in self:
-            pdf = self.env.ref('ghu.enrolment_confirmation_pdf').sudo(
+            pdf = self.env.ref('ghu.enrollment_confirmation_pdf').sudo(
             ).render_qweb_pdf([record.id])[0]
-            attachmentName = 'Enrolment-'+record.lastname + \
+            attachmentName = 'Enrollment-'+record.lastname + \
                 '-'+record.student_identification+'.pdf'
             attachment = self.env['ir.attachment'].create({
                 'name': attachmentName,

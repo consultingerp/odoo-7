@@ -46,7 +46,7 @@
         'views/report_style.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
-        'views/student/enrolment_confirmation_pdf.xml',
+        'views/student/enrollment_confirmation_pdf.xml',
         'views/student/backend.xml',
         'views/mails/application/advisor_search_notification.xml',
         'views/mails/application/notify_advisor.xml',
