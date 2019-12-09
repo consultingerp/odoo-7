@@ -2,9 +2,9 @@
 <odoo>
     <data noupdate="0">
         <record model="mail.template" id="student_enrolled">
-            <field name="name">Confirmation of enrolment</field>
+            <field name="name">Confirmation of enrollment</field>
             <field name="model_id" ref="model_res_partner"></field>
-            <field name="subject">Confirmation of enrolment</field>
+            <field name="subject">Confirmation of enrollment</field>
             <field name="body_html"><![CDATA[
 <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
 <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
@@ -14,7 +14,7 @@
         <td align="center" style="min-width: 590px;">
             <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
                 <tbody><tr><td valign="middle">
-                    <span style="font-size: 10px;">Enrolment GHU custom MBA</span><br>
+                    <span style="font-size: 10px;">Enrollment GHU custom MBA</span><br>
                     <span style="font-size: 20px; font-weight: bold;">
                         ${object.firstname} ${object.lastname}
                     </span>
@@ -34,7 +34,7 @@
                 <tbody><tr><td valign="top" style="font-size: 13px;">
                     <div>
                         Dear ${object.firstname},<br> <br>
-                        your confirmation of enrolment is attached to this mail.<br/>
+                        your confirmation of enrollment is attached to this mail.<br/>
                         Best regards,<br/>
                         Global Humanistic University
                     </div>

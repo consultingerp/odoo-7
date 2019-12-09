@@ -275,7 +275,7 @@ msgid "<br/>\n"
 msgstr ""
 
 #. module: ghu
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 msgid "<br/>at the<br/><strong>Global Humanistic University</strong>."
 msgstr "<br/>En la<br/><strong>Global Humanistic University</strong>."
 
@@ -734,8 +734,8 @@ msgid "Config Settings"
 msgstr "Opciones de Configuración"
 
 #. module: ghu
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
-msgid "Confirmation of enrolment"
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
+msgid "Confirmation of enrollment"
 msgstr "Confirmación de Inscripción"
 
 #. module: ghu
@@ -910,7 +910,7 @@ msgstr ""
 
 #. module: ghu
 #: model_terms:ir.ui.view,arch_db:ghu.application_agreement
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 msgid "Date of birth"
 msgstr "Fecha de nacimiento"
 
@@ -1056,7 +1056,7 @@ msgid "Ever applied to GHU"
 msgstr ""
 
 #. module: ghu
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 msgid "False"
 msgstr "Falso"
 
@@ -1707,7 +1707,7 @@ msgstr "Móvil"
 #: model:ir.model.fields,field_description:ghu.field_ghu_study__name
 #: model:ir.model.fields,field_description:ghu.field_ghu_university__name
 #: model_terms:ir.ui.view,arch_db:ghu.application_agreement
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 #: model_terms:ir.ui.view,arch_db:ghu.view_ghu_lang_form
 #: model_terms:ir.ui.view,arch_db:ghu.view_ghu_program_form
 #: model_terms:ir.ui.view,arch_db:ghu.view_ghu_study_form
@@ -1720,7 +1720,7 @@ msgstr "Nombre"
 #: model:ir.model.fields,field_description:ghu.field_ghu_application__nationality
 #: model:ir.model.fields,field_description:ghu.field_ghu_student__nationality
 #: model_terms:ir.ui.view,arch_db:ghu.application_agreement
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 #: model_terms:ir.ui.view,arch_db:ghu.view_ghu_advisor_search
 #: model_terms:ir.ui.view,arch_db:ghu.view_ghu_application_search
 msgid "Nationality"
@@ -2354,7 +2354,7 @@ msgid "Student"
 msgstr ""
 
 #. module: ghu
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 msgid "Student ID"
 msgstr "ID de Estudiante"
 
@@ -2951,7 +2951,7 @@ msgid "degrees_filename"
 msgstr ""
 
 #. module: ghu
-#: model_terms:ir.ui.view,arch_db:ghu.enrolment_confirmation_view
+#: model_terms:ir.ui.view,arch_db:ghu.enrollment_confirmation_view
 msgid "has enrolled on"
 msgstr "Fecha de Inscripción"
 
