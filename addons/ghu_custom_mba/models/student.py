@@ -49,30 +49,7 @@ class GhuStudent(models.Model):
             })
             notification_template.attachment_ids = False
             notification_template.attachment_ids = [(4, attachment.id)]
-            record.partner_id.message_post_with_template(template_id=notification_template.id)
-        return True
-
-    @api.multi
-    def studentEnrolled(self):
-        for record in self:
-            pdf = self.env.ref('ghu.enrollment_confirmation_pdf').sudo(
-            ).render_qweb_pdf([record.id])[0]
-            attachmentName = 'Enrollment-'+record.lastname + \
-                '-'+record.student_identification+'.pdf'
-            attachment = self.env['ir.attachment'].create({
-                'name': attachmentName,
-                'type': 'binary',
-                'datas': base64.encodestring(pdf),
-                'datas_fname': attachmentName,
-                'res_model': 'ghu.student',
-                'res_id': record.id,
-                'mimetype': 'application/x-pdf'
-            })
-            notification_template = self.env.ref(
-                'ghu_custom_mba.student_enrolled').sudo()
-            notification_template.attachment_ids = False
-            notification_template.attachment_ids = [(4, attachment.id)]
-            # Create Portal Access for student if there is no one yet
+                        # Create Portal Access for student if there is no one yet
             group_portal = self.env.ref('base.group_portal')
             user = record.partner_id.user_ids[0] if record.partner_id.user_ids else None
             if not user:
@@ -88,6 +65,5 @@ class GhuStudent(models.Model):
 
                 portal_url = record.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[record.id]
                 partner.signup_prepare()
-
             record.partner_id.message_post_with_template(template_id=notification_template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).id)
         return True
