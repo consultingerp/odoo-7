@@ -143,6 +143,7 @@ class GhuAcademicWriting(models.Model):
     _description = 'GHU Doctoral Program - Academic Writing'
 
     _inherit = ['ghu.doctoral_program_module']
+    
 class GhuProfessionalCapability(models.Model):
     _name = 'ghu.doctoral_program_professional_capability'
     _description = 'GHU Doctoral Program - Professional Capability'

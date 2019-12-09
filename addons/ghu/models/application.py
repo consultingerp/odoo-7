@@ -561,6 +561,10 @@ class GhuApplication(models.Model):
         student = self.env['ghu.student'].create(dict(
             doctoral_student=True,
             partner_id=self.partner_id.id,
+            vita_file=self.vita_file,
+            vita_file_filename=self.vita_file_filename,
+            id_file=self.passport_file,
+            id_file_filename=self.passport_file_filename,
             date_of_birth=self.date_of_birth,
             nationality=self.nationality.id,
             academic_degree_pre=self.academic_degree_pre,

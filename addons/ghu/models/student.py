@@ -78,6 +78,17 @@ class GhuStudent(models.Model):
         column1='student_id',
         column2='lang_id'
     )
+
+    vita_file = fields.Binary('Curriculum Vitae')
+    vita_file_filename = fields.Char(
+        string=u'vita_filename',
+    )
+
+    id_file = fields.Binary('ID')
+    id_file_filename = fields.Char(
+        string=u'id_filename',
+    )
+
     email = fields.Char(related='partner_id.email', required=True)
 
     student_identification = fields.Char(
