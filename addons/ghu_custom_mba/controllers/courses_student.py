@@ -26,8 +26,11 @@ class GhuCustomMbaStudent(http.Controller):
     @http.route('/campus/course/preview/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
     def preview(self, obj, **kw):
         if obj.state == 'approved':
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
             return http.request.render('ghu_custom_mba.student_coursepreview', {
                 'root': '/campus/course',
+                'student': student,
                 'object': request.env['ghu_custom_mba.course'].sudo().browse(obj.id),
                 'slug': 'campus_courses'
             })
