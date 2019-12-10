@@ -31,14 +31,15 @@ class GhuStudent(models.Model):
 
     @api.multi
     def applicationApproved(self):
-        notification_template = self.env.ref(
+        self_sudo = self.sudo()
+        notification_template = self_sudo.env.ref(
             'ghu_custom_mba.application_approved').sudo()
-        for record in self:
-            pdf = self.env.ref('ghu.enrollment_confirmation_pdf').sudo(
+        for record in self_sudo:
+            pdf = self_sudo.env.ref('ghu.enrollment_confirmation_pdf').sudo(
             ).render_qweb_pdf([record.id])[0]
             attachmentName = 'Enrollment-'+record.lastname + \
                 '-'+record.student_identification+'.pdf'
-            attachment = self.env['ir.attachment'].create({
+            attachment = self_sudo.env['ir.attachment'].create({
                 'name': attachmentName,
                 'type': 'binary',
                 'datas': base64.encodestring(pdf),
@@ -50,10 +51,9 @@ class GhuStudent(models.Model):
             notification_template.attachment_ids = False
             notification_template.attachment_ids = [(4, attachment.id)]
                         # Create Portal Access for student if there is no one yet
-            group_portal = self.env.ref('base.group_portal')
             user = record.partner_id.user_ids[0] if record.partner_id.user_ids else None
             if not user:
-                user = self.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
+                user = self_sudo.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
                     'email': extract_email(record.partner_id.email),
                     'login': extract_email(record.partner_id.email),
                     'partner_id': record.partner_id.id,
@@ -65,5 +65,5 @@ class GhuStudent(models.Model):
                 portal_url = partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[partner.id]
                 partner.signup_prepare()
             lang = user.lang
-            record.partner_id.message_post_with_template(template_id=notification_template.with_context(dbname=self._cr.dbname, lang=lang).id)
+            record.partner_id.message_post_with_template(template_id=notification_template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
         return True

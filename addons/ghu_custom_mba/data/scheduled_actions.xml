@@ -22,7 +22,7 @@
             <field name="trg_date_range">2</field>
             <field name="trg_date_range_type">day</field>
             <field name="type">ir.actions.server</field>
-            <field name="filter_domain">[["custom_mba","=",True]]</field>
+            <field name="filter_domain">["&amp;",["custom_mba","=",True],["create_date",">","2019-12-10 00:00:00"]]</field>
             <field name="state">code</field>
             <field name="code"><![CDATA[
             record.applicationApproved()
