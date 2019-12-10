@@ -36,7 +36,7 @@
                         Dear Student, ${object.firstname} ${object.lastname},<br> <br>
                         Congratulations, you are now officially a student at the Global Humanistic University.<br/>
                         Your confirmation of enrollment is attached to this email as well as the access to the GHU Online Campus.<br/>
-                        You can set your password to GHU Campus by clicking <a href="${object.partner_id.signup_url}">here.</a>
+                        You can set your password to GHU Campus by clicking <a href="${object.signup_url}">here.</a>
                         The Global Humanistic University would like to welcome you again and we wish you much success during your study program!</br>
                         Kind regards,<br/>
                         Global Humanistic University
