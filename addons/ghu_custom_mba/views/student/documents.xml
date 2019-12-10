@@ -17,7 +17,7 @@
                                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                             <div class="form-group">
                                                 <label for="cv">Curriculum Vitae</label>
-                                                <input required="required" id="cv" type="file" name="vita" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"/>
+                                                <input required="required" id="cv" type="file" name="cv" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="id">ID document</label>
