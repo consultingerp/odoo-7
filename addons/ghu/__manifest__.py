@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.659',
+    'version': '0.660',
 
  
 
@@ -56,7 +56,8 @@
         'views/res_config_view.xml',
         'views/invoice_document.xml',
         'views/website_social_header.xml',
-        'views/menu.xml'
+        'views/menu.xml',
+        'views/website/tag_manager.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
