@@ -29,6 +29,8 @@ class GhuStudent(models.Model):
                 record.partner_id.message_post_with_template(template_id=notification_template_en.id)
         return True
 
+    user_ids = fields.Selection(related='partner_id.user_ids', String="User IDs")
+    
     @api.multi
     def applicationApproved(self):
         self_sudo = self.sudo()
