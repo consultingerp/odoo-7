@@ -55,7 +55,7 @@
       <field name="inherit_id" ref="ghu.view_ghu_student_form" />
       <field name="arch" type="xml">
         <header position="inside">
-          <button string="Send enrollment confirmation and campus access" type="object" name="applicationApproved" attrs="{'invisible': ['|',('user_ids','!=',False),('custom_mba','=',False)]}"/>
+          <button string="Send enrollment confirmation and campus access" type="object" name="applicationApproved" attrs="{'invisible': [('custom_mba','=',False)]}"/>
         </header>
         <field name="doctoral_student" position="after">
           <field name="user_ids" invisible="1" />

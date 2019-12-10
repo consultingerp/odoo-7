@@ -6,9 +6,9 @@
             <field name="model">ghu.student</field>
             <field name="arch" type="xml">
                 <form modifiers="{}">
+                    <header>
+                    </header>
                     <sheet string="Student" modifiers="{}">
-                        <header>
-                        </header>
                         <group col="4" modifiers="{}">
                             <field name="doctoral_student" modifiers="{}"/>
                             <field name="firstname" modifiers="{'readonly':true,'required':true}"/>

@@ -17,8 +17,6 @@ class GhuStudent(models.Model):
         string=u'custom MBA',
     )
 
-    user_ids = fields.One2many(related='partner_id.user_ids', String="User IDs")
-
     @api.multi
     def applicationReceived(self):
         notification_template_en = self.env.ref(
