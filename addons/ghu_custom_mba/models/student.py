@@ -61,7 +61,7 @@ class GhuStudent(models.Model):
                     'company_ids': [(6, 0, [1])],
                 })
                 partner = record.partner_id
-
+                lang = user.lang
                 portal_url = record.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[record.id]
                 partner.signup_prepare()
             lang = user.lang
