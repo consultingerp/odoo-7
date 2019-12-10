@@ -84,7 +84,7 @@ class GhuStudent(models.Model):
         string=u'vita_filename',
     )
 
-    id_file = fields.Binary('ID')
+    id_file = fields.Binary('Personal ID (Passport, Driver License,...)')
     id_file_filename = fields.Char(
         string=u'id_filename',
     )
