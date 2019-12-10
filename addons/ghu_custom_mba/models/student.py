@@ -16,6 +16,9 @@ class GhuStudent(models.Model):
     custom_mba = fields.Boolean(
         string=u'custom MBA',
     )
+
+    user_ids = fields.One2many(related='partner_id.user_ids', String="User IDs")
+
     @api.multi
     def applicationReceived(self):
         notification_template_en = self.env.ref(
@@ -29,8 +32,8 @@ class GhuStudent(models.Model):
                 record.partner_id.message_post_with_template(template_id=notification_template_en.id)
         return True
 
-    user_ids = fields.Selection(related='partner_id.user_ids', String="User IDs")
     
+
     @api.multi
     def applicationApproved(self):
         self_sudo = self.sudo()
