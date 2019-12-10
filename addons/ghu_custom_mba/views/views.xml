@@ -57,6 +57,9 @@
         <header position="inside">
           <button string="Send enrollment confirmation and campus access" type="object" name="applicationApproved" attrs="{'invisible': ['|',('partner_id.user_ids','!=',False),('custom_mba','=',False)]}"/>
         </header>
+        <field name="doctoral_student" position="after">
+          <field name="custom_mba" modifiers="{}"/>
+        </field>
       </field>
     </record>
     <record model="ir.ui.view" id="ghu_custom_mba.course_form">
