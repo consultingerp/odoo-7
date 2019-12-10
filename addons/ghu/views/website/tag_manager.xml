@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <template id="layout" name="Main layout" inherit_id="portal.frontend_layout">
-            <xpath expr="//head/meta[last()]" position="after">
+            <xpath expr="//meta[last()]" position="after">
                 <!-- Google Tag Manager -->
                 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
