@@ -62,7 +62,7 @@ class GhuStudent(models.Model):
                 })
                 partner = record.partner_id
                 lang = user.lang
-                portal_url = record.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[record.id]
+                portal_url = partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[partner.id]
                 partner.signup_prepare()
             lang = user.lang
             record.partner_id.message_post_with_template(template_id=notification_template.with_context(dbname=self._cr.dbname, lang=lang).id)
