@@ -116,6 +116,9 @@
                                         <a href="/campus/my/documents" class="btn btn-success btn-block flex-column a-submit">
                                             Complete onboarding
                                         </a>
+                                        <p class="small">
+                                            To start buying courses you need to provide your CV and an ID.
+                                        </p>
                                     </t>
                                 </p>
                             </div>
