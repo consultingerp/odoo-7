@@ -112,6 +112,7 @@
                                             Purchase Course
                                             <strong>$<t t-esc="object.sudo().product_ref.list_price" /> USD</strong>
                                         </a>
+                                    </t>
                                     <t t-else="">
                                         <a href="/campus/my/documents" class="btn btn-success btn-block flex-column a-submit">
                                             Complete onboarding
