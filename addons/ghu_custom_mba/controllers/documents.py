@@ -60,7 +60,7 @@ class GhuCampus(CustomerPortal):
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
-            if post.get('attachment',False):
+            if post.get('cv',False) and post.get('id',False):
                 cv_name = post.get('cv').filename      
                 cv_file = post.get('cv')
                 cv_attachment = cv_file.read() 
