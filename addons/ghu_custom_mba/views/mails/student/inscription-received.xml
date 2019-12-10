@@ -53,17 +53,10 @@
                                                             <td valign="top" style="font-size: 13px;">
                                                                 <div>
                                                                     Dear ${object.firstname},<br /> <br />
-                                                                    Thank you very much for officially enrolling into the <b>Global
-                                                                        Humanistic University’s Custom MBA program.</b><br />
-                                                                    We kindly ask you to now send us your C.V. and (if applicable)
-                                                                    copies of your diplomas so that we can have a look at the admission
-                                                                    requirements.<br />
-                                                                    We will have a thorough look at the documentation you have provided
-                                                                    and the GHU office will then send you confirmation of your admission
-                                                                    into the program within the next two weeks.<br />                                                                    
-                                                                    The <b>Global Humanistic University</b> would like to welcome you
-                                                                    again and
-                                                                    we wish you much success during your study program!<br />
+                                                                    Thank you for registering for the Custom MBA program at the Global Humanistic University.<br />
+                                                                    We will review your registration details. 
+                                                                    After positively reviewing your details, you will receive your enrollment confirmation 
+                                                                    and access to the Online Campus of the GHU and to the Custom MBA program.<br />
                                                                     <br />
                                                                     Kind regards,,<br />
                                                                     Global Humanistic University
@@ -145,17 +138,8 @@
                                                             <td valign="top" style="font-size: 13px;">
                                                                 <div>
                                                                     Apreciado ${object.firstname},<br /> <br />
-                                                                    Muchas gracias por inscribirse oficialmente en el programa de
-                                                                    maestría Custom MBA de la Global Humanistic University.<br />
-                                                                    Le pedimos amablemente que nos envíe su C.V. y (si corresponde)
-                                                                    copias de sus diplomas para que podamos averiguar los requisitos de
-                                                                    admisión.<br />
-                                                                    Examinaremos detalladamente la documentación que ha proporcionado y
-                                                                    la oficina de GHU le enviará una confirmación de su admisión al
-                                                                    programa dentro de las próximas dos semanas.<br />
-                                                                    ¡La Global Humanistic University quiere darle la bienvenida
-                                                                    nuevamente y le deseamos mucho éxito durante su programa de
-                                                                    estudios!
+                                                                    Gracias por matricularse en el programa MBA Personalizado de la Global Humanistic University.<br />
+                                                                    Después de revisar sus datos, recibirá confirmación de inscripción y acceso al campus en línea de la GHU y al programa de MBA personalizado.
                                                                     <br />
                                                                     <br />
                                                                     Saludos cordiales,

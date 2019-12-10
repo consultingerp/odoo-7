@@ -1,0 +1,57 @@
+<odoo>
+    <data noupdate="0">
+        <template id="student_showexamination">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    <t t-esc="object.display_name"/>
+                </t>
+                <t t-if="object.long_name" t-set="subtitle">
+                    <t t-esc="object.long_name"/>
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">
+                            <t t-esc="object.display_name"/>
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <h2><t t-esc="ex.question_title"/></h2> -->
+                                <h2>
+                                    <t t-foreach="request.env['ghu_custom_mba.assessment'].sudo().types" t-as="type">
+                                        <t t-if="type[0] == ex.type" t-esc="type[1]"/>
+                                    </t>
+                                </h2>
+                                <h3>Task description</h3>
+                                <t t-raw="ex.question"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                Use the following template for your work: 
+                                <a t-attf-href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx" t-if="ex.type == 'analysis' or ex.type == 'report' or ex.type == 'homework'">Template</a>
+                                <a t-attf-href="/ghu_custom_mba/static/files/Essay_Examination-number_Student-ID.docx" t-if="ex.type == 'essay'">Template</a><br/>
+                                You have to submit the document at latest on <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/> at midnight. Please keep in mind that only one submission is possible.
+                                <form t-attf-action="/campus/course/#{ object.id }/examination/submit/#{ ex.id }" method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="examination_id" t-att-value="ex.id"/>
+                                    <div class="form-group">
+                                        <input type="file" name="attachment" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="ex.id"/>
+                                    </div>
+                                    <button type="submit" name="Submit" style="margin-top:20px;" class="btn btn-primary">
+                                        Submit final document
+                                    </button> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

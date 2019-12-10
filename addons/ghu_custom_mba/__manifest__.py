@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.542',
+    'version': '0.552',
 
 
 
@@ -39,11 +39,15 @@
         'views/course/advisor/assessments/question/edit.xml',
         'views/course/student/overview.xml',
         'views/course/student/preview.xml',
+        'views/course/student/request_assessment.xml',
+        'views/course/student/examination_submitted.xml',
+        'views/course/student/show_examination.xml',
         'views/course/student/my_courses.xml',
         'views/course/student/detail.xml',
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',
+        'views/student/documents.xml',
         'views/common/help.xml',
         'views/common/layout.xml',
         'views/common/vue_assets.xml',
@@ -53,6 +57,7 @@
         'views/mails/student/inscription-approved.xml',
         'views/mails/student/inscription-received.xml',
         'views/mails/student/student-enrolled.xml',
+        'views/mails/student/course-invoice.xml',
         'views/mails/workflow/review-needed.xml',
         'views/mails/workflow/recording-review-needed.xml',
         'views/mails/workflow/script-approved.xml',

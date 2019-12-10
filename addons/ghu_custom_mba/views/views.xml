@@ -1,15 +1,15 @@
 <odoo>
   <data noupdate="0">
     <record model="ir.ui.view" id="ghu_custom_mba.advisor_form_extension">
-        <field name="name">ghu_custom_mba.advisor.inherit</field>
-        <field name="model">ghu.advisor</field>
-        <field name="inherit_id" ref="ghu.view_ghu_advisor_form" />
-        <field name="priority" eval="15"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='is_cafeteria']" position="after">
-                <field name="videoCheck"/>
-            </xpath>                    
-        </field> 
+      <field name="name">ghu_custom_mba.advisor.inherit</field>
+      <field name="model">ghu.advisor</field>
+      <field name="inherit_id" ref="ghu.view_ghu_advisor_form" />
+      <field name="priority" eval="15"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='is_cafeteria']" position="after">
+          <field name="videoCheck"/>
+        </xpath>
+      </field>
     </record>
 
     <!-- explicit list view definition -->
@@ -38,7 +38,8 @@
                 <div class="oe_kanban_details">
                   <h4>
                     <a type="open">
-                      <field name="id"/> - <field name="name"/>
+                      <field name="id"/>
+ -                      <field name="name"/>
                     </a>
                   </h4>
                 </div>
@@ -48,7 +49,20 @@
         </kanban>
       </field>
     </record>
-
+    <record id="student_view" model="ir.ui.view">
+      <field name="name">Custom MBA Student View</field>
+      <field name="model">ghu.student</field>
+      <field name="inherit_id" ref="ghu.view_ghu_student_form" />
+      <field name="arch" type="xml">
+        <header position="inside">
+          <button string="Send enrollment confirmation and campus access" type="object" name="applicationApproved" attrs="{'invisible': [('custom_mba','=',False)]}"/>
+        </header>
+        <field name="doctoral_student" position="after">
+          <field name="user_ids" invisible="1" />
+          <field name="custom_mba" modifiers="{}"/>
+        </field>
+      </field>
+    </record>
     <record model="ir.ui.view" id="ghu_custom_mba.course_form">
       <field name="name">Course</field>
       <field name="model">ghu_custom_mba.course</field>

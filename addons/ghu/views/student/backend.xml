@@ -6,6 +6,8 @@
             <field name="model">ghu.student</field>
             <field name="arch" type="xml">
                 <form modifiers="{}">
+                    <header>
+                    </header>
                     <sheet string="Student" modifiers="{}">
                         <group col="4" modifiers="{}">
                             <field name="doctoral_student" modifiers="{}"/>
@@ -24,6 +26,10 @@
                             <field name="email" modifiers="{'readonly':true,'required':true}"/>
                             <field name="student_identification" modifiers="{'readonly':true}"/>
                             <field name="date" modifiers="{}"/>
+                            <field name="vita_file" widget="binary" filename="vita_file_filename"/>
+                            <field name="vita_file_filename" invisible="1"/>
+                            <field name="id_file" widget="binary" filename="id_file_filename"/>
+                            <field name="id_file_filename" invisible="1"/>
                         </group>
                     </sheet>
                 </form>

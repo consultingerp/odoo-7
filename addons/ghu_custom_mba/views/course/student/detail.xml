@@ -188,6 +188,16 @@
                                     </div>
                                 </li>
                             </ul>
+                            <div class="card-body">
+                                <a t-if="enrollment.state == 'paid'" t-attf-href="/campus/course/request_assessment/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
+                                    Request assessment
+                                </a>
+                                <t t-if="enrollment.state != 'paid'">
+                                    <a t-foreach="enrollment.examination_ids" t-as="ex" t-attf-href="/campus/course/{{ object.id }}/assessment/{{ ex.id}}" class="btn btn-success btn-block flex-column a-submit">
+                                        Assessment from <span t-field="ex.end_date" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                    </a>
+                                </t>
+                            </div>
                         </div>
                         <div class="card">
                             <ul class="list-group list-group-fit">
