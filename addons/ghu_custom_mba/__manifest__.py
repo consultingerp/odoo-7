@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.549',
+    'version': '0.550',
 
 
 
@@ -47,6 +47,7 @@
         'views/video/myvideos.xml',
         'views/video/panopto.xml',
         'views/documents/list.xml',
+        'views/student/documents.xml',
         'views/common/help.xml',
         'views/common/layout.xml',
         'views/common/vue_assets.xml',
