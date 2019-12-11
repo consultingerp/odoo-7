@@ -50,7 +50,10 @@
                 </div>
                 <script>
                     if (!window.localStorage.getItem('navBarIntro')){
-                        introJs('.sidebar-p-y').start();
+                        tour = introJs('.sidebar-p-y');
+                        tour.setOption('tooltipPosition', 'auto');
+			            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+                        tour.start();
                         window.localStorage.setItem('navBarIntro', '1');
                     }
                 </script>

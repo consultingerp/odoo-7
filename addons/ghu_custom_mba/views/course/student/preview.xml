@@ -185,7 +185,10 @@
                 </div>
                 <script>
                     if (!window.localStorage.getItem('previewStudentDone')){
-                        introJs('#course-preview').start();
+                        tour = introJs('#course-preview');
+                        tour.setOption('tooltipPosition', 'auto');
+			            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+                        tour.start();
                         window.localStorage.setItem('previewStudentDone', '1');
                     }
                 </script>
