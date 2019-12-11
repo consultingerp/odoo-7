@@ -15,8 +15,8 @@
                         </h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8">
+                <div id="course-preview" class="row">
+                    <div class="col-lg-8" data-intro="All information about the course can be found in this section.">
                         <div class="accordion mb-2" id="courseAccordion">
                             <div class="card">
                                 <div t-if="object.preview_video_id" class="embed-responsive embed-responsive-16by9">
@@ -108,7 +108,7 @@
                             <div class="card-body text-center">
                                 <p>
                                     <t t-if="object.product_ref.id and student.vita_file_filename and student.id_file_filename">
-                                        <a t-attf-href="/campus/course/buy/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
+                                        <a data-intro="If the course is the one you like, purchase it buy clicking here." t-attf-href="/campus/course/buy/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
                                             Purchase Course
                                             <strong>$<t t-esc="object.sudo().product_ref.list_price" /> USD</strong>
                                         </a>
@@ -124,7 +124,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-intro="This is the lecturer who created this course.">
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-left">
@@ -183,6 +183,12 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    if (!window.localStorage.getItem('previewStudentDone')){
+                        introJs('#course-preview').start();
+                        window.localStorage.setItem('previewStudentDone', '1');
+                    }
+                </script>
             </t>
         </template>
     </data>
