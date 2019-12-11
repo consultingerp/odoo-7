@@ -187,8 +187,6 @@
                     if (!window.localStorage.getItem('previewStudentDone')){
                         setTimeout(function(){
                             tour = introJs('#course-preview');
-                            tour.setOption('tooltipPosition', 'auto');
-                            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
                             tour.start();
                             window.localStorage.setItem('previewStudentDone', '1');
                         },3000)   

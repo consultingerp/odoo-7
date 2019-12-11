@@ -51,9 +51,7 @@
                 <script>
                     if (!window.localStorage.getItem('navBarIntro')){
                         setTimeout(function(){
-                            tour = introJs();
-                            tour.setOption('tooltipPosition', 'auto');
-                            tour.setOption('positionPrecedence', ['right', 'left', 'bottom', 'top']);
+                            tour = introJs('.sidebar');
                             tour.start();
                             window.localStorage.setItem('navBarIntro', '1');
                         },3000);
