@@ -185,11 +185,13 @@
                 </div>
                 <script>
                     if (!window.localStorage.getItem('previewStudentDone')){
-                        tour = introJs('#course-preview');
-                        tour.setOption('tooltipPosition', 'auto');
-			            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
-                        tour.start();
-                        window.localStorage.setItem('previewStudentDone', '1');
+                        setTimeout(function(){
+                            tour = introJs('#course-preview');
+                            tour.setOption('tooltipPosition', 'auto');
+                            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+                            tour.start();
+                            window.localStorage.setItem('previewStudentDone', '1');
+                        },3000)   
                     }
                 </script>
             </t>

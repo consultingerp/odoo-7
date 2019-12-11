@@ -50,11 +50,13 @@
                 </div>
                 <script>
                     if (!window.localStorage.getItem('navBarIntro')){
-                        tour = introJs('.sidebar-p-y');
-                        tour.setOption('tooltipPosition', 'auto');
-			            tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
-                        tour.start();
-                        window.localStorage.setItem('navBarIntro', '1');
+                        setTimeout(function(){
+                            tour = introJs();
+                            tour.setOption('tooltipPosition', 'auto');
+                            tour.setOption('positionPrecedence', ['right', 'left', 'bottom', 'top']);
+                            tour.start();
+                            window.localStorage.setItem('navBarIntro', '1');
+                        },3000);
                     }
                 </script>
             </t>
