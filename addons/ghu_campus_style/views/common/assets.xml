@@ -14,6 +14,8 @@
             <!-- App CSS -->
             <link type="text/css" href="/ghu_campus_style/static/design/dist/assets/css/app.css" rel="stylesheet" />
 
+            <link type="text/css" href="/ghu_campus_style/static/design/intro.css" rel="stylesheet" />
+
 
             <script src="/ghu_campus_style/static/design/dist/assets/vendor/jquery.min.js"></script>
 
