@@ -183,7 +183,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- <script>
+                <!-- <style>
+                    #course-preview .introjs-overlay {
+                        margin-left: -615px;
+                        margin-top: -191px;
+                    }
+                </style>
+                <script>
                     if (!window.localStorage.getItem('previewStudentDone')){
                         setTimeout(function(){
                             tour = introJs('#course-preview');
