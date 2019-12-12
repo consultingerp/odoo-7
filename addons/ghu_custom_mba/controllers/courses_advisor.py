@@ -38,15 +38,33 @@ class GhuCustomMba(http.Controller):
                 [('partner_id', '=', partner_id)], limit=1)
             advisor_id = advisor.id
             if advisor_id:
-                objects = request.env['ghu_custom_mba.course'].search(
-                    [('author_id', '=', advisor_id)])
-                _logger.info('fetch of courses succeeded')
+                objects = request.env['ghu_custom_mba.course_enrollment'].search(
+                    [('course_ref.author_id', '=', advisor_id),('state','=','grading')])
+                _logger.info('fetch of courses to grade succeeded')
                 return http.request.render('ghu_custom_mba.coursegradinglist', {
-                    'root': '/campus/course',
-                    'author': 'true',
                     'objects': objects,
                     'slug': 'campus_grading_courses'
                 })
+        return http.request.not_found()
+
+    @http.route('/campus/course/grade/<model("ghu_custom_mba.course_enrollment"):obj>', auth='user', website=True)
+    def gradeCourse(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.course_enrollment'].sudo().browse(obj.id)
+        if obj.course_ref.author_id.partner_id == request.env.user.partner_id.id:
+            examination = request.env['ghu_custom_mba.examination'].sudo().search([('enrollment_id','=',obj.id),('submission_filename', '!=', '')])
+            return http.request.render('ghu_custom_mba.coursegradingdetail', {
+                'enrollment': obj,
+                'examination': examination,
+                'slug': 'campus_grading_courses'
+            })
+        return http.request.not_found()
+
+    @http.route('/campus/course/grade/save/<model("ghu_custom_mba.examination"):obj>', auth='user', website=True)
+    def saveGradeCourse(self, obj, **kw):
+        obj = request.env['ghu_custom_mba.examination'].sudo().browse(obj.id)
+        if obj.enrollment_id.course_ref.author_id.partner_id == request.env.user.partner_id.id:
+            obj.write(kw)
+            return werkzeug.utils.redirect('/campus/grading/courses/')
         return http.request.not_found()
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/', auth='user', website=True)
