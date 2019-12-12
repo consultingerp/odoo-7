@@ -5,3 +5,15 @@
 .sidebar .introjs-tooltiptext {
     color: #000;
 }
+.sidebar .introjs-overlay {
+    margin-top: -171px;
+}
+
+.sidebar .introjs-fixedTooltip {
+    margin-top: -102px;
+}
+
+.sidebar span.introjs-helperNumberLayer {
+    left: auto;
+    right: -16px;
+}
