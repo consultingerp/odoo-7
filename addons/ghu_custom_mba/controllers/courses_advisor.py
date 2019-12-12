@@ -38,8 +38,8 @@ class GhuCustomMba(http.Controller):
                 [('partner_id', '=', partner_id)], limit=1)
             advisor_id = advisor.id
             if advisor_id:
-                objects = request.env['ghu_custom_mba.course_enrollment'].search(
-                    [('course_ref.author_id', '=', advisor_id),('state','=','grading')])
+                examinations = request.env['ghu_custom_mba.course_enrollment'].sudo().search([('state','=','grading')])
+                objects = [(i) for i in examinations if i.course_ref.author_id.id==advisor_id]
                 _logger.info('fetch of courses to grade succeeded')
                 return http.request.render('ghu_custom_mba.coursegradinglist', {
                     'objects': objects,
@@ -49,9 +49,11 @@ class GhuCustomMba(http.Controller):
 
     @http.route('/campus/course/grade/<model("ghu_custom_mba.course_enrollment"):obj>', auth='user', website=True)
     def gradeCourse(self, obj, **kw):
-        obj = request.env['ghu_custom_mba.course_enrollment'].sudo().browse(obj.id)
-        if obj.course_ref.author_id.partner_id == request.env.user.partner_id.id:
-            examination = request.env['ghu_custom_mba.examination'].sudo().search([('enrollment_id','=',obj.id),('submission_filename', '!=', '')])
+        obj = request.env['ghu_custom_mba.course_enrollment'].sudo().browse(
+            obj.id)
+        if obj.course_ref.author_id.partner_id.id == request.env.user.partner_id.id:
+            examination = request.env['ghu_custom_mba.examination'].sudo().search(
+                [('enrollment_id', '=', obj.id), ('submission_filename', '!=', '')])
             return http.request.render('ghu_custom_mba.coursegradingdetail', {
                 'enrollment': obj,
                 'examination': examination,
@@ -301,7 +303,6 @@ class GhuCustomMba(http.Controller):
             return werkzeug.utils.redirect('/campus/course/'+str(obj.id))
         return http.request.not_found()
 
-
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/new', methods=['GET'], auth='user', website=True)
     def newAssessmentQuestion(self, obj, ass, **kw):
         obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
@@ -339,7 +340,6 @@ class GhuCustomMba(http.Controller):
             })
         return http.request.not_found()
 
-
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/save/', methods=['POST'], auth='user', website=True)
     def createAssessmentQuestion(self, obj, ass, **kw):
         obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
@@ -347,9 +347,8 @@ class GhuCustomMba(http.Controller):
             kw['assessment_id'] = ass.id
             question_record = request.env['ghu_custom_mba.assessment_question'].with_context(
                 mail_create_nosubscribe=True).create(kw)
-            return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id) )
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id))
         return http.request.not_found()
-
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/save/<model("ghu_custom_mba.assessment_question"):question>', methods=['POST'], auth='user', website=True)
     def updateAssessmentQuestion(self, obj, ass, question, **kw):
@@ -357,10 +356,9 @@ class GhuCustomMba(http.Controller):
         if request.env.user.partner_id.id == obj.author_id.partner_id.id:
             kw['assessment_id'] = ass.id
             question.write(kw)
-            return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id) )
+            return werkzeug.utils.redirect('/campus/course/'+str(obj.id)+'/assessment/edit/'+str(ass.id))
         return http.request.not_found()
 
-    
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/assessment/<model("ghu_custom_mba.assessment"):ass>/question/delete/<model("ghu_custom_mba.assessment_question"):question>', methods=['GET'], auth='user', website=True)
     def deleteAssessmentQuestion(self, obj, ass, question, **kw):
         obj = request.env['ghu_custom_mba.course'].sudo().browse(obj.id)
