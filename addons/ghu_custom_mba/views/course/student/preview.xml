@@ -183,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <script>
+                <!-- <script>
                     if (!window.localStorage.getItem('previewStudentDone')){
                         setTimeout(function(){
                             tour = introJs('#course-preview');
@@ -191,7 +191,7 @@
                             window.localStorage.setItem('previewStudentDone', '1');
                         },3000)   
                     }
-                </script>
+                </script> -->
             </t>
         </template>
     </data>
