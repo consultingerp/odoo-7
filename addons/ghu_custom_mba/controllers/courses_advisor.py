@@ -64,8 +64,12 @@ class GhuCustomMba(http.Controller):
     @http.route('/campus/course/grade/save/<model("ghu_custom_mba.examination"):obj>', auth='user', website=True)
     def saveGradeCourse(self, obj, **kw):
         obj = request.env['ghu_custom_mba.examination'].sudo().browse(obj.id)
-        if obj.enrollment_id.course_ref.author_id.partner_id == request.env.user.partner_id.id:
+        if obj.enrollment_id.course_ref.author_id.partner_id.id == request.env.user.partner_id.id:
             obj.write(kw)
+            if obj.grade >= 25:
+                obj.course_ref.write({'state':'completed'})
+            else:
+                obj.course_ref.write({'state':'failed'})
             return werkzeug.utils.redirect('/campus/grading/courses/')
         return http.request.not_found()
 

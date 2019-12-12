@@ -38,8 +38,8 @@
         <template id="coursegradingdetail">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    Grading of <t t-esc="object.course_ref.name"/>
- by <t t-esc="object.student_ref.name"/>
+                    Grading of <t t-esc="enrollment.course_ref.name"/>
+ by <t t-esc="enrollment.student_ref.name"/>
                 </t>
                 <div class="media flex-wrap align-items-center mb-headings">
                     <div class="media-body mb-3 mb-sm-0">
@@ -62,18 +62,19 @@
 
                                 <small class="text-muted">SUBMISSION:</small>
                                 <p>
-                                    <a t-if="examination.submission" target="_blank" t-attf-href="web/content/ghu_custom_mba.examination/#{examination.id}/submission/#{examination.submission_filename}?download=true">Download submission</a>
+                                    <a class="btn btn-primary" t-if="examination.submission" target="_blank" t-attf-href="web/content/ghu_custom_mba.examination/#{examination.id}/submission/#{examination.submission_filename}?download=true">Download submission</a>
                                 </p>
                             </div>
                             <div class="col-md-4">
                                 <form t-attf-action="/campus/course/grade/save/#{ examination.id }" method="post" class="s_website_form" enctype="multipart/form-data">
                                     <div class="form-group d-flex flex-column">
                                         <label class="form-label" for="customRange2">Grade</label>
-                                        <input name="grade" type="range" class="custom-range" min="0" max="50" id="customRange2"/>
+                                        <input name="grade" type="number" min="0" max="50" step=".5" value="50" id="customRange2"/>
                                     </div>
                                     <div class="form-group">
                                         <textarea name="result" class="form-control" rows="2" placeholder="Write comment on grade"></textarea>
                                     </div>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <button type="submit" href="#" class="btn btn-success float-right">
                                         Save grading <i class="material-icons btn__icon--right">check</i>
                                     </button>
