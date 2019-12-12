@@ -3,7 +3,5 @@
     <template id="assets_intro" name="Intro.js Assets">
         <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.css"/>
-        <!-- Add dark template -->
-        <link href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs-modern.css" rel="stylesheet"/>
     </template>
 </odoo>
