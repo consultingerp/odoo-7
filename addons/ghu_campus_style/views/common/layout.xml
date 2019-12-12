@@ -7,6 +7,7 @@
                 <t t-set="x_icon" t-value="'/ghu_campus_style/static/images/favicon.png'" />
                 <t t-set="head">
                     <t t-call-assets="ghu_campus_style.assets"></t>
+                    <t t-call-assets="ghu_custom_mba.assets_intro"></t>
                 </t>
                 <t t-call="ghu_campus_style.preloader" />
                 <!-- Header Layout -->
@@ -33,7 +34,7 @@
                             <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
                                 <div class="mdk-drawer__content">
                                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar="">
-                                        <div class="sidebar-p-y">
+                                        <div class="sidebar-p-y" data-intro='This is the menu, you can navigate here through the main sections of Campus.'>
                                             <!-- Account menu -->
                                             <!-- <t t-call="ghu_campus_style.sidebar_account" /> -->
                                             <t t-if="request.env.user.partner_id.is_student or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_student" />
@@ -47,6 +48,15 @@
                         <!-- {% include 'layouts/_app-settings.html' %} -->
                     </div>
                 </div>
+                <script>
+                    if (!window.localStorage.getItem('navBarIntro')){
+                        setTimeout(function(){
+                            tour = introJs('.sidebar');
+                            tour.start();
+                            window.localStorage.setItem('navBarIntro', '1');
+                        },3000);
+                    }
+                </script>
             </t>
         </template>
         <template id="preloader">

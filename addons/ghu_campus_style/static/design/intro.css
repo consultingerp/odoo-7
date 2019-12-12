@@ -1,0 +1,15 @@
+.sidebar .introjs-helperLayer {
+    background: none;
+    border: 1px solid rgba(255,255,255,.5)
+}
+.sidebar .introjs-tooltiptext {
+    color: #000;
+}
+.sidebar .introjs-overlay {
+    margin-top: -65px;
+}
+
+.sidebar span.introjs-helperNumberLayer {
+    left: auto;
+    right: -16px;
+}

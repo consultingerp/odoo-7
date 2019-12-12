@@ -4,7 +4,7 @@
         <template id="sidebar_advisor">
             <div class="sidebar-heading">General</div>
             <ul class="sidebar-menu sm-active-button-bg">
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_documents' and ' active' or ''}">
+                <li data-intro='You can find all general documents necessary in here.' t-attf-class="sidebar-menu-item#{slug == 'campus_documents' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/documents">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">attachment</i> 
                                                         Documents

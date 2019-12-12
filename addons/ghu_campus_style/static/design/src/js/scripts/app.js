@@ -6,9 +6,10 @@ import 'ui-learnplus-bootstrap/js/sidebar'
 
 (function() {
   'use strict';
-
+  
   ///////////////////////////////////
   // Custom JavaScript can go here //
   ///////////////////////////////////
 
+  
 })()
