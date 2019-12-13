@@ -21,11 +21,11 @@ class GhuHome(Home):
                     student = request.env['ghu.student'].sudo().search(
                     [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
                     if not student.vita_file_filename or not student.id_file_filename:
-                        redirect='/campus/my/documents'
+                        redirect = '/campus/my/documents'
                     else:
-                        redirect='/campus/courses'
+                        redirect = '/campus/courses'
                 else:
-                    redirect '/campus/documents' 
+                    redirect = '/campus/documents' 
             return http.redirect_with_hash(redirect)
         return response
     
