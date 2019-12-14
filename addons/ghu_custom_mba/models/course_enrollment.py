@@ -77,16 +77,29 @@ class GhuCourseEnrollment(models.Model):
 
     def enrollmentFinished(self):
         # Find all 3 lectures and add ids to model
-        panopto = GhuPanopto(self.env)
-        user = self.env['res.users'].search(
-            [('partner_id', '=', self.student_ref.partner_id.id)], limit=1)
-        panoptoUserId = panopto.getUserId(user)
-        panopto.grantAccessToSession(
-            self.course_ref.lecture1_video_id, panoptoUserId)
-        panopto.grantAccessToSession(
-            self.course_ref.lecture2_video_id, panoptoUserId)
-        panopto.grantAccessToSession(
-            self.course_ref.lecture3_video_id, panoptoUserId)
+        for record in self:
+            panopto = GhuPanopto(self.env)
+            user = self.env['res.users'].search(
+                [('partner_id', '=', record.student_ref.partner_id.id)], limit=1)
+            panoptoUserId = panopto.getUserId(user)
+            panopto.grantAccessToSession(
+                record.course_ref.lecture1_video_id, panoptoUserId)
+            panopto.grantAccessToSession(
+                record.course_ref.lecture2_video_id, panoptoUserId)
+            panopto.grantAccessToSession(
+                record.course_ref.lecture3_video_id, panoptoUserId)
+            notification_template = self.env.ref(
+                'ghu_custom_mba.enrollment_paid').sudo()
+            record.message_post_with_template(template_id=notification_template.id)
+
+    # Check if paid invoice is one of an application
+    def check_invoice(self, record):
+        if record.state == "paid":
+            enrollment = self.sudo().search(
+                [('invoice_ref', '=', record.id)])
+            if enrollment:
+                if enrollment.state == "new":
+                    enrollment.write({'state': 'paid'})
 
 
 class GhuExamination(models.Model):
