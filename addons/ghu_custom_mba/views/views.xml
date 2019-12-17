@@ -79,6 +79,9 @@
               <field name="name" modifiers="{'required':true}"/>
               <field name="long_name" modifiers="{'required':true}"/>
               <newline modifiers="{}"/>
+              <field name="mba" colspan="4" modifiers="{}"/>
+              <field name="msc" colspan="4" modifiers="{}"/>
+              <field name="bsc" colspan="4" modifiers="{}"/>
               <field name="description" colspan="4" modifiers="{}"/>
               <newline modifiers="{}"/>
               <newline modifiers="{}"/>
