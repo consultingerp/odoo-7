@@ -20,7 +20,7 @@
                                         <t t-elif="object.program_id.code == 'law'">gavel</t>
                                         <t t-else="">supervisor_account</t>
                                     </i>
-                                    <a t-attf-href="#{ root }/#{ object.id }">
+                                    <a t-attf-href="#{ root }/preview/#{ object.id }">
                                         <t t-esc="object.display_name"/>
                                     </a>
                                 </h5>
