@@ -105,6 +105,22 @@ class GhuAdvisor(models.Model):
     cmba_agreement_filename = fields.Char(
         string=u'Custom MBA Agreement Filename',
     )
+    
+    
+    msc_agreement = fields.Binary(
+        string=u'MSc Agreement',
+    )
+    msc_agreement_filename = fields.Char(
+        string=u'MSc Agreement Filename',
+    )
+    
+    
+    bsc_agreement = fields.Binary(
+        string=u'BSc Agreement',
+    )
+    bsc_agreement_filename = fields.Char(
+        string=u'BSc Agreement Filename',
+    )
 
     programs = fields.Many2many(
         string=u'Programs',
