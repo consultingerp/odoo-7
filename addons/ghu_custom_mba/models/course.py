@@ -17,6 +17,18 @@ class GhuCourse(models.Model):
     description = fields.Html(
         string=u'Description',
     )
+    
+    mba = fields.Boolean(
+        string=u'MBA',
+    )
+       
+    bsc = fields.Boolean(
+        string=u'BSc',
+    )
+    
+    msc = fields.Boolean(
+        string=u'MSc',
+    )
 
     aims = fields.Html(
         string=u'Aims',
