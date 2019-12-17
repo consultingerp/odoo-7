@@ -38,7 +38,7 @@
                 <div class="oe_kanban_details">
                   <h4>
                     <a type="open">
-                      <field name="id"/>
+                      <field name="shortcode"/>
  -                      <field name="name"/>
                     </a>
                   </h4>
