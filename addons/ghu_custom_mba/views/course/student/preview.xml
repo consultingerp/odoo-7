@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="card-title">
-                                            <a t-attf-href="/campus/advisor/{{ object.author_id.id }}">
+                                            <a>
                                                 <t t-esc="object.author_id.nomination" />
                                                 <br/>
                                                 <t t-esc="object.author_id.name" />
