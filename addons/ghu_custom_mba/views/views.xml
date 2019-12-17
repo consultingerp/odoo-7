@@ -75,7 +75,7 @@
           </header>
           <sheet string="Course" modifiers="{}">
             <group col="4" modifiers="{}">
-              <field name="id" can_create="false" can_write="false"/>
+              <field name="shortcode" modifiers="{}"/>
               <field name="name" modifiers="{'required':true}"/>
               <field name="long_name" modifiers="{'required':true}"/>
               <newline modifiers="{}"/>
@@ -102,7 +102,6 @@
               <newline modifiers="{}"/>
               <field name="assessment_ids" colspan="4" modifiers="{}"/>
               <newline modifiers="{}"/>
-              <field name="shortcode" modifiers="{}"/>
               <field name="language" can_create="true" can_write="true" modifiers="{'required':true}"/>
               <field name="program_id" can_create="true" can_write="true" modifiers="{}"/>
               <field name="script_file" widget="binary" filename="script_file_filename"/>
