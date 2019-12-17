@@ -122,6 +122,8 @@
                                     <field name="partner_id" readonly="1"/>
                                     <field name="advisor_id"/>
                                     <field name="is_cafeteria"/>
+                                    <field name="is_bsc_ba"/>
+                                    <field name="is_msc_ba"/>
                                     <field name="is_advisor"/>
                                     <field name="nomination"/>
                                     <field name="academic_degree"/>
