@@ -16,6 +16,14 @@ class GhuAdvisor(models.Model):
     is_cafeteria = fields.Boolean(
         string=u'Is Custom MBA?',
     )
+    
+    is_bsc_ba = fields.Boolean(
+        string=u'Is BSc?',
+    )
+    
+    is_msc_ba = fields.Boolean(
+        string=u'Is MSc?',
+    )
 
     is_advisor = fields.Boolean(
         string=u'Is Phd/DBA advisor?',
