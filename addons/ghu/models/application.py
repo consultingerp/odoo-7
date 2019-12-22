@@ -5,12 +5,21 @@ import logging
 import base64
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from odoo.tools import email_split
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
+def extract_email(email):
+    """ extract the email address from a user-friendly email address """
+    addresses = email_split(email)
+    return addresses[0] if addresses else ''
 
 class GhuApplication(models.Model):
     _name = 'ghu.application'
+    
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    
     _description = 'GHU Application'
     _rec_name = 'lastname'
 
@@ -124,6 +133,12 @@ class GhuApplication(models.Model):
         ]
     )
 
+    
+    scholarship = fields.Float(
+        string='Scholarship (in $)',
+    )
+    
+
     # Thesis title
     thesis_title = fields.Char(
         string='Thesis Title',
@@ -199,7 +214,7 @@ class GhuApplication(models.Model):
     def write(self, values):
         if 'state' in values:
             states = [k for k, v in self.states]
-            if abs(states.index(self.state) - states.index(values['state'])) > 1:
+            if values['state'] != 'declined' and abs(states.index(self.state) - states.index(values['state'])) > 1:
                 raise ValidationError(
                     _('You\'re not allowed to skip stages in this kanban!'))
 
@@ -347,16 +362,17 @@ class GhuApplication(models.Model):
         # generate invoice
         self_sudo = self.sudo()
         if new_state == 'signed':
-            self_sudo.signed_by_applicant()
+            self_sudo.signed_by_applicant(self)
         elif new_state == 'approved' and not self.application_fee_invoice_id:
             self_sudo.send_application_fee_invoice()
-        elif new_state == 'advisor_search' and self.state == '':
-            self_sudo.send_advisor_search_notification()
+        elif new_state == 'advisor_search':
+            print('advisor_search')
+            #self_sudo.send_advisor_search_notification()
         elif new_state == 'advisor_matched':
-            self_sudo.notify_advisor()
+            print('advisor_matched')
+            #self_sudo.notify_advisor()
         elif new_state == 'advisor_found':
             self_sudo.create_agreement_request()
-            self_sudo.send_first_fee_invoice()
         elif new_state == 'done':
             self_sudo.finish_application()
         elif new_state == 'declined':
@@ -429,7 +445,7 @@ class GhuApplication(models.Model):
             record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref(
-            'ghu.ghu_doctoral_application_confirmation_template')
+            'ghu.ghu_new_doctoral_application_template')
         notification_template.send_mail(
             record.id, raise_exception=False, force_send=False)
 
@@ -444,7 +460,6 @@ class GhuApplication(models.Model):
         invoice = self.env['account.invoice'].create(dict(
             # customer (billing address)
             partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
-            partner_shipping_id=self.partner_id.id,  # customer (applicant)
             type='out_invoice',
             date_invoice=datetime.datetime.utcnow().date(),  # invoice date
             date_due=(datetime.datetime.utcnow() + \
@@ -494,8 +509,6 @@ class GhuApplication(models.Model):
         invoice = self.env['account.invoice'].create(dict(
             # customer (billing address)
             partner_id=invoice_partners[0].id if invoice_partners else self.partner_id.id,
-            # customer (applicant)
-            partner_shipping_id=self.partner_id.id,
             type='out_invoice',
             date_invoice=datetime.datetime.utcnow().date(),  # invoice date
             date_due=(datetime.datetime.utcnow() + \
@@ -507,12 +520,18 @@ class GhuApplication(models.Model):
                 'ghu.automated_invoice_bank_account'),  # company bank account
         ))
 
+
+
+        total_amount = 25000 - self.scholarship
+
         if self.payment_method == 'one_time':
-            payment = 24500
+            payment = total_amount - 500
         elif self.payment_method == 'two_times':
-            payment = 12500
+            total_amount = total_amount + 500
+            payment = total_amount/2 - 500
         else:
-            payment = 9000
+            total_amount = total_amount + 1000
+            payment = total_amount/3 - 500
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
@@ -522,19 +541,70 @@ class GhuApplication(models.Model):
             default_invoice_id=invoice.id
         ).create(dict(
             product_id=product.id,
-            name="First Fee",
+            name="Doctoral Program - First Fee",
             price_unit=payment,
         ))
 
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
         invoice_template = self.env.ref(
-            'ghu.ghu_invoice_email_template').sudo()
+            'ghu.ghu_first_fee_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
         self.first_fee_invoice_id = invoice.id
 
+    @api.one
+    def finish_application(self):
+        print('Finish application')
+        # Create doctoral program model
+        student = self.env['ghu.student'].create(dict(
+            doctoral_student=True,
+            partner_id=self.partner_id.id,
+            vita_file=self.vita_file,
+            vita_file_filename=self.vita_file_filename,
+            id_file=self.passport_file,
+            id_file_filename=self.passport_file_filename,
+            date_of_birth=self.date_of_birth,
+            nationality=self.nationality.id,
+            academic_degree_pre=self.academic_degree_pre,
+            academic_degree_post=self.academic_degree_post,
+            native_language=self.native_language.id,
+            other_languages=(6, False, [v.id for v in self.other_languages])
+        ))
+
+        enrollment = self.env['ghu.doctoral_program'].create(dict(
+            advisor_ref='%s,%s' % ('ghu.advisor', self.advisor_ref.id),
+            student_ref='%s,%s' % ('ghu.student', student.id)
+        ))
+        # Create Portal Access for both (Advisor and Student) if there is no one yet
+        group_portal = self.env.ref('base.group_portal')
+        user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
+        if not user:
+            user = self.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
+                'email': extract_email(student.partner_id.email),
+                'login': extract_email(student.partner_id.email),
+                'partner_id': student.partner_id.id,
+                'company_id': 1,
+                'company_ids': [(6, 0, [1])],
+            })
+            template = self.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
+            lang = user.lang
+            partner = student.partner_id
+
+            portal_url = partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[partner.id]
+            partner.signup_prepare()
+
+            if template:
+                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(user, force_send=True)
+            else:
+                _logger.warning("No email template found for sending email to the portal user")
+
+        # Send notifications
+
+    def end_application(self):
+        # do things when application is declined (Notification to student)
+        print("Application declined")
 
     # Check if signed request is one of an application
     def check_signature(self, record):
@@ -545,8 +615,8 @@ class GhuApplication(models.Model):
                     application.write({'state': 'signed'})
             application = self.search([('agreement_request_id', '=', record.id)])
             if application:
-                if application.state == "advisor_found" and application.first_fee_invoice_id.state == 'paid':
-                    application.write({'state': 'done'})
+                if application.state == "advisor_found":
+                    application.sudo().send_first_fee_invoice()
 
     # Check if paid invoice is one of an application
     def check_invoice(self, record):

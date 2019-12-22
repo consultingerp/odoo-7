@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <record model="ir.actions.server" id="send_enrolment">
-            <field name="name">Send Enrolment Confirmation</field>
+        <record model="ir.actions.server" id="send_enrollment">
+            <field name="name">Send Enrollment Confirmation</field>
             <field name="model_id" ref="ghu.model_ghu_student"/>
             <field name="code">
                 record.studentEnrolled()

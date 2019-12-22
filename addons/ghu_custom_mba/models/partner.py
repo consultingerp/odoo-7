@@ -68,9 +68,9 @@ class GhuPartner(models.Model):
     def _is_cba_student(self):
         for record in self:
             if self.env['ghu.student'].sudo().search([('partner_id', '=', record.id),('custom_mba','=',True)]):
-                record.is_cba_student = True
+                record.is_custom_mba_student = True
             else:
-                record.is_cba_student = False
+                record.is_custom_mba_student = False
                 
     def _search_cba_student(self, operator, value):
         recs = self.env['ghu.student'].sudo().search([('custom_mba','=',True)]).filtered(lambda x : x.partner_id )

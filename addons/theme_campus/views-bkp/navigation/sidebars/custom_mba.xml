@@ -4,7 +4,7 @@
         <template id="sidebar_custom_mba">
             <div class="sidebar-heading">Custom MBA</div>
             <ul class="sidebar-menu sm-active-button-bg">
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_manage_courses' and ' active' or ''}">
+                <li data-intro='With Course Manage you can create and edit your courses.' t-attf-class="sidebar-menu-item#{slug == 'campus_manage_courses' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/manage/courses">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> 
                                                         Course Manager
@@ -16,13 +16,13 @@
                                                         Grading
                     </a>
                 </li> -->
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
+                <li data-intro='Put your presentation video to Panopto here.' t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/my/video">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">videocam</i> 
                                                         Presentation Video
                     </a>
                 </li>
-                <li t-attf-class="sidebar-menu-item#{slug == 'campus_panopto' and ' active' or ''}">
+                <li data-intro='Find useful help how to use Panopto here.' t-attf-class="sidebar-menu-item#{slug == 'campus_panopto' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/panopto">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> 
                                                         Panopto Help

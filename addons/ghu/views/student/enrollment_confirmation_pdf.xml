@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <report id="enrolment_confirmation_pdf" model="ghu.student" string="Enrolment Confirmation" report_type="qweb-pdf" name="ghu.enrolment_confirmation" />
-        <template id="enrolment_confirmation">
+        <report id="enrollment_confirmation_pdf" model="ghu.student" string="Enrollment Confirmation" report_type="qweb-pdf" name="ghu.enrollment_confirmation" />
+        <template id="enrollment_confirmation">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="ghu.enrolment_confirmation_view" t-lang="doc.partner_id.lang" />
+                    <t t-call="ghu.enrollment_confirmation_view" t-lang="doc.partner_id.lang" />
                 </t>
             </t>
         </template>
-        <template id="enrolment_confirmation_view">
+        <template id="enrollment_confirmation_view">
             <t t-set="o" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
             <t t-call="web.external_layout">
                 <t t-set="page">False</t>
@@ -17,7 +17,7 @@
                     <div class="watermark" style="position:absolute;opacity:0.20;font-size:3em;width:100%;text-align:center;z-index:1000;top:5cm;">
                         <img src="/ghu/static/img/watermark.png" />
                     </div>
-                    <h1 class="text-center" style="margin: 7.5cm 0 2cm;">Confirmation of enrolment</h1>
+                    <h1 class="text-center" style="margin: 7.5cm 0 2cm;">Confirmation of Enrollment</h1>
                     <div class="row" style="margin: 1cm 0;">
                         <div class="col-8 offset-2">
                             <div class="h4 text-center">

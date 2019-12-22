@@ -26,8 +26,12 @@ class GhuCustomMbaStudent(http.Controller):
     @http.route('/campus/course/preview/<model("ghu_custom_mba.course"):obj>', auth='user', website=True)
     def preview(self, obj, **kw):
         if obj.state == 'approved':
+            partner_id = request.env.user.partner_id.id
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', partner_id)], limit=1)
             return http.request.render('ghu_custom_mba.student_coursepreview', {
                 'root': '/campus/course',
+                'student': student,
                 'object': request.env['ghu_custom_mba.course'].sudo().browse(obj.id),
                 'slug': 'campus_courses'
             })
@@ -81,7 +85,7 @@ class GhuCustomMbaStudent(http.Controller):
         invoice.invoice_line_ids = [(4, invoice_line.id)]
         invoice.action_invoice_open()
         invoice_template = request.env.ref(
-            'ghu.ghu_invoice_email_template').sudo()
+            'ghu_custom_mba.course_invoice_email_template').sudo()
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
 
@@ -186,6 +190,7 @@ class GhuCustomMbaStudent(http.Controller):
 
     @http.route('/campus/course/<model("ghu_custom_mba.course"):obj>/examination/submit/<model("ghu_custom_mba.examination"):ex>', type='http', auth="user", methods=['POST'], website=True)
     def saveSubmission(self, obj, ex, **post):
+        ex = request.env['ghu_custom_mba.examination'].sudo().browse(ex.id)
         if request.env.user.partner_id.is_student:
             partner_id = request.env.user.partner_id.id
             student = request.env['ghu.student'].sudo().search(

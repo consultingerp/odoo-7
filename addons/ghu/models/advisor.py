@@ -16,6 +16,14 @@ class GhuAdvisor(models.Model):
     is_cafeteria = fields.Boolean(
         string=u'Is Custom MBA?',
     )
+    
+    is_bsc_ba = fields.Boolean(
+        string=u'Is BSc?',
+    )
+    
+    is_msc_ba = fields.Boolean(
+        string=u'Is MSc?',
+    )
 
     is_advisor = fields.Boolean(
         string=u'Is Phd/DBA advisor?',
@@ -96,6 +104,22 @@ class GhuAdvisor(models.Model):
     )
     cmba_agreement_filename = fields.Char(
         string=u'Custom MBA Agreement Filename',
+    )
+    
+    
+    msc_agreement = fields.Binary(
+        string=u'MSc Agreement',
+    )
+    msc_agreement_filename = fields.Char(
+        string=u'MSc Agreement Filename',
+    )
+    
+    
+    bsc_agreement = fields.Binary(
+        string=u'BSc Agreement',
+    )
+    bsc_agreement_filename = fields.Char(
+        string=u'BSc Agreement Filename',
     )
 
     programs = fields.Many2many(

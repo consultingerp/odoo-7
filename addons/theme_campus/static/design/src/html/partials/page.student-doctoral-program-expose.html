@@ -1,0 +1,44 @@
+<div class="{{ containerClass }} page__container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ prefix or '' }}dashboard.html">Home</a></li>
+    <li class="breadcrumb-item"><a href="/student-doctoral-program.html">DBA in law</a></li>
+    <li class="breadcrumb-item active">Expose</li>
+  </ol>
+  <div class="media mb-headings align-items-center">
+    <div class="media-body">
+      <h1 class="h2">Expose - DBA in law</h1>
+      <p class="text-muted">started on 2nd Dec 2019</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Task description</h4>
+      <p>
+        The writing of an exposé is an important milestone in the doctoral study process. In the
+        DBA doctoral program the exposé is a research paper about the students’ doctoral
+        issue. The doctoral student can compose the proposal in his preferred language (that
+        is the language the dissertation will be written in). This can be English or any other
+        language. For the assessment of the exposé, it is mandatory that it is submitted in
+        English. A notarized translation is permitted. 
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        Use the following template for your work: 
+        <a href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx">Template</a>
+        <br>
+        Upload the completed exposé below to submit it for grading by your advisor.
+        <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" action="/campus/course/2/examination/submit/1">
+            <input type="hidden" name="csrf_token" value="0c217de8a990bad45fc6c1a244d462cd1d6d557bo1576244771">
+            <input type="hidden" name="examination_id" value="1">
+            <div class="form-group">
+                <input type="file" name="attachment" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="ex.id">
+            </div>
+            <button type="submit" name="Submit" style="margin-top:20px;" class="btn btn-primary">
+                Submit final document
+            </button> 
+        </form>
+    </div>
+</div>
+</div>

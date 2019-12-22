@@ -122,6 +122,8 @@
                                     <field name="partner_id" readonly="1"/>
                                     <field name="advisor_id"/>
                                     <field name="is_cafeteria"/>
+                                    <field name="is_bsc_ba"/>
+                                    <field name="is_msc_ba"/>
                                     <field name="is_advisor"/>
                                     <field name="nomination"/>
                                     <field name="academic_degree"/>
@@ -143,6 +145,10 @@
                                     <field name="agreement_filename" invisible="1"/>
                                     <field name="cmba_agreement" widget="binary" filename="cmba_agreement_filename"/>
                                     <field name="cmba_agreement_filename" invisible="1"/>
+                                    <field name="msc_agreement" widget="binary" filename="msc_agreement_filename"/>
+                                    <field name="msc_agreement_filename" invisible="1"/>
+                                    <field name="bsc_agreement" widget="binary" filename="bsc_agreement_filename"/>
+                                    <field name="bsc_agreement_filename" invisible="1"/>
                                     <field name="certificate_file" widget="binary" filename="certificate_file_filename"/>
                                     <field name="certificate_file_filename" invisible="1"/>
                                     <field name="certificate_original_file" widget="binary" filename="certificate_original_file_filename"/>

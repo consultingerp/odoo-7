@@ -6,8 +6,29 @@ from odoo.addons.web.controllers.main import Home
 from odoo.http import request
 
 
-class Home(Home):
+class GhuHome(Home):
 
+    @http.route()
+    def web_login(self, redirect=None, *args, **kw):
+        response = super(GhuHome, self).web_login(
+            redirect=redirect, *args, **kw)
+        if not redirect and request.params['login_success']:
+            if request.env['res.users'].browse(request.uid).has_group(
+                    'base.group_user'):
+                redirect = b'/web?' + request.httprequest.query_string
+            else:
+                if not redirect and request.env.user.partner_id.is_student:
+                    student = request.env['ghu.student'].sudo().search(
+                    [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
+                    if not student.vita_file_filename or not student.id_file_filename:
+                        return '/campus/my/documents'
+                    else:
+                        return '/campus/courses'
+                else:
+                    return '/campus/documents' 
+            return http.redirect_with_hash(redirect)
+        return response
+    
     #@http.route()
     #def index(self, *args, **kw):
     #    if request.session.uid and request.env.user.partner_id.is_custom_mba:
@@ -17,4 +38,9 @@ class Home(Home):
     def _login_redirect(self, uid, redirect=None):
         if not redirect and request.env.user.partner_id.is_custom_mba:
             return '/campus/manage/courses'
+        if not redirect and request.env.user.partner_id.is_student:
+            student = request.env['ghu.student'].sudo().search(
+                [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
+            if not student.vita_file_filename or not student.id_file_filename:
+                return '/campus/my/documents'
         return super(Home, self)._login_redirect(uid, redirect=redirect)

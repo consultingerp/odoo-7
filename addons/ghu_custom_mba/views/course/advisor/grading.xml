@@ -11,54 +11,75 @@
                     </div>
                 </div>
                 <div class="card-columns">
-                    <div class="card card-sm">
-                        <div class="card-body media">
-                            <div class="media-body">
-                                <h4 class="card-title mb-0">
-                                    <a t-attf-href="/campus/course/grade/1">International Finance</a>
-                                </h4>
-                                <small class="text-muted">Student: John Doe</small>
+                    <t t-foreach="objects" t-as="object">
+                        <div class="card card-sm">
+                            <div class="card-body media">
+                                <div class="media-body">
+                                    <h4 class="card-title mb-0">
+                                        <a t-attf-href="/campus/course/grade/#{ object.id }">
+                                            <t t-esc="object.course_ref.name"/>
+                                        </a>
+                                    </h4>
+                                    <small class="text-muted">Student: <t t-esc="object.student_ref.name"/>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a t-attf-href="/campus/course/grade/#{ object.id }" class="btn btn-white btn-sm float-left">
+                                    <i class="material-icons btn__icon--left">playlist_add_check</i> Review
+                                </a>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
-                        <div class="card-footer text-center">
-                            <a href="instructor-review-quiz.html" class="btn btn-white btn-sm float-left">
-                                <i class="material-icons btn__icon--left">playlist_add_check</i> Review
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+        <template id="coursegradingdetail">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    Grading of <t t-esc="enrollment.course_ref.name"/>
+ by <t t-esc="enrollment.student_ref.name"/>
+                </t>
+                <div class="media flex-wrap align-items-center mb-headings">
+                    <div class="media-body mb-3 mb-sm-0">
+                        <h1 class="h2 mb-0">
+                            <t t-esc="enrollment.course_ref.name"/>
+                        </h1>
+                        <span class="text-muted">submitted by</span>
+                        <t t-esc="enrollment.student_ref.name"/>
                     </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>
+                                    <strong>Examination type: <t t-esc="examination.type" /></strong><br/>
+                                    <strong>Examination question:</strong>
+                                </p>
+                                <t t-raw="examination.question" />
 
-                    <div class="card card-sm">
-                        <div class="card-body media">
-                            <div class="media-body">
-                                <h4 class="card-title mb-0">
-                                    <a t-attf-href="/campus/course/grade/1">International Management</a>
-                                </h4>
-                                <small class="text-muted">Student: Susan Doe</small>
+                                <small class="text-muted">SUBMISSION:</small>
+                                <p>
+                                    <a class="btn btn-primary" t-if="examination.submission" target="_blank" t-attf-href="/web/content/ghu_custom_mba.examination/#{examination.id}/submission/#{examination.submission_filename}?download=true">Download submission</a>
+                                </p>
                             </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="instructor-review-quiz.html" class="btn btn-white btn-sm float-left">
-                                <i class="material-icons btn__icon--left">playlist_add_check</i> Review
-                            </a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="card card-sm">
-                        <div class="card-body media">
-                            <div class="media-body">
-                                <h4 class="card-title mb-0">
-                                    <a t-attf-href="/campus/course/grade/1">Strategic Financial Management</a>
-                                </h4>
-                                <small class="text-muted">Student: John Doe</small>
+                            <div class="col-md-4">
+                                <form t-attf-action="/campus/course/grade/save/#{ examination.id }" method="post" class="s_website_form" enctype="multipart/form-data">
+                                    <div class="form-group d-flex flex-column">
+                                        <label class="form-label" for="customRange2">Grade</label>
+                                        <input name="grade" type="number" min="0" max="50" step=".5" value="50" id="customRange2"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="result" class="form-control" rows="2" placeholder="Write comment on grade"></textarea>
+                                    </div>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <button type="submit" href="#" class="btn btn-success float-right">
+                                        Save grading <i class="material-icons btn__icon--right">check</i>
+                                    </button>
+                                </form>
                             </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="instructor-review-quiz.html" class="btn btn-white btn-sm float-left">
-                                <i class="material-icons btn__icon--left">playlist_add_check</i> Review
-                            </a>
-                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

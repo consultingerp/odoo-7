@@ -17,6 +17,18 @@ class GhuCourse(models.Model):
     description = fields.Html(
         string=u'Description',
     )
+    
+    mba = fields.Boolean(
+        string=u'MBA',
+    )
+       
+    bsc = fields.Boolean(
+        string=u'BSc',
+    )
+    
+    msc = fields.Boolean(
+        string=u'MSc',
+    )
 
     aims = fields.Html(
         string=u'Aims',
@@ -95,7 +107,7 @@ class GhuCourse(models.Model):
         string=u'Assessments',
         comodel_name='ghu_custom_mba.assessment',
         inverse_name='course_id',
-        limit=2
+        limit=1
     )
 
     # Workflow specifics
@@ -280,14 +292,14 @@ class GhuCourse(models.Model):
 
         self.write(vals)
 
-        if len(self.assessment_ids) != 1:
-            raise ValidationError(
-                _('Assessments missing, not possible to approve this.'))
+        #if len(self.assessment_ids) != 1:
+        #    raise ValidationError(
+        #        _('Assessments missing, not possible to approve this.'))
 
-        for ass in self.assessment_ids:
-            if len(ass.question_ids) < 2:
-                raise ValidationError(
-                _('Assessment %s is missing questions, not possible to approve this.'))
+        #for ass in self.assessment_ids:
+        #    if len(ass.question_ids) < 2:
+        #        raise ValidationError(
+        #        _('Assessment %s is missing questions, not possible to approve this.'))
 
         notification_template = self.env.ref(
             'ghu_custom_mba.course_approved_mail').sudo()
@@ -400,7 +412,6 @@ class GhuAssessment(models.Model):
         ('essay', 'Essay'),
         ('analysis', 'Analysis'),
         ('report', 'Report'),
-        ('case_study', 'Case Study'),
         ('homework', 'Homework'),
         ('presentation', 'Presentation')
     ]

@@ -31,7 +31,7 @@
                             <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
                                 <div class="mdk-drawer__content">
                                     <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar="">
-                                        <div class="sidebar-p-y">
+                                        <div class="sidebar-p-y" data-intro='This is the menu, you can navigate here through the main sections of Campus.'>
                                             <!-- Account menu -->
                                             <!-- <t t-call="theme_campus.sidebar_account" /> -->
                                             <t t-if="request.env.user.partner_id.is_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_student" />
@@ -45,5 +45,14 @@
                         <!-- {% include 'layouts/_app-settings.html' %} -->
                     </div>
                 </div>
+                <script>
+                    if (!window.localStorage.getItem('navBarIntro')){
+                        setTimeout(function(){
+                            tour = introJs('.sidebar');
+                            tour.start();
+                            window.localStorage.setItem('navBarIntro', '1');
+                        },3000);
+                    }
+                </script>
             </t>
         </template>

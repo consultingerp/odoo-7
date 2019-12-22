@@ -62,12 +62,15 @@ class GhuCustomMba(http.Controller):
                 return json.dumps(dict(error_fields=['email']))
             # check if contact exists
             contact = request.env['res.partner'].sudo().search([('email','=',contact_data['email'])], limit=1)
+            
             if contact:
                 contact.update(contact_data)
             else:
                 # create contact
                 contact = request.env['res.partner'].sudo().with_context(mail_create_nosubscribe=True).create(contact_data)
 
+            # Add floris to follower
+            contact.message_subscribe([11], [])
             # create application
             kwargs['partner_id'] = contact.id
             kwargs['custom_mba'] = True
