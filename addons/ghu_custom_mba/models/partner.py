@@ -22,14 +22,14 @@ class GhuPartner(models.Model):
     )
 
     is_msc_lecturer = fields.Boolean(
-        string=u'Is custom MBA?',
+        string=u'Is MSc lecturer?',
         compute='_is_msc_lecturer',
         search='_search_msc_lecturer'
     )
 
 
     is_bsc_lecturer = fields.Boolean(
-        string=u'Is custom MBA?',
+        string=u'Is BSc lecturer?',
         compute='_is_bsc_lecturer',
         search='_search_bsc_lecturer'
     )
