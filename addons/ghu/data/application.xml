@@ -6,7 +6,17 @@
             <field name="model_id" ref="model_ghu_application"></field>
             <field name="subject">Your Application at Global Humanistic University</field>
             <field name="body_html"><![CDATA[
-                <p>We are pleased to inform you, ${object.firstname}, that we have successfully received your application at the Global Humanistic University.</p><p> Our academic registrar will now use your application to check whether you meet all the requirements for a doctoral program at GHU. </p><p>Please note that this is a very time-consuming task and can take up to three weeks.</p><p><br></p><p>Global Humanistic University</p>
+                <p>Dear ${object.firstname},</p>
+                <p>We are pleased to inform you that we have successfully received your signature 
+                in order to move forward with the application process for the doctoral program of 
+                the Global Humanistic University.
+                </p>
+                <p>The registrar will now officially check your documentation to see if 
+                you meet the entry requirements for the program.
+                </p>
+                <p>Please note that this is a time-consuming task and can take up to a maximum of three weeks.</p>
+                <p>We will then inform you of the next steps in the procedure.</p>
+                <p>Kind regards,<br/>Global Humanistic University</p>
                 <table style="border:0;padding-top:15px;">
                     <tbody>
                         <tr>

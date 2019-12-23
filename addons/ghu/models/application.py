@@ -447,7 +447,7 @@ class GhuApplication(models.Model):
             record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref(
-            'ghu.ghu_new_doctoral_application_template')
+            'ghu.ghu_doctoral_application_confirmation_template')
         notification_template.send_mail(
             record.id, raise_exception=False, force_send=False)
 

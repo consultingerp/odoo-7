@@ -29,6 +29,18 @@ class GhuCampus(CustomerPortal):
             values['custom_mba_documents'] = folder.attachment_ids
             for attachment in values['custom_mba_documents']:
                 attachment.generate_access_token()
+        if partner.is_msc_lecturer or request.env.user.has_group('base.group_user'):
+            folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_lecturer_msc'))
+            folder = request.env['documents.folder'].sudo().browse(folder_id)
+            values['documents_lecturer_msc'] = folder.attachment_ids
+            for attachment in values['documents_lecturer_msc']:
+                attachment.generate_access_token()
+        if partner.is_bsc_lecturer or request.env.user.has_group('base.group_user'):
+            folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_lecturer_bsc'))
+            folder = request.env['documents.folder'].sudo().browse(folder_id)
+            values['documents_lecturer_bsc'] = folder.attachment_ids
+            for attachment in values['documents_lecturer_bsc']:
+                attachment.generate_access_token()
         if partner.is_custom_mba_student or request.env.user.has_group('base.group_user'):
             folder_id = int(request.env['ir.config_parameter'].sudo().get_param('ghu.documents_student_custom_mba'))
             folder = request.env['documents.folder'].sudo().browse(folder_id)
