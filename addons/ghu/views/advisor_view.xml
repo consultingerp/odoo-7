@@ -259,7 +259,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="search_view_id" ref="view_ghu_advisor_search"/>
-            <field name="domain">[('is_cafeteria','=','1')]</field>
+            <field name="domain">['|','|',('is_cafeteria','=','1'),('is_bsc_ba','=','1'),('is_msc_ba','=','1')]</field>
             <field name="context">{}</field>
         </record>
     </data>
