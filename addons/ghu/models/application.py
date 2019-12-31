@@ -270,8 +270,10 @@ class GhuApplication(models.Model):
             [],
             'Application finalization',
             'Your Application at GHU',
-            '<p>We are pleased to inform you, ' + self.partner_id.firstname +
-            ', that we have successfully received your application at the Global Humanistic University.</p><p>There is only your signature missing, so please sign the document via the link below to start the application processing on our side.<p><br></p><p>Global Humanistic University</p>',
+            '<p>Dear ' + self.partner_id.firstname + '</p>'
+            '<p>We are pleased to inform you that we have successfully received your application to the doctoral program of the Global Humanistic University.</p>'+
+            '<p>In order to continue with the formal application process, we ask you to kindly sign the document provided via the link below so that we can proceed with the next steps.</p>'+
+            '<p>Kind regards,<br/>Global Humanistic University</p>',
             True
         )
         sign_request = self.env['sign.request'].browse(res['id'])
@@ -445,7 +447,7 @@ class GhuApplication(models.Model):
             record.id, raise_exception=False, force_send=False)
 
         notification_template = self.env.ref(
-            'ghu.ghu_new_doctoral_application_template')
+            'ghu.ghu_doctoral_application_confirmation_template')
         notification_template.send_mail(
             record.id, raise_exception=False, force_send=False)
 

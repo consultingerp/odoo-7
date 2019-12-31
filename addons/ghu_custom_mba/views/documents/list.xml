@@ -116,6 +116,76 @@
                             </div>
                         </div>
                     </div>
+                    <div t-if="documents_lecturer_msc" class="card">
+                        <div class="card-header" id="headingDescription">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                    MSc Lecturer Documents
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="description" class="collapse" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                            <div class="card-body">
+                                <t t-call="portal.portal_table">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Document</th>
+                                            <th>Publication Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="documents_lecturer_msc" t-as="document">
+                                            <tr>
+                                                <td>
+                                                    <a t-attf-href="/web/content/#{document.id}?download=true&amp;access_token=#{document.access_token}" t-att-title="document.name">
+                                                        <t t-esc="document.name"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span t-field="document.__last_update"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="documents_lecturer_bsc" class="card">
+                        <div class="card-header" id="headingDescription">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#description" aria-expanded="true" aria-controls="description">
+                                    BSc Lecturer Documents
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="description" class="collapse" aria-labelledby="headingDescription" data-parent="#courseAccordion">
+                            <div class="card-body">
+                                <t t-call="portal.portal_table">
+                                    <thead>
+                                        <tr class="active">
+                                            <th>Document</th>
+                                            <th>Publication Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="documents_lecturer_bsc" t-as="document">
+                                            <tr>
+                                                <td>
+                                                    <a t-attf-href="/web/content/#{document.id}?download=true&amp;access_token=#{document.access_token}" t-att-title="document.name">
+                                                        <t t-esc="document.name"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span t-field="document.__last_update"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
                     <div t-if="custom_mba_documents" class="card">
                         <div class="card-header" id="mbadescription">
                             <h5 class="mb-0">

@@ -21,11 +21,11 @@ class GhuHome(Home):
                     student = request.env['ghu.student'].sudo().search(
                     [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
                     if not student.vita_file_filename or not student.id_file_filename:
-                        return '/campus/my/documents'
+                        redirect = '/campus/my/documents'
                     else:
-                        return '/campus/courses'
+                        redirect = '/campus/courses'
                 else:
-                    return '/campus/documents' 
+                    redirect = '/campus/documents' 
             return http.redirect_with_hash(redirect)
         return response
     
@@ -34,13 +34,3 @@ class GhuHome(Home):
     #    if request.session.uid and request.env.user.partner_id.is_custom_mba:
     #        return http.local_redirect('/campus/manage/courses', query=request.params, keep_hash=True)
     #    return super(Home, self).index(*args, **kw)
-
-    def _login_redirect(self, uid, redirect=None):
-        if not redirect and request.env.user.partner_id.is_custom_mba:
-            return '/campus/manage/courses'
-        if not redirect and request.env.user.partner_id.is_student:
-            student = request.env['ghu.student'].sudo().search(
-                [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
-            if not student.vita_file_filename or not student.id_file_filename:
-                return '/campus/my/documents'
-        return super(Home, self)._login_redirect(uid, redirect=redirect)

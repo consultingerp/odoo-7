@@ -21,6 +21,19 @@ class GhuPartner(models.Model):
         search='_search_student'
     )
 
+    is_msc_lecturer = fields.Boolean(
+        string=u'Is MSc lecturer?',
+        compute='_is_msc_lecturer',
+        search='_search_msc_lecturer'
+    )
+
+
+    is_bsc_lecturer = fields.Boolean(
+        string=u'Is BSc lecturer?',
+        compute='_is_bsc_lecturer',
+        search='_search_bsc_lecturer'
+    )
+
     is_custom_mba = fields.Boolean(
         string=u'Is custom MBA?',
         compute='_is_custom_mba',
@@ -102,5 +115,38 @@ class GhuPartner(models.Model):
 
     def _search_custom_mba(self, operator, value):
         recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.is_cafeteria is True )
+        if recs:
+            return [('id', 'in', [x.partner_id.id for x in recs])]
+    
+
+    def _is_msc_lecturer(self):
+        for record in self:
+            if record.is_advisor:
+                advisor = self.env['ghu.advisor'].sudo().search(
+                    [('partner_id', '=', record.id)], limit=1)
+                if advisor.is_msc_ba:
+                    record.is_msc_lecturer = True
+                else:
+                    record.is_msc_lecturer = False
+
+    def _search_msc_lecturer(self, operator, value):
+        recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.is_msc_ba is True )
+        if recs:
+            return [('id', 'in', [x.partner_id.id for x in recs])]
+
+        
+
+    def _is_bsc_lecturer(self):
+        for record in self:
+            if record.is_advisor:
+                advisor = self.env['ghu.advisor'].sudo().search(
+                    [('partner_id', '=', record.id)], limit=1)
+                if advisor.is_bsc_ba:
+                    record.is_bsc_lecturer = True
+                else:
+                    record.is_bsc_lecturer = False
+
+    def _search_bsc_lecturer(self, operator, value):
+        recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.is_bsc_ba is True )
         if recs:
             return [('id', 'in', [x.partner_id.id for x in recs])]
