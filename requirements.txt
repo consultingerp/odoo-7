@@ -2,3 +2,4 @@ zeep==3.4.0
 lti==0.9.4
 mollie-api-python==2.1.0
 phonenumbers==8.10.3
+unoconv==0.9.0
