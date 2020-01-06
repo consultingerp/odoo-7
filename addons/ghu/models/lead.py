@@ -134,6 +134,20 @@ class Lead(models.Model):
                 'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
             }
             defaults.update(custom_values)
+        if re.search(r'UserEnquiry@FindAMasters.com', msg_dict.get('from')):
+            defaults = {
+                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+            }
+            defaults.update(custom_values)
+        if re.search(r'UserEnquiry@FindAnMBA.com', msg_dict.get('from')):
+            defaults = {
+                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+            }
+            defaults.update(custom_values)
         return super(Lead, self).message_new(msg_dict, custom_values=defaults)
 
     @api.model
