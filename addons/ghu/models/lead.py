@@ -92,7 +92,7 @@ class Lead(models.Model):
                     'user_id': sales_team.user_id.id,
                     'stage_id': 1,
                     'type': 'opportunity',
-                    'description': lead['comment']
+                    'description': lead['comment'] + "\n" + lead['program']['name']
                 }
                 leadsToImport.append(lead)
             self.env['crm.lead'].create(leadsToImport)
