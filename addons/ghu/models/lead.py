@@ -92,7 +92,7 @@ class Lead(models.Model):
                     'user_id': sales_team.user_id.id,
                     'stage_id': 1,
                     'type': 'opportunity',
-                    'description': lead['comment']
+                    'description': str(lead['comment']) + '\nProgram: ' + str(lead['program']['name'])
                 }
                 leadsToImport.append(lead)
             self.env['crm.lead'].create(leadsToImport)
@@ -128,6 +128,20 @@ class Lead(models.Model):
             }
             defaults.update(custom_values)
         if re.search(r'UserEnquiry@FindAPhD.com', msg_dict.get('from')):
+            defaults = {
+                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+            }
+            defaults.update(custom_values)
+        if re.search(r'UserEnquiry@FindAMasters.com', msg_dict.get('from')):
+            defaults = {
+                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
+                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+            }
+            defaults.update(custom_values)
+        if re.search(r'UserEnquiry@FindAnMBA.com', msg_dict.get('from')):
             defaults = {
                 'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
                 'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
