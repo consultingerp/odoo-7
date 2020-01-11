@@ -156,8 +156,11 @@
                <t t-call="web.external_layout">
                   <div class="page">
                      <h2 class="mt-3">Advisor Student Agreement</h2>
+                     <h3 style="margin-top: 1cm"><t t-esc="o.study_id.name" /></h3>
                      <h3 style="margin-top: 1cm">Thesis Title</h3>
-                     <h5 style="margin-top: 0.5cm"><t t-esc="o.thesis_title" /></h5>
+                     <h5 style="margin-top: 0.5cm">
+                        <t t-esc="o.thesis_title" />
+                     </h5>
                      <h3 style="margin-top: 1cm;">Personal Details (Student)</h3>
                      <table class="table">
                         <tr>
@@ -191,8 +194,8 @@
                         </tr>
                      </table>
                      <h3 style="margin-top: 1cm;">Agreement</h3>
-
-                     <h4>Structure of the Doctoral Program:</h4>
+                     <p>Advisor and Doctoral Candidate agree on the following:</p>
+                     <h4>Structure of doctoral studies:</h4>
                      <h5>Phase 1:</h5>
                      <table class="table table-striped">
                         <tbody>
@@ -201,16 +204,16 @@
                               <th>ECTS</th>
                            </tr>
                            <tr>
-                              <td> Research Proposal*</td>
+                              <td> Research Proposal</td>
                               <td> 5 </td>
                            </tr>
                            <tr>
-                              <td> Academic Writing/Methods Skills*<br/>
+                              <td>Academic Writing/Methods Skills<br/>
                               </td>
                               <td> 15</td>
                            </tr>
                            <tr>
-                              <td> Review of Professional Capability (Reflection)*<br/>
+                              <td> Review of Professional Capability (Reflection)<br/>
                               </td>
                               <td> 10</td>
                            </tr>
@@ -218,10 +221,6 @@
                               <td> Planning an advanced Practitioner Research Programme (Exposé)<br/>
                               </td>
                               <td> 30</td>
-                           </tr>
-                           <tr class="info">
-                              <td>* Any order</td>
-                              <td>60</td>
                            </tr>
                         </tbody>
                      </table>
@@ -259,13 +258,14 @@
                            </tr>
                         </tbody>
                      </table>
-                     <p>The Academic Board reserves the right to request a progress report from the participant and/or their advisor at any time during the Doctoral Program.</p>
-                     <p>The Advisor undertakes to engage in continuous supervision and to provide oral and/or written feedback on the participant’s work (e.g. drafts and coursework) normally within two weeks (in exceptional cases four weeks). </p>
-                     <p>Supervision will be provided in a variety of ways, such as via the virtual classroom, Skype, telephone, email, and in face-to-face meetings including group work with peers.</p>
-                     <p>The student will record their progress with their research in a Project Progress Report on a monthly basis, recording communications/meetings with their Advisor, agreed targets, and engagement with their research program in terms of study hours and progress achieved. The Advisor will scrutinise the project progress report at least once a year. The purpose of the Project Progress Report, together with coursework assignments and drafts of participants’ work submitted to the Advisor, is to ensure the progress and development of the research project. The participant is responsible for maintaining regular contact with their Advisor, and all other forms of communication to support the progress of the project can be freely agreed by both parties.</p>
-                     <p>The student undertakes to comply with the rules of good academic practice in accordance with the regulations.</p>
+                     <p>The Academic Board is entitled to have the progress of the Doctoral Candidate reported to it at any time by the Advisor and/or the Doctoral Candidate himself.</p>
+                     <p>The Advisor undertakes to continuously monitor progress from the time of registration till the last stage the Defensio and to comment on and, if required, assess submitted texts (examinations, summaries, documentation, chapters, drafts, etc.) within a maximum of 2 weeks (except the dissertation itself) and in exceptional cases within 4 weeks in oral and/or written form.</p>
+                     <p>The Advisor is fully responsible for the student: he or she must provide the student with all relevant information regarding the study program, the structure, and the procedure. All methods of communication can be agreed upon freely between the doctoral student and the Advisor (see also agreement - scope of work - between GHU and Advisor).</p>
+                     <p>The individual methods of communication may be relevant to the examination(s) and will in this case be communicated to the doctoral candidate by the Advisor. The services rendered are included in the assessment of the dissertation.</p>
+                     <p>The doctoral candidate undertakes to observe the rules of good scientific practice in accordance with the provisions of the University Act.</p>
+                     <p>The GHU regulations are mandatory for both - the advisor and the candidate.</p>
                      <h3>Signatures</h3>
-                     
+                     <p>I, the undersigned, hereby declare that I understand the provisions of this agreement and that I accept to fully comply with them.</p>
                   </div>
                </t>
             </t>
