@@ -137,7 +137,7 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
@@ -152,11 +152,11 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
-            defaults.update(custom_values)
+            defaults.update(custom_values) 
         if re.search(r'UserEnquiry@FindAnMBA.com', msg_dict.get('from')):
             firstNameRegex = re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body)
             lastNameRegex = re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body)
@@ -167,7 +167,7 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
