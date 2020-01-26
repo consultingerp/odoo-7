@@ -137,7 +137,7 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
@@ -152,7 +152,7 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
@@ -167,7 +167,7 @@ class Lead(models.Model):
             mail = mailRegex.group(1) if mailRegex is not None else ''
             phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  firstName + '' + lastName,
+                'name':  firstName + ' ' + lastName,
                 'email_from': mail,
                 'phone': phone,
             }
