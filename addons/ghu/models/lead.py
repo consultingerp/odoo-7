@@ -128,24 +128,48 @@ class Lead(models.Model):
             }
             defaults.update(custom_values)
         if re.search(r'UserEnquiry@FindAPhD.com', msg_dict.get('from')):
+            firstNameRegex = re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body)
+            lastNameRegex = re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body)
+            mailRegex = re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body)
+            phoneRegex = re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body)
+            firstName = firstNameRegex.group(1) if firstNameRegex is not None else ''
+            lastName = lastNameRegex.group(1) if lastNameRegex is not None else ''
+            mail = mailRegex.group(1) if mailRegex is not None else ''
+            phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
-                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
-                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'name':  firstName + '' + lastName,
+                'email_from': mail,
+                'phone': phone,
             }
             defaults.update(custom_values)
         if re.search(r'UserEnquiry@FindAMasters.com', msg_dict.get('from')):
+            firstNameRegex = re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body)
+            lastNameRegex = re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body)
+            mailRegex = re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body)
+            phoneRegex = re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body)
+            firstName = firstNameRegex.group(1) if firstNameRegex is not None else ''
+            lastName = lastNameRegex.group(1) if lastNameRegex is not None else ''
+            mail = mailRegex.group(1) if mailRegex is not None else ''
+            phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
-                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
-                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'name':  firstName + '' + lastName,
+                'email_from': mail,
+                'phone': phone,
             }
             defaults.update(custom_values)
         if re.search(r'UserEnquiry@FindAnMBA.com', msg_dict.get('from')):
+            firstNameRegex = re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body)
+            lastNameRegex = re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body)
+            mailRegex = re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body)
+            phoneRegex = re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body)
+            firstName = firstNameRegex.group(1) if firstNameRegex is not None else ''
+            lastName = lastNameRegex.group(1) if lastNameRegex is not None else ''
+            mail = mailRegex.group(1) if mailRegex is not None else ''
+            phone = phoneRegex.group(1) if phoneRegex is not None else ''
             defaults = {
-                'name':  re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body).group(1) + '' + re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body).group(1),
-                'email_from': re.search(r'([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)', body).group(1),
-                'phone': re.search(r'Sender\'s Telephone No.: ([^\t\n\r\f\v<>]*)', body).group(1),
+                'name':  firstName + '' + lastName,
+                'email_from': mail,
+                'phone': phone,
             }
             defaults.update(custom_values)
         return super(Lead, self).message_new(msg_dict, custom_values=defaults)
