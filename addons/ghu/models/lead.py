@@ -156,7 +156,7 @@ class Lead(models.Model):
                 'email_from': mail,
                 'phone': phone,
             }
-            defaults.update(custom_values)
+            defaults.update(custom_values) 
         if re.search(r'UserEnquiry@FindAnMBA.com', msg_dict.get('from')):
             firstNameRegex = re.search(r'Sender\'s First Name: ([^\t\n\r\f\v<>]*)', body)
             lastNameRegex = re.search(r'Sender\'s Last Name: ([^\t\n\r\f\v<>]*)', body)
