@@ -285,6 +285,16 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
+                                                        <p>
+                                                            I have read the <a target="_blank" href="/ghu/static/files/GHU-Terms-and-conditions.pdf">terms
+                                                            and conditions</a> with today's date
+                                                            including resignation of the Global Humanistic
+                                                            University, I agree with these and accept with
+                                                            my submission that these are the basis for my
+                                                            study contract.<br />
+                                                            With my submission, I also confirm the accuracy of my
+                                                            information.
+                                                        </p>
                                                         <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
                                                         <span id="o_website_form_result" />
                                                     </div>
