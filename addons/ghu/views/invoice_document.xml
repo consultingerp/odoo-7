@@ -51,12 +51,12 @@
                                                                     University, I agree with these and accept with
                                                                     my submission that these are the basis for my
                                                                     study contract.
-                    <br>
+                    <br/>
                                                                                 With my
                                                                     submission, I also confirm the accuracy of my
                                                                     information.
-                    </p>
-                </xpath>
-            </template>
-        </data>
-    </odoo>
+                </p>
+            </xpath>
+        </template>
+    </data>
+</odoo>
