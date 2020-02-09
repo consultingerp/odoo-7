@@ -210,6 +210,28 @@ class GhuApplication(models.Model):
         string=u'Advisor Matching Count',
     )
 
+    first_fee_amount = fields.Float(
+        string='First Fee Amount',
+        compute='_compute_first_fee_amount'
+    )
+    
+    @api.depends('payment_type','scholarshp')
+    def _compute_first_fee_amount(self):
+        for record in self:
+            total_amount = 25000 - record.scholarship
+
+            if record.payment_method == 'one_time':
+                payment = total_amount - 500
+            elif record.payment_method == 'two_times':
+                total_amount = total_amount + 500
+                payment = total_amount/2 - 500
+            else:
+                total_amount = total_amount + 1000
+                payment = total_amount/3 - 500
+
+            record.first_fee_amount = payment
+        
+
     @api.multi
     def write(self, values):
         if 'state' in values:
@@ -524,16 +546,7 @@ class GhuApplication(models.Model):
 
 
 
-        total_amount = 25000 - self.scholarship
-
-        if self.payment_method == 'one_time':
-            payment = total_amount - 500
-        elif self.payment_method == 'two_times':
-            total_amount = total_amount + 500
-            payment = total_amount/2 - 500
-        else:
-            total_amount = total_amount + 1000
-            payment = total_amount/3 - 500
+        payment = self.first_fee_amount
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
