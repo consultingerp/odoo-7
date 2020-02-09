@@ -551,8 +551,8 @@ class GhuApplication(models.Model):
         invoice.action_invoice_open()
         invoice_template = self.env.ref(
             'ghu.ghu_first_fee_invoice_email_template').sudo()
-        invoice_template.send_mail(invoice.id)
-        invoice.write({'sent': True})
+        #invoice_template.send_mail(invoice.id)
+        #invoice.write({'sent': True})
 
         self.first_fee_invoice_id = invoice.id
 
