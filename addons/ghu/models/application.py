@@ -215,7 +215,7 @@ class GhuApplication(models.Model):
         compute='_compute_first_fee_amount'
     )
     
-    @api.depends('payment_method','scholarshp')
+    @api.depends('payment_method','scholarship')
     def _compute_first_fee_amount(self):
         for record in self:
             total_amount = 25000 - record.scholarship
