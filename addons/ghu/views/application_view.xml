@@ -131,6 +131,7 @@
                                 <group col="4" colspan="4" string="Invoices" name="invoices">
                                     <field name="payment_method"/>
                                     <field name="scholarship"/>
+                                    <field name="first_fee_amount"/>
                                     <field name="application_fee_invoice_id"/>
                                     <field name="first_fee_invoice_id"/>
                                 </group>

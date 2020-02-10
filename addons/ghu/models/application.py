@@ -210,6 +210,28 @@ class GhuApplication(models.Model):
         string=u'Advisor Matching Count',
     )
 
+    first_fee_amount = fields.Float(
+        string='First Fee Amount',
+        compute='_compute_first_fee_amount'
+    )
+    
+    @api.depends('payment_method','scholarship')
+    def _compute_first_fee_amount(self):
+        for record in self:
+            total_amount = 25000 - record.scholarship
+
+            if record.payment_method == 'one_time':
+                payment = total_amount - 500
+            elif record.payment_method == 'two_times':
+                total_amount = total_amount + 500
+                payment = total_amount/2 - 500
+            else:
+                total_amount = total_amount + 1000
+                payment = total_amount/3 - 500
+
+            record.first_fee_amount = payment
+        
+
     @api.multi
     def write(self, values):
         if 'state' in values:
@@ -525,16 +547,7 @@ class GhuApplication(models.Model):
 
 
 
-        total_amount = 25000 - self.scholarship
-
-        if self.payment_method == 'one_time':
-            payment = total_amount - 500
-        elif self.payment_method == 'two_times':
-            total_amount = total_amount + 500
-            payment = total_amount/2 - 500
-        else:
-            total_amount = total_amount + 1000
-            payment = total_amount/3 - 500
+        payment = self.first_fee_amount
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
@@ -552,9 +565,10 @@ class GhuApplication(models.Model):
         invoice.action_invoice_open()
         invoice_template = self.env.ref(
             'ghu.ghu_first_fee_invoice_email_template').sudo()
-        invoice_template.send_mail(invoice.id)
-        invoice.write({'sent': True})
         invoice.message_subscribe_user([2,6,8,11,44])
+        #invoice_template.send_mail(invoice.id)
+        #invoice.write({'sent': True})
+
         self.first_fee_invoice_id = invoice.id
 
     @api.one
