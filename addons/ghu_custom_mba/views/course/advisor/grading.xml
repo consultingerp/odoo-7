@@ -33,6 +33,9 @@
                         </div>
                     </t>
                 </div>
+                <div t-if="not objects" class="alert alert-light alert-dismissible border-1 border-left-3 border-left-warning" role="alert">
+                    <div class="text-black-70">You have currently no submissions to grade.</div>
+                </div>
             </t>
         </template>
         <template id="coursegradingdetail">
