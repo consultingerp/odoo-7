@@ -573,6 +573,7 @@ class GhuApplication(models.Model):
 
     @api.one
     def finish_application(self):
+        self_sudo = self.sudo()
         print('Finish application')
         # Create doctoral program model
         student = self.env['ghu.student'].create(dict(
@@ -608,6 +609,7 @@ class GhuApplication(models.Model):
                 'company_id': 1,
                 'company_ids': [(6, 0, [1])],
             })
+            
             template = self.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
             lang = user.lang
             partner = student.partner_id
@@ -616,7 +618,7 @@ class GhuApplication(models.Model):
             partner.signup_prepare()
 
             if template:
-                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(user, force_send=True)
+                partner.message_post_with_template(template_id=template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
             else:
                 _logger.warning("No email template found for sending email to the portal user")
 
