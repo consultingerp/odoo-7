@@ -10,12 +10,12 @@
                                                         Course Manager
                     </a>
                 </li>
-                <!-- <li t-attf-class="sidebar-menu-item#{slug == 'campus_grading_courses' and ' active' or ''}">
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_grading_courses' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/grading/courses">
                         <i class="sidebar-menu-icon sidebar-menu-icon material-icons">poll</i> 
                                                         Grading
                     </a>
-                </li> -->
+                </li>
                 <li data-intro='Put your presentation video to Panopto here.' t-attf-class="sidebar-menu-item#{slug == 'campus_my_video' and ' active' or ''}">
                     <a class="sidebar-menu-button" href="/campus/my/video">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">videocam</i> 
