@@ -196,6 +196,7 @@ class GhuCustomMba(http.Controller):
                     kw[key] = base64.b64encode(value.read())
             course_record = request.env['ghu_custom_mba.course'].with_context(
                 mail_create_nosubscribe=True).create(kw)
+            course_record.message_subscribe_user([2,6,8,11])
             return werkzeug.utils.redirect('/campus/course/'+str(course_record.id))
         return http.request.not_found()
 
