@@ -5,9 +5,10 @@
             <field name="name">Doctoral application finished</field>
             <field name="model_id" ref="ghu_custom_mba.model_res_partner"></field>
             <field name="subject">Your application is completed</field>
-            <field name="body_html" type="html"><![CDATA[
-<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tr><td align="center">
-<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+    <tr><td align="center">
+        <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
 <tbody>
     <!-- HEADER -->
     <tr>
@@ -78,7 +79,7 @@
 </tbody>
 </table>
 </td></tr>
-</table>]]> 
+</table>
             </field>
             <field name="email_from">office@ghu.edu.cw</field>
             <field name="use_default_to">false</field>
