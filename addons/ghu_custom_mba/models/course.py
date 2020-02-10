@@ -21,7 +21,7 @@ class GhuCourse(models.Model):
     )
     
     mba = fields.Boolean(
-        string=u'MBA',
+        string=u'Custom MBA',
     )
        
     bsc = fields.Boolean(
