@@ -121,9 +121,12 @@ class GhuCourse(models.Model):
     def _computeLecturesLinks(self):
         for record in self:
             baseUrl = 'https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id='
-            record.lecture1_video_link = baseUrl + record.lecture1_video_id
-            record.lecture2_video_link = baseUrl + record.lecture2_video_id
-            record.lecture3_video_link = baseUrl + record.lecture3_video_id
+            if record.lecture1_video_id:
+                record.lecture1_video_link = baseUrl + record.lecture1_video_id
+            if record.lecture2_video_id:
+                record.lecture2_video_link = baseUrl + record.lecture2_video_id
+            if record.lecture3_video_id:
+                record.lecture3_video_link = baseUrl + record.lecture3_video_id
 
     assessment_ids = fields.One2many(
         string=u'Assessments',
