@@ -303,7 +303,7 @@ class GhuApplication(models.Model):
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
-        sign_request.message_subscribe_user([2,6,8,11,44])
+        sign_request.message_subscribe_user([2,6,8,11])
         application = self.env['ghu.application'].browse(self.id)
         application.sign_request_id = sign_request.id
 
@@ -378,7 +378,7 @@ class GhuApplication(models.Model):
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
-        sign_request.message_subscribe_user([2,6,8,11,44])
+        sign_request.message_subscribe_user([2,6,8,11])
         application = self.env['ghu.application'].browse(self.id)
         application.agreement_request_id = sign_request.id
 
@@ -512,7 +512,7 @@ class GhuApplication(models.Model):
         invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
-        invoice.message_subscribe_user([2,6,8,11,44])
+        invoice.message_subscribe_user([2,6,8,11])
 
         self.application_fee_invoice_id = invoice.id
 
@@ -565,7 +565,7 @@ class GhuApplication(models.Model):
         invoice.action_invoice_open()
         invoice_template = self.env.ref(
             'ghu.ghu_first_fee_invoice_email_template').sudo()
-        invoice.message_subscribe_user([2,6,8,11,44])
+        invoice.message_subscribe_user([2,6,8,11])
         #invoice_template.send_mail(invoice.id)
         #invoice.write({'sent': True})
 
