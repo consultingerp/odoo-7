@@ -12,6 +12,8 @@ class GhuCourse(models.Model):
     _rec_name = 'name'
     _description = "Course"
 
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
     name = fields.Char('Name', size=128, required=True)
     long_name = fields.Char('Long Name', size=256, required=True)
     description = fields.Html(
