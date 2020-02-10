@@ -592,7 +592,8 @@ class GhuApplication(models.Model):
 
         enrollment = self.env['ghu.doctoral_program'].create(dict(
             advisor_ref='%s,%s' % ('ghu.advisor', self.advisor_ref.id),
-            student_ref='%s,%s' % ('ghu.student', student.id)
+            student_ref='%s,%s' % ('ghu.student', student.id),
+            thesis_title=self.thesis_title
         ))
         enrollment.message_subscribe([student.partner_id.id, self.advisor_ref.partner_id.id])
         enrollment.message_subscribe([3,7,11,1555,3292])

@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_student_doctoral_program_list">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    My doctoral programs
+                </t>
+                <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+                    <div class="flex mb-2 mb-sm-0">
+                        <h1 class="h2">My doctoral programs</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4" t-foreach="programs" t-as="object">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <t t-esc="object.thesis_title"/>
+                                </h5>
+                                <a t-attf-href="/campus/student/doctoral-program/#{ object.id }" class="btn btn-primary">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

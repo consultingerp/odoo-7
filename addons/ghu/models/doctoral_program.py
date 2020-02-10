@@ -14,6 +14,11 @@ class GhuDoctoralProgram(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'GHU Doctoral Program'
 
+    
+    thesis_title = fields.Char(
+        string='Thesis Title',
+    )
+    
     advisor_ref = fields.Reference(
         string=u'Advisor',
         selection=[('ghu.advisor', 'Advisor')]
