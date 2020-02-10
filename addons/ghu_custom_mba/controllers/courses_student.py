@@ -161,7 +161,7 @@ class GhuCustomMbaStudent(http.Controller):
                     'request_date': datetime.datetime.utcnow().date(),
                     'enrollment_id': enrollment.id
                 })
-                ex.message_subscribe_user([2,6,8,11,44])
+                ex.message_subscribe_users([2,6,8,11,44])
                 enrollment.sudo().write({
                     'examination_count': enrollment.examination_count + 1,
                     'state': 'examination'

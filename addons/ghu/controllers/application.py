@@ -117,7 +117,7 @@ class Ghu(http.Controller):
                 study['application_id'] = application_record.id
                 request.env['ghu.application_study'].sudo().with_context(mail_create_nosubscribe=True).create(study)
             application_record.message_subscribe([contact.id])
-            application_record.message_subscribe_user([2,6,8,11,44])
+            application_record.message_subscribe_users([2,6,8,11,44])
         except IntegrityError as e:
             request.env['mail.message'].sudo().create({'message_type':"notification",
                 "subtype": request.env.ref("mail.mt_comment").id,
