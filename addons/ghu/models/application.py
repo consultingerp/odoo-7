@@ -612,7 +612,7 @@ class GhuApplication(models.Model):
                 'datas': base64.encodestring(pdf),
                 'datas_fname': attachmentName,
                 'res_model': 'ghu.student',
-                'res_id': record.id,
+                'res_id': student.id,
                 'mimetype': 'application/x-pdf'
             })
             user = self.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
