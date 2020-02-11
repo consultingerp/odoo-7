@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 class GhuCampusStudentDoctoralProgramExpose(http.Controller):
 
-    @http.route('/campus/student/doctoral-program/<model("ghu.doctoral_program"):obj>/expose', type='http', auth='user', methods=['GET'], website=True)
+    @http.route('/campus/student/doctoral-program/<model("ghu.doctoral_program"):obj>/expose/', type='http', auth='user', methods=['GET'], website=True)
     def showAdvisedDoctorandsExpose(self, obj, **kwargs):
         # Show the selected doctorands program
         return

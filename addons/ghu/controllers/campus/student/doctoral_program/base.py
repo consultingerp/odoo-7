@@ -17,7 +17,7 @@ class GhuDoctoralStudent(http.Controller):
         partner_id = request.env.user.partner_id.id
         student = request.env['ghu.student'].sudo().search([('partner_id', '=', partner_id)], limit=1)
         programs = request.env['ghu.doctoral_program'].sudo().search(
-                [('student_ref', '=', 'ghu.student,'+str(student.id))], limit=1)
+                [('student_ref', '=', 'ghu.student,'+str(student.id))])
         if programs:
             return http.request.render('ghu.campus_student_doctoral_program_list', {
                 'programs': programs

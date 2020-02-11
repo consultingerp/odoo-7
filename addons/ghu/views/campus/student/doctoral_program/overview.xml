@@ -25,6 +25,7 @@
                                 <div class="media-right">
                                     <span class="badge badge-primary ">Open</span>
                                 </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/proposal/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -36,6 +37,7 @@
                                 <div class="media-right">
                                     <span class="badge badge-primary ">Open</span>
                                 </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -47,6 +49,7 @@
                                 <div class="media-right">
                                     <span class="badge badge-primary ">Open</span>
                                 </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/reflection/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -58,7 +61,7 @@
                                     <a href="student-doctoral-program-expose.html">Exposé (30 ECTS)</a>
                                 </div>
                                 <div class="media-right">
-                                    <span class="badge badge-primary ">Open</span>
+                                    <span class="badge badge-primary ">Locked</span>
                                 </div>
                             </div>
                         </li>

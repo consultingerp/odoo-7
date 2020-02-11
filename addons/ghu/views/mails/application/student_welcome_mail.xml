@@ -56,6 +56,7 @@
             <field name="email_from">office@ghu.edu.cw</field>
             <field name="use_default_to">false</field>
             <field name="email_to">${object.email}</field>
+            <field name="lang">${object.user_ids[0].lang}</field>
             <field name="user_signature">false</field>
             <field name="auto_delete">false</field>
         </record>
