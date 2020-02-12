@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="0">
-        <template id="campus_advisor_doctoral_program_overview">
+        <template id="campus_advisor_doctoral_program_proposal">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
                     Doctoral program <t t-esc="program.student_ref.name"/> - Proposal
