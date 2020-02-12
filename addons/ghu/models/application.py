@@ -595,7 +595,7 @@ class GhuApplication(models.Model):
             advisor_ref='%s,%s' % ('ghu.advisor', self.advisor_ref.id),
             student_ref='%s,%s' % ('ghu.student', student.id),
             thesis_title=self.thesis_title,
-            study_id='%s,%s' % ('ghu.study', self.study_id.id),
+            study_ref='%s,%s' % ('ghu.study', self.study_id.id),
         ))
         enrollment.message_subscribe([student.partner_id.id, self.advisor_ref.partner_id.id])
         enrollment.message_subscribe([3,7,11,1555,3292])

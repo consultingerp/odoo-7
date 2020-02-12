@@ -16,7 +16,7 @@ class GhuDoctoralProgram(models.Model):
 
     study_ref = fields.Reference(
         string='Study',
-        selection=[('ghu.study', 'Stucy')]
+        selection=[('ghu.study', 'Study')]
     )
 
     thesis_title = fields.Char(
