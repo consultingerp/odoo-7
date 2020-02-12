@@ -26,6 +26,7 @@ class GhuDoctoralStudent(http.Controller):
 
     @http.route('/campus/advisor/doctoral-program/<model("ghu.doctoral_program"):obj>', type='http', auth='user', methods=['GET'], website=True)
     def showAdvisedDoctorand(self, obj, **kwargs):
+        obj = request.env['ghu.doctoral_program'].sudo().browse(obj.id)
         # Show the selected doctorands program
         partner_id = request.env.user.partner_id.id
         advisor = request.env['ghu.advisor'].sudo().search([('partner_id', '=', partner_id)], limit=1)
@@ -33,6 +34,6 @@ class GhuDoctoralStudent(http.Controller):
             return http.request.render('ghu.campus_advisor_doctoral_program_overview', {
                 'program': obj
             })
-
+        return http.request.not_found()
     
 
