@@ -32,6 +32,7 @@ class GhuDoctoralStudent(http.Controller):
             return http.request.render('ghu.campus_student_doctoral_program_overview', {
                 'program': obj
             })
+        return http.request.not_found()
 
     
 
