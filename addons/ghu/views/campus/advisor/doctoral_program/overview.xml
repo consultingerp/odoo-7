@@ -1,0 +1,113 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_advisor_doctoral_program_overview">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    Doctoral program - <t t-esc="program.student_ref.name"/>
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2"><t t-esc="program.student_ref.name"/><br/><t t-esc="program.thesis_title"/></h1>
+                        <p class="text-muted">started on <span t-field="program.create_date" t-options='{"format": "dd/MM/yyyy"}'/></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Phase 1</h4>
+                    </div>
+                    <ul class="list-group list-group-fit mb-0">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">1.</div>
+                                </div>
+                                <div class="media-body">Research proposal (5 ECTS) </div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Open</span>
+                                </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/proposal/"></a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">1.</div>
+                                </div>
+                                <div class="media-body">Academic Writing/Methods skills (15 ECTS) </div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Open</span>
+                                </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">2.</div>
+                                </div>
+                                <div class="media-body">Review of professional capability (Reflection) (10 ECTS)</div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Open</span>
+                                </div>
+                                <a class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/reflection/"></a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">3.</div>
+                                </div>
+                                <div class="media-body">
+                                    <a href="student-doctoral-program-expose.html">Exposé (30 ECTS)</a>
+                                </div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Phase 2</h4>
+                    </div>
+                    <ul class="list-group list-group-fit mb-0">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">1.</div>
+                                </div>
+                                <div class="media-body">Project Report (Thesis - Dissertation) (85 ECTS) </div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">2.</div>
+                                </div>
+                                <div class="media-body">Research Paper (30 ECTS)</div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">3.</div>
+                                </div>
+                                <div class="media-body">Oral Presentation and Viva Voce (Defensio) (5 ECTS)</div>
+                                <div class="media-right">
+                                    <span class="badge badge-primary ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

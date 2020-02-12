@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="sidebar_doctoral_advisor">
+            <div class="sidebar-heading">Doctoral Program</div>
+            <ul class="sidebar-menu sm-active-button-bg">
+                <li t-attf-class="sidebar-menu-item#{slug == 'campus_advisor_doctoral' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/campus/advisor/doctoral-program/">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> 
+                                                        My doctorands
+                    </a>
+                </li>
+            </ul>
+        </template>
+    </data>
+</odoo>

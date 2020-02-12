@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.677',
+    'version': '0.678',
 
  
 
@@ -48,8 +48,15 @@
         'views/web_style.xml',
         'views/student/enrollment_confirmation_pdf.xml',
         'views/student/backend.xml',
+
         'views/campus/student/doctoral_program/list.xml',
         'views/campus/student/doctoral_program/overview.xml',
+        'views/campus/student/doctoral_program/proposal/overview.xml',
+
+        'views/campus/advisor/doctoral_program/list.xml',
+        'views/campus/advisor/doctoral_program/overview.xml',
+        'views/campus/advisor/doctoral_program/proposal/overview.xml',
+
         'views/mails/application/advisor_search_notification.xml',
         'views/mails/application/notify_advisor.xml',
         'views/mails/application/student_welcome_mail.xml',

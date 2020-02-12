@@ -3,11 +3,11 @@
         <template id="campus_student_doctoral_program_overview">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    My doctoral program - Proposal
+                    Doctoral program <t t-esc="program.student_ref.name"/> - Proposal
                 </t>
                 <div class="media mb-headings align-items-center">
                     <div class="media-body">
-                        <h1 class="h2">Proposal - <t t-esc="program.study_ref.name"/></h1>
+                        <h1 class="h2"><t t-esc="program.student_ref.name"/> - Proposal - <t t-esc="program.study_ref.name"/></h1>
                     </div>
                 </div>
                 <div class="card">
