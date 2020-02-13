@@ -1,0 +1,39 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_student_doctoral_program_skills">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    My doctoral program - Proposal
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2">Proposal - <t t-esc="program.study_ref.name"/></h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Task description</h4>
+                        Great text which explains what to do...
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        Use the following template for your work:
+                        <a href="/ghu/static/files/doctoral-templates/Academic-Writing-Method-Skills_Program_Surname_Firstname.docx">Template</a>
+                        <br/>
+                        Upload the completed proposal below to submit it for grading by your advisor.
+                        <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" t-attf-action="/campus/student/doctoral-program/#{ program.id }/skills/">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <input type="file" name="attachment" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="program.id"/>
+                            </div>
+                            <button type="submit" name="Submit" style="margin-top:20px;" class="btn btn-primary">
+                                Submit final document
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

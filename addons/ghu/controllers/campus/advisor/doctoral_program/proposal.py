@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 class GhuCampusAdvisorDoctoralProgramProposal(http.Controller):
     
-    @http.route('/campus/advisor/doctoral-program/<model("ghu.doctoral_program"):obj>/proposal', type='http', auth='user', methods=['GET'], website=True)
+    @http.route('/campus/advisor/doctoral-program/<model("ghu.doctoral_program"):obj>/proposal/', type='http', auth='user', methods=['GET'], website=True)
     def showAdvisedDoctorandsResearchProposal(self, obj, **kwargs):
         obj = request.env['ghu.doctoral_program'].sudo().browse(obj.id)
         # Show the selected doctorands program

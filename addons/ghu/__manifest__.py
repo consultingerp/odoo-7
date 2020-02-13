@@ -52,10 +52,14 @@
         'views/campus/student/doctoral_program/list.xml',
         'views/campus/student/doctoral_program/overview.xml',
         'views/campus/student/doctoral_program/proposal/proposal.xml',
+        'views/campus/student/doctoral_program/reflection/reflection.xml',
+        'views/campus/student/doctoral_program/skills/skills.xml',
 
         'views/campus/advisor/doctoral_program/list.xml',
         'views/campus/advisor/doctoral_program/overview.xml',
         'views/campus/advisor/doctoral_program/proposal/proposal.xml',
+        'views/campus/advisor/doctoral_program/reflection/reflection.xml',
+        'views/campus/advisor/doctoral_program/skills/skills.xml',
 
         'views/mails/application/advisor_search_notification.xml',
         'views/mails/application/notify_advisor.xml',
