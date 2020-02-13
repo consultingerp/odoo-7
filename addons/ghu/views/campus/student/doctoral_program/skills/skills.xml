@@ -3,11 +3,11 @@
         <template id="campus_student_doctoral_program_skills">
             <t t-call="ghu_campus_style.campus_layout">
                 <t t-set="title">
-                    My doctoral program - Proposal
+                    My doctoral program - Academic Writings Methods/Skills
                 </t>
                 <div class="media mb-headings align-items-center">
                     <div class="media-body">
-                        <h1 class="h2">Proposal - <t t-esc="program.study_ref.name"/></h1>
+                        <h1 class="h2">Academic Writings Methods/Skills - <t t-esc="program.study_ref.name"/></h1>
                     </div>
                 </div>
                 <div class="card">
@@ -21,7 +21,7 @@
                         Use the following template for your work:
                         <a href="/ghu/static/files/doctoral-templates/Academic-Writing-Method-Skills_Program_Surname_Firstname.docx">Template</a>
                         <br/>
-                        Upload the completed proposal below to submit it for grading by your advisor.
+                        Upload the completed document below to submit it for grading by your advisor.
                         <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" t-attf-action="/campus/student/doctoral-program/#{ program.id }/skills/">
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                             <div class="form-group">
