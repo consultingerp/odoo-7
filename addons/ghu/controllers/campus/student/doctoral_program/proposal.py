@@ -30,7 +30,7 @@ class GhuCampusStudentDoctoralProgramProposal(http.Controller):
                     name = post.get('attachment').filename
                     file = post.get('attachment')
                     attachmentData = file.read()
-                    proposal = request.env['ghu.doctoral_program_professional_capability'].sudo().create(
+                    proposal = request.env['ghu.doctoral_program_proposal'].sudo().create(
                         {
                             'attachment': base64.encodestring(attachmentData),
                             'attachment_filename': name
