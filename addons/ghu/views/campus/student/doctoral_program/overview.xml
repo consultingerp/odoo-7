@@ -112,7 +112,6 @@
                 </div>
                 <t t-foreach="program.website_message_ids" t-as="message">
                     <div class="media o_portal_chatter_message" t-att-id="'message-' + str(message.id)">
-                        <img class="o_portal_chatter_avatar" t-att-src="message.author_avatar_url" alt="avatar"/>
                         <div class="media-body">
                             <div class="o_portal_chatter_message_title">
                                 <h5>
