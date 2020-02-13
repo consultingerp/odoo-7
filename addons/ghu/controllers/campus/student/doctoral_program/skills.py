@@ -21,8 +21,7 @@ class GhuCampusStudentDoctoralProgramSkills(http.Controller):
 
     @http.route('/campus/student/doctoral-program/<model("ghu.doctoral_program"):obj>/skills/', type='http', auth="user", methods=['POST'], website=True)
     def saveDoctorandsSkills(self, obj, **post):
-        self_sudo = self.sudo()
-        obj = self_sudo.env['ghu.doctoral_program'].browse(obj.id)
+        obj = request.env['ghu.doctoral_program'].sudo().browse(obj.id)
         partner_id = request.env.user.partner_id.id
         student = request.env['ghu.student'].sudo().search(
             [('partner_id', '=', partner_id)], limit=1)
@@ -32,17 +31,10 @@ class GhuCampusStudentDoctoralProgramSkills(http.Controller):
                     name = post.get('attachment').filename
                     file = post.get('attachment')
                     attachmentData = file.read()
-                    attachment = self_sudo.env['ir.attachment'].create({
-                        'name': name,
-                        'type': 'binary',
-                        'datas': base64.encodestring(attachmentData),
-                        'datas_fname': name,
-                        'res_model': 'ghu.doctoral_program_academic_writing',
-                        'mimetype': 'application/x-pdf'
-                    })
-                    skills = self_sudo.env['ghu.doctoral_program_academic_writing'].create(
+                    skills = request.env['ghu.doctoral_program_academic_writing'].sudo().create(
                         {
-                            'attachment': attachment.id
+                            'attachment': base64.encodestring(attachmentData),
+                            'attachment_filename': name
                         }
                     )
                     obj.write({

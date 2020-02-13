@@ -98,6 +98,9 @@ class GhuModule(models.Model):
     _description = 'GHU Basic Module'
 
     attachment = fields.Binary(string='Attachment', attachment=True)
+    attachment_filename = fields.Char(
+        string=u'Attachment Filename',
+    )
 
     passed = fields.Boolean(
         string='Passed',
