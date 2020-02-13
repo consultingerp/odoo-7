@@ -114,8 +114,8 @@
                     <t t-foreach="program.sudo().website_message_ids" t-as="message">
                         <li class="message d-inline-flex">
                             <div class="message__aside">
-                                <a href="student-profile.html" class="avatar">
-                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{request.env.user.partner_id.id}/author_avatar/50x50" alt="avatar"/>
+                                <a class="avatar">
+                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{request.env.user.partner_id.id}/image_small/50x50" alt="avatar"/>
                                 </a>
                             </div>
                             <div class="message__body card">
