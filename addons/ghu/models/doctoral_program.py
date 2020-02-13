@@ -60,9 +60,9 @@ class GhuDoctoralProgram(models.Model):
         ondelete='restrict',
     )
 
-    expose_id = fields.Many2one(
-        string='Professional Capability',
-        comodel_name='ghu.doctoral_program_expose',
+    skills_id = fields.Many2one(
+        string='Academic Writing/Methods skills',
+        comodel_name='ghu.doctoral_program_academic_writing',
         ondelete='restrict',
     )
 
@@ -110,6 +110,8 @@ class GhuModule(models.Model):
     assessment_report_english = fields.Text(
         string='Feedback english',
     )
+
+
 class GhuProposal(models.Model):
     _name = 'ghu.doctoral_program_proposal'
     _description = 'GHU Doctoral Program'
@@ -147,11 +149,14 @@ class GhuProposal(models.Model):
     spelling_grammar = fields.Text(
         string='Spelling Grammar',
     )
+
+
 class GhuAcademicWriting(models.Model):
     _name = 'ghu.doctoral_program_academic_writing'
     _description = 'GHU Doctoral Program - Academic Writing'
 
     _inherit = ['ghu.doctoral_program_module']
+    
     
 class GhuProfessionalCapability(models.Model):
     _name = 'ghu.doctoral_program_professional_capability'

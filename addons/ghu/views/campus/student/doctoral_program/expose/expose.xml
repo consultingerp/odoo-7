@@ -29,7 +29,7 @@
                         <a href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx">Template</a>
                         <br/>
       Upload the completed exposé below to submit it for grading by your advisor.
-                        <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" action="/campus/course/2/examination/submit/1">
+                        <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" t-attf-action="/campus/student/doctoral-program/#{ program.id }/expose/">
                             <input type="hidden" name="csrf_token" value="0c217de8a990bad45fc6c1a244d462cd1d6d557bo1576244771"/>
                             <input type="hidden" name="examination_id" value="1"/>
                             <div class="form-group">
