@@ -142,7 +142,7 @@
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                             <div class="mb32">
                                 <textarea rows="4" name="message" class="form-control" placeholder="Write a message..."></textarea>
-                                <input type="hidden" name="res_model" t-att-value="ghu.doctoral_program"/>
+                                <input type="hidden" name="res_model" value="ghu.doctoral_program"/>
                                 <input type="hidden" name="res_id" t-att-value="program.id"/>
                                 <button t-attf-class="o_portal_chatter_composer_btn btn btn-primary mt8 o_website_message_post_helper" type="submit">Send</button>
                             </div>
