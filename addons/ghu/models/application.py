@@ -303,7 +303,7 @@ class GhuApplication(models.Model):
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
-        sign_request.message_subscribe([3,7,11,1555])
+        sign_request.message_subscribe([3,7,11])
         application = self.env['ghu.application'].browse(self.id)
         application.sign_request_id = sign_request.id
 
@@ -378,7 +378,7 @@ class GhuApplication(models.Model):
         sign_request.action_sent()
         sign_request.write({'state': 'sent'})
         sign_request.request_item_ids.write({'state': 'sent'})
-        sign_request.message_subscribe([3,7,11,1555])
+        sign_request.message_subscribe([3,7,11])
         application = self.env['ghu.application'].browse(self.id)
         application.agreement_request_id = sign_request.id
 
@@ -512,7 +512,7 @@ class GhuApplication(models.Model):
         invoice_template = self.env.ref('ghu.ghu_invoice_email_template')
         invoice_template.send_mail(invoice.id)
         invoice.write({'sent': True})
-        invoice.message_subscribe([3,7,11,1555])
+        invoice.message_subscribe([3,7,11])
 
         self.application_fee_invoice_id = invoice.id
 
@@ -598,7 +598,7 @@ class GhuApplication(models.Model):
             study_ref='%s,%s' % ('ghu.study', self.study_id.id),
         ))
         enrollment.message_subscribe([student.partner_id.id, self.advisor_ref.partner_id.id])
-        enrollment.message_subscribe([3,7,11,1555,3292])
+        enrollment.message_subscribe([3,7,11,3292])
         # Create Portal Access for both (Advisor and Student) if there is no one yet
         group_portal = self_sudo.env.ref('base.group_portal')
         user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
