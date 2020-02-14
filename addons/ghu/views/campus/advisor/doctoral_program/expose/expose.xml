@@ -25,19 +25,10 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-      Use the following template for your work:
-                        <a href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx">Template</a>
-                        <br/>
-                        Upload the completed exposé below to submit it for grading by your advisor.
-                        <form method="post" class="s_website_form" enctype="multipart/form-data" id="file_upload_form" action="/campus/course/2/examination/submit/1">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <div class="form-group">
-                                <input type="file" name="attachment" class="file form-control-file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="ex.id"/>
-                            </div>
-                            <button type="submit" name="Submit" style="margin-top:20px;" class="btn btn-primary">
-                                Submit final document
-                            </button>
-                        </form>
+                    <p>
+                        Here is the submission of the student:  <br/>                               
+                        <a class="btn btn-primary" t-if="program.expose_id.attachment" target="_blank" t-attf-href="/web/content/ghu.doctoral_program_expose/#{program.expose_id.id}/attachment/#{program.expose_id.attachment_filename}?download=true">Download proposal</a>
+                    </p>
                     </div>
                 </div>
             </t>
