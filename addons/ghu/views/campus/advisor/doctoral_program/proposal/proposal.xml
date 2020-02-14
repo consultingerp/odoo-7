@@ -1,0 +1,60 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_advisor_doctoral_program_proposal">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    Doctoral program <t t-esc="program.student_ref.name"/> - Proposal
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2"><t t-esc="program.student_ref.name"/> - Proposal - <t t-esc="program.study_ref.name"/></h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Task description</h4>
+                        <p>
+                            The research proposal has to follow the following structure (table of content):
+                        </p>
+                        <ol>
+                            <li>Title of the Research Proposal</li>
+                            <li>Abstract</li>
+                            <li>ResearchContext</li>
+                            <li>ResearchQuestions</li>
+                            <li>ResearchMethods</li>
+                            <li>Significance of Research</li>
+                            <li>Bibliography</li>
+                        </ol>
+                        <p>
+                            The Research Proposal should usually be around 3,500 words (title and bibliography are not included in this).<br/>
+                            What should be considered when writing the Research Proposal?<br/>
+                            The Research Proposal is a summary of the proposed research. It points out the practical and theoretical relevance of the research as well as the assumed research questions. It presents the theoretical classification of the research and gives an overview of the proposed dissertation project.<br/>
+                            1. Title<br/>
+                            The tentative title of the intended research should be as precise as possible, although it can be revised before the final submission of the dissertation. The main title should embody the focused issue of the research, the subtitle should include further details (e.g. such as theoretical or empirical approach).<br/>
+                            2. Abstract<br/>
+                            The Research Proposal should include a short summary of the intended research including all relevant points of its structure.<br/>
+                            3. Research Context<br/>
+                            The research context should express the initial situation of the intended research, specifically an actual practical problem in the industry with no theoretical solution. This is the base which will be used for arguing the practical and theoretical relevance of this research. In order to be able to do this in a scientifically satisfactory manner, the student should display his his/her current state of knowledge and present recent relevant debates.<br/>
+                            4. Research Questions<br/>
+                            The Research Proposal should link the research context to the research questions and the research objectives. It is suggested to present only a few research questions (e.g. two for the theoretical part of the research and one for the empirical part of the research) and to point out the objectives of the research. Research questions and aims guide the research. Research questions should not be too broad. The Research Proposal should illustrate the intended approach to answering the research questions and to reach the stated objectives. For this very purpose, the research question chapter of the Research Proposal offers an answer to the specific motives of your intended research. In this chapter the theoretical framework of the intended research should be perceptible.<br/>
+                            5. Research Methods<br/>
+                            The “How” of your intended research is part of the research methods. The Research Proposal should include a library-based approach and, where necessary, the empirical approach of the intended research. Regarding the library, it should be pointed out which key resources will be used (e.g. research journals, law reports etc.), and in doing so tangible resources should be named (e.g. name of research journals etc.). If the research is also based on empirical data, the corresponding details should be provided – such as data and sample selection and methodology (data capture/collection and data analysis).<br/>
+                            6. Significance of Research<br/>
+                            The Research Proposal should point out which new findings can be expected and why the research is important, therefore the uniqueness of the research should be demonstrated.<br/>
+                            7. Bibliography<br/>
+                            In the Research Proposal a brief bibliography depicting the most relevant research in this field should be included.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                    <p>
+                        Here is the submission of the student:  <br/>                               
+                        <a class="btn btn-primary" t-if="program.proposal_id.attachment" target="_blank" t-attf-href="/web/content/ghu.doctoral_program_proposal/#{program.proposal_id.id}/attachment/#{program.proposal_id.attachment_filename}?download=true">Download proposal</a>
+                    </p>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_advisor_doctoral_program_reflection">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    My doctoral program - Reflection
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2">Reflection - <t t-esc="program.study_ref.name"/></h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Task description</h4>
+                        <p>The reflection should contain the following topics:</p>
+                        <ul>
+                            <li>Presentation and assessment of education</li>
+                            <li>Presentation and assessment of professional career, passions and
+                            characterization of the “perfect job”</li>
+                            <li>Presentation of successes and failures and assessment of competences, skills and personality</li>
+                            <li>Position on ethics</li>
+                            <li>How does the student see himself/herself in 10 years</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                    <p>
+                        Here is the submission of the student:  <br/>                               
+                        <a class="btn btn-primary" t-if="program.professional_capability_id.attachment" target="_blank" t-attf-href="/web/content/ghu.doctoral_program_professional_capability/#{program.professional_capability_id.id}/attachment/#{program.professional_capability_id.attachment_filename}?download=true">Download proposal</a>
+                    </p>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

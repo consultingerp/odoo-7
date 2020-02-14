@@ -37,7 +37,9 @@
                                         <div class="sidebar-p-y" data-intro='This is the menu, you can navigate here through the main sections of Campus.'>
                                             <!-- Account menu -->
                                             <!-- <t t-call="ghu_campus_style.sidebar_account" /> -->
-                                            <t t-if="request.env.user.partner_id.is_student or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_student" />
+                                            <t t-if="request.env.user.partner_id.is_custom_mba_student or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_student" />
+                                            <t t-if="request.env.user.partner_id.is_doctoral_student or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_doctoral_student" />
+                                            <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_doctoral_advisor" />
                                             <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="ghu_campus_style.sidebar_custom_mba" />
                                             <t t-call="ghu_campus_style.sidebar_advisor" />
                                         </div>

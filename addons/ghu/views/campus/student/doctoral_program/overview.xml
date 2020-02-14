@@ -1,0 +1,183 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_student_doctoral_program_overview">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    My doctoral program
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2">
+                            <t t-esc="program.thesis_title"/>
+                        </h1>
+                        <p class="text-muted">started on <span t-field="program.create_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Phase 1</h4>
+                    </div>
+                    <ul class="list-group list-group-fit mb-0">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">1.</div>
+                                </div>
+                                <div class="media-body">Research proposal (5 ECTS) </div>
+                                <div class="media-right">
+                                    <span t-if="not program.proposal_id" class="badge badge-primary ">Open</span>
+                                    <span t-if="program.proposal_id and not program.proposal_id.assessment_report_english" class="badge badge-warning">Grading in progress</span>
+                                    <span t-if="program.proposal_id and program.proposal_id.passed" class="badge badge-success">Completed</span>
+                                </div>
+                                <a t-if="not program.proposal_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/proposal/"></a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">2.</div>
+                                </div>
+                                <div class="media-body">Academic Writing/Methods skills (15 ECTS) </div>
+                                <div class="media-right">
+                                    <!-- <span t-if="not program.skills_id" class="badge badge-primary ">Open</span>
+                                    <span t-if="program.skills_id and not program.skills_id.assessment_report_english" class="badge badge-warning">Grading in progress</span>
+                                    <span t-if="program.skills_id and program.skills_id.passed" class="badge badge-success">Completed</span>-->
+                                    <span class="badge badge-warning">Locked</span>
+                                </div>
+                                <!-- <a t-if="not program.skills_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>-->
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">3.</div>
+                                </div>
+                                <div class="media-body">Review of professional capability (Reflection) (10 ECTS)</div>
+                                <div class="media-right">
+                                    <span t-if="not program.professional_capability_id" class="badge badge-primary ">Open</span>
+                                    <span t-if="program.professional_capability_id and not program.professional_capability_id.assessment_report_english" class="badge badge-warning">Grading in progress</span>
+                                    <span t-if="program.professional_capability_id and program.professional_capability_id.passed" class="badge badge-success">Completed</span>
+                                </div>
+                                <a t-if="not program.professional_capability_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/reflection/"></a>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">4.</div>
+                                </div>
+                                <div class="media-body">
+                                    Exposé (30 ECTS)
+                                </div>
+                                <div class="media-right">
+                                    <span class="badge badge-warning">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Phase 2</h4>
+                    </div>
+                    <ul class="list-group list-group-fit mb-0">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">1.</div>
+                                </div>
+                                <div class="media-body">Project Report (Thesis - Dissertation) (85 ECTS) </div>
+                                <div class="media-right">
+                                    <span class="badge badge-warning ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">2.</div>
+                                </div>
+                                <div class="media-body">Research Paper (30 ECTS)</div>
+                                <div class="media-right">
+                                    <span class="badge badge-warning ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="text-muted-light">3.</div>
+                                </div>
+                                <div class="media-body">Oral Presentation and Viva Voce (Defensio) (5 ECTS)</div>
+                                <div class="media-right">
+                                    <span class="badge badge-warning ">Locked</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="d-flex flex-column list-unstyled" id="messages">
+                    <t t-foreach="program.sudo().website_message_ids" t-as="message">
+                        <li class="message d-inline-flex">
+                            <div class="message__aside">
+                                <a class="avatar">
+                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{request.env.user.partner_id.id}/image_small/50x50" alt="avatar"/>
+                                </a>
+                            </div>
+                            <div class="message__body card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex mr-3">
+                                            <a class="text-body">
+                                                <strong>
+                                                    <t t-esc="message.author_id.name"/>
+                                                </strong>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <small class="text-muted">
+                                                <t t-esc="message.date.strftime('%m/%d/%Y')"/>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <span class="text-black-70">
+                                        <t t-raw="message.body"/>
+                                    </span>
+                                    <t t-foreach='message.attachment_ids' t-as='attachment'>
+                                        <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}" target="_blank" class="media align-items-center mt-2 text-decoration-0 bg-white px-3">
+                                            <span class="avatar mr-2">
+                                                <span class="avatar-title rounded-circle">
+                                                    <i class="material-icons font-size-24pt">attach_file</i>
+                                                </span>
+                                            </span>
+                                            <span class="media-body" style="line-height: 1.5">
+                                                <span class="text-primary"><t t-raw='attachment.name'/></span>
+                                                <br/>
+                                                <span class="text-muted"><t t-esc='attachment.mimetype'/></span>
+                                            </span>
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </li>
+                    </t>
+                </ul>
+                <div class="media">
+                    <img alt="Avatar" class="o_portal_chatter_avatar mr-3" t-attf-src="/web/image/res.partner/#{request.env.user.partner_id.id}/image_small/50x50"/>
+                    <div class="media-body">
+                        <form class="o_portal_chatter_composer_form" t-attf-action="/mail/chatter_post" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="mb32">
+                                <textarea rows="4" name="message" class="form-control" placeholder="Write a message..."></textarea>
+                                <input type="hidden" name="res_model" value="ghu.doctoral_program"/>
+                                <input type="hidden" name="res_id" t-att-value="program.id"/>
+                                <button t-attf-class="o_portal_chatter_composer_btn btn btn-primary mt8 o_website_message_post_helper" type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

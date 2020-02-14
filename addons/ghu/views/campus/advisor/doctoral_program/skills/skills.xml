@@ -1,0 +1,30 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_advisor_doctoral_program_skills">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    My doctoral program - Proposal
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2">Proposal - <t t-esc="program.study_ref.name"/></h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Task description</h4>
+                        Great text which explains what to do...
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                    <p>
+                        Here is the submission of the student:  <br/>                               
+                        <a class="btn btn-primary" t-if="program.skills_id.attachment" target="_blank" t-attf-href="/web/content/ghu.doctoral_program_academic_writing/#{program.skills_id.id}/attachment/#{program.skills_id.attachment_filename}?download=true">Download proposal</a>
+                    </p>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

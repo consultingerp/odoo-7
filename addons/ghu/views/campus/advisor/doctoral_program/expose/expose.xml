@@ -1,0 +1,37 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_student_doctoral_program_expose">
+            <t t-call="ghu_campus_style.campus_layout">
+                <t t-set="title">
+                    Doctoral program <t t-esc="program.student_ref.name"/> - Proposal
+                </t>
+                <div class="media mb-headings align-items-center">
+                    <div class="media-body">
+                        <h1 class="h2"><t t-esc="program.student_ref.name"/> - Proposal - <t t-esc="program.study_ref.name"/></h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Task description</h4>
+                        <p>
+        The writing of an exposé is an important milestone in the doctoral study process. In the
+        DBA doctoral program the exposé is a research paper about the students’ doctoral
+        issue. The doctoral student can compose the proposal in his preferred language (that
+        is the language the dissertation will be written in). This can be English or any other
+        language. For the assessment of the exposé, it is mandatory that it is submitted in
+        English. A notarized translation is permitted.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                    <p>
+                        Here is the submission of the student:  <br/>                               
+                        <a class="btn btn-primary" t-if="program.expose_id.attachment" target="_blank" t-attf-href="/web/content/ghu.doctoral_program_expose/#{program.expose_id.id}/attachment/#{program.expose_id.attachment_filename}?download=true">Download proposal</a>
+                    </p>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

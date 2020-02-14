@@ -573,9 +573,10 @@ class GhuApplication(models.Model):
 
     @api.one
     def finish_application(self):
+        self_sudo = self.sudo()
         print('Finish application')
         # Create doctoral program model
-        student = self.env['ghu.student'].create(dict(
+        student = self_sudo.env['ghu.student'].create(dict(
             doctoral_student=True,
             partner_id=self.partner_id.id,
             vita_file=self.vita_file,
@@ -590,24 +591,42 @@ class GhuApplication(models.Model):
             other_languages=(6, False, [v.id for v in self.other_languages])
         ))
 
-        enrollment = self.env['ghu.doctoral_program'].create(dict(
+        enrollment = self_sudo.env['ghu.doctoral_program'].create(dict(
             advisor_ref='%s,%s' % ('ghu.advisor', self.advisor_ref.id),
-            student_ref='%s,%s' % ('ghu.student', student.id)
+            student_ref='%s,%s' % ('ghu.student', student.id),
+            thesis_title=self.thesis_title,
+            study_ref='%s,%s' % ('ghu.study', self.study_id.id),
         ))
         enrollment.message_subscribe([student.partner_id.id, self.advisor_ref.partner_id.id])
         enrollment.message_subscribe([3,7,11,1555,3292])
         # Create Portal Access for both (Advisor and Student) if there is no one yet
-        group_portal = self.env.ref('base.group_portal')
+        group_portal = self_sudo.env.ref('base.group_portal')
         user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
         if not user:
-            user = self.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
+            pdf = self_sudo.env.ref('ghu.enrollment_confirmation_pdf').sudo(
+            ).render_qweb_pdf([student.id])[0]
+            attachmentName = 'Enrollment-'+student.lastname + \
+                '-'+student.student_identification+'.pdf'
+            attachment = self_sudo.env['ir.attachment'].create({
+                'name': attachmentName,
+                'type': 'binary',
+                'datas': base64.encodestring(pdf),
+                'datas_fname': attachmentName,
+                'res_model': 'ghu.student',
+                'res_id': student.id,
+                'mimetype': 'application/x-pdf'
+            })
+            user = self_sudo.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
                 'email': extract_email(student.partner_id.email),
                 'login': extract_email(student.partner_id.email),
                 'partner_id': student.partner_id.id,
                 'company_id': 1,
                 'company_ids': [(6, 0, [1])],
             })
-            template = self.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
+            
+            template = self_sudo.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
+            template.attachment_ids = False
+            template.attachment_ids = [(4, attachment.id)]
             lang = user.lang
             partner = student.partner_id
 
@@ -615,7 +634,7 @@ class GhuApplication(models.Model):
             partner.signup_prepare()
 
             if template:
-                template.with_context(dbname=self._cr.dbname, portal_url=portal_url, lang=lang).send_mail(user, force_send=True)
+                partner.message_post_with_template(template_id=template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
             else:
                 _logger.warning("No email template found for sending email to the portal user")
 
