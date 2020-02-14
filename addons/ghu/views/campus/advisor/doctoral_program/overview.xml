@@ -27,7 +27,7 @@
                                     <span t-if="program.proposal_id and not program.proposal_id.assessment_report_english" class="badge badge-warning">Grading required</span>
                                     <span t-if="program.proposal_id and program.proposal_id.passed" class="badge badge-success">Completed</span>
                                 </div>
-                                <a t-if="program.proposal_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/proposal/"></a>
+                                <a t-if="program.proposal_id" class="stretched-link" t-attf-href="/campus/advisor/doctoral-program/#{ program.id }/proposal/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -41,7 +41,7 @@
                                     <span t-if="program.skills_id and not program.skills_id.assessment_report_english" class="badge badge-warning">Grading required</span>
                                     <span t-if="program.skills_id and program.skills_id.passed" class="badge badge-success">Completed</span>
                                 </div>
-                                <a t-if="program.skills_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>
+                                <a t-if="program.skills_id" class="stretched-link" t-attf-href="/campus/advisor/doctoral-program/#{ program.id }/skills/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -55,7 +55,7 @@
                                     <span t-if="program.professional_capability_id and not program.professional_capability_id.assessment_report_english" class="badge badge-warning">Grading required</span>
                                     <span t-if="program.professional_capability_id and program.professional_capability_id.passed" class="badge badge-success">Completed</span>
                                 </div>
-                                <a t-if="program.professional_capability_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/reflection/"></a>
+                                <a t-if="program.professional_capability_id" class="stretched-link" t-attf-href="/campus/advisor/doctoral-program/#{ program.id }/reflection/"></a>
                             </div>
                         </li>
                         <li class="list-group-item">
