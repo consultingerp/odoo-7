@@ -40,11 +40,12 @@
                                 </div>
                                 <div class="media-body">Academic Writing/Methods skills (15 ECTS) </div>
                                 <div class="media-right">
-                                    <span t-if="not program.skills_id" class="badge badge-primary ">Open</span>
+                                    <!-- <span t-if="not program.skills_id" class="badge badge-primary ">Open</span>
                                     <span t-if="program.skills_id and not program.skills_id.assessment_report_english" class="badge badge-warning">Grading in progress</span>
-                                    <span t-if="program.skills_id and program.skills_id.passed" class="badge badge-success">Completed</span>
+                                    <span t-if="program.skills_id and program.skills_id.passed" class="badge badge-success">Completed</span>-->
+                                    <span class="badge badge-warning">Locked</span>
                                 </div>
-                                <a t-if="not program.skills_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>
+                                <!-- <a t-if="not program.skills_id" class="stretched-link" t-attf-href="/campus/student/doctoral-program/#{ program.id }/skills/"></a>-->
                             </div>
                         </li>
                         <li class="list-group-item">
