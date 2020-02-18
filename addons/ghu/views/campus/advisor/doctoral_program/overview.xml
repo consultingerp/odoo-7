@@ -119,7 +119,7 @@
                         <li class="message d-inline-flex">
                             <div class="message__aside">
                                 <a class="avatar">
-                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{message.partner_id.id}/image_small/50x50" alt="avatar"/>
+                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{message.author_id.id}/image_small/50x50" alt="avatar"/>
                                 </a>
                             </div>
                             <div class="message__body card">
