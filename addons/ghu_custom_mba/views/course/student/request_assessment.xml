@@ -1,7 +1,7 @@
 <odoo>
     <data noupdate="0">
         <template id="student_requestassessment">
-            <t t-call="portal.frontend_layoutlayout">
+            <t t-call="portal.frontend_layout">
                 <t t-set="title">
                     <t t-esc="object.display_name"/>
                 </t>
