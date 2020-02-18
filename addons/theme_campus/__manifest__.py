@@ -5,7 +5,7 @@
     """,
     'category': 'Theme',
     'version': '1.0',
-    'depends': ['website'],
+    'depends': ['website','website_theme_install'],
 
     # templates
     'data': [
