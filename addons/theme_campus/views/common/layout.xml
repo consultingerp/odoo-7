@@ -14,7 +14,7 @@
             </xpath>
             <xpath expr="//div[@id='wrapwrap']/main" position="replace">
                 <main class="wrapper">
-                    <nav id="sidebar">
+                    <nav id="sidebar" t-if="not user_id._is_public()">
                         <div class="sidebar-header">
                             <h3>GHU Campus</h3>
                         </div>

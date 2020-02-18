@@ -4,7 +4,7 @@
     'description': """
     """,
     'category': 'Theme',
-    'version': '1.02',
+    'version': '1.03',
     'depends': ['website','website_theme_install'],
 
     # templates
