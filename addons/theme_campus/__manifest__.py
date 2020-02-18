@@ -9,11 +9,11 @@
 
     # templates
     'data': [
-        'views/options.xml',
-        'views/snippets.xml',
+        #'views/options.xml',
+        #'views/snippets.xml',
         'views/common/layout.xml',
-        'views/common/assets.xml',
-        'views/common/header.xml',
+        #'views/common/assets.xml',
+        #'views/common/header.xml',
         'views/navigation/navbars.xml',
         'views/navigation/sidebars/account.xml',
         'views/navigation/sidebars/custom_mba.xml',
