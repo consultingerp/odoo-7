@@ -4,7 +4,7 @@
     'description': """
     """,
     'category': 'Theme',
-    'version': '1.01',
+    'version': '1.02',
     'depends': ['website','website_theme_install'],
 
     # templates
@@ -12,7 +12,7 @@
         #'views/options.xml',
         #'views/snippets.xml',
         'views/common/layout.xml',
-        #'views/common/assets.xml',
+        'views/common/assets.xml',
         #'views/common/header.xml',
         'views/navigation/navbars.xml',
         'views/navigation/sidebars/account.xml',

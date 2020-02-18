@@ -14,7 +14,7 @@
             </xpath>
             <xpath expr="//div[@id='wrapwrap']/main" position="replace">
                 <main class="wrapper">
-                    <nav id="sidebar" class="navbar navbar-expand-md navbar-light bg-light">
+                    <nav id="sidebar">
                         <div class="sidebar-header">
                             <h3>GHU Campus</h3>
                         </div>
