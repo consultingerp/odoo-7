@@ -5,10 +5,13 @@
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
-    background: #7386D5;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: color('menu');
     color: #fff;
     transition: all 0.3s;
 }
