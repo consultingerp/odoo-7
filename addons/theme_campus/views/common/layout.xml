@@ -15,9 +15,6 @@
             <xpath expr="//div[@id='wrapwrap']/main" position="replace">
                 <main class="wrapper">
                     <nav id="sidebar" t-if="not user_id._is_public()">
-                        <div class="sidebar-header">
-                            <h3>GHU Campus</h3>
-                        </div>
                         <t t-if="request.env.user.partner_id.is_custom_mba_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_student" />
                         <t t-if="request.env.user.partner_id.is_doctoral_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_student" />
                         <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_advisor" />
