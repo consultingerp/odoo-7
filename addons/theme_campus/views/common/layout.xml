@@ -4,31 +4,37 @@
             <xpath expr="//div[@id='wrapwrap']" position="attributes">
                 <attribute name="t-attf-dir" add="#{request.env['res.lang'].search([('code', '=', request.env.lang)]).direction == 'rtl' and 'o_rtl' or 'ltr'}" separator=" "/>
             </xpath>
-            <xpath expr="//div[@id='wrapwrap']/header/nav[hasclass('navbar')]" position="replace">
-                <nav class="navbar navbar-expand-md navbar-light bg-light">
-                    <div class="container">
-                        <a href="/" class="navbar-brand logo">
-                            <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
-                        </a>
+            <xpath expr="//div[@id='wrapwrap']/header" position="replace">
+                <header>
+                    <a href="/" class="navbar-brand logo">
+                        <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                    </a>
+                </header>
+
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/main" position="replace">
+                <main class="wrapper">
+                    <nav id="sidebar" class="navbar navbar-expand-md navbar-light bg-light">
+                        <div class="sidebar-header">
+                            <h3>GHU Campus</h3>
+                        </div>
                         <t t-if="request.env.user.partner_id.is_custom_mba_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_student" />
                         <t t-if="request.env.user.partner_id.is_doctoral_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_student" />
                         <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_advisor" />
                         <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_custom_mba" />
                         <t t-call="theme_campus.sidebar_advisor" />
-                        <ul class="nav navbar-nav ml-auto text-right">        
+                        <ul class="nav navbar-nav ml-auto text-right">
                             <li class="nav-item" t-ignore="true" t-if="not user_id._is_public()">
                                 <a id="o_logout" class="item" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
                             </li>
                         </ul>
+                    </nav>
+                    <div id="content" class="o_portal_wrap">
+                        <div class="container mb64">
+                            <t t-raw='0'/>
+                        </div>
                     </div>
-                </nav>
-            </xpath>
-            <xpath expr="//div[@id='wrapwrap']/main/t[@t-raw='0']" position="replace">
-                <div id="wrap" class="o_portal_wrap">
-                    <div class="container mb64">
-                        <t t-raw='0'/>
-                    </div>
-                </div>
+                </main>
             </xpath>
             <xpath expr="//div[@id='wrapwrap']/footer" position="replace">
                 <div class="d-none"></div>
