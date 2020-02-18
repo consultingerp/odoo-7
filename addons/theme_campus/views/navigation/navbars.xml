@@ -12,7 +12,7 @@
 
                     <!-- Brand -->
                     <a href="/campus/documents" class="navbar-brand">
-                        <img src="/ghu_campus_style/static/description/icon.png" height="40px" class="mr-2" alt="Global Humanistic University" />
+                        <img src="/theme_campus/static/description/icon.png" height="40px" class="mr-2" alt="Global Humanistic University" />
                         <span class="d-none d-xs-md-block">GHU Campus</span>
                     </a>
 
@@ -40,7 +40,7 @@
                     <!-- Menu -->
                     <ul class="nav navbar-nav flex-nowrap">
                         <!-- {% include "partials/navbar.notifications.html" %} -->
-                        <t t-call="ghu_campus_style.navbar_user" />
+                        <t t-call="theme_campus.navbar_user" />
                     </ul>
                 </div>
             </nav>
@@ -50,7 +50,7 @@
             <!-- User dropdown -->
             <li class="nav-item dropdown ml-1 ml-md-3">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                    <img src="/ghu_campus_style/static/images/icons8-user-60.png" alt="Avatar" class="rounded-circle" width="40" />
+                    <img src="/theme_campus/static/images/icons8-user-60.png" alt="Avatar" class="rounded-circle" width="40" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/my/home">
