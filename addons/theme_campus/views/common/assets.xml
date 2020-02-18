@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="campus_assets" name="Styles for campus" inherit_id="website.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+                <link rel="stylesheet" type="text/scss" href="/theme_campus/static/src/scss/navigation.scss"/>
+                <link rel="stylesheet" type="text/css" href="/theme_campus/static/design/dist/assets/css/material-icons.css" />
+            </xpath>
+        </template>
+    </data>
+</odoo>

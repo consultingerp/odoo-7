@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <template id="campus_student_documents" name="All documents of user">
-            <t t-call="ghu_campus_style.campus_layout">
+            <t t-call="portal.frontend_layoutlayout">
                 <t t-set="title">My documents</t>
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">
@@ -36,7 +36,7 @@
             </t>
         </template>
         <template id="campus_student_documents_saved" name="All documents of user">
-            <t t-call="ghu_campus_style.campus_layout">
+            <t t-call="portal.frontend_layoutlayout">
                 <t t-set="title">My documents</t>
                 <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
                     <div class="flex mb-2 mb-sm-0">

@@ -1,7 +1,7 @@
 <odoo>
     <data noupdate="0">
         <template id="campus_advisor_doctoral_program_reflection">
-            <t t-call="ghu_campus_style.campus_layout">
+            <t t-call="portal.frontend_layoutlayout">
                 <t t-set="title">
                     My doctoral program - Reflection
                 </t>
