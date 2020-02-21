@@ -71,6 +71,12 @@
                         <field name="social_researchgate"/>
                     </div>
                 </xpath>
+                <xpath expr="//field[@name='utm_tracker_settings']/.." position="after">
+                    <div class="row">
+                        <label for="require_login" string="Require Login for whole page" class="col-md-3 o_light_label"/>
+                        <field name="require_login"/>
+                    </div>
+                </xpath>
             </field>
         </record>
 
