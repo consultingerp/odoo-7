@@ -10,7 +10,7 @@
                         <span class="material-icons">menu</span>
                     </button>
                     <a href="/" class="ml-3 navbar-brand logo">
-                        <img src="/ghu_campus_style/static/description/icon.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                        <img src="/theme_campus/static/description/icon.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
                         <span class="d-none d-md-block h3" style="color: #fff;float: right;margin-left: 1rem;">GHU Campus</span>
                     </a>
                 </header>
