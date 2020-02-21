@@ -2,13 +2,9 @@ import odoo
 
 from odoo import http, models, fields, _
 from odoo.http import request
-from odoo.tools import pycompat, OrderedSet
-from odoo.addons.http_routing.models.ir_http import slug, _guess_mimetype
-from odoo.addons.web.controllers.main import Binary
-from odoo.addons.portal.controllers.portal import pager as portal_pager
-from odoo.addons.portal.controllers.web import Home
+from odoo.addons.website.controllers.main import Website
 
-class Campus(Home):
+class Campus(Website):
 
     @http.route('/', type='http', auth="public", website=True)
     def index(self, **kw):
