@@ -2,3 +2,4 @@
 
 from . import application
 from . import campus
+from . import main
