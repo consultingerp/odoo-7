@@ -6,11 +6,14 @@
             </xpath>
             <xpath expr="//div[@id='wrapwrap']/header" position="replace">
                 <header>
-                    <a href="/" class="navbar-brand logo">
+                    <button class="navbar-toggler d-block" id="sidebarCollapse" type="button">
+                        <span class="material-icons">menu</span>
+                    </button>
+                    <a href="/" class="ml-3 navbar-brand logo">
                         <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                        <span class="d-none d-xs-md-block">GHU Campus</span>
                     </a>
                 </header>
-
             </xpath>
             <xpath expr="//div[@id='wrapwrap']/main" position="replace">
                 <main class="wrapper">
@@ -20,7 +23,7 @@
                         <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_advisor" />
                         <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_custom_mba" />
                         <t t-call="theme_campus.sidebar_advisor" />
-                        <ul class="nav navbar-nav ml-auto text-right">
+                        <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item" t-ignore="true" t-if="not user_id._is_public()">
                                 <a id="o_logout" class="item" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
                             </li>
