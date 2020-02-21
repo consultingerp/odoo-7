@@ -10,8 +10,18 @@ $sidebar-width: 250px;
 header {
   min-height: 64px;
   background-color: color("footer");
+  padding-top: 0.5rem;
+  position: fixed;
+  width: 100%;
+  #sidebarToggle {
+    color: #fff;
+    float: left;
+    padding-left: 1.5rem;
+  }
 }
-
+main {
+  padding-top: 64px;
+}
 #sidebar {
   width: $sidebar-width;
   position: fixed;
@@ -21,6 +31,7 @@ header {
   background: color("menu");
   color: #fff;
   transition: all 0.3s;
+  padding-top: 2rem;
   .sidebar-heading {
     font-weight: 500;
     font-size: 0.75rem;
@@ -30,7 +41,6 @@ header {
     line-height: 1.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    margin-bottom: 2rem;
   }
   .sidebar-menu {
     margin-bottom: 2rem;
@@ -103,7 +113,6 @@ header {
   min-height: 100vh;
   transition: all 0.3s;
   position: absolute;
-  top: 0;
   right: 0;
 }
 
