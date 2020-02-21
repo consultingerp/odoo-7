@@ -8,11 +8,12 @@
 $sidebar-width: 250px;
 
 header {
-  min-height: 64px;
+  min-height: 56px;
   background-color: color("footer");
   padding-top: 0.5rem;
   position: fixed;
   width: 100%;
+  z-index: 999;
   .navbar-toggler {
     color: #fff;
     float: left;
@@ -20,7 +21,7 @@ header {
   }
 }
 main {
-  padding-top: 64px;
+  padding-top: 56px;
 }
 #sidebar {
   width: $sidebar-width;
@@ -32,6 +33,7 @@ main {
   color: #fff;
   transition: all 0.3s;
   padding-top: 2rem;
+  overflow-y: auto;
   .sidebar-heading {
     font-weight: 500;
     font-size: 0.75rem;

@@ -11,7 +11,7 @@
                     </button>
                     <a href="/" class="ml-3 navbar-brand logo">
                         <img src="/theme_campus/static/description/icon.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
-                        <span class="d-none d-md-block h3" style="color: #fff;float: right;margin-left: 1rem;">GHU Campus</span>
+                        <span class="d-none d-md-block h3" style="color: #fff;float: right;margin-left: 1rem;margin-top: 0.25rem;">GHU Campus</span>
                     </a>
                 </header>
             </xpath>
@@ -23,11 +23,6 @@
                         <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_advisor" />
                         <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_custom_mba" />
                         <t t-call="theme_campus.sidebar_advisor" />
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" t-ignore="true" t-if="not user_id._is_public()">
-                                <a id="o_logout" class="item" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
-                            </li>
-                        </ul>
                     </nav>
                     <div id="content" class="o_portal_wrap">
                         <div class="container mb64">
