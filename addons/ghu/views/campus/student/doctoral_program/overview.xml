@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-header">
                         <h4 class="card-title">Phase 2</h4>
                     </div>
@@ -117,67 +117,10 @@
                         </li>
                     </ul>
                 </div>
-                <h2>Communication with advisor</h2>
-                <ul class="d-flex flex-column list-unstyled" id="messages">
-                    <t t-foreach="program.sudo().website_message_ids" t-as="message">
-                        <li class="message d-inline-flex">
-                            <div class="message__aside">
-                                <a class="avatar">
-                                    <img class="avatar-img rounded-circle" t-attf-src="/web/image/res.partner/#{message.author_id.id}/image_small/50x50" alt="avatar"/>
-                                </a>
-                            </div>
-                            <div class="message__body card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex mr-3">
-                                            <a class="text-body">
-                                                <strong>
-                                                    <t t-esc="message.author_id.name"/>
-                                                </strong>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <small class="text-muted">
-                                                <t t-esc="message.date.strftime('%m/%d/%Y')"/>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <span class="text-black-70">
-                                        <t t-raw="message.body"/>
-                                    </span>
-                                    <t t-foreach='message.attachment_ids' t-as='attachment'>
-                                        <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}" target="_blank" class="media align-items-center mt-2 text-decoration-0 bg-white px-3">
-                                            <span class="avatar mr-2">
-                                                <span class="avatar-title rounded-circle">
-                                                    <i class="material-icons font-size-24pt">attach_file</i>
-                                                </span>
-                                            </span>
-                                            <span class="media-body" style="line-height: 1.5">
-                                                <span class="text-primary"><t t-raw='attachment.name'/></span>
-                                                <br/>
-                                                <span class="text-muted"><t t-esc='attachment.mimetype'/></span>
-                                            </span>
-                                        </a>
-                                    </t>
-                                </div>
-                            </div>
-                        </li>
-                    </t>
-                </ul>
-                <div class="media">
-                    <img alt="Avatar" class="o_portal_chatter_avatar mr-3" t-attf-src="/web/image/res.partner/#{request.env.user.partner_id.id}/image_small/50x50"/>
-                    <div class="media-body">
-                        <form class="o_portal_chatter_composer_form" t-attf-action="/mail/chatter_post" method="POST">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <div class="mb32">
-                                <textarea rows="4" name="message" class="form-control" placeholder="Write a message..."></textarea>
-                                <input type="hidden" name="res_model" value="ghu.doctoral_program"/>
-                                <input type="hidden" name="res_id" t-att-value="program.id"/>
-                                <button t-attf-class="o_portal_chatter_composer_btn btn btn-primary mt8 o_website_message_post_helper" type="submit">Send</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <h2 class="mt-5">Communication with advisor</h2>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="program"/>
+                </t>
             </t>
         </template>
     </data>

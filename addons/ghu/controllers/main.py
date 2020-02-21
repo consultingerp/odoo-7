@@ -1,17 +1,20 @@
-import odoo
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import http, models, fields, _
-from odoo.http import request
+from odoo import http
 from odoo.addons.website.controllers.main import Website
+from odoo.http import request
 
-class Campus(Website):
+
+class GhuWebsite(Website):
 
     @http.route('/', type='http', auth="public", website=True)
     def index(self, **kw):
-        homepage = request.website.homepage_id
-        if homepage and (homepage.sudo().is_visible or request.env.user.has_group('base.group_user')) and homepage.url != '/' and homepage.sudo().require_login:
+        
+        if request.website.sudo().require_login and request.env.user._is_public():
             return request.redirect('/web/login')
-
+        
+        homepage = request.website.homepage_id
         if homepage and (homepage.sudo().is_visible or request.env.user.has_group('base.group_user')) and homepage.url != '/':
             return request.env['ir.http'].reroute(homepage.url)
 
