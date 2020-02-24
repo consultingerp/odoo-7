@@ -33,6 +33,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
+                                Examination number: <t t-esc="ex.id"/><br/>
                                 Use the following template for your work: 
                                 <a t-attf-href="/ghu_custom_mba/static/files/Presentation-Examination number_Student-ID.pptx" t-if="ex.type == 'presentation'">Template</a>
                                 <a t-attf-href="/ghu_custom_mba/static/files/Analysis_Report_Homework-Examination-number_Student-ID.docx" t-if="ex.type == 'analysis' or ex.type == 'report' or ex.type == 'homework'">Template</a>
