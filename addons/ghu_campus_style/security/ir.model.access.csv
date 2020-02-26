@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ghu_campus_style_ghu_campus_style,ghu_campus_style.ghu_campus_style,model_ghu_campus_style_ghu_campus_style,,1,0,0,0
