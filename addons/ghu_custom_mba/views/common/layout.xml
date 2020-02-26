@@ -2,7 +2,7 @@
     <data>
         <template id="ghu_campus_link" name="Link to GHU Campus" inherit_id="portal.frontend_layout">
             <xpath expr="//a[@id='o_logout']" position="before">
-                <a href="https://campus.ghu.edu.cw/web/login" role="menuitem" class="dropdown-item">GHU Campus</a>
+                <a href="https://campus.ghu.edu.cw/" role="menuitem" class="dropdown-item">GHU Campus</a>
             </xpath>
         </template>
     </data>
