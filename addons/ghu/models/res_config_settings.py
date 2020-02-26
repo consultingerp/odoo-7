@@ -41,6 +41,8 @@ class ResConfigSettings(models.TransientModel):
 
     social_researchgate = fields.Char(related='website_id.social_researchgate', readonly=False)
 
+    require_login = fields.Boolean(related='website_id.require_login', readonly=False)
+
     ghu_smarthub_api_key = fields.Char(
         string='Smarthub API Key',
         help='The Smarthub API key is needed to automatically import incoming leads.',

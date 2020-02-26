@@ -71,6 +71,19 @@
                         <field name="social_researchgate"/>
                     </div>
                 </xpath>
+                <xpath expr="//div[@id='utm_tracker_settings']" position="after">
+                    <div class="col-12 col-lg-6 o_setting_box" id="require_login" title="Allow access to this website only for logged in users.">
+                        <div class="o_setting_left_pane">
+                            <field name="require_login"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="require_login"/>
+                            <div class="text-muted">
+                                        Require login for all accesses
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
             </field>
         </record>
 
@@ -83,13 +96,6 @@
             <field name="context">{'module' : 'ghu'}</field>
         </record>
 
-        <menuitem
-            id="menu_ghu_config"
-            name="GHU"
-            parent="base.menu_administration"
-            sequence="50"
-            action="action_ghu_config"
-            groups="base.group_system"
-        />
+        <menuitem id="menu_ghu_config" name="GHU" parent="base.menu_administration" sequence="50" action="action_ghu_config" groups="base.group_system" />
     </data>
 </odoo>

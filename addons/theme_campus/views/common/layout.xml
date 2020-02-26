@@ -1,0 +1,45 @@
+<odoo>
+    <data noupdate="0">
+        <template id="campus_layout" inherit_id="portal.frontend_layout">
+            <xpath expr="//div[@id='wrapwrap']" position="attributes">
+                <attribute name="t-attf-dir" add="#{request.env['res.lang'].search([('code', '=', request.env.lang)]).direction == 'rtl' and 'o_rtl' or 'ltr'}" separator=" "/>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/header" position="replace">
+                <header>
+                    <button class="navbar-toggler d-block" id="sidebarCollapse" type="button">
+                        <span class="material-icons">menu</span>
+                    </button>
+                    <a href="/" class="ml-3 navbar-brand logo">
+                        <img src="/theme_campus/static/description/icon.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                        <span class="d-none d-md-block h3" style="color: #fff;float: right;margin-left: 1rem;margin-top: 0.25rem;">GHU Campus</span>
+                    </a>
+                </header>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/main" position="replace">
+                <main class="wrapper">
+                    <nav id="sidebar" t-if="not user_id._is_public()">
+                        <t t-if="request.env.user.partner_id.is_custom_mba_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_student" />
+                        <t t-if="request.env.user.partner_id.is_doctoral_student or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_student" />
+                        <t t-if="request.env.user.partner_id.is_advisor or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_doctoral_advisor" />
+                        <t t-if="request.env.user.partner_id.is_custom_mba or request.env.user.has_group('base.group_user')" t-call="theme_campus.sidebar_custom_mba" />
+                        <t t-call="theme_campus.sidebar_advisor" />
+                    </nav>
+                    <div id="content" class="o_portal_wrap">
+                        <div class="container mb64">
+                            <t t-raw='0'/>
+                        </div>
+                    </div>
+                </main>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']/footer" position="replace">
+                <div class="d-none"></div>
+            </xpath>
+        </template>
+        <template id="campus_assets" inherit_id="website.assets_frontend" name="Campus Assets">
+            <xpath expr="//link[last()]" position="after">
+                <!-- Material Design Icons -->
+                <link type="text/css" href="/theme_campus/static/design/dist/assets/css/material-icons.css" rel="stylesheet" />
+            </xpath>
+        </template>
+    </data>
+</odoo>

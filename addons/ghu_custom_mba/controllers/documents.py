@@ -67,6 +67,7 @@ class GhuCampus(CustomerPortal):
                 'student': student,
                 'slug': 'campus_documents'
             })
+        return http.request.not_found()
     @http.route('/campus/my/documents/save', type='http', auth="user", methods=['POST'], website=True)
     def saveDocuments(self, **post):
         if request.env.user.partner_id.is_student:

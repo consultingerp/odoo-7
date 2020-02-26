@@ -12,3 +12,8 @@ class Website(models.Model):
         return self.env.ref('base.main_company').social_researchgate
 
     social_researchgate = fields.Char('Researchgate Account', default=_default_social_researchgate)
+
+    require_login = fields.Boolean(
+        string='Require Login',
+    )
+    
