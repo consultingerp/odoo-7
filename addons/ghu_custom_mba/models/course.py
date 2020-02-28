@@ -263,7 +263,10 @@ class GhuCourse(models.Model):
             if self.state == 'new':
                 # Create Panopto folder for course, add access rights for Lecturer and notify advisor
                 self.scriptApproved()
-                if self.author_id.videoCheck:
+                if not self.author_id.videoCheck:
+                    raise ValidationError(
+                    _('The author of this course has no approved introduction video. Please get in contact and clarify.'))
+                else:
                     self.createPanoptoFolder()
         elif new_state == 'recording_finished':
             if self.state == 'script_approved':
