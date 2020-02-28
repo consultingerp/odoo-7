@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models
+from odoo.addons.payment_authorize.models.payment import PaymentAcquirerAuthorize
 
-class PaymentAcquirerAuthorize(models.Model):
-    _inherit = 'payment.acquirer'
+class PaymentAcquirerCXPay(PaymentAcquirerAuthorize):
 
     def _get_authorize_urls(self, environment):
         """ Authorize URLs """
