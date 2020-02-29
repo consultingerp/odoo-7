@@ -4,7 +4,7 @@
     'description': """
     """,
     'category': 'Theme',
-    'version': '1.11',
+    'version': '1.12',
     'depends': ['website','website_theme_install'],
 
     # templates
@@ -25,7 +25,7 @@
 
     # demo pages
     'demo': [
-        'demo/pages.xml',
+        #'demo/pages.xml',
     ],
 
     # Your information
