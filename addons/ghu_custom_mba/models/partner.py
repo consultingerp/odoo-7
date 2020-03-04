@@ -55,13 +55,13 @@ class GhuPartner(models.Model):
 
     def _is_advisor(self):
         for record in self:
-            if self.env['ghu.advisor'].sudo().search([('partner_id', '=', record.id)]):
+            if self.env['ghu.advisor'].sudo().search([('partner_id', '=', record.id), ('is_advisor', '=', 1)]):
                 record.is_advisor = True
             else:
                 record.is_advisor = False
-    
+
     def _search_advisor(self, operator, value):
-        recs = self.env['ghu.advisor'].sudo().search([]).filtered(lambda x : x.partner_id )
+        recs = self.env['ghu.advisor'].sudo().search([('is_advisor', '=', 1)]).filtered(lambda x: x.partner_id)
         if recs:
             return [('id', 'in', [x.partner_id.id for x in recs])]
 
