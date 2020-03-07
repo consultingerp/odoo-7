@@ -137,7 +137,7 @@
                                     <div class="form-field form-group">
                                         <label for="script" class="form-label" title="As PDF File">Script <span class="mandatory">*</span>
                                         </label>
-                                        <input accept=".pdf" class="form-control-file" id="script" type="file" name="script_file" />
+                                        <input class="form-control-file" id="script" type="file" name="script_file" />
                                         <small id="scriptHelp" class="form-text text-muted">Adding a file here will overwrite the previous one.</small>
                                     </div>
                                 </div>
