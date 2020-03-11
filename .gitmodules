@@ -1,4 +1,0 @@
-[submodule "addons/mollie"]
-	path = addons/mollie
-	url = git@github.com:mollie/mollie-odoo.git
-	branch = 12.0

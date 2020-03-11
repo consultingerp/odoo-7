@@ -42,6 +42,13 @@ class GhuPanopto():
         return folder.Id
 
 
+    def activateAssignmentFolder(self, folder):
+        #TODO: Find correct method to activate dropbox
+        folder = self.sessionClient.service.ActivateDropbox(
+            auth=self.authInfo, name=name)
+        return folder.Id
+
+
     # Role can be either Viewer, Creator or Publisher
     def grantAccessToFolder(self, folder, userIds, role='Viewer'):
         roleFactory = self.accessClient.type_factory('ns2')

@@ -323,6 +323,14 @@ class GhuCourse(models.Model):
         scriptFolder = panopto.createFolder(
             "Lectures", str(self.id)+"-lectures", False, mainFolder)
 
+        presentation = False
+        for ass in self.assessment_ids:
+            if ass.type == 'presentation':
+                presentation = True
+
+        if presentation:
+            panopto.activateAssignmentFolder(mainFolder)
+
         scriptFolder1 = panopto.createFolder("Lecture 1", str(
             self.id)+"-lectures1", False, scriptFolder)
         lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
