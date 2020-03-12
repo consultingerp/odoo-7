@@ -36,6 +36,12 @@ class GhuStudy(models.Model):
         comodel_name='ghu.program',
     )
 
+    partner_university_id = fields.Many2one(
+        string=u'Partner University',
+        comodel_name='res.partner',
+        required=False
+    )
+
     _sql_constraints = [
         ('unique_course_code',
          'unique(code)', 'Code should be unique per study!')]
