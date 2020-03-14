@@ -422,8 +422,14 @@ class GhuCourse(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('mba'):
-            vals['name'] = self.env['ir.sequence'].next_by_code(
+            vals['name'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
                 'course.mba.code')
+        elif vals.get('msc'):
+            vals['name'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
+                'course.msc.code')
+        elif vals.get('bsc'):
+            vals['name'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
+                'course.bsc.code')
         res = super(GhuCourse, self).create(vals)
         res.create_product()  # call your method
         return res
