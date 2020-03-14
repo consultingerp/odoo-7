@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.576',
+    'version': '0.581',
 
 
 
@@ -28,6 +28,7 @@
         'security/ir.model.access.csv',
         'data/scheduled_actions.xml',
         'data/server_actions.xml',
+        'data/sequences.xml',
         'views/views.xml',
         'views/application/form.xml',
         'views/course/advisor/list.xml',
