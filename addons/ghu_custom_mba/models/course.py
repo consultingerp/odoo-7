@@ -285,32 +285,6 @@ class GhuCourse(models.Model):
             print(new_state)
 
     def reviewNeeded(self):
-        # Find all 3 lectures and add ids to model
-        panopto = GhuPanopto(self.env)
-        mainFolder = panopto.createFolder(self.getPanoptoMainFolderName(), self.id)
-        scriptFolder = panopto.createFolder(
-            "Lectures", str(self.id) + "-lectures", False, mainFolder)
-
-        scriptFolder1 = panopto.createFolder("Lecture 1", str(
-            self.id) + "-lectures1", False, scriptFolder)
-        lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
-
-        scriptFolder2 = panopto.createFolder("Lecture 2", str(
-            self.id) + "-lectures2", False, scriptFolder)
-        lecture2 = panopto.getFirstSessionOfFolder(scriptFolder2)
-
-        scriptFolder3 = panopto.createFolder("Lecture 3", str(
-            self.id) + "-lectures3", False, scriptFolder)
-        lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
-
-        vals = {
-            'lecture1_video_id': lecture1.Id,
-            'lecture2_video_id': lecture2.Id,
-            'lecture3_video_id': lecture3.Id
-        }
-
-        self.write(vals)
-
         notification_template = self.env.ref(
             'ghu_custom_mba.review_needed_mail').sudo()
         notification_template.send_mail(
@@ -378,6 +352,31 @@ class GhuCourse(models.Model):
         return True
 
     def recordingReviewNeeded(self):
+        # Find all 3 lectures and add ids to model
+        panopto = GhuPanopto(self.env)
+        mainFolder = panopto.createFolder(self.getPanoptoMainFolderName(), self.id)
+        scriptFolder = panopto.createFolder(
+            "Lectures", str(self.id) + "-lectures", False, mainFolder)
+
+        scriptFolder1 = panopto.createFolder("Lecture 1", str(
+            self.id) + "-lectures1", False, scriptFolder)
+        lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
+
+        scriptFolder2 = panopto.createFolder("Lecture 2", str(
+            self.id) + "-lectures2", False, scriptFolder)
+        lecture2 = panopto.getFirstSessionOfFolder(scriptFolder2)
+
+        scriptFolder3 = panopto.createFolder("Lecture 3", str(
+            self.id) + "-lectures3", False, scriptFolder)
+        lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
+
+        vals = {
+            'lecture1_video_id': lecture1.Id,
+            'lecture2_video_id': lecture2.Id,
+            'lecture3_video_id': lecture3.Id
+        }
+
+        self.write(vals)
         notification_template = self.env.ref(
             'ghu_custom_mba.recording_review_needed_mail').sudo()
         notification_template.send_mail(
