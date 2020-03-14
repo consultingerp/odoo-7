@@ -19,15 +19,15 @@ class GhuCourse(models.Model):
     description = fields.Html(
         string=u'Description',
     )
-    
+
     mba = fields.Boolean(
         string=u'Custom MBA',
     )
-       
+
     bsc = fields.Boolean(
         string=u'BSc',
     )
-    
+
     msc = fields.Boolean(
         string=u'MSc',
     )
@@ -117,7 +117,7 @@ class GhuCourse(models.Model):
     creditpoints = fields.Char(
         'Creditpoints Description', size=256, required=False)
 
-    @api.depends('lecture1_video_id','lecture3_video_id','lecture3_video_id')
+    @api.depends('lecture1_video_id', 'lecture3_video_id', 'lecture3_video_id')
     def _computeLecturesLinks(self):
         for record in self:
             baseUrl = 'https://ghu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id='
@@ -173,6 +173,7 @@ class GhuCourse(models.Model):
         states,
         'State', default='draft', required=True, track_visibility='onchange', group_expand='_read_group_stage_ids'
     )
+
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
         return [k for k, v in self.states]
@@ -265,7 +266,8 @@ class GhuCourse(models.Model):
                 self.scriptApproved()
                 if not self.author_id.videoCheck:
                     raise ValidationError(
-                    _('The author of this course has no approved introduction video. Please get in contact and clarify.'))
+                        _(
+                            'The author of this course has no approved introduction video. Please get in contact and clarify.'))
                 else:
                     self.createPanoptoFolder()
         elif new_state == 'recording_finished':
@@ -285,20 +287,20 @@ class GhuCourse(models.Model):
     def reviewNeeded(self):
         # Find all 3 lectures and add ids to model
         panopto = GhuPanopto(self.env)
-        mainFolder = panopto.createFolder(self.name, self.id)
+        mainFolder = panopto.createFolder(self.getPanoptoMainFolderName(), self.id)
         scriptFolder = panopto.createFolder(
-            "Lectures", str(self.id)+"-lectures", False, mainFolder)
+            "Lectures", str(self.id) + "-lectures", False, mainFolder)
 
         scriptFolder1 = panopto.createFolder("Lecture 1", str(
-            self.id)+"-lectures1", False, scriptFolder)
+            self.id) + "-lectures1", False, scriptFolder)
         lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
 
         scriptFolder2 = panopto.createFolder("Lecture 2", str(
-            self.id)+"-lectures2", False, scriptFolder)
+            self.id) + "-lectures2", False, scriptFolder)
         lecture2 = panopto.getFirstSessionOfFolder(scriptFolder2)
 
         scriptFolder3 = panopto.createFolder("Lecture 3", str(
-            self.id)+"-lectures3", False, scriptFolder)
+            self.id) + "-lectures3", False, scriptFolder)
         lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
 
         vals = {
@@ -319,20 +321,20 @@ class GhuCourse(models.Model):
     def publishCourse(self):
         # Find all 3 lectures and add ids to model
         panopto = GhuPanopto(self.env)
-        mainFolder = panopto.createFolder(self.name, self.id)
+        mainFolder = panopto.createFolder(self.getPanoptoMainFolderName(), self.id)
         scriptFolder = panopto.createFolder(
-            "Lectures", str(self.id)+"-lectures", False, mainFolder)
+            "Lectures", str(self.id) + "-lectures", False, mainFolder)
 
         scriptFolder1 = panopto.createFolder("Lecture 1", str(
-            self.id)+"-lectures1", False, scriptFolder)
+            self.id) + "-lectures1", False, scriptFolder)
         lecture1 = panopto.getFirstSessionOfFolder(scriptFolder1)
 
         scriptFolder2 = panopto.createFolder("Lecture 2", str(
-            self.id)+"-lectures2", False, scriptFolder)
+            self.id) + "-lectures2", False, scriptFolder)
         lecture2 = panopto.getFirstSessionOfFolder(scriptFolder2)
 
         scriptFolder3 = panopto.createFolder("Lecture 3", str(
-            self.id)+"-lectures3", False, scriptFolder)
+            self.id) + "-lectures3", False, scriptFolder)
         lecture3 = panopto.getFirstSessionOfFolder(scriptFolder3)
         if lecture1 == False or lecture2 == False or lecture3 == False:
             raise ValidationError(
@@ -346,11 +348,11 @@ class GhuCourse(models.Model):
 
         self.write(vals)
 
-        #if len(self.assessment_ids) != 1:
+        # if len(self.assessment_ids) != 1:
         #    raise ValidationError(
         #        _('Assessments missing, not possible to approve this.'))
 
-        #for ass in self.assessment_ids:
+        # for ass in self.assessment_ids:
         #    if len(ass.question_ids) < 2:
         #        raise ValidationError(
         #        _('Assessment %s is missing questions, not possible to approve this.'))
@@ -382,21 +384,24 @@ class GhuCourse(models.Model):
             self.id, raise_exception=False, force_send=False)
         return True
 
+    def getPanoptoMainFolderName(self):
+        return "[" + str(self.shortcode) + "] " + self.name
+
     @api.multi
     def createPanoptoFolder(self):
         for record in self:
             panopto = GhuPanopto(self.env)
-            mainFolder = panopto.createFolder(record.name, record.id)
+            mainFolder = panopto.createFolder(record.getPanoptoMainFolderName(), record.id)
             scriptFolder = panopto.createFolder(
-                "Lectures", str(record.id)+"-lectures", False, mainFolder)
+                "Lectures", str(record.id) + "-lectures", False, mainFolder)
             scriptFolder1 = panopto.createFolder("Lecture 1", str(
-                record.id)+"-lectures1", False, scriptFolder)
+                record.id) + "-lectures1", False, scriptFolder)
             scriptFolder2 = panopto.createFolder("Lecture 2", str(
-                record.id)+"-lectures2", False, scriptFolder)
+                record.id) + "-lectures2", False, scriptFolder)
             scriptFolder3 = panopto.createFolder("Lecture 3", str(
-                record.id)+"-lectures3", False, scriptFolder)
+                record.id) + "-lectures3", False, scriptFolder)
             additionalFolder = panopto.createFolder(
-                "Additional Information", str(record.id)+"-additional", False, mainFolder)
+                "Additional Information", str(record.id) + "-additional", False, mainFolder)
             self.write({'panopto_id': mainFolder})
             user = self.env['res.users'].search(
                 [('partner_id', '=', record.author_id.partner_id.id)], limit=1)
@@ -416,6 +421,15 @@ class GhuCourse(models.Model):
     # Create corresponding product to buy in campus
     @api.model
     def create(self, vals):
+        if vals.get('mba'):
+            vals['shortcode'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
+                'course.mba.code')
+        elif vals.get('msc'):
+            vals['shortcode'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
+                'course.msc.code')
+        elif vals.get('bsc'):
+            vals['shortcode'] = self.sudo(self.env.user).env['ir.sequence'].next_by_code(
+                'course.bsc.code')
         res = super(GhuCourse, self).create(vals)
         res.create_product()  # call your method
         return res
@@ -440,13 +454,14 @@ class GhuCourse(models.Model):
     def _name_changed(self):
         # Update referenced product name
         for record in self:
-            _logger.info('Course name changed: ' + record.name)
-            if not record.product_ref:
-                record.create_product()
-            else:
-                product = record.product_ref
-                product.sudo().write({'name': 'Course ' + record.name})
-                _logger.info('Product updated for course: ' + record.name)
+            if record.id:
+                _logger.info('Course name changed: ' + record.name)
+                if not record.product_ref:
+                    record.create_product()
+                else:
+                    product = record.product_ref
+                    product.sudo().write({'name': 'Course ' + record.name})
+                    _logger.info('Product updated for course: ' + record.name)
 
 
 class GhuAssessment(models.Model):

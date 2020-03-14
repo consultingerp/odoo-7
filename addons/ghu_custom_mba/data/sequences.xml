@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for courses -->
+        <record id="course_mba_code" model="ir.sequence">
+            <field name="name">MBA Code Sequence</field>
+            <field name="code">course.mba.code</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="number_next">7101</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="course_msc_code" model="ir.sequence">
+            <field name="name">MBA Code Sequence</field>
+            <field name="code">course.msc.code</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="number_next">7011</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="course_bsc_code" model="ir.sequence">
+            <field name="name">MBA Code Sequence</field>
+            <field name="code">course.bsc.code</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="number_next">6001</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

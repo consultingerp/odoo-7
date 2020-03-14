@@ -23,12 +23,7 @@
         'views/navigation/sidebars/doctoral_student.xml'
     ],
 
-    # demo pages
-    'demo': [
-        'demo/pages.xml',
-    ],
-
     # Your information
-    'author': "My Company",
+    'author': "Global Humanistic University",
     'website': "",
 }
