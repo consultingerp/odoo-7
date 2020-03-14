@@ -454,13 +454,14 @@ class GhuCourse(models.Model):
     def _name_changed(self):
         # Update referenced product name
         for record in self:
-            _logger.info('Course name changed: ' + record.name)
-            if not record.product_ref:
-                record.create_product()
-            else:
-                product = record.product_ref
-                product.sudo().write({'name': 'Course ' + record.name})
-                _logger.info('Product updated for course: ' + record.name)
+            if record.id:
+                _logger.info('Course name changed: ' + record.name)
+                if not record.product_ref:
+                    record.create_product()
+                else:
+                    product = record.product_ref
+                    product.sudo().write({'name': 'Course ' + record.name})
+                    _logger.info('Product updated for course: ' + record.name)
 
 
 class GhuAssessment(models.Model):
