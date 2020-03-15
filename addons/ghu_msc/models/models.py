@@ -90,11 +90,6 @@ class ghu_msc_application(models.Model):
     def _read_group_stage_ids(self, stages, domain, order):
         return [k for k, v in self.states]
 
-    def on_creation(self, record):
-        self_sudo = self.sudo(self.env['res.users'].sudo().search(
-            [('email', 'like', 'office@ghu.edu.cw')], limit=1))
-        self_sudo.application_received(record)
-
     @api.multi
     def write(self, values):
         if 'state' in values:
