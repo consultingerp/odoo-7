@@ -82,11 +82,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <b>Program Description</b>
                                                         <div id="study-description">
 
                                                         </div>
                                                     </div>
                                                     <script>
+                                                        $('#study-description').html($('#study_id').find(':selected').data('description'));
                                                         $('#study_id').on('change', function(e){
                                                             $('#study-description').html($('#study_id').find(':selected').data('description'));
                                                         });
