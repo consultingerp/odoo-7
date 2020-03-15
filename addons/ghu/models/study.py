@@ -42,6 +42,8 @@ class GhuStudy(models.Model):
         required=False
     )
 
+    description = fields.Html(string=u'Description')
+
     _sql_constraints = [
         ('unique_course_code',
          'unique(code)', 'Code should be unique per study!')]
