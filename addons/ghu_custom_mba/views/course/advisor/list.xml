@@ -12,7 +12,7 @@
                     <a t-attf-href="#{ root }/new" class="btn btn-success">Add course</a>
                 </div>
                 <div class="row">
-                    <div class="col-4" t-foreach="objects" t-as="object">
+                    <div class="col-lg-4" t-foreach="objects" t-as="object">
                         <div class="card mt-3">
                             <div class="card-body">
                                 <h5 class="card-title">
