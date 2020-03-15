@@ -35,7 +35,8 @@ class GhuMsc(http.Controller):
                 'email',
             ]
             required_fields += contact_fields
-
+            # avoid missing field
+            kwargs['partner_id'] = True
             # check missing fields
             missing_fields = [f for f in required_fields if f not in kwargs]
             if missing_fields:

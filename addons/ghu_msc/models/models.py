@@ -48,7 +48,7 @@ class ghu_msc_application(models.Model):
     other_languages = fields.Many2many(
         string=u'Other Languages',
         comodel_name='ghu.lang',
-        relation='ghu_application_lang_rel',
+        relation='ghu_msc_application_lang_rel',
         column1='application_id',
         column2='lang_id',
         states={'finished': [('readonly', True)]}

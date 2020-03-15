@@ -24,48 +24,59 @@
                     <div class="container mt-2">
                         <div class="row">
                             <div class="col-lg-12 pt48 pb48">
-                                <form action="/msc/" data-force_action="application" method="post" class="s_website_form card bg-white" enctype="multipart/form-data" data-success_page="/msc/application/thank-you">
+                                <form action="/msc/" data-force_action="application" method="post"
+                                      class="s_website_form card bg-white" enctype="multipart/form-data"
+                                      data-success_page="/msc/application/thank-you">
                                     <div class="card-header">
                                         <ul class="nav nav-tabs card-header-tabs" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link o_default_snippet_text active show" id="application_custom_mba_view_personal_link" data-toggle="tab" href="#application_custom_mba_view_personal_content" role="tab" aria-controls="application_custom_mba_view_personal_content" aria-selected="true">Personal Data</a>
+                                                <a class="nav-link o_default_snippet_text active show"
+                                                   id="application_custom_mba_view_personal_link" data-toggle="tab"
+                                                   href="#application_custom_mba_view_personal_content" role="tab"
+                                                   aria-controls="application_custom_mba_view_personal_content"
+                                                   aria-selected="true">Personal Data
+                                                </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link o_default_snippet_text" id="application_custom_mba_view_residential_address_link" data-toggle="tab" href="#application_custom_mba_view_residential_address_content" role="tab" aria-controls="application_custom_mba_view_residential_address_content" aria-selected="false">Residential Address</a>
+                                                <a class="nav-link o_default_snippet_text"
+                                                   id="application_custom_mba_view_residential_address_link"
+                                                   data-toggle="tab"
+                                                   href="#application_custom_mba_view_residential_address_content"
+                                                   role="tab"
+                                                   aria-controls="application_custom_mba_view_residential_address_content"
+                                                   aria-selected="false">Residential Address
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
-                                    <t t-set="languages" t-value="request.env['ghu.lang'].sudo().search([('name','!=','')])" />
-                                    <t t-set="countries" t-value="request.env['res.country'].sudo().search([('name','!=','')])" />
+                                    <t t-set="languages"
+                                       t-value="request.env['ghu.lang'].sudo().search([('name','!=','')])"/>
+                                    <t t-set="countries"
+                                       t-value="request.env['res.country'].sudo().search([('name','!=','')])"/>
+                                    <t t-set="studies"
+                                       t-value="request.env['ghu.study'].sudo().search([('name','like','MSC')])"/>
                                     <div class="card-body tab-content">
-                                        <div class="tab-pane fade active show" id="application_custom_mba_view_personal_content" role="tabpanel" aria-labelledby="application_custom_mba_view_personal_link">
+                                        <div class="tab-pane fade active show"
+                                             id="application_custom_mba_view_personal_content" role="tabpanel"
+                                             aria-labelledby="application_custom_mba_view_personal_link">
                                             <fieldset class="  " style="">
                                                 <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="alert alert-info">
-                                                            Enrollment is free of charge
-                                                        </div>
-                                                    </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="firstname" class="control-label col-sm-3" title="">
-                                                                        First Name
+                                                            <label for="study_id" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Desired study
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="firstname" type="text" name="firstname" value="" />
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-field form-group col-md-6">
-                                                        <div class="row">
-                                                            <label for="lastname" class="control-label col-sm-3" title="">
-                                                                        Last Name
-                                                                <span class="mandatory">*</span>
-                                                            </label>
-                                                            <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="lastname" type="text" name="lastname" value="" />
+                                                                <select required="required"
+                                                                        class="form-control o_website_form_input"
+                                                                        id="study_id" name="study_id">
+                                                                    <t t-foreach="studies" t-as="study">
+                                                                        <option t-att-value="study.id"
+                                                                                t-field="study.name"/>
+                                                                    </t>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,13 +84,49 @@
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="birthday" class="control-label col-sm-3" title="">
-                                                                        Date of Birth
+                                                            <label for="firstname" class="control-label col-sm-3"
+                                                                   title="">
+                                                                First Name
+                                                                <span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="firstname" type="text" name="firstname"
+                                                                       value=""/>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-field form-group col-md-6">
+                                                        <div class="row">
+                                                            <label for="lastname" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Last Name
+                                                                <span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="lastname" type="text" name="lastname"
+                                                                       value=""/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-field form-group col-md-6">
+                                                        <div class="row">
+                                                            <label for="birthday" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Date of Birth
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
                                                                 <div class="input-group">
-                                                                    <input type="date" class="form-control o_website_form_input" name="date_of_birth" required="required" />
+                                                                    <input type="date"
+                                                                           class="form-control o_website_form_input"
+                                                                           name="date_of_birth" required="required"/>
                                                                     <div class="input-group-append">
                                                                         <div class="input-group-text">
                                                                             <i class="fa fa-calendar"></i>
@@ -91,14 +138,18 @@
                                                     </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="nationality" class="control-label col-sm-3" title="">
-                                                                        Nationality
+                                                            <label for="nationality" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Nationality
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select required="required" class="form-control o_website_form_input" id="nationality" name="nationality">
+                                                                <select required="required"
+                                                                        class="form-control o_website_form_input"
+                                                                        id="nationality" name="nationality">
                                                                     <t t-foreach="countries" t-as="country">
-                                                                        <option t-att-value="country.id" t-field="country.name" />
+                                                                        <option t-att-value="country.id"
+                                                                                t-field="country.name"/>
                                                                     </t>
                                                                 </select>
                                                             </div>
@@ -109,11 +160,13 @@
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="gender" class="control-label col-sm-3" title="">
-                                                                        Gender
+                                                                Gender
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select required="required" class="form-control o_website_form_input" id="gender" name="gender">
+                                                                <select required="required"
+                                                                        class="form-control o_website_form_input"
+                                                                        id="gender" name="gender">
                                                                     <option value="female">Female</option>
                                                                     <option value="male">Male</option>
                                                                     <option value="other">Other</option>
@@ -125,11 +178,14 @@
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="academicdegreespre" class="control-label col-sm-3" title="">
-                                                                        Academic Degrees (Pre)
+                                                            <label for="academicdegreespre"
+                                                                   class="control-label col-sm-3" title="">
+                                                                Academic Degrees (Pre)
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select class="form-control o_website_form_input" id="academicdegreespre" name="academic_degree_pre">
+                                                                <select class="form-control o_website_form_input"
+                                                                        id="academicdegreespre"
+                                                                        name="academic_degree_pre">
                                                                     <option value=""></option>
                                                                     <option value="Mag.">Mag.</option>
                                                                     <option value="Lic.">Lic.</option>
@@ -140,11 +196,13 @@
                                                     </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="title_post" class="control-label col-sm-3" title="">
-                                                                        Academic Degrees (Post)
+                                                            <label for="title_post" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Academic Degrees (Post)
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select class="form-control o_website_form_input" id="title_post" name="academic_degree_post">
+                                                                <select class="form-control o_website_form_input"
+                                                                        id="title_post" name="academic_degree_post">
                                                                     <option value=""></option>
                                                                     <option value="CAS">CAS</option>
                                                                     <option value="DAS">DAS</option>
@@ -161,9 +219,15 @@
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row col-sm-12">
                                                             <div class="form-check">
-                                                                <input class="form-check-input o_website_form_input" required="required" type="checkbox" value="confirm_experience" id="confirm_experience" />
-                                                                <label class="form-check-label" for="confirm_experience">
-                                                                            I confirm that I have at least five years of work experience or an academic degree equally to a BSc or higher. *
+                                                                <input class="form-check-input o_website_form_input"
+                                                                       required="required" type="checkbox"
+                                                                       value="confirm_experience"
+                                                                       id="confirm_experience"/>
+                                                                <label class="form-check-label"
+                                                                       for="confirm_experience">
+                                                                    I confirm that I have at least five years of work
+                                                                    experience or an academic degree equally to a BSc or
+                                                                    higher. *
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -172,12 +236,15 @@
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="native_language" class="control-label col-sm-3" title="">
-                                                                        Native Language
+                                                            <label for="native_language" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Native Language
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select required="required" class="form-control o_website_form_input" id="native_language" name="native_language">
+                                                                <select required="required"
+                                                                        class="form-control o_website_form_input"
+                                                                        id="native_language" name="native_language">
                                                                     <t t-foreach="languages" t-as="language">
                                                                         <option t-att-value="language.id">
                                                                             <t t-esc="language.display_name"/>
@@ -191,42 +258,55 @@
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="foreign_languages" class="control-label col-sm-3" title="">Other Languages</label>
+                                                            <label for="foreign_languages"
+                                                                   class="control-label col-sm-3" title="">Other
+                                                                Languages
+                                                            </label>
                                                             <div class="col-sm-9">
-                                                                <select class="form-control o_website_form_input" id="foreign_languages" multiple="multiple" name="other_languages">
+                                                                <select class="form-control o_website_form_input"
+                                                                        id="foreign_languages" multiple="multiple"
+                                                                        name="other_languages">
                                                                     <t t-foreach="languages" t-as="language">
-                                                                        <option t-att-value="language.id" t-field="language.display_name" />
+                                                                        <option t-att-value="language.id"
+                                                                                t-field="language.display_name"/>
                                                                     </t>
                                                                 </select>
-                                                                <div class="error_container error_container_otherlanguages" />
+                                                                <div class="error_container error_container_otherlanguages"/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </fieldset>
                                         </div>
-                                        <div class="tab-pane fade" id="application_custom_mba_view_residential_address_content" role="tabpanel" aria-labelledby="application_custom_mba_view_residential_address_link">
+                                        <div class="tab-pane fade"
+                                             id="application_custom_mba_view_residential_address_content"
+                                             role="tabpanel"
+                                             aria-labelledby="application_custom_mba_view_residential_address_link">
                                             <fieldset class="  ">
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="street" class="control-label col-sm-3" title="">
-                                                                    Street
+                                                                Street
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="street" type="text" name="street" value="" />
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="street" type="text" name="street" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="zip" class="control-label col-sm-3" title="">
-                                                                    ZIP
+                                                                ZIP
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="zip" type="text" name="zip" value="" />
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="zip" type="text" name="zip" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -235,24 +315,30 @@
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="city" class="control-label col-sm-3" title="">
-                                                                    City
+                                                                City
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="city" type="text" name="city" value="" />
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="city" type="text" name="city" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
-                                                            <label for="country_id" class="control-label col-sm-3" title="">
-                                                                    Country
+                                                            <label for="country_id" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Country
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <select required="required" class="form-control o_website_form_input" id="country_id" name="country_id">
+                                                                <select required="required"
+                                                                        class="form-control o_website_form_input"
+                                                                        id="country_id" name="country_id">
                                                                     <t t-foreach="countries" t-as="country">
-                                                                        <option t-att-value="country.id" t-field="country.name" />
+                                                                        <option t-att-value="country.id"
+                                                                                t-field="country.name"/>
                                                                     </t>
                                                                 </select>
                                                             </div>
@@ -263,22 +349,26 @@
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="phone" class="control-label col-sm-3" title="">
-                                                                    Phone
+                                                                Phone
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="phone" type="text" name="phone" value="" />
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="phone" type="text" name="phone" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-field form-group col-md-6">
                                                         <div class="row">
                                                             <label for="email" class="control-label col-sm-3" title="">
-                                                                    Email
+                                                                Email
                                                                 <span class="mandatory">*</span>
                                                             </label>
                                                             <div class="col-sm-9">
-                                                                <input required="required" class="form-control o_website_form_input" id="email" type="email" name="email" value="" />
+                                                                <input required="required"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="email" type="email" name="email" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -286,17 +376,23 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <p>
-                                                            I have read the <a target="_blank" href="/ghu/static/files/GHU-Terms-and-conditions.pdf">terms
-                                                            and conditions</a> with today's date
+                                                            I have read the <a target="_blank"
+                                                                               href="/ghu/static/files/GHU-Terms-and-conditions.pdf">
+                                                            terms
+                                                            and conditions
+                                                        </a> with today's date
                                                             including resignation of the Global Humanistic
                                                             University, I agree with these and accept with
                                                             my submission that these are the basis for my
-                                                            study contract.<br />
+                                                            study contract.
+                                                            <br/>
                                                             With my submission, I also confirm the accuracy of my
                                                             information.
                                                         </p>
-                                                        <button class="btn o_website_form_send o_default_snippet_text btn-primary">Submit Application</button>
-                                                        <span id="o_website_form_result" />
+                                                        <button class="btn o_website_form_send o_default_snippet_text btn-primary">
+                                                            Submit Application
+                                                        </button>
+                                                        <span id="o_website_form_result"/>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -306,7 +402,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="oe_structure mt-2" />
+                    <div class="oe_structure mt-2"/>
                 </div>
             </t>
         </template>
@@ -330,7 +426,9 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="pb0 pt0 col-lg-8">
-                                        <p class="lead">Thank you for your application. We will now process your submitted information and approve your registration as soon as possible.</p>
+                                        <p class="lead">Thank you for your application. We will now process your
+                                            submitted information and approve your registration as soon as possible.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
