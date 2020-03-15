@@ -6,5 +6,10 @@
             <field name="icon">fa-check-circle</field>
             <field name="sequence">1</field>
         </record>
+        <record id="ghu_activity_data_check_with_partner_university" model="mail.activity.type">
+            <field name="name">Check student with partner university</field>
+            <field name="icon">fa-check-circle</field>
+            <field name="sequence">1</field>
+        </record>
     </data>
 </odoo>

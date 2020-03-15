@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from datetime import datetime
+from datetime import timedelta
 
 class ghu_msc_application(models.Model):
     _name = 'ghu_msc.application'
@@ -101,7 +102,14 @@ class ghu_msc_application(models.Model):
         self_sudo = self.sudo()
         if new_state == 'needs_sync':
             print('Application needs sync with other university.')
-            # self_sudo.send_application_fee_invoice()
+            self.env['mail.activity'].sudo().create({
+                'res_model_id': self.env.ref('ghu_msc.model_ghu_msc_application').id,
+                'res_id': self.id,
+                'user_id': 8,
+                'activity_type_id': self.env.ref('ghu_msc.ghu_activity_data_check_with_partner_university').id,
+                'summary': 'Please check if partner university has student as well.',
+                'date_deadline': datetime.now() + timedelta(days=7),
+            })
         elif new_state == 'approved':
             self_sudo.send_invoice()
         elif new_state == 'finished':
