@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ghu_msc_ghu_msc_application,ghu_msc.ghu_msc_application,model_ghu_msc_ghu_msc_application,,1,1,1,1
+access_ghu_msc_ghu_msc_application,ghu_msc.ghu_msc_application,model_ghu_msc_application,,1,1,1,1
