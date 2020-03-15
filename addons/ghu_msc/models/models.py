@@ -5,8 +5,21 @@ from odoo import models, fields, api
 
 class ghu_msc_application(models.Model):
     _name = 'ghu_msc.application'
+    _rec_name = 'lastname'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'MSc Application'
 
-    _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
+    partner_id = fields.Many2one(
+        'res.partner',
+        'Partner',
+        required=True,
+        states={'done': [('readonly', True)]},
+    )
+
+    firstname = fields.Char(related='partner_id.firstname', required=True)
+    lastname = fields.Char(related='partner_id.lastname', required=True)
+
+    gender = fields.Selection(related='partner_id.gender', required=True)
 
     nationality = fields.Many2one('res.country', 'Nationality', required=True,
                                   states={'finished': [('readonly', True)]})
@@ -53,7 +66,7 @@ class ghu_msc_application(models.Model):
         states={'finished': [('readonly', True)]}
     )
 
-    email = fields.Char(required=True, states={'finished': [('readonly', True)]})
+    email = fields.Char(related='partner_id.email', required=True)
 
     # STUDY PROGRAM FIELDS
     study_id = fields.Many2one(
@@ -101,9 +114,18 @@ class ghu_msc_application(models.Model):
 
     @api.multi
     def application_received(self):
+        print('Post message: Received application')
+        # TODO: Post Message to Thread
+        notification_template_en = self.env.ref(
+            'ghu_msc.application_received_en').sudo()
+        notification_template_es = self.env.ref(
+            'ghu_msc.application_received_es').sudo()
         for record in self:
-            print('Post message: Received application')
-            #TODO: Post Message to Thread
+            if record.native_language.name == 'Spanish':
+                record.message_post_with_template(template_id=notification_template_es.id)
+            else:
+                record.message_post_with_template(template_id=notification_template_en.id)
+        return True
 
     @api.multi
     def approve_application(self):
@@ -117,11 +139,10 @@ class ghu_msc_application(models.Model):
     def send_invoice(self):
         for record in self:
             print('Application approved')
-            #TODO: Send invoice for selected study
+            # TODO: Send invoice for selected study
 
     @api.multi
     def end_application(self):
         for record in self:
             print('Student enrolled')
-            #TODO: Enroll student
-
+            # TODO: Enroll student
