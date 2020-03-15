@@ -136,6 +136,11 @@ class ghu_msc_application(models.Model):
                 record.write({'state': 'approved'})
 
     @api.multi
+    def application_approved_by_partner(self):
+        for record in self:
+            record.write({'state': 'approved'})
+
+    @api.multi
     def send_invoice(self):
         for record in self:
             print('Application approved')

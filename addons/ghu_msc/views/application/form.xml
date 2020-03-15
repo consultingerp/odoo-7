@@ -54,7 +54,7 @@
                                     <t t-set="countries"
                                        t-value="request.env['res.country'].sudo().search([('name','!=','')])"/>
                                     <t t-set="studies"
-                                       t-value="request.env['ghu.study'].sudo().search([('name','like','MSC')])"/>
+                                       t-value="request.env['ghu.study'].sudo().search([('code','like','MSC')])"/>
                                     <div class="card-body tab-content">
                                         <div class="tab-pane fade active show"
                                              id="application_custom_mba_view_personal_content" role="tabpanel"

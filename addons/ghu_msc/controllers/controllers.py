@@ -76,11 +76,11 @@ class GhuMsc(http.Controller):
                     kwargs)
                 # Add floris to follower
                 application_record.message_subscribe([11], [])
-                self.env['mail.activity'].sudo().create({
-                    'res_model_id': self.env.ref('ghu_msc.application').id,
+                request.env['mail.activity'].sudo().create({
+                    'res_model_id': request.env.ref('ghu_msc.model_ghu_msc_application').id,
                     'res_id': application_record.id,
                     'user_id': 11,
-                    'activity_type_id': self.env.ref('ghu_msc.ghu_activity_data_check_msc_prerequisites').id,
+                    'activity_type_id': request.env.ref('ghu_msc.ghu_activity_data_check_msc_prerequisites').id,
                     'summary': 'Check requirements for MSc',
                     'date_deadline': datetime.now() + timedelta(days=7),
                 })
