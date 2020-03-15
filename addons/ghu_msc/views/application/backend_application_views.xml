@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_ghu_msc_application_kanban" model="ir.ui.view">
+            <field name="name">Application Kanban</field>
+            <field name="model">ghu_msc.application</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_application_kanban" default_group_by="state">
+                    <field name="id"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_res_application_kanban">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="lastname"/>
+                                            <t t-if="record.firstname.raw_value">
+                                                <field name="firstname"/>
+                                            </t>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li t-if="record.email.raw_value">
+                                            <a t-attf-href="mailto:#{record.email.value}">
+                                                <field name="email"/>
+                                            </a>
+                                        </li>
+                                        <li t-if="record.native_language.raw_value">
+                                            <field name="native_language"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_ghu_msc_application_tree" model="ir.ui.view">
+            <field name="name">ghu_msc.application.tree</field>
+            <field name="model">ghu_msc.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="application">
+                    <field name="firstname"/>
+                    <field name="lastname"/>
+                    <field name="nationality"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ghu_msc_application_form" model="ir.ui.view">
+            <field name="name">ghu_msc.application.form</field>
+            <field name="model">ghu_msc.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <form string="application">
+                    <header>
+                        <button string="Requirements approved" type="object" name="approve_application"
+                                attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <button string="Partner university approved" type="object"
+                                name="application_approved_by_partner"
+                                attrs="{'invisible': [('state', '!=', 'needs_sync')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="partner_id" required="1"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="personal_information" string="Personal Information">
+                                <group col="4" colspan="4" name="personal_detail">
+                                    <field name="partner_id"/>
+                                    <field name="date_of_birth"/>
+                                    <field name="nationality"/>
+                                    <field name="gender"/>
+                                    <field name="academic_degree_pre"/>
+                                    <field name="academic_degree_post"/>
+                                    <field name="native_language"/>
+                                    <field name="other_languages"/>
+                                </group>
+
+                                <group col="4" colspan="4" string="Study Information" name="program">
+                                    <field name="study_id"/>
+                                </group>
+                                <group col="4" colspan="4" string="Documents" name="documents">
+                                    <field name="vita_file" widget="binary" filename="vita_file_filename"/>
+                                    <field name="vita_file_filename" invisible="1"/>
+                                    <field name="id_file" widget="binary" filename="id_file_filename"/>
+                                    <field name="id_file_filename" invisible="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ghu_msc_application_search" model="ir.ui.view">
+            <field name="name">ghu_msc.application.search</field>
+            <field name="model">ghu_msc.application</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="application">
+                    <field name="lastname"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter name="nationality" string="Nationality" domain="[]"
+                                context="{'group_by':'nationality'}"/>
+                        <filter name="native_language" string="Native Language" domain="[]"
+                                context="{'group_by':'native_language'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_ghu_msc_application_view">
+            <field name="name">Applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ghu_msc.application</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="view_ghu_msc_application_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_msc_application_view_form">
+            <field name="act_window_id" ref="act_open_ghu_msc_application_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ghu_msc_application_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_msc_application_view_tree">
+            <field name="act_window_id" ref="act_open_ghu_msc_application_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ghu_msc_application_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_ghu_msc_application_view_kanban">
+            <field name="act_window_id" ref="act_open_ghu_msc_application_view"/>
+            <field name="sequence" eval="5"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_ghu_msc_application_kanban"/>
+        </record>
+        <menuitem name="MSc program" id="ghu_msc.msc_program" parent="ghu.menu_ghu"/>
+        <menuitem id="menu_ghu_msc_application" parent="ghu_msc.msc_program" name="Applications" sequence="10"
+                  action="act_open_ghu_msc_application_view"/>
+    </data>
+</odoo>

@@ -44,7 +44,7 @@
         <menuitem id="menu_ghu_enrollment" parent="ghu.doctoral_program" name="Enrollments" sequence="10" action="ghu_doctoral_program_window"/>
         <menuitem id="menu_ghu_advisor_root" parent="ghu.doctoral_program" name="Advisor" sequence="15" action="act_open_ghu_advisor_view_2"/>
         <menuitem id="menu_ghu_program" parent="ghu.doctoral_program" name="Programs" sequence="20" action="act_open_ghu_program_view_2"/>
-        <menuitem id="menu_ghu_study" parent="ghu.doctoral_program" name="Studies" sequence="25" action="act_open_ghu_study_view_2"/>
+        <menuitem id="menu_ghu_study" parent="ghu.menu_ghu" name="Studies" sequence="25" action="act_open_ghu_study_view_2"/>
         
         
         <menuitem id="menu_ghu_lecturer_root" parent="menu_ghu" name="Lecturer" sequence="15" action="act_open_ghu_advisor_view_3"/>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="ghu_activity_data_check_msc_prerequisites" model="mail.activity.type">
+            <field name="name">Check MSc prerequisites</field>
+            <field name="icon">fa-check-circle</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="ghu_activity_data_check_with_partner_university" model="mail.activity.type">
+            <field name="name">Check student with partner university</field>
+            <field name="icon">fa-check-circle</field>
+            <field name="sequence">1</field>
+        </record>
+    </data>
+</odoo>
