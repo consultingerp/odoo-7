@@ -1,26 +1,22 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ghu_msc",
+    'name': "GHU MSc program",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        This module is used to manage master programs.""",
 
-    'description': """
-        Long description of module's purpose
-    """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Gerald Aistleitner",
+    'website': "http://www.ghu.edu.cw",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.102',
+    'version': '0.104',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'ghu'],
+    'depends': ['base', 'mail', 'ghu', 'ghu_custom_mba'],
 
     # always loaded
     'data': [
