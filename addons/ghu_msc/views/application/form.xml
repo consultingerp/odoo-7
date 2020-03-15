@@ -254,6 +254,22 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="form-field form-group col-md-6">
+                                                        <div class="row">
+                                                            <label for="curriculumvitae" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Curriculum vitae
+                                                                <span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required"
+                                                                       accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="curriculumvitae" type="file"
+                                                                       name="vita_file"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
@@ -272,6 +288,22 @@
                                                                     </t>
                                                                 </select>
                                                                 <div class="error_container error_container_otherlanguages"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-field form-group col-md-6">
+                                                        <div class="row">
+                                                            <label for="idfile" class="control-label col-sm-3"
+                                                                   title="">
+                                                                Personal ID (Passport, Driver License,...)
+                                                                <span class="mandatory">*</span>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <input required="required"
+                                                                       accept=".jpg,.jpeg,.gif,.png,.tif,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.mpg,.mpeg,.avi,.mp3,.zip,.rar,.ace,.csv,.svg"
+                                                                       class="form-control o_website_form_input"
+                                                                       id="idfile" type="file"
+                                                                       name="id_file"/>
                                                             </div>
                                                         </div>
                                                     </div>

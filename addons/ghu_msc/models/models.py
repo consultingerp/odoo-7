@@ -54,13 +54,13 @@ class ghu_msc_application(models.Model):
         states={'finished': [('readonly', True)]}
     )
 
-    vita_file = fields.Binary('Curriculum Vitae', states={'finished': [('readonly', True)]})
+    vita_file = fields.Binary('Curriculum Vitae', required=True, states={'finished': [('readonly', True)]})
     vita_file_filename = fields.Char(
         string=u'vita_filename',
         states={'finished': [('readonly', True)]}
     )
 
-    id_file = fields.Binary('Personal ID (Passport, Driver License,...)', states={'finished': [('readonly', True)]})
+    id_file = fields.Binary('Personal ID (Passport, Driver License,...)', required=True, states={'finished': [('readonly', True)]})
     id_file_filename = fields.Char(
         string=u'id_filename',
         states={'finished': [('readonly', True)]}

@@ -79,7 +79,7 @@ class GhuMsc(http.Controller):
                 request.env['mail.activity'].sudo().create({
                     'res_model_id': request.env.ref('ghu_msc.model_ghu_msc_application').id,
                     'res_id': application_record.id,
-                    'user_id': 11,
+                    'user_id': 8,
                     'activity_type_id': request.env.ref('ghu_msc.ghu_activity_data_check_msc_prerequisites').id,
                     'summary': 'Check requirements for MSc',
                     'date_deadline': datetime.now() + timedelta(days=7),
