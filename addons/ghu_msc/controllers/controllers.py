@@ -13,7 +13,7 @@ class GhuMsc(http.Controller):
     @http.route('/msc/application/', type='http', auth='public', methods=['GET', 'POST'], website=True)
     def render_application(self, **kwargs):
         if request.httprequest.method == 'GET':
-            return http.request.render('ghu_custom_mba.apply_custom_mba', {})
+            return http.request.render('ghu_msc.apply_msc', {})
         if request.httprequest.method == 'POST':
             msc_application_model = request.env['ir.model'].sudo().search([('model', '=', 'ghu.student')])
             msc_application_fields = request.env['ir.model.fields'].sudo().search([
