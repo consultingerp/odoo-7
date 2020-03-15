@@ -91,4 +91,4 @@ class GhuMsc(http.Controller):
 
     @http.route('/msc/application/thank-you', type='http', auth='public', methods=['GET'], website=True)
     def thank_you(self):
-        return http.request.render('ghu_msc.apply_thankyou', {})
+        return http.request.render('ghu_msc.apply_msc_thankyou', {})
