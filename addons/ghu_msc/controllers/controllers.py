@@ -75,7 +75,7 @@ class GhuMsc(http.Controller):
                     mail_create_nosubscribe=True).create(
                     kwargs)
                 # Add floris to follower
-                application_record.message_subscribe([11], [])
+                application_record.message_subscribe([11, contact.id], [])
                 request.env['mail.activity'].sudo().create({
                     'res_model_id': request.env.ref('ghu_msc.model_ghu_msc_application').id,
                     'res_id': application_record.id,
@@ -84,6 +84,7 @@ class GhuMsc(http.Controller):
                     'summary': 'Check requirements for MSc',
                     'date_deadline': datetime.now() + timedelta(days=7),
                 })
+                application_record.application_received()
             except IntegrityError:
                 return json.dumps(False)
 
