@@ -73,13 +73,25 @@
                                                                         class="form-control o_website_form_input"
                                                                         id="study_id" name="study_id">
                                                                     <t t-foreach="studies" t-as="study">
-                                                                        <option t-att-value="study.id"
+                                                                        <option t-att-data-description="study.description"
+                                                                                t-att-value="study.id"
                                                                                 t-field="study.name"/>
                                                                     </t>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div id="study-description">
+
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        $('#study-description').html($('#study_id').find(':selected').data('description'));
+                                                        $('#study_id').on('change', function(e){
+                                                            $('#study-description').html($('#study_id').find(':selected').data('description'));
+                                                        });
+                                                    </script>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-field form-group col-md-6">
