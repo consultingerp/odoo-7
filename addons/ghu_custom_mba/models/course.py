@@ -3,6 +3,8 @@ from odoo.exceptions import ValidationError
 from odoo import _
 from ..util.panopto import GhuPanopto
 import logging
+from datetime import datetime
+from datetime import timedelta
 
 _logger = logging.getLogger(__name__)
 
@@ -335,6 +337,18 @@ class GhuCourse(models.Model):
             'ghu_custom_mba.course_approved_mail').sudo()
         notification_template.send_mail(
             self.id, raise_exception=False, force_send=False)
+
+        for ass in self.assessment_ids:
+            if ass.type == 'presentation':
+                self.env['mail.activity'].sudo().create({
+                    'res_model_id': self.env.ref('ghu_custom_mba.model_ghu_custom_mba_course').id,
+                    'res_id': self.id,
+                    'user_id': 2,
+                    'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                    'summary': 'Please create an assignment folder in Panopto for couse ' + self.name,
+                    'date_deadline': datetime.now() + timedelta(days=7),
+                })
+
         return True
 
     def correctionNeeded(self):

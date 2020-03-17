@@ -1,199 +1,209 @@
 <odoo>
-  <data noupdate="0">
-    <record model="ir.ui.view" id="ghu_custom_mba.advisor_form_extension">
-      <field name="name">ghu_custom_mba.advisor.inherit</field>
-      <field name="model">ghu.advisor</field>
-      <field name="inherit_id" ref="ghu.view_ghu_advisor_form" />
-      <field name="priority" eval="15"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='is_cafeteria']" position="after">
-          <field name="videoCheck"/>
-        </xpath>
-      </field>
-    </record>
+    <data noupdate="0">
+        <record model="ir.ui.view" id="ghu_custom_mba.advisor_form_extension">
+            <field name="name">ghu_custom_mba.advisor.inherit</field>
+            <field name="model">ghu.advisor</field>
+            <field name="inherit_id" ref="ghu.view_ghu_advisor_form"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_cafeteria']" position="after">
+                    <field name="videoCheck"/>
+                </xpath>
+            </field>
+        </record>
 
-    <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="ghu_custom_mba.list">
-      <field name="name">Courses</field>
-      <field name="model">ghu_custom_mba.course</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="long_name"/>
-          <field name="description"/>
-        </tree>
-      </field>
-    </record>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="ghu_custom_mba.list">
+            <field name="name">Courses</field>
+            <field name="model">ghu_custom_mba.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="long_name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
 
-    <record model="ir.ui.view" id="ghu_custom_mba.kanban">
-      <field name="name">Courses Kanban</field>
-      <field name="model">ghu_custom_mba.course</field>
-      <field name="arch" type="xml">
-        <kanban class="o_res_course_kanban" default_group_by="state">
-          <field name="state"/>
-          <field name="name"/>
-          <templates>
-            <t t-name="kanban-box">
-              <div t-attf-class="oe_kanban_global_click o_res_application_kanban">
-                <div class="oe_kanban_details">
-                  <h4>
-                    <a type="open">
-                      <field name="shortcode"/>
- -                      <field name="name"/>
-                    </a>
-                  </h4>
-                </div>
-              </div>
-            </t>
-          </templates>
-        </kanban>
-      </field>
-    </record>
-    <record id="student_view" model="ir.ui.view">
-      <field name="name">Custom MBA Student View</field>
-      <field name="model">ghu.student</field>
-      <field name="inherit_id" ref="ghu.view_ghu_student_form" />
-      <field name="arch" type="xml">
-        <header position="inside">
-          <button string="Send enrollment confirmation and campus access" type="object" name="applicationApproved" attrs="{'invisible': [('custom_mba','=',False)]}"/>
-        </header>
-        <field name="doctoral_student" position="after">
-          <field name="user_ids" invisible="1" />
-          <field name="custom_mba" modifiers="{}"/>
-        </field>
-      </field>
-    </record>
-    <record model="ir.ui.view" id="ghu_custom_mba.course_form">
-      <field name="name">Course</field>
-      <field name="model">ghu_custom_mba.course</field>
-      <field name="arch" type="xml">
-        <form modifiers="{}">
-          <header>
-            <button string="Approve" type="object" name="approved" attrs="{'invisible': [('state', '!=', 'new')]}"/>
-            <button string="Decline and send information" type="object" name="declined" attrs="{'invisible': [('state', '!=', 'new')]}"/>
-            <field name="state" widget="statusbar"/>
-          </header>
-          <sheet string="Course" modifiers="{}">
-            <group col="4" modifiers="{}">
-              <field name="shortcode" modifiers="{}"/>
-              <field name="name" modifiers="{'required':true}"/>
-              <field name="long_name" modifiers="{'required':true}"/>
-              <newline modifiers="{}"/>
-              <field name="mba" colspan="4" modifiers="{}"/>
-              <field name="msc" colspan="4" modifiers="{}"/>
-              <field name="bsc" colspan="4" modifiers="{}"/>
-              <field name="description" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="aims" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="knowledge" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="skills" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="syllabus" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="strategies" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="assessment_ids" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="language" can_create="true" can_write="true" modifiers="{'required':true}"/>
-              <field name="program_id" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="script_file" widget="binary" filename="script_file_filename"/>
-              <field name="script_file_filename" invisible="1"/>
-              <field name="author_id" can_create="true" can_write="true" modifiers="{}"/>
-              <field name="panopto_id" modifiers="{}"/>
-              <field name="preview_video_id" modifiers="{}"/>
-              <field name="lecture1_video_link" widget="url" modifiers="{}"/>
-              <field name="lecture2_video_link" widget="url" modifiers="{}"/>
-              <field name="lecture3_video_link" widget="url" modifiers="{}"/>
-              <field name="creditpoints" modifiers="{}"/>
-              <field name="formal_check_done" modifiers="{}"/>
-              <field name="formal_check" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="formal_reason" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="content_check_done" modifiers="{}"/>
-              <field name="content_check" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="content_reason" colspan="4" modifiers="{}"/>
-              <newline modifiers="{}"/>
-              <field name="state" modifiers="{'required':true}"/>
-              <separator modifiers="{}"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-
-
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="ghu_custom_mba.action_window">
-      <field name="name">Custom MBA courses</field>
-      <field name="res_model">ghu_custom_mba.course</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">kanban,tree,form</field>
-      <field name="domain">[]</field>
-      <field name="context">{}</field>
-    </record>
-    <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_form">
-      <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
-      <field name="sequence" eval="20"/>
-      <field name="view_mode">form</field>
-      <field name="view_id" ref="ghu_custom_mba.course_form"/>
-    </record>
-    <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_tree">
-      <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
-      <field name="sequence" eval="10"/>
-      <field name="view_mode">tree</field>
-      <field name="view_id" ref="ghu_custom_mba.list"/>
-    </record>
-    <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_kanban">
-      <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
-      <field name="sequence" eval="5"/>
-      <field name="view_mode">kanban</field>
-      <field name="view_id" ref="ghu_custom_mba.kanban"/>
-    </record>
-
-    <!-- server action to the one above -->
-    <record model="ir.actions.server" id="ghu_custom_mba.action_server">
-      <field name="name">ghu_custom_mba server</field>
-      <field name="model_id" ref="model_ghu_custom_mba_course"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
+        <record model="ir.ui.view" id="ghu_custom_mba.kanban">
+            <field name="name">Courses Kanban</field>
+            <field name="model">ghu_custom_mba.course</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_course_kanban" default_group_by="state">
+                    <field name="state"/>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_res_application_kanban">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="shortcode"/>
+                                            -
+                                            <field name="name"/>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="student_view" model="ir.ui.view">
+            <field name="name">Custom MBA Student View</field>
+            <field name="model">ghu.student</field>
+            <field name="inherit_id" ref="ghu.view_ghu_student_form"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button string="Send enrollment confirmation and campus access" type="object"
+                            name="applicationApproved" attrs="{'invisible': [('custom_mba','=',False)]}"/>
+                </header>
+                <field name="doctoral_student" position="after">
+                    <field name="user_ids" invisible="1"/>
+                    <field name="custom_mba" modifiers="{}"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="ghu_custom_mba.course_form">
+            <field name="name">Course</field>
+            <field name="model">ghu_custom_mba.course</field>
+            <field name="arch" type="xml">
+                <form modifiers="{}">
+                    <header>
+                        <button string="Approve" type="object" name="approved"
+                                attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <button string="Decline and send information" type="object" name="declined"
+                                attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet string="Course" modifiers="{}">
+                        <group col="4" modifiers="{}">
+                            <field name="shortcode" modifiers="{}"/>
+                            <field name="name" modifiers="{'required':true}"/>
+                            <field name="long_name" modifiers="{'required':true}"/>
+                            <newline modifiers="{}"/>
+                            <field name="mba" colspan="4" modifiers="{}"/>
+                            <field name="msc" colspan="4" modifiers="{}"/>
+                            <field name="bsc" colspan="4" modifiers="{}"/>
+                            <field name="description" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="aims" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="knowledge" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="skills" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="syllabus" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="strategies" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="assessment_ids" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="language" can_create="true" can_write="true" modifiers="{'required':true}"/>
+                            <field name="program_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="script_file" widget="binary" filename="script_file_filename"/>
+                            <field name="script_file_filename" invisible="1"/>
+                            <field name="author_id" can_create="true" can_write="true" modifiers="{}"/>
+                            <field name="panopto_id" modifiers="{}"/>
+                            <field name="preview_video_id" modifiers="{}"/>
+                            <field name="lecture1_video_link" widget="url" modifiers="{}"/>
+                            <field name="lecture2_video_link" widget="url" modifiers="{}"/>
+                            <field name="lecture3_video_link" widget="url" modifiers="{}"/>
+                            <field name="creditpoints" modifiers="{}"/>
+                            <field name="formal_check_done" modifiers="{}"/>
+                            <field name="formal_check" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="formal_reason" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="content_check_done" modifiers="{}"/>
+                            <field name="content_check" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="content_reason" colspan="4" modifiers="{}"/>
+                            <newline modifiers="{}"/>
+                            <field name="state" modifiers="{'required':true}"/>
+                            <separator modifiers="{}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
 
 
-    <record model="ir.actions.act_window" id="ghu_custom_mba.action_window_enrollments">
-      <field name="name">Course enrollments</field>
-      <field name="res_model">ghu_custom_mba.course_enrollment</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">kanban,tree,form</field>
-      <field name="domain">[]</field>
-      <field name="context">{}</field>
-    </record>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="ghu_custom_mba.action_window">
+            <field name="name">Custom MBA courses</field>
+            <field name="res_model">ghu_custom_mba.course</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_form">
+            <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ghu_custom_mba.course_form"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_tree">
+            <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="ghu_custom_mba.list"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ghu_course_view_kanban">
+            <field name="act_window_id" ref="ghu_custom_mba.action_window"/>
+            <field name="sequence" eval="5"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="ghu_custom_mba.kanban"/>
+        </record>
 
-    <!-- Top menu item -->
+        <!-- server action to the one above -->
+        <record model="ir.actions.server" id="ghu_custom_mba.action_server">
+            <field name="name">ghu_custom_mba server</field>
+            <field name="model_id" ref="model_ghu_custom_mba_course"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+                "type": "ir.actions.act_window",
+                "view_mode": "tree,form",
+                "res_model": self._name,
+                }
+            </field>
+        </record>
 
-    <!-- menu categories -->
-    <menuitem name="Course Management" id="ghu_custom_mba.menu_1" parent="ghu.menu_ghu"/>
-    <!-- actions -->
-    <menuitem name="Courses" id="ghu_custom_mba.menu_1_list" parent="ghu_custom_mba.menu_1" action="ghu_custom_mba.action_window"/>
-    <!-- actions -->
-    <menuitem name="Enrollments" id="ghu_custom_mba.menu_2_list" parent="ghu_custom_mba.menu_1" action="ghu_custom_mba.action_window_enrollments"/>
-  </data>
+
+        <record model="ir.actions.act_window" id="ghu_custom_mba.action_window_enrollments">
+            <field name="name">Course enrollments</field>
+            <field name="res_model">ghu_custom_mba.course_enrollment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <!-- menu categories -->
+        <menuitem name="Course Management" id="ghu_custom_mba.menu_1" parent="ghu.menu_ghu"/>
+        <!-- actions -->
+        <menuitem name="Courses" id="ghu_custom_mba.menu_1_list" parent="ghu_custom_mba.menu_1"
+                  action="ghu_custom_mba.action_window"/>
+        <!-- actions -->
+        <menuitem name="Enrollments" id="ghu_custom_mba.menu_2_list" parent="ghu_custom_mba.menu_1"
+                  action="ghu_custom_mba.action_window_enrollments"/>
+    </data>
 </odoo>
