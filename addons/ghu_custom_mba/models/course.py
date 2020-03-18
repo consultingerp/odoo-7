@@ -74,9 +74,9 @@ class GhuCourse(models.Model):
         comodel_name='ghu.program',
     )
 
-    script_file = fields.Binary('Script', required=False, track_visibility=True)
+    script_file = fields.Binary('Script', required=False)
     script_file_filename = fields.Char(
-        string=u'Script Filename', track_visibility=True
+        string=u'Script Filename'
     )
 
     author_id = fields.Many2one(
@@ -232,6 +232,8 @@ class GhuCourse(models.Model):
                 raise ValidationError(
                     _('You\'re not allowed to skip stages in this kanban!'))
             self.on_state_change(values['state'])
+        if 'script_file' in values:
+            self.message_post(body='New version of script uploaded.')
         super(GhuCourse, self).write(values)
 
     @api.one
