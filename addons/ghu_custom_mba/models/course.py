@@ -74,9 +74,9 @@ class GhuCourse(models.Model):
         comodel_name='ghu.program',
     )
 
-    script_file = fields.Binary('Script', required=False)
+    script_file = fields.Binary('Script', required=False, track_visibility=True)
     script_file_filename = fields.Char(
-        string=u'Script Filename',
+        string=u'Script Filename', track_visibility=True
     )
 
     author_id = fields.Many2one(
