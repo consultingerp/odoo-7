@@ -4,6 +4,7 @@ from odoo import models, fields, api
 from datetime import datetime
 from datetime import timedelta
 
+
 class ghu_msc_application(models.Model):
     _name = 'ghu_msc.application'
     _rec_name = 'lastname'
@@ -61,7 +62,13 @@ class ghu_msc_application(models.Model):
         states={'finished': [('readonly', True)]}
     )
 
-    id_file = fields.Binary('Personal ID (Passport, Driver License,...)', required=True, states={'finished': [('readonly', True)]})
+    program_fee_invoice_id = fields.Many2one(
+        'account.invoice',
+        'Program Fee Invoice',
+    )
+
+    id_file = fields.Binary('Personal ID (Passport, Driver License,...)', required=True,
+                            states={'finished': [('readonly', True)]})
     id_file_filename = fields.Char(
         string=u'id_filename',
         states={'finished': [('readonly', True)]}
@@ -103,7 +110,7 @@ class ghu_msc_application(models.Model):
         if new_state == 'approved':
             self_sudo.send_invoice()
         elif new_state == 'needs_sync':
-            #TODO: Create campus access
+            # TODO: Create campus access
             self_sudo.create_portal_access()
             print('Application needs sync with other university.')
             self.env['mail.activity'].sudo().create({
@@ -116,10 +123,10 @@ class ghu_msc_application(models.Model):
             })
         elif new_state == 'finished':
             if self.state == 'needs_sync':
-                #TODO: Create only enrollment
+                # TODO: Create only enrollment
                 self_sudo.create_enrollment()
             elif self.state == 'approved':
-                #TODO: Create campus access and enrollment
+                # TODO: Create campus access and enrollment
                 self_sudo.create_portal_access()
                 self_sudo.create_enrollment()
 
@@ -151,7 +158,46 @@ class ghu_msc_application(models.Model):
     def send_invoice(self):
         for record in self:
             print('Application approved')
-            # TODO: Send invoice for selected study
+            # get proper product
+            if self.study_id.product_id:
+                invoice = self.env['account.invoice'].create(dict(
+                    # customer (billing address)
+                    partner_id=self.partner_id.id,
+                    type='out_invoice',
+                    date_invoice=datetime.datetime.utcnow().date(),  # invoice date
+                    date_due=(datetime.datetime.utcnow() + \
+                              datetime.timedelta(weeks=1)).date(),  # due date
+                    user_id=2,  # salesperson Gerald
+                    invoice_line_ids=[],  # invoice lines
+                    name=self.study_id.name,  # name for account move lines
+                    partner_bank_id=self.env['ir.config_parameter'].get_param(
+                        'ghu.automated_invoice_bank_account'),  # company bank account
+                ))
+
+                invoice_line = self.env['account.invoice.line'].with_context(
+                    type=invoice.type,
+                    journal_id=invoice.journal_id.id,
+                    default_invoice_id=invoice.id
+                ).create(dict(
+                    product_id=self.study_id.product_id.id,
+                    price_unit=self.study_id.product_id.lst_price,
+                ))
+
+                invoice.invoice_line_ids = [(4, invoice_line.id)]
+                invoice.save()
+                invoice.message_subscribe([3, 7, 11])
+
+                self.program_fee_invoice_id = invoice.id
+
+                self.env['mail.activity'].sudo().create({
+                    'res_model_id': self.env.ref('account.model_account_invoice').id,
+                    'res_id': invoice.id,
+                    'user_id': 3,
+                    'activity_type_id': self.env.ref('ghu_msc.ghu_activity_data_validate_invoice').id,
+                    'summary': 'Please check scholarship and payment terms with applicant and then validate and send invoice.',
+                    'date_deadline': datetime.now() + timedelta(days=3),
+                })
+                # TODO: Send invoice for selected study
 
     @api.multi
     def invoice_paid(self):
@@ -167,7 +213,6 @@ class ghu_msc_application(models.Model):
         for record in self:
             print('Student enrolled')
             # TODO: Create portal access
-
 
     @api.multi
     def create_enrollment(self):

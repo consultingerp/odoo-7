@@ -42,6 +42,12 @@ class GhuStudy(models.Model):
         required=False
     )
 
+    product_id = fields.Many2one(
+        string=u'Product',
+        comodel_name='product.product',
+        required=False
+    )
+
     description = fields.Html(string=u'Description')
 
     _sql_constraints = [
