@@ -178,6 +178,7 @@ class ghu_msc_application(models.Model):
                     default_invoice_id=invoice.id
                 ).create(dict(
                     product_id=self.study_id.product_id.id,
+                    name=self.study_id.product_id.name,
                     price_unit=self.study_id.product_id.lst_price,
                 ))
 
