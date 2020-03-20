@@ -183,7 +183,7 @@ class ghu_msc_application(models.Model):
                 ))
 
                 invoice.invoice_line_ids = [(4, invoice_line.id)]
-                invoice.save()
+
                 invoice.message_subscribe([3, 7, 11])
 
                 self.program_fee_invoice_id = invoice.id
