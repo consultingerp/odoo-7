@@ -164,9 +164,7 @@ class ghu_msc_application(models.Model):
                     # customer (billing address)
                     partner_id=self.partner_id.id,
                     type='out_invoice',
-                    date_invoice=datetime.datetime.utcnow().date(),  # invoice date
-                    date_due=(datetime.datetime.utcnow() + \
-                              datetime.timedelta(weeks=1)).date(),  # due date
+                    date_invoice=datetime.utcnow().date(),  # invoice date
                     user_id=2,  # salesperson Gerald
                     invoice_line_ids=[],  # invoice lines
                     name=self.study_id.name,  # name for account move lines

@@ -101,6 +101,9 @@
                                     <field name="id_file" widget="binary" filename="id_file_filename"/>
                                     <field name="id_file_filename" invisible="1"/>
                                 </group>
+                                <group col="4" colspan="4" string="Accounting" name="accounting">
+                                    <field name="program_fee_invoice_id" />
+                                </group>
                             </page>
                         </notebook>
                     </sheet>
