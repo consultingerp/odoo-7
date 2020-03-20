@@ -77,8 +77,8 @@ class ghu_msc_application(models.Model):
 
     states = [
         ('new', 'New (Please review application)'),
-        ('needs_sync', 'Sync needed (Talk to partner university)'),
         ('approved', 'Waiting for payment'),
+        ('needs_sync', 'Sync needed (Talk to partner university)'),
         ('finished', 'Completed')
     ]
 
@@ -100,7 +100,11 @@ class ghu_msc_application(models.Model):
     def on_state_change(self, new_state):
         # generate invoice
         self_sudo = self.sudo()
-        if new_state == 'needs_sync':
+        if new_state == 'approved':
+            self_sudo.send_invoice()
+        elif new_state == 'needs_sync':
+            #TODO: Create campus access
+            self_sudo.create_portal_access()
             print('Application needs sync with other university.')
             self.env['mail.activity'].sudo().create({
                 'res_model_id': self.env.ref('ghu_msc.model_ghu_msc_application').id,
@@ -110,15 +114,18 @@ class ghu_msc_application(models.Model):
                 'summary': 'Please check if partner university has student as well.',
                 'date_deadline': datetime.now() + timedelta(days=7),
             })
-        elif new_state == 'approved':
-            self_sudo.send_invoice()
         elif new_state == 'finished':
-            self_sudo.end_application()
+            if self.state == 'needs_sync':
+                #TODO: Create only enrollment
+                self_sudo.create_enrollment()
+            elif self.state == 'approved':
+                #TODO: Create campus access and enrollment
+                self_sudo.create_portal_access()
+                self_sudo.create_enrollment()
 
     @api.multi
     def application_received(self):
         print('Post message: Received application')
-        # TODO: Post Message to Thread
         notification_template_en = self.env.ref(
             'ghu_msc.application_received_en').sudo()
         notification_template_es = self.env.ref(
@@ -133,15 +140,12 @@ class ghu_msc_application(models.Model):
     @api.multi
     def approve_application(self):
         for record in self:
-            if record.study_id.partner_university_id:
-                record.write({'state': 'needs_sync'})
-            else:
-                record.write({'state': 'approved'})
+            record.write({'state': 'approved'})
 
     @api.multi
     def application_approved_by_partner(self):
         for record in self:
-            record.write({'state': 'approved'})
+            record.write({'state': 'finished'})
 
     @api.multi
     def send_invoice(self):
@@ -150,7 +154,23 @@ class ghu_msc_application(models.Model):
             # TODO: Send invoice for selected study
 
     @api.multi
-    def end_application(self):
+    def invoice_paid(self):
+        for record in self:
+            print('Application approved')
+            if record.study_id.partner_university_id:
+                record.write({'state': 'needs_sync'})
+            else:
+                record.write({'state': 'finished'})
+
+    @api.multi
+    def create_portal_access(self):
         for record in self:
             print('Student enrolled')
-            # TODO: Enroll student
+            # TODO: Create portal access
+
+
+    @api.multi
+    def create_enrollment(self):
+        for record in self:
+            print('Student enrolled')
+            # TODO: Create enrollment for MSc
