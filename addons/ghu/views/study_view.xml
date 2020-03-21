@@ -39,6 +39,7 @@
                                     <field name="section" required="1"/>
                                     <field name="program_id" required="1"/>
                                     <field name="partner_university_id"/>
+                                    <field name="product_id"/>
                                     <field name="description"/>
                                 </group>
                             </page>

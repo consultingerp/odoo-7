@@ -25,7 +25,7 @@ from odoo import models, fields
 class GhuStudy(models.Model):
     _name = 'ghu.study'
     _description = "Study"
-    
+
     name = fields.Char('Name', required=True)
     code = fields.Char('Code', size=16, required=True)
 
@@ -39,6 +39,12 @@ class GhuStudy(models.Model):
     partner_university_id = fields.Many2one(
         string=u'Partner University',
         comodel_name='res.partner',
+        required=False
+    )
+
+    product_id = fields.Many2one(
+        string=u'Product',
+        comodel_name='product.product',
         required=False
     )
 

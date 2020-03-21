@@ -2,6 +2,7 @@
 
 from . import advisor
 from . import application
+from . import enrollment
 from . import program
 from . import student
 from . import study

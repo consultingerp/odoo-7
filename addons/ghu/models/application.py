@@ -603,19 +603,7 @@ class GhuApplication(models.Model):
         group_portal = self_sudo.env.ref('base.group_portal')
         user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
         if not user:
-            pdf = self_sudo.env.ref('ghu.enrollment_confirmation_pdf').sudo(
-            ).render_qweb_pdf([student.id])[0]
-            attachmentName = 'Enrollment-'+student.lastname + \
-                '-'+student.student_identification+'.pdf'
-            attachment = self_sudo.env['ir.attachment'].create({
-                'name': attachmentName,
-                'type': 'binary',
-                'datas': base64.encodestring(pdf),
-                'datas_fname': attachmentName,
-                'res_model': 'ghu.student',
-                'res_id': student.id,
-                'mimetype': 'application/x-pdf'
-            })
+
             user = self_sudo.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
                 'email': extract_email(student.partner_id.email),
                 'login': extract_email(student.partner_id.email),
@@ -623,10 +611,11 @@ class GhuApplication(models.Model):
                 'company_id': 1,
                 'company_ids': [(6, 0, [1])],
             })
-            
+
+            enrollment_pdf = student.get_enrollment_pdf()
             template = self_sudo.env.ref('ghu.mail_template_data_doctoral_campus_welcome')
             template.attachment_ids = False
-            template.attachment_ids = [(4, attachment.id)]
+            template.attachment_ids = [(4, enrollment_pdf)]
             lang = user.lang
             partner = student.partner_id
 

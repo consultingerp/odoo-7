@@ -94,9 +94,27 @@ class GhuStudent(models.Model):
     student_identification = fields.Char(
         string=u'Student Identification Number', compute='_compute_id', store=True)
 
+    def get_enrollment_pdf(self):
+        self.ensure_one()
+        self_sudo = self.sudo(self.env().user)
+        pdf = self_sudo.env.ref('ghu.enrollment_confirmation_pdf').sudo(
+        ).render_qweb_pdf([self.id])[0]
+        attachmentName = 'Enrollment-' + self.lastname + \
+                         '-' + self.student_identification + '.pdf'
+        attachment = self_sudo.env['ir.attachment'].create({
+            'name': attachmentName,
+            'type': 'binary',
+            'datas': base64.encodestring(pdf),
+            'datas_fname': attachmentName,
+            'res_model': 'ghu.student',
+            'res_id': self.id,
+            'mimetype': 'application/x-pdf'
+        })
+        return attachment.id
+
     @api.depends('create_date')
     def _compute_id(self):
         for record in self:
             record.student_identification = "GHU-" + \
-                record.create_date.strftime(
-                    "%Y%m") + '{:05d}'.format(record.id + 1010)
+                                            record.create_date.strftime(
+                                                "%Y%m") + '{:05d}'.format(record.id + 1010)

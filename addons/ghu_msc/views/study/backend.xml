@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ghu_msc.study_form_view">
+            <field name="name">ghu.msc.study_form_view</field>
+            <field name="model">ghu.study</field>
+            <field name="inherit_id" ref="ghu.view_ghu_study_form"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="after">
+                    <field name="mandatory_course_ids" options="{'no_create': True}"/>
+                    <field name="optional_course_ids" options="{'no_create': True}"/>
+                    <field name="optional_course_minimum"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
