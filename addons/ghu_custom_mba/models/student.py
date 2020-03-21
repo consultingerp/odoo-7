@@ -74,20 +74,3 @@ class GhuStudent(models.Model):
                 template_id=notification_template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
         return True
 
-    def get_enrollment_pdf(self):
-        self.ensure_one()
-        self_sudo = self.sudo(self.env().user)
-        pdf = self_sudo.env.ref('ghu.enrollment_confirmation_pdf').sudo(
-        ).render_qweb_pdf([self.id])[0]
-        attachmentName = 'Enrollment-' + self.lastname + \
-                         '-' + self.student_identification + '.pdf'
-        attachment = self_sudo.env['ir.attachment'].create({
-            'name': attachmentName,
-            'type': 'binary',
-            'datas': base64.encodestring(pdf),
-            'datas_fname': attachmentName,
-            'res_model': 'ghu.student',
-            'res_id': self.id,
-            'mimetype': 'application/x-pdf'
-        })
-        return attachment.id
