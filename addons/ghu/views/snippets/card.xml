@@ -4,7 +4,7 @@
         <section class="card-section pt-80 pb-80">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
                             <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
@@ -30,7 +30,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
                             <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
@@ -57,8 +57,34 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
+                        <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
+                            <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
+                                <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
+                                    <i
+                                            class=" icon-mba primary"></i>
+                                    <div class="ghu-card-title h3">DBA/PhD</div>
+                                </div>
+                                <div class="grey-box position-relative">
+                                    <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
+                                        <img class="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <div class="flag-first-line">DOCTOR OF</div>
+                                        <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/doctoral-program" target="_self"
+                               class="ghu-card-overlay card-overlay-possible">
+                                <div class="ghu-card-overlay-header">DBA/PhD</div>
+                                <p>This accredited PhD / DBA boosts your career and salary, regardless of where you live
+                                    and
+                                    work.
+                                </p>
+                                <div class="link-text">See more</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
                         <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
                             <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
