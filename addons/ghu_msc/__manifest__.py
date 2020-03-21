@@ -13,7 +13,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.116',
+    'version': '0.117',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'mail', 'ghu', 'ghu_custom_mba'],
@@ -28,6 +28,7 @@
         'views/application/backend_application_views.xml',
         'views/mails/application/application_received.xml',
         'views/mails/application/portal_access.xml',
+        'views/study/backend.xml',
         'security/ir.model.access.csv'
     ],
 }
