@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="snippet_card" name="Card snippet">
-        <section class="card-section">
+        <section class="card-section pt-80 pb-80">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
@@ -30,7 +30,6 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
                             <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
