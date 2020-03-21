@@ -8,12 +8,12 @@
                         <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
                             <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
-                                    <i class=" icon-mba primary"></i>
-                                    <div class="ghu-card-title">DBA/PhD</div>
+                                    <i class="icon-mba primary"></i>
+                                    <div class="ghu-card-title h3">DBA/PhD</div>
                                 </div>
                                 <div class="grey-box position-relative">
                                     <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
-                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <img class="flag" src="/ghu/static/img/ghu-small.png"/>
                                         <div class="flag-first-line">DOCTOR OF</div>
                                         <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
                                     </div>
@@ -37,11 +37,11 @@
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
                                     <i
                                             class=" icon-mba primary"></i>
-                                    <div class="ghu-card-title">DBA/PhD</div>
+                                    <div class="ghu-card-title h3">DBA/PhD</div>
                                 </div>
                                 <div class="grey-box position-relative">
                                     <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
-                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <img class="flag" src="/ghu/static/img/ghu-small.png"/>
                                         <div class="flag-first-line">DOCTOR OF</div>
                                         <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
                                     </div>
@@ -65,11 +65,11 @@
                                 <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
                                     <i
                                             class=" icon-mba primary"></i>
-                                    <div class="ghu-card-title">DBA/PhD</div>
+                                    <div class="ghu-card-title h3">DBA/PhD</div>
                                 </div>
                                 <div class="grey-box position-relative">
                                     <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
-                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <img class="flag" src="/ghu/static/img/ghu-small.png"/>
                                         <div class="flag-first-line">DOCTOR OF</div>
                                         <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
                                     </div>

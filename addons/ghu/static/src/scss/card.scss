@@ -39,11 +39,10 @@ $font-weight-extra-bold: 800;
     z-index: 2;
 
     i {
-      font-size: 5.5rem;
+      font-size: 3rem;
     }
 
     .ghu-card-title {
-      font-size: 6rem;
       font-weight: $font-weight-extra-bold;
       text-transform: uppercase;
     }
@@ -196,159 +195,6 @@ $font-weight-extra-bold: 800;
       font-size: 1.6rem;
       text-transform: uppercase;
       font-weight: $font-weight-bold;
-    }
-  }
-}
-
-@media (min-width: 1680px) {
-  .default-layout-ghu-card {
-    .ghu-card-content {
-      .ghu-card-text {
-        i {
-          font-size: 5.5rem;
-        }
-
-        .ghu-card-title {
-          font-weight: 600;
-          margin-bottom: 2rem;
-          line-height: 60px;
-        }
-      }
-
-      .grey-box {
-        width: 55%;
-      }
-
-      &:after {
-        width: 55%;
-      }
-    }
-  }
-}
-
-@media (min-width: 2400px) {
-  .default-layout-ghu-card {
-    .ghu-card-content {
-      .ghu-card-text {
-        i {
-          font-size: 7.5rem;
-        }
-
-        .ghu-card-title {
-          font-size: 8rem;
-        }
-      }
-
-      .grey-box {
-        width: 45%;
-      }
-
-      &:after {
-        width: 45%;
-      }
-    }
-  }
-}
-
-@media (max-width: 1199px) {
-  .ghu-card {
-    .ghu-card-text {
-      .ghu-card-title {
-        font-size: 2.8rem;
-      }
-    }
-
-    .grey-box {
-      .flag-wrapper {
-        svg {
-          width: 1.2rem;
-          margin-bottom: 0;
-        }
-
-        div {
-          font-size: 0.5rem;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .ghu-card {
-    .ghu-card-text {
-      .ghu-card-title {
-        font-size: 4rem;
-      }
-    }
-
-    .grey-box {
-      .flag-wrapper {
-        svg {
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
-  }
-  .container {
-    .ghu-card {
-      .ghu-card-text {
-        .ghu-card-title {
-          font-size: 4rem;
-        }
-      }
-
-      .grey-box {
-        .flag-wrapper {
-          svg {
-            width: 1.4rem;
-          }
-
-          div {
-            font-size: 0.7rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1500px) {
-  .ghu-card {
-    .ghu-card-text {
-      .ghu-card-title {
-        font-size: 6rem;
-      }
-    }
-  }
-}
-
-.ghu-card {
-  .ghu-card-text {
-    i {
-      display: block;
-
-      &:before {
-        display: block;
-      }
-    }
-
-    .ghu-card-title {
-      line-height: 1;
-      margin-bottom: 3rem;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .ghu-card {
-    .ghu-card-text {
-      i {
-        font-size: 7.5rem;
-      }
-
-      .ghu-card-title {
-        font-size: 5rem;
-      }
     }
   }
 }
