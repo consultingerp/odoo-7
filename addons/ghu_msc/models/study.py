@@ -6,8 +6,8 @@ from odoo import models, fields, api
 _logger = logging.getLogger(__name__)
 
 
-class GhuCourse(models.Model):
-    _inherit = 'ghu_custom_mba.course'
+class GhuStudy(models.Model):
+    _inherit = 'ghu.study'
     mandatory_course_ids = fields.Many2many(
         comodel_name=u'ghu_custom_mba.course',
         string=u'Mandatory Courses',
