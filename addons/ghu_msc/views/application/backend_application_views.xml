@@ -62,6 +62,8 @@
                     <header>
                         <button string="Requirements approved" type="object" name="approve_application"
                                 attrs="{'invisible': [('state', '!=', 'new')]}"/>
+                        <button string="Invoice paid" type="object" name="invoice_paid"
+                                attrs="{'invisible': [('state', '!=', 'approved')]}"/>
                         <button string="Partner university approved" type="object"
                                 name="application_approved_by_partner"
                                 attrs="{'invisible': [('state', '!=', 'needs_sync')]}"/>
