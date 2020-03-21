@@ -27,6 +27,7 @@
         'views/application/form.xml',
         'views/application/backend_application_views.xml',
         'views/mails/application/application_received.xml',
+        'views/mails/application/portal_access.xml',
         'security/ir.model.access.csv'
     ],
 }
