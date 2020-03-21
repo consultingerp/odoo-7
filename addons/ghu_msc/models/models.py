@@ -120,9 +120,9 @@ class ghu_msc_application(models.Model):
         elif new_state == 'needs_sync':
             # TODO: Create campus access
             self_sudo.create_portal_access()
-            template = self_sudo.env.ref('ghu_msc.mail_template_data_doctoral_campus_welcome')
+            template = self_sudo.env.ref('ghu_msc.portal_access')
             self_sudo.partner_id.message_post_with_template(
-                template_id=template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
+                template_id=template.with_context(dbname=self_sudo._cr.dbname, lang=self.partner_id.user_ids[0].lang).id)
             print('Application needs sync with other university.')
             self.env['mail.activity'].sudo().create({
                 'res_model_id': self.env.ref('ghu_msc.model_ghu_msc_application').id,
