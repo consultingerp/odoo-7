@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.704',
+    'version': '0.705',
 
 
 
@@ -44,6 +44,7 @@
         'views/application_pdf.xml',
         'views/application_report.xml',
         'views/report_style.xml',
+        'views/snippets/card.xml',
         'views/newsletter_footer_view.xml',
         'views/web_style.xml',
         'views/student/enrollment_confirmation_pdf.xml',

@@ -17,6 +17,8 @@
             <link rel="stylesheet" type="text/scss" href="/ghu/static/libs/fontawesome/scss/brands.scss"/>
             <link rel="stylesheet" type="text/scss" href="/ghu/static/libs/fontawesome/scss/solid.scss"/>
             <link rel="stylesheet" type="text/scss" href="/ghu/static/libs/fontawesome/scss/regular.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/ghu/static/src/scss/custom-icons.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/ghu/static/src/scss/card.scss"/>
         </xpath>
     </template>
 </odoo>

@@ -25,7 +25,7 @@ from odoo import models, fields
 class GhuStudy(models.Model):
     _name = 'ghu.study'
     _description = "Study"
-    
+
     name = fields.Char('Name', required=True)
     code = fields.Char('Code', size=16, required=True)
 
@@ -47,6 +47,20 @@ class GhuStudy(models.Model):
         comodel_name='product.product',
         required=False
     )
+
+    mandatory_course_ids = fields.Many2many(
+        comodel_name=u'ghu_custom_mba.course',
+        string=u'Mandatory Courses',
+        required=False
+    )
+
+    optional_course_ids = fields.Many2many(
+        comodel_name='ghu_custom_mba.course',
+        string=u'Optional Courses',
+        required=False
+    )
+
+    optional_course_minimum = fields.Integer(string=u'Number of optional courses that have to be done')
 
     description = fields.Html(string=u'Description')
 

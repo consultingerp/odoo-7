@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="snippet_card" name="Card snippet">
+        <section class="card-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
+                            <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
+                                <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
+                                    <i class=" icon-mba primary"></i>
+                                    <div class="ghu-card-title">DBA/PhD</div>
+                                </div>
+                                <div class="grey-box position-relative">
+                                    <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
+                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <div class="flag-first-line">DOCTOR OF</div>
+                                        <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/doctoral-program" target="_self"
+                               class="ghu-card-overlay card-overlay-possible">
+                                <div class="ghu-card-overlay-header">DBA/PhD</div>
+                                <p>This accredited PhD / DBA boosts your career and salary, regardless of where you live
+                                    and
+                                    work.
+                                </p>
+                                <div class="link-text">See more</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
+                            <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
+                                <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
+                                    <i
+                                            class=" icon-mba primary"></i>
+                                    <div class="ghu-card-title">DBA/PhD</div>
+                                </div>
+                                <div class="grey-box position-relative">
+                                    <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
+                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <div class="flag-first-line">DOCTOR OF</div>
+                                        <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/doctoral-program" target="_self"
+                               class="ghu-card-overlay card-overlay-possible">
+                                <div class="ghu-card-overlay-header">DBA/PhD</div>
+                                <p>This accredited PhD / DBA boosts your career and salary, regardless of where you live
+                                    and
+                                    work.
+                                </p>
+                                <div class="link-text">See more</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="ghu-card default-layout-ghu-card d-flex justify-content-center color-blue-1">
+                            <div class="ghu-card-content d-inline-flex justify-content-center align-items-center w-100 position-relative">
+                                <div class="ghu-card-text d-flex align-items-center justify-content-center flex-column">
+                                    <i
+                                            class=" icon-mba primary"></i>
+                                    <div class="ghu-card-title">DBA/PhD</div>
+                                </div>
+                                <div class="grey-box position-relative">
+                                    <div class="flag-wrapper d-flex flex-column align-items-center position-absolute">
+                                        <img id="flag" src="/ghu/static/img/ghu-small.png"/>
+                                        <div class="flag-first-line">DOCTOR OF</div>
+                                        <div class="flag-second-line">BUSINESS ADMINISTRATION</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/doctoral-program" target="_self"
+                               class="ghu-card-overlay card-overlay-possible">
+                                <div class="ghu-card-overlay-header">DBA/PhD</div>
+                                <p>This accredited PhD / DBA boosts your career and salary, regardless of where you live
+                                    and
+                                    work.
+                                </p>
+                                <div class="link-text">See more</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="place_card_into_bar" inherit_id="website.snippets" name="Place card into bar">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="ghu.snippet_card"
+               t-thumbnail="/ghu/static/src/img/ui/snippet_card_thumb.png"/>
+        </xpath>
+    </template>
+</odoo>

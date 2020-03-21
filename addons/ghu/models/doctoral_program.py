@@ -11,14 +11,9 @@ _logger = logging.getLogger(__name__)
 
 class GhuDoctoralProgram(models.Model):
     _name = 'ghu.doctoral_program'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['ghu.enrollment']
     _description = 'GHU Doctoral Program'
     _rec_name = 'thesis_title'
-    
-    study_ref = fields.Reference(
-        string='Study',
-        selection=[('ghu.study', 'Study')]
-    )
 
     thesis_title = fields.Char(
         string='Thesis Title',
@@ -27,11 +22,6 @@ class GhuDoctoralProgram(models.Model):
     advisor_ref = fields.Reference(
         string=u'Advisor',
         selection=[('ghu.advisor', 'Advisor')]
-    )
-
-    student_ref = fields.Reference(
-        string=u'Student',
-        selection=[('ghu.student', 'Student')]
     )
 
     # Modules

@@ -3,6 +3,13 @@
 from odoo import models, fields, api
 from datetime import datetime
 from datetime import timedelta
+from odoo.tools import email_split
+
+
+def extract_email(email):
+    """ extract the email address from a user-friendly email address """
+    addresses = email_split(email)
+    return addresses[0] if addresses else ''
 
 
 class ghu_msc_application(models.Model):
@@ -105,13 +112,17 @@ class ghu_msc_application(models.Model):
         super(ghu_msc_application, self).write(values)
 
     def on_state_change(self, new_state):
-        # generate invoice
-        self_sudo = self.sudo()
+        self.ensure_one()
+        self_sudo = self.sudo(self.env().user)
+
         if new_state == 'approved':
             self_sudo.send_invoice()
         elif new_state == 'needs_sync':
             # TODO: Create campus access
             self_sudo.create_portal_access()
+            template = self_sudo.env.ref('ghu_msc.mail_template_data_doctoral_campus_welcome')
+            self_sudo.partner_id.message_post_with_template(
+                template_id=template.with_context(dbname=self_sudo._cr.dbname, lang=lang).id)
             print('Application needs sync with other university.')
             self.env['mail.activity'].sudo().create({
                 'res_model_id': self.env.ref('ghu_msc.model_ghu_msc_application').id,
@@ -191,7 +202,7 @@ class ghu_msc_application(models.Model):
                 self.env['mail.activity'].sudo().create({
                     'res_model_id': self.env.ref('account.model_account_invoice').id,
                     'res_id': invoice.id,
-                    'user_id': 3,
+                    'user_id': 8,
                     'activity_type_id': self.env.ref('ghu_msc.ghu_activity_data_validate_invoice').id,
                     'summary': 'Please check scholarship and payment terms with applicant and then validate and send invoice.',
                     'date_deadline': datetime.now() + timedelta(days=3),
@@ -207,14 +218,58 @@ class ghu_msc_application(models.Model):
             else:
                 record.write({'state': 'finished'})
 
-    @api.multi
+    @api.one
     def create_portal_access(self):
-        for record in self:
-            print('Student enrolled')
-            # TODO: Create portal access
+        self.ensure_one()
+        self_sudo = self.sudo(self.env().user)
+        # Create Portal Access for student if there is no one yet
+        notification_template = self_sudo.env.ref(
+            'ghu_msc.portal_access').sudo()
+        user = self.partner_id.user_ids[0] if self.partner_id.user_ids else None
+        if not user:
+            user = self_sudo.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
+                'email': extract_email(self.partner_id.email),
+                'login': extract_email(self.partner_id.email),
+                'partner_id': self.partner_id.id,
+                'company_id': 1,
+                'company_ids': [(6, 0, [1])],
+            })
+            partner = self.partner_id
+            lang = user.lang
+            return partner.with_context(signup_force_type_in_url='', lang=lang)._get_signup_url_for_action()[
+                partner.id]
+        return False
 
-    @api.multi
+    @api.one
     def create_enrollment(self):
-        for record in self:
-            print('Student enrolled')
-            # TODO: Create enrollment for MSc
+        self.ensure_one()
+        self_sudo = self.sudo(self.env().user)
+        # Check if student exists
+        student = self_sudo.env['ghu.student'].search([('partner_id.id', '=', self.partner_id.id)], limit=1)
+        if not student:
+            student = self_sudo.env['ghu.student'].create(dict(
+                partner_id=self.partner_id.id,
+                vita_file=self.vita_file,
+                vita_file_filename=self.vita_file_filename,
+                id_file=self.id_file,
+                id_file_filename=self.id_file_filename,
+                date_of_birth=self.date_of_birth,
+                nationality=self.nationality.id,
+                academic_degree_pre=self.academic_degree_pre,
+                academic_degree_post=self.academic_degree_post,
+                native_language=self.native_language.id,
+                other_languages=(6, False, [v.id for v in self.other_languages])
+            ))
+
+        enrollment = self_sudo.env['ghu_msc.enrollment'].create(dict(
+            student_ref='%s,%s' % ('ghu.student', student.id),
+            study_ref='%s,%s' % ('ghu.study', self.study_id.id),
+            invoice_ref='%s,%s' % ('account.invoice', self.program_fee_invoice_id.id)
+        ))
+
+        # TODO: Create enrollment for MSc
+
+
+class ghu_msc_enrollment(models.Model):
+    _name = 'ghu_msc.enrollment'
+    _inherit = ['ghu.enrollment']

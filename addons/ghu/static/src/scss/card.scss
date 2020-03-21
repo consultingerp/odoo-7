@@ -1,0 +1,354 @@
+$blue-1: #0d2e5a;
+$blue-2: #16519d;
+$blue-3: lighten(#16519d, 10%);
+$blue-4: lighten(#0d2e5a, 10%);
+$dark-grey: #b7babc;
+$light-grey: #f1f1f1;
+$mint-green: #a5bf9a;
+$light-blue: #a3bad8;
+$text-color: #3e3e3e;
+$light-primary: #a2c2cb;
+
+$font-weight-regular: 500;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+.ghu-card {
+  background: #eceef1;
+  padding: 6rem 0;
+  margin-bottom: 3rem;
+  &:hover {
+    .ghu-card-overlay.card-overlay-possible {
+      max-height: 100%;
+    }
+  }
+  .ghu-card-content {
+    &:after {
+      content: "";
+      width: 70%;
+      height: 20%;
+      position: absolute;
+      bottom: 0;
+      margin: 0 auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .ghu-card-text {
+    position: absolute;
+    z-index: 2;
+
+    i {
+      font-size: 5.5rem;
+    }
+
+    .ghu-card-title {
+      font-size: 6rem;
+      font-weight: $font-weight-extra-bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .grey-box {
+    width: 70%;
+    background: #dcdfe1;
+    z-index: 1;
+
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    .flag-wrapper {
+      bottom: 1rem;
+      left: 0;
+      right: 0;
+
+      svg {
+        margin-bottom: 1rem;
+      }
+
+      div {
+        color: darken($dark-grey, 20%);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .ghu-card-overlay {
+    position: absolute;
+    width: 70%;
+    top: -1rem;
+    max-height: 2rem;
+    transition: max-height 1s;
+    overflow: hidden;
+    padding: 3rem;
+    padding-top: 0rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .ghu-card-overlay-header {
+      margin-top: 2.5rem;
+      font-size: 3.5rem;
+    }
+
+    .link-text {
+      margin-top: 2rem;
+      text-decoration: underline;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  &.color-blue-1 {
+    .ghu-card-overlay {
+      background-color: $blue-1;
+    }
+
+    i,
+    .ghu-card-title {
+      color: $blue-1;
+    }
+
+    .cls-1 {
+      fill: $blue-1;
+    }
+  }
+
+  &.color-blue-2 {
+    .ghu-card-overlay {
+      background-color: $blue-2;
+    }
+
+    i,
+    .ghu-card-title {
+      color: $blue-2;
+    }
+
+    .cls-1 {
+      fill: $blue-2;
+    }
+  }
+
+  &.color-blue-3 {
+    .ghu-card-overlay {
+      background-color: $blue-3;
+    }
+
+    i,
+    .ghu-card-title {
+      color: $blue-3;
+    }
+
+    .cls-1 {
+      fill: $blue-3;
+    }
+  }
+
+  &.color-blue-4 {
+    .ghu-card-overlay {
+      background-color: $blue-4;
+    }
+
+    i,
+    .ghu-card-title {
+      color: $blue-4;
+    }
+
+    .cls-1 {
+      fill: $blue-4;
+    }
+  }
+}
+
+.ghu-card {
+  .ghu-card-overlay {
+    position: absolute;
+    height: 100%;
+    color: white;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    padding: 1.5rem;
+
+    .ghu-card-overlay-header {
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .ghu-card-overlay-link {
+      margin-top: 1.5rem;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+@media (min-width: 1680px) {
+  .default-layout-ghu-card {
+    .ghu-card-content {
+      .ghu-card-text {
+        i {
+          font-size: 5.5rem;
+        }
+
+        .ghu-card-title {
+          font-weight: 600;
+          margin-bottom: 2rem;
+          line-height: 60px;
+        }
+      }
+
+      .grey-box {
+        width: 55%;
+      }
+
+      &:after {
+        width: 55%;
+      }
+    }
+  }
+}
+
+@media (min-width: 2400px) {
+  .default-layout-ghu-card {
+    .ghu-card-content {
+      .ghu-card-text {
+        i {
+          font-size: 7.5rem;
+        }
+
+        .ghu-card-title {
+          font-size: 8rem;
+        }
+      }
+
+      .grey-box {
+        width: 45%;
+      }
+
+      &:after {
+        width: 45%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .ghu-card {
+    .ghu-card-text {
+      .ghu-card-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .grey-box {
+      .flag-wrapper {
+        svg {
+          width: 1.2rem;
+          margin-bottom: 0;
+        }
+
+        div {
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .ghu-card {
+    .ghu-card-text {
+      .ghu-card-title {
+        font-size: 4rem;
+      }
+    }
+
+    .grey-box {
+      .flag-wrapper {
+        svg {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+  .container {
+    .ghu-card {
+      .ghu-card-text {
+        .ghu-card-title {
+          font-size: 4rem;
+        }
+      }
+
+      .grey-box {
+        .flag-wrapper {
+          svg {
+            width: 1.4rem;
+          }
+
+          div {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .ghu-card {
+    .ghu-card-text {
+      .ghu-card-title {
+        font-size: 6rem;
+      }
+    }
+  }
+}
+
+.ghu-card {
+  .ghu-card-text {
+    i {
+      display: block;
+
+      &:before {
+        display: block;
+      }
+    }
+
+    .ghu-card-title {
+      line-height: 1;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .ghu-card {
+    .ghu-card-text {
+      i {
+        font-size: 7.5rem;
+      }
+
+      .ghu-card-title {
+        font-size: 5rem;
+      }
+    }
+  }
+}
