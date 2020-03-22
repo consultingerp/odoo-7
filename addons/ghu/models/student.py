@@ -22,7 +22,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from datetime import datetime
-
+import base64
 
 class GhuStudentStudy(models.Model):
     _name = 'ghu.student.study'
