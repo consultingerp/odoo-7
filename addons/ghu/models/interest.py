@@ -8,7 +8,7 @@ class PartnerInterest(models.Model):
     _order = 'name'
     _parent_store = True
 
-    name = fields.Char(string='Tag Name', required=True, translate=True)
+    name = fields.Char(string='Interest Name', required=True, translate=True)
     parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade')
     child_ids = fields.One2many('ghu.partner.interest', 'parent_id', string='Child Tags')
     active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
