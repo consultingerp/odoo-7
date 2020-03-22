@@ -16,12 +16,11 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.707',
-
-
+    'version': '0.708',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner', 'website_form_editor', 'hr', 'sign', 'mass_mailing', 'theme_treehouse', 'account_transferwise'],
+    'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner',
+                'website_form_editor', 'hr', 'sign', 'mass_mailing', 'theme_treehouse', 'account_transferwise'],
 
     # always loaded
     'data': [
@@ -49,6 +48,8 @@
         'views/web_style.xml',
         'views/student/enrollment_confirmation_pdf.xml',
         'views/student/backend.xml',
+        'views/interest/backend_views.xml',
+        'views/partner/backend_views.xml',
 
         'views/campus/student/doctoral_program/list.xml',
         'views/campus/student/doctoral_program/overview.xml',

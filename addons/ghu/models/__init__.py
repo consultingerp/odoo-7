@@ -13,3 +13,5 @@ from . import res_config_settings
 from . import company
 from . import website
 from . import doctoral_program
+from . import interest
+from . import partner

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_interest_form" model="ir.ui.view">
+            <field name="name">Contact Tags</field>
+            <field name="model">ghu.partner.interest</field>
+            <field name="arch" type="xml">
+                <form string="Contact Tag">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="parent_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_partner_interest_list" model="ir.ui.view">
+            <field name="name">Contact Tags</field>
+            <field name="model">ghu.partner.interest</field>
+            <field eval="6" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contact Tags">
+                    <field name="display_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_partner_interest_form" model="ir.actions.act_window">
+            <field name="name">Contact Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ghu.partner.interest</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new interest
+                </p>
+                <p>
+                    Manage interests to better classify them for tracking and analysis purposes.
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_partner_interest_form"
+                  action="ghu.action_partner_interest_form"
+                  name="Interests"
+                  sequence="1" parent="ghu.menu_ghu"/>
+    </data>
+</odoo>
