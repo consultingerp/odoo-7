@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="view_partner_interest_form" model="ir.ui.view">
-            <field name="name">Contact Tags</field>
+            <field name="name">Interests</field>
             <field name="model">ghu.partner.interest</field>
             <field name="arch" type="xml">
                 <form string="Contact Tag">
@@ -15,7 +15,7 @@
             </field>
         </record>
         <record id="view_partner_interest_list" model="ir.ui.view">
-            <field name="name">Contact Tags</field>
+            <field name="name">Interests</field>
             <field name="model">ghu.partner.interest</field>
             <field eval="6" name="priority"/>
             <field name="arch" type="xml">
@@ -25,7 +25,7 @@
             </field>
         </record>
         <record id="action_partner_interest_form" model="ir.actions.act_window">
-            <field name="name">Contact Tags</field>
+            <field name="name">Interests</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ghu.partner.interest</field>
             <field name="view_type">form</field>
@@ -38,9 +38,5 @@
                 </p>
             </field>
         </record>
-        <menuitem id="menu_partner_interest_form"
-                  action="ghu.action_partner_interest_form"
-                  name="Interests"
-                  sequence="1" parent="ghu.menu_ghu"/>
     </data>
 </odoo>
