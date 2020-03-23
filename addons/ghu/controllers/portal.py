@@ -10,9 +10,9 @@ from odoo.exceptions import ValidationError, AccessError, MissingError, UserErro
 from odoo.http import content_disposition, Controller, request, route
 from odoo.tools import consteq
 
-portal.OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id"]
 
 class CustomerPortal(portal.CustomerPortal):
+    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id"]
 
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):
@@ -24,6 +24,9 @@ class CustomerPortal(portal.CustomerPortal):
         })
 
         if post:
+            if 'interest_id' in post:
+                interest_id = [(6, 0, [interest for interest in request.httprequest.form.getlist('interest_id')])]
+                post.update({'interest_id': interest_id})
             error, error_message = self.details_form_validate(post)
             values.update({'error': error, 'error_message': error_message})
             values.update(post)
@@ -53,4 +56,3 @@ class CustomerPortal(portal.CustomerPortal):
         response = request.render("portal.portal_my_details", values)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
-
