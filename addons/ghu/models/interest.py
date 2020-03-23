@@ -11,6 +11,8 @@ class PartnerInterest(models.Model):
 
     name = fields.Char(string='Interest Name', required=True, translate=True)
 
+    full_name = fields.Char(string='Full Interest Name', compute='_compute_full_name', translate=True, store=True)
+
     def _compute_full_name(self):
         for record in self:
             if self._context.get('partner_category_display') == 'short':
@@ -22,8 +24,6 @@ class PartnerInterest(models.Model):
                     names.append(current.name)
                     current = current.parent_id
                 record.full_name = ' / '.join(reversed(names))
-
-    full_name = fields.Char(string='Full Interest Name', compute='_name_get', translate=True, store=True)
 
     def _default_parent(self):
         return self.env['res.partner.category'].browse(self._context.get('new_parent_id'))
