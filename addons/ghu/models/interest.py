@@ -11,6 +11,35 @@ class PartnerInterest(models.Model):
 
     name = fields.Char(string='Interest Name', required=True, translate=True)
 
+    def _compute_full_name(self):
+        for record in self:
+            if self._context.get('partner_category_display') == 'short':
+                record.full_name = record.name
+            else:
+                names = []
+                current = record
+                while current:
+                    names.append(current.name)
+                    current = current.parent_id
+                record.full_name = ' / '.join(reversed(names))
+
+    full_name = fields.Char(string='Full Interest Name', compute='_name_get', translate=True, store=True)
+
+    def _default_parent(self):
+        return self.env['res.partner.category'].browse(self._context.get('new_parent_id'))
+
+    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade',
+                                default='_default_parent')
+    child_ids = fields.One2many('ghu.partner.interest', 'parent_id', string='Child Tags')
+    active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
+    parent_path = fields.Char(index=True)
+    partner_ids = fields.Many2many('res.partner', column1='interest_id', column2='partner_id', string='Partners')
+
+    @api.constrains('parent_id')
+    def _check_parent_id(self):
+        if not self._check_recursion():
+            raise ValidationError(_('You can not create recursive tags.'))
+
     @api.multi
     def name_get(self):
         """ Return the categories' display name, including their direct
@@ -32,23 +61,6 @@ class PartnerInterest(models.Model):
                 current = current.parent_id
             res.append((category.id, ' / '.join(reversed(names))))
         return res
-
-    full_name = fields.Char(string='Full Interest Name', compute='_name_get', translate=True, store=True)
-
-    def _default_parent(self):
-        return self.env['res.partner.category'].browse(self._context.get('new_parent_id'))
-
-    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade',
-                                default='_default_parent')
-    child_ids = fields.One2many('ghu.partner.interest', 'parent_id', string='Child Tags')
-    active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
-    parent_path = fields.Char(index=True)
-    partner_ids = fields.Many2many('res.partner', column1='interest_id', column2='partner_id', string='Partners')
-
-    @api.constrains('parent_id')
-    def _check_parent_id(self):
-        if not self._check_recursion():
-            raise ValidationError(_('You can not create recursive tags.'))
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
