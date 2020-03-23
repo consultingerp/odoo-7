@@ -16,7 +16,7 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.716',
+    'version': '0.717',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner',
@@ -66,6 +66,8 @@
         'views/mails/application/advisor_search_notification.xml',
         'views/mails/application/notify_advisor.xml',
         'views/mails/application/student_welcome_mail.xml',
+
+        'views/my/account.xml',
         'menu/ghu_menu.xml',
         'views/application_form.xml',
         'views/res_config_view.xml',
