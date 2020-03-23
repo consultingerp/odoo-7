@@ -13,6 +13,8 @@ class GhuAdvisor(models.Model):
     partner_id = fields.Many2one(
         'res.partner', 'Partner', required=True, ondelete="cascade")
 
+    interest_id = fields.Many2many(related='partner_id.interest_id')
+
     is_cafeteria = fields.Boolean(
         string=u'Is Custom MBA?',
     )

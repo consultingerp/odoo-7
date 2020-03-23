@@ -562,7 +562,7 @@ class GhuApplication(models.Model):
         ))
 
         invoice.invoice_line_ids = [(4, invoice_line.id)]
-        invoice.action_invoice_open()
+        #invoice.action_invoice_open()
         invoice_template = self.env.ref(
             'ghu.ghu_first_fee_invoice_email_template').sudo()
         invoice.message_subscribe([3,7,11,1555])

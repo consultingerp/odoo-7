@@ -2,14 +2,34 @@ from odoo import models, fields, api, _
 
 from odoo.exceptions import UserError, ValidationError
 
+
 class PartnerInterest(models.Model):
     _description = 'Partner Interests'
     _name = 'ghu.partner.interest'
-    _order = 'name'
+    _order = 'full_name asc'
     _parent_store = True
 
     name = fields.Char(string='Interest Name', required=True, translate=True)
-    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade')
+
+    full_name = fields.Char(string='Full Interest Name', compute='_compute_full_name', translate=True, store=True)
+
+    def _compute_full_name(self):
+        for record in self:
+            if self._context.get('partner_category_display') == 'short':
+                record.full_name = record.name
+            else:
+                names = []
+                current = record
+                while current:
+                    names.append(current.name)
+                    current = current.parent_id
+                record.full_name = ' / '.join(reversed(names))
+
+    def _default_parent(self):
+        return self.env['res.partner.category'].browse(self._context.get('new_parent_id'))
+
+    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade',
+                                default='_default_parent')
     child_ids = fields.One2many('ghu.partner.interest', 'parent_id', string='Child Tags')
     active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
     parent_path = fields.Char(index=True)
