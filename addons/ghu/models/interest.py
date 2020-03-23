@@ -9,11 +9,16 @@ class PartnerInterest(models.Model):
     _parent_store = True
 
     name = fields.Char(string='Interest Name', required=True, translate=True)
-    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade')
+
+    def _default_parent(self):
+        return self.env['res.partner.category'].browse(self._context.get('new_parent_id'))
+    parent_id = fields.Many2one('ghu.partner.interest', string='Parent Category', index=True, ondelete='cascade', default=_default_parent)
     child_ids = fields.One2many('ghu.partner.interest', 'parent_id', string='Child Tags')
     active = fields.Boolean(default=True, help="The active field allows you to hide the category without removing it.")
     parent_path = fields.Char(index=True)
     partner_ids = fields.Many2many('res.partner', column1='interest_id', column2='partner_id', string='Partners')
+
+
 
     @api.constrains('parent_id')
     def _check_parent_id(self):

@@ -10,7 +10,7 @@
                         <field name="name"/>
                         <field name="active"/>
                         <field name="parent_id"/>
-                        <field name="child_ids"/>
+                        <field name="child_ids" context="{'new_parent_id':active_id}" modifiers="{}"/>
                     </group>
                 </form>
             </field>
