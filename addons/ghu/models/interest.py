@@ -5,7 +5,7 @@ from odoo.exceptions import UserError, ValidationError
 class PartnerInterest(models.Model):
     _description = 'Partner Interests'
     _name = 'ghu.partner.interest'
-    _order = 'name'
+    _order = 'name asc'
     _parent_store = True
 
     name = fields.Char(string='Interest Name', required=True, translate=True)
