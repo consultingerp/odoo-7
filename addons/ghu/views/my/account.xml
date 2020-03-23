@@ -2,21 +2,26 @@
 <odoo>
     <data noupdate="0">
         <template id="ghu_my_details" inherit_id="portal.portal_my_details">
-           <xpath expr="//div[hasclass('o_portal_details')]/row" position="after">
-               <div t-attf-class="form-group #{error.get('interest_id') and 'o_has_error' or ''} col-xl-6">
-                   <label class="col-form-label" for="country_id">Interests</label>
-                   <t t-foreach="interests or []" t-as="interest">
-                       <t t-if="interest.parent_id"><t t-set="insetClass" t-value="inset"/></t>
-                       <t t-else=""><t t-set="insetClass" t-value=""/></t>
-                       <div t-att-class="insetClass">
-                           <input type="checkbox" name="interest_id[]" t-att-value="interest.id">
-                           <t t-esc="interest.name"/>
-                       </input>
-                       </div>
-
-                   </t>
-               </div>
-           </xpath>
+            <xpath expr="//div[hasclass('o_portal_details')]/div/div[hasclass('row')]" position="after">
+                <div class="row">
+                    <div t-attf-class="form-group #{error.get('interest_id') and 'o_has_error' or ''} col-xl-6">
+                        <label class="col-form-label" for="country_id">Interests</label>
+                        <t t-foreach="interests or []" t-as="interest">
+                            <t t-if="interest.parent_id">
+                                <t t-set="insetClass" t-value="inset"/>
+                            </t>
+                            <t t-else="">
+                                <t t-set="insetClass" t-value=""/>
+                            </t>
+                            <div t-att-class="insetClass">
+                                <input type="checkbox" name="interest_id[]" t-att-value="interest.id">
+                                    <t t-esc="interest.name"/>
+                                </input>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </xpath>
         </template>
     </data>
 </odoo>
