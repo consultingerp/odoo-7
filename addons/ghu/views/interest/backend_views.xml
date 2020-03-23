@@ -21,7 +21,7 @@
             <field eval="6" name="priority"/>
             <field name="arch" type="xml">
                 <tree string="Interest Tags">
-                    <field name="name"/>
+                    <field name="display_name"/>
                 </tree>
             </field>
         </record>
