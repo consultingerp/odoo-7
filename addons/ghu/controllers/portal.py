@@ -37,7 +37,7 @@ class CustomerPortal(portal.CustomerPortal):
 
         countries = request.env['res.country'].sudo().search([])
         states = request.env['res.country.state'].sudo().search([])
-        interests = request.env['ghu.interest'].sudo().search([])
+        interests = request.env['ghu.partner.interest'].sudo().search([])
 
         values.update({
             'partner': partner,
