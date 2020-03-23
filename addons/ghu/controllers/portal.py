@@ -10,6 +10,7 @@ from odoo.exceptions import ValidationError, AccessError, MissingError, UserErro
 from odoo.http import content_disposition, Controller, request, route
 from odoo.tools import consteq
 
+portal.OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id"]
 
 class CustomerPortal(portal.CustomerPortal):
 
