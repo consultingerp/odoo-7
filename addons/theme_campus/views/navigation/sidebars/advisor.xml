@@ -10,6 +10,12 @@
                                                         Documents
                     </a>
                 </li>
+                <li t-attf-class="sidebar-menu-item#{page_name == 'my_details' and ' active' or ''}">
+                    <a class="sidebar-menu-button" href="/my/account">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_circle</i>
+                                                        My Account
+                    </a>
+                </li>
                 <li t-attf-class="sidebar-menu-item">
                     <a class="sidebar-menu-button" href="/web/session/logout?redirect=/">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> 
