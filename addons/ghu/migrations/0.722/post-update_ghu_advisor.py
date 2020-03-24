@@ -4,4 +4,3 @@ def migrate(cr, version):
     if advisors:
         for advisor in advisors:
             cr.execute('UPDATE res_partner SET skype=%s WHERE id = %s', [advisor['skype'], advisor['partner_id']])
-    cr.execute('SELECT partner_id, skype FROM hr_employee WHERE skype IS NOT NULL')
