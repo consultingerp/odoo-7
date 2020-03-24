@@ -29,7 +29,7 @@ class CustomerPortal(portal.CustomerPortal):
 
         if post:
             if 'interest_id' in post:
-                interest_id = [(6, 0, [interest for interest in request.httprequest.form.getlist('interest_id')])]
+                interest_id = [(6, 0, [int(interest) for interest in request.httprequest.form.getlist('interest_id')])]
                 post.update({'interest_id': interest_id})
             if 'image' in post and post.get('image'):
                 image = post.get('image')
@@ -50,10 +50,9 @@ class CustomerPortal(portal.CustomerPortal):
                     'error': {},
                     'error_message': [],
                 })
-                #if redirect:
+                # if redirect:
                 #    return request.redirect(redirect)
-                #return request.redirect('/my/home')
-
+                # return request.redirect('/my/home')
 
         countries = request.env['res.country'].sudo().search([])
         states = request.env['res.country.state'].sudo().search([])
