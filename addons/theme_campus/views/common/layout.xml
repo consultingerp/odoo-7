@@ -25,9 +25,7 @@
                         <t t-call="theme_campus.sidebar_advisor" />
                     </nav>
                     <div id="content" class="o_portal_wrap">
-                        <div class="container mb64">
-                            <t t-raw='0'/>
-                        </div>
+                        <t t-raw='0'/>
                     </div>
                 </main>
             </xpath>
