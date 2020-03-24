@@ -1,0 +1,5 @@
+@if ($o-portal-use-default-colors) {
+    #wrapwrap.o_portal #content {
+        @include o-bg-color($o-portal-bg-color);
+    }
+}
