@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(portal.CustomerPortal):
-    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id", "image"]
+    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id", "image", "skype"]
 
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):

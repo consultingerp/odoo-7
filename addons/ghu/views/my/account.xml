@@ -11,6 +11,14 @@
             <xpath expr="//form" position="attributes">
                 <attribute name="enctype">multipart/form-data</attribute>
             </xpath>
+            <xpath expr="//div[hasclass('o_portal_details')]/div[hasclass('col-lg-8')]/div[hasclass('form-group')[4]" position="replace">
+                <div class="row">
+                    <div t-attf-class="form-group #{error.get('skype') and 'o_has_error' or ''} col-xl-6">
+                        <label class="col-form-label" for="skype">Skype</label>
+                        <input type="text" name="skype" t-attf-class="form-control #{error.get('skype') and 'is-invalid' or ''}" t-att-value="skype or partner.skype" />
+                    </div>
+                </div>
+            </xpath>
             <xpath expr="//div[hasclass('o_portal_details')]/div[hasclass('col-lg-8')]" position="before">
                 <div class="col-lg-4">
                     <div class="text-center">

@@ -10,3 +10,5 @@ class GhuPartner(models.Model):
 
     interest_id = fields.Many2many('ghu.partner.interest', relation='ghu_rel_partner_interest', column1='partner_id',
                                    column2='interest_id', string='Tags')
+
+    skype = fields.Char(string="Skype")
