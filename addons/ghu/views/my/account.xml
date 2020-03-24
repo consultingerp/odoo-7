@@ -8,6 +8,18 @@
         </template>
 
         <template id="ghu_my_details" inherit_id="portal.portal_my_details">
+            <xpath expr="//form" position="attributes">
+                <attribute name="enctype">multipart/form-data</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('o_portal_details')]/div[hasclass('col-lg-8')]" position="before">
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <img t-attf-src="/web/image/res.partner/#{partner.id}/image/100x100" class="avatar" alt="avatar"/>
+                        <h6>Upload a profile photo...</h6>
+                        <input type="file" class="form-control" name="image" />
+                    </div>
+                </div>
+            </xpath>
             <xpath expr="//div[hasclass('o_portal_details')]/div/div[hasclass('row')]" position="after">
                 <div class="row">
                     <div t-attf-class="form-group #{error.get('interest_id') and 'o_has_error' or ''} col-xl-6">
