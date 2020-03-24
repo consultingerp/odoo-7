@@ -11,7 +11,7 @@ class GhuAdvisor(models.Model):
     _inherits = {"res.partner": "partner_id"}
 
     partner_id = fields.Many2one(
-        'res.partner', 'Partner', required=True, ondelete="cascade")
+        'res.partner', 'Partner', required=True)
 
     interest_id = fields.Many2many(related='partner_id.interest_id')
 

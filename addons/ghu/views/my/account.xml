@@ -1,26 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data noupdate="0">
+        <template id="ghu_portal_layout" inherit_id="portal.portal_layout">
+            <xpath expr="//div[hasclass('o_portal')]" position="replace">
+
+            </xpath>
+        </template>
+
         <template id="ghu_my_details" inherit_id="portal.portal_my_details">
+            <xpath expr="//form" position="attributes">
+                <attribute name="enctype">multipart/form-data</attribute>
+            </xpath>
+            <xpath expr="//div[hasclass('o_portal_details')]//div[contains(@t-attf-class, 'form-group')][4]"
+                   position="replace">
+                <div t-attf-class="form-group #{error.get('skype') and 'o_has_error' or ''} col-xl-6">
+                    <label class="col-form-label" for="skype">Skype</label>
+                    <input type="text" name="skype"
+                           t-attf-class="form-control #{error.get('skype') and 'is-invalid' or ''}"
+                           t-att-value="skype or partner.skype"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('o_portal_details')]/div[hasclass('col-lg-8')]" position="before">
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <img t-attf-src="/web/image/res.partner/#{partner.id}/image/100x100" class="avatar"
+                             alt="avatar"/>
+                        <h6>Upload a profile photo...</h6>
+                        <input type="file" class="form-control" name="image"/>
+                    </div>
+                </div>
+            </xpath>
             <xpath expr="//div[hasclass('o_portal_details')]/div/div[hasclass('row')]" position="after">
                 <div class="row">
                     <div t-attf-class="form-group #{error.get('interest_id') and 'o_has_error' or ''} col-xl-6">
                         <label class="col-form-label" for="country_id">Interests</label>
                         <t t-foreach="interests or []" t-as="interest">
-                            <t t-if="interest.parent_id.id > 0">
+                            <t t-if="interest.parent_id.id &gt; 0">
                                 <t t-set="insetClass" t-value="'pl-3'"/>
+                                <t t-set="display" t-value="'none'"/>
                             </t>
                             <t t-else="">
                                 <t t-set="insetClass" t-value=""/>
+                                <t t-set="display" t-value="'block'"/>
                             </t>
-                            <div t-attf-class="#{insetClass}">
-                                <input type="checkbox" name="interest_id" t-att-value="interest.id"
-                                       t-att-checked="any(interest.id == elem.id for elem in partner.interest_id or [])"/>
-                                <t t-esc="interest.name"/>
+                            <div t-attf-style="display:#{display}" t-attf-class="#{insetClass}"
+                                 t-attf-data-parent="#{interest.parent_id.id}">
+                                <div t-attf-class="custom-control custom-checkbox">
+                                    <input t-attf-id="interest-#{interest.id}" class="custom-control-input"
+                                           type="checkbox" name="interest_id" t-att-value="interest.id"
+                                           t-att-checked="any(interest.id == elem.id for elem in partner.interest_id or [])"/>
+                                    <label class="custom-control-label" t-attf-for="interest-#{interest.id}">
+                                        <t t-esc="interest.name"/>
+                                    </label>
+                                </div>
                             </div>
                         </t>
                     </div>
                 </div>
+                <script>
+                    $('input[type="checkbox"]').on('change',function(e){
+                    if($(this).is(":checked")){
+                    $('div[data-parent="'+$(this).val()+'"]').slideDown();
+                    } else {
+                    $('div[data-parent="'+$(this).val()+'"]').slideUp().find('input').prop("checked", false);
+                    }
+                    });
+                    $('input[type="checkbox"]').trigger('change');
+                </script>
             </xpath>
         </template>
     </data>

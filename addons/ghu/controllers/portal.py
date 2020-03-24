@@ -3,16 +3,20 @@
 import odoo.addons.portal.controllers.portal as portal
 import datetime
 import pytz
+import base64
 from werkzeug import urls
 
 from odoo import fields as odoo_fields, tools, _
 from odoo.exceptions import ValidationError, AccessError, MissingError, UserError
 from odoo.http import content_disposition, Controller, request, route
 from odoo.tools import consteq
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(portal.CustomerPortal):
-    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id"]
+    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id", "image", "skype"]
 
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):
@@ -25,8 +29,15 @@ class CustomerPortal(portal.CustomerPortal):
 
         if post:
             if 'interest_id' in post:
-                interest_id = [(6, 0, [interest for interest in request.httprequest.form.getlist('interest_id')])]
+                interest_id = [(6, 0, [int(interest) for interest in request.httprequest.form.getlist('interest_id')])]
                 post.update({'interest_id': interest_id})
+            if 'image' in post and post.get('image'):
+                image = post.get('image')
+                image_attachment = image.read()
+                image = base64.b64encode(image_attachment)
+                post.update({'image': image})
+            else:
+                post.pop('image')
             error, error_message = self.details_form_validate(post)
             values.update({'error': error, 'error_message': error_message})
             values.update(post)
@@ -35,9 +46,13 @@ class CustomerPortal(portal.CustomerPortal):
                 values.update({key: post[key] for key in self.OPTIONAL_BILLING_FIELDS if key in post})
                 values.update({'zip': values.pop('zipcode', '')})
                 partner.sudo().write(values)
-                if redirect:
-                    return request.redirect(redirect)
-                return request.redirect('/my/home')
+                values.update({
+                    'error': {},
+                    'error_message': [],
+                })
+                # if redirect:
+                #    return request.redirect(redirect)
+                # return request.redirect('/my/home')
 
         countries = request.env['res.country'].sudo().search([])
         states = request.env['res.country.state'].sudo().search([])
