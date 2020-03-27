@@ -1,5 +1,5 @@
 def migrate(cr, version):
-    cr.execute('SELECT partner_id, vita_file, vita_filename FROM ghu_advisor WHERE vita_file IS NOT NULL')
+    cr.execute('SELECT partner_id, vita, vita_filename FROM ghu_advisor WHERE vita_file IS NOT NULL')
     advisors = cr.dictfetchall()
     if advisors:
         for advisor in advisors:
