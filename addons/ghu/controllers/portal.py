@@ -46,11 +46,11 @@ class CustomerPortal(portal.CustomerPortal):
                 post.update({'id_file': base64.b64encode(id_attachment), 'id_file_filename': id_name})
             post.pop('id')
             if 'vita' in post and post.get('vita'):
-                cv_name = post.get('cv').filename
-                cv_file = post.get('cv')
+                cv_name = post.get('vita').filename
+                cv_file = post.get('vita')
                 cv_attachment = cv_file.read()
-                post.update({'cv_file': base64.b64encode(cv_attachment), 'cv_file_filename': cv_name})
-            post.pop('cv')
+                post.update({'vita_file': base64.b64encode(cv_attachment), 'vita_file_filename': cv_name})
+            post.pop('vita')
             error, error_message = self.details_form_validate(post)
             values.update({'error': error, 'error_message': error_message})
             values.update(post)
