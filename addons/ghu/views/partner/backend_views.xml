@@ -10,7 +10,7 @@
                 <xpath expr="//field[@name='mobile']" position="after">
                     <field name="skype"/>
                 </xpath>
-                <page name="interests" position="after">
+                <page name="sales_purchases" position="after">
                     <page string="Interests" name="interests"
                           attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}">
                         <group>
@@ -20,7 +20,7 @@
                         </group>
                     </page>
                 </page>
-                <page name="documents" position="after">
+                <page name="sales_purchases" position="after">
                     <page string="Documents" name="documents"
                           attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}">
                         <group>
