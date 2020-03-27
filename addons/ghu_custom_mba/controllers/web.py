@@ -18,10 +18,8 @@ class GhuHome(Home):
                 redirect = b'/web?' + request.httprequest.query_string
             else:
                 if not redirect and request.env.user.partner_id.is_student:
-                    student = request.env['ghu.student'].sudo().search(
-                    [('partner_id', '=', request.env.user.partner_id.id)], limit=1)
-                    if not student.vita_file_filename or not student.id_file_filename:
-                        redirect = '/campus/my/documents'
+                    if not request.env.user.partner_id.vita_file_filename or not request.env.user.partner_id.id_file_filename:
+                        redirect = '/my/account'
                     else:
                         redirect = '/campus/courses'
                 else:
