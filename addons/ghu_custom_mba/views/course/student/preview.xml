@@ -107,14 +107,14 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <p>
-                                    <t t-if="object.product_ref.id and student.vita_file_filename and student.id_file_filename">
+                                    <t t-if="object.product_ref.id and request.env.user.partner_id.vita_file_filename and request.env.user.partner_id.id_file_filename">
                                         <a data-intro="If the course is the one you like, purchase it buy clicking here." t-attf-href="/campus/course/buy/{{ object.id }}" class="btn btn-success btn-block flex-column a-submit">
                                             Purchase Course
                                             <strong>$<t t-esc="object.sudo().product_ref.list_price" /> USD</strong>
                                         </a>
                                     </t>
                                     <t t-else="">
-                                        <a href="/campus/my/documents" class="btn btn-success btn-block flex-column a-submit">
+                                        <a href="/my/account" class="btn btn-success btn-block flex-column a-submit">
                                             Complete onboarding
                                         </a>
                                         <p class="small">

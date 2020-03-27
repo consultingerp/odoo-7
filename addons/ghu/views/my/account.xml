@@ -28,7 +28,28 @@
                         <h6>Upload a profile photo...</h6>
                         <input type="file" class="form-control" name="image"/>
                     </div>
+                    <div class="form-group mt-3">
+                        <label for="vita">Curriculum Vitae</label>
+                        <br/><a t-if="partner.vita_file" target="_blank"
+                           t-attf-href="/web/content/res.partner/#{partner.id}/vita_file/#{partner.vita_file_filename}?download=true">
+                            <t t-esc="partner.vita_file_filename"/>
+                        </a>
+                        <input required="required" id="vita" type="file" name="vita" class="file form-control-file"
+                               multiple="true" data-show-upload="true" data-show-caption="true" lass="file"
+                               data-show-preview="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">ID document</label>
+                        <br/><a t-if="partner.id_file" target="_blank"
+                           t-attf-href="/web/content/res.partner/#{partner.id}/id_file/#{partner.id_file_filename}?download=true">
+                            <t t-esc="partner.id_file_filename"/>
+                        </a>
+                        <input required="required" id="id" type="file" name="id" class="file form-control-file"
+                               multiple="true" data-show-upload="true" data-show-caption="true" lass="file"
+                               data-show-preview="true"/>
+                    </div>
                 </div>
+
             </xpath>
             <xpath expr="//div[hasclass('o_portal_details')]/div/div[hasclass('row')]" position="after">
                 <div class="row">

@@ -16,7 +16,8 @@ _logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(portal.CustomerPortal):
-    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id", "image", "skype"]
+    OPTIONAL_BILLING_FIELDS = ["zipcode", "state_id", "vat", "company_name", "interest_id", "image", "skype", "id_file",
+                               "id_file_filename", "vita_file", "vita_file_filename"]
 
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):
@@ -38,6 +39,18 @@ class CustomerPortal(portal.CustomerPortal):
                 post.update({'image': image})
             else:
                 post.pop('image')
+            if 'id' in post and post.get('id'):
+                id_name = post.get('id').filename
+                id_file = post.get('id')
+                id_attachment = id_file.read()
+                post.update({'id_file': base64.b64encode(id_attachment), 'id_file_filename': id_name})
+            post.pop('id')
+            if 'vita' in post and post.get('vita'):
+                cv_name = post.get('vita').filename
+                cv_file = post.get('vita')
+                cv_attachment = cv_file.read()
+                post.update({'vita_file': base64.b64encode(cv_attachment), 'vita_file_filename': cv_name})
+            post.pop('vita')
             error, error_message = self.details_form_validate(post)
             values.update({'error': error, 'error_message': error_message})
             values.update(post)

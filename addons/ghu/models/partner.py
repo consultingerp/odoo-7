@@ -12,3 +12,13 @@ class GhuPartner(models.Model):
                                    column2='interest_id', string='Tags')
 
     skype = fields.Char(string="Skype")
+
+    vita_file = fields.Binary('Vita')
+    vita_file_filename = fields.Char(
+        string=u'Vita Filename',
+    )
+
+    id_file = fields.Binary('Personal ID (Passport, Driver License,...)')
+    id_file_filename = fields.Char(
+        string=u'ID Filename',
+    )
