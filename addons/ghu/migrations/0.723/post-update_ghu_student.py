@@ -3,4 +3,4 @@ def migrate(cr, version):
     students = cr.dictfetchall()
     if students:
         for student in students:
-            cr.execute('UPDATE res_partner SET vita_file=%s, vita_file_filename=%s, id_file=%s, id_file_filename=%s WHERE id = %s', [student['vita_file'], student['vita_filename'], student['id_file'], student['id_file_filename'], student['partner_id']])
+            cr.execute('UPDATE res_partner SET vita_file=%s, vita_file_filename=%s, id_file=%s, id_file_filename=%s WHERE id = %s', [student['vita_file'], student['vita_file_filename'], student['id_file'], student['id_file_filename'], student['partner_id']])
