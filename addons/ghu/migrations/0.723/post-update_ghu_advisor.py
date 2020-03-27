@@ -3,4 +3,4 @@ def migrate(cr, version):
     advisors = cr.dictfetchall()
     if advisors:
         for advisor in advisors:
-            cr.execute('UPDATE res_partner SET vita_file="%s", vita_file_filename="%s" WHERE id = %s', [advisor['vita'], advisor['vita_filename'], advisor['partner_id']])
+            cr.execute('UPDATE res_partner SET vita_file=%s, vita_file_filename=%s WHERE id = %s', [advisor['vita'], advisor['vita_filename'], advisor['partner_id']])
