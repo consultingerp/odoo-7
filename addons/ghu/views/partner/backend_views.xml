@@ -10,12 +10,25 @@
                 <xpath expr="//field[@name='mobile']" position="after">
                     <field name="skype"/>
                 </xpath>
-                <page name="sales_purchases" position="after">
+                <page name="interests" position="after">
                     <page string="Interests" name="interests"
                           attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}">
                         <group>
                             <group string="Fields of interest" name="interests">
                                 <field name="interest_id" widget="many2many_checkboxes"/>
+                            </group>
+                        </group>
+                    </page>
+                </page>
+                <page name="documents" position="after">
+                    <page string="Documents" name="documents"
+                          attrs="{'invisible': [('is_company','=',True),('parent_id','!=',False)]}">
+                        <group>
+                            <group string="Personal documents" name="documents">
+                                <field name="vita_file" widget="binary" filename="vita_file_filename"/>
+                                <field name="vita_file_filename" invisible="1"/>
+                                <field name="id_file" widget="binary" filename="id_file_filename"/>
+                                <field name="id_file_filename" invisible="1"/>
                             </group>
                         </group>
                     </page>
