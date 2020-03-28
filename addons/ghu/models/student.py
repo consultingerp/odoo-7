@@ -79,15 +79,11 @@ class GhuStudent(models.Model):
         column2='lang_id'
     )
 
-    vita_file = fields.Binary('Curriculum Vitae')
-    vita_file_filename = fields.Char(
-        string=u'vita_filename',
-    )
+    vita_file = fields.Binary(related='partner_id.vita_file')
+    vita_file_filename = fields.Char(related='partner_id.vita_file_filename')
 
-    id_file = fields.Binary('Personal ID (Passport, Driver License,...)')
-    id_file_filename = fields.Char(
-        string=u'id_filename',
-    )
+    id_file = fields.Binary(related='partner_id.id_file')
+    id_file_filename = fields.Char(related='partner_id.id_file_filename')
 
     email = fields.Char(related='partner_id.email', required=True)
 

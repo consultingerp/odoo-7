@@ -72,10 +72,11 @@ class GhuAdvisor(models.Model):
         default=fields.Date.context_today
     )
 
-    vita = fields.Binary('Vita')
-    vita_filename = fields.Char(
-        string=u'Vita Filename',
-    )
+    vita_file = fields.Binary(related='partner_id.vita_file')
+    vita_file_filename = fields.Char(related='partner_id.vita_file_filename')
+
+    id_file = fields.Binary(related='partner_id.id_file')
+    id_file_filename = fields.Char(related='partner_id.id_file_filename')
 
     degree = fields.Binary(
         string='Degree GHU'
