@@ -3,59 +3,75 @@
     <data>
         <template id="report_invoice_document_with_bank_account" inherit_id="account.report_invoice_document">
             <xpath expr="//div[@id='qrcode']" position="after">
-                <p>
-                    If you want to pay with credit card you can do this via the following link: <a href="https://quickclick.com/r/9o7e8">https://quickclick.com/r/9o7e8</a>
-                </p>
-                <br/>
-                Please transfer the invoice total amount in GBP to the following bank account:
-                <div style="padding-left: 30px">
-                    <b>Account Holder:</b> Global Humanistic University (GHU) B.V
+                <div class="small">
+                    <p>
+                        If you want to pay with credit card you can do this via the following link:
+                        <a href="https://quickclick.com/r/9o7e8">https://quickclick.com/r/9o7e8</a>
+                    </p>
                     <br/>
-                    <b>Account Number:</b> 98895452
+                    Please transfer the invoice total amount / first installment in GBP to the following bank account:
+                    <div style="padding-left: 30px">
+                        <b>Account Holder:</b>
+                        Global Humanistic University (GHU) B.V
+                        <br/>
+                        <b>Account Number:</b>
+                        98895452
+                        <br/>
+                        <b>IBAN:</b>
+                        GB88 TRWI 2314 7098 8954 52 (to receive GBP from UK only)
+                        <br/>
+                        <b>UK Sort Code:</b>
+                        23-14-70
+                        <br/>
+                        Address: TransferWise, 56 Shoreditch High Street, London, E1 6JJ, United Kingdom
+                    </div>
                     <br/>
-                    <b>IBAN:</b> GB88 TRWI 2314 7098 8954 52 (to receive GBP from UK only)
+                    Please transfer the invoice total amount / first installment in AUD to the following bank account:
+                    <div style="padding-left: 30px">
+                        <b>Account Holder:</b>
+                        Global Humanistic University (GHU) B.V
+                        <br/>
+                        <b>Account Number:</b>
+                        913714420
+                        <br/>
+                        <b>BSB Code:</b>
+                        802-985
+                        <br/>
+                        Address: Transferwise, 36-38 Gipps Street, Collingwood VIC, 3066n Australia
+                    </div>
                     <br/>
-                    <b>UK Sort Code:</b> 23-14-70
-                    <br/>
-                    Address: TransferWise, 56 Shoreditch High Street, London, E1 6JJ, United Kingdom
+                    Please transfer the invoice total amount / first installment in EUR to the following bank account:
+                    <div style="padding-left: 30px">
+                        <b>Account Holder:</b>
+                        Global Humanistic University (GHU) B.V
+                        <br/>
+                        <b>Bank:</b>
+                        TransferWise Europe SA
+                        <b>IBAN:</b>
+                        BE27 9670 2100 1573 (only Euro from the SEPA Zone
+                        https://gocardless.com/guides/sepa/countries-sepa-zone/)
+                        <br/>
+                        <b>BIC:</b>
+                        TRWIBEB1XXX
+                        <br/>
+                        Address: Transferwise Europe SA, Square de Meeûs 38 bte 40, Brussels, 1000, Belgium
+                    </div>
+                    <p>
+                        I have read the
+                        <a target="_blank" href="/ghu/static/files/GHU-Terms-and-conditions.pdf">terms
+                            and conditions
+                        </a>
+                        with today's date
+                        including resignation of the Global Humanistic
+                        University, I agree with these and accept with
+                        my submission that these are the basis for my
+                        study contract.
+                        <br/>
+                        With my
+                        submission, I also confirm the accuracy of my
+                        information.
+                    </p>
                 </div>
-                <br/>
-                Please transfer the invoice total amount in AUD to the following bank account:
-                <div style="padding-left: 30px">
-                    <b>Account Holder:</b> Global Humanistic University (GHU) B.V
-                    <br/>
-                    <b>Account Number:</b> 913714420
-                    <br/>
-                    <b>BSB Code:</b> 802-985
-                    <br/>
-                    Address: Transferwise, 36-38 Gipps Street, Collingwood VIC, 3066n Australia
-                </div>
-                <br/>
-                Please transfer the invoice total amount in EUR to the following bank account:
-                <div style="padding-left: 30px">
-                    <b>Account Holder:</b> Global Humanistic University (GHU) B.V
-                    <br/>
-                    <b>Bank:</b> TransferWise Europe SA    
-                    <b>IBAN:</b> BE27 9670 2100 1573 (only Euro from the SEPA Zone https://gocardless.com/guides/sepa/countries-sepa-zone/)
-                    <br/>
-                    <b>BIC:</b> TRWIBEB1XXX 
-                    <br/>
-                    Address: Transferwise Europe SA, Square de Meeûs 38 bte 40, Brussels, 1000, Belgium 
-                </div>
-                <p>
-                                                                                I have read the
-                    <a target="_blank" href="/ghu/static/files/GHU-Terms-and-conditions.pdf">terms
-                                                                        and conditions</a>
-                                                                                with today's date
-                                                                    including resignation of the Global Humanistic
-                                                                    University, I agree with these and accept with
-                                                                    my submission that these are the basis for my
-                                                                    study contract.
-                    <br/>
-                                                                                With my
-                                                                    submission, I also confirm the accuracy of my
-                                                                    information.
-                </p>
             </xpath>
         </template>
     </data>
