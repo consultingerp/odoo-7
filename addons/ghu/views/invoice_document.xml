@@ -4,15 +4,15 @@
         <template id="report_invoice_document_with_bank_account" inherit_id="account.report_invoice_document">
             <xpath expr="//div[@id='qrcode']" position="after">
                 <style>
-                  .article.o_report_layout_background {
+                    .article.o_report_layout_background {
                     font-size: 14px;
-                  }
+                    }
                 </style>
+                <p>
+                    If you want to pay with credit card you can do this via the following link:
+                    <a href="https://quickclick.com/r/9o7e8">https://quickclick.com/r/9o7e8</a>
+                </p>
                 <div class="small">
-                    <p>
-                        If you want to pay with credit card you can do this via the following link:
-                        <a href="https://quickclick.com/r/9o7e8">https://quickclick.com/r/9o7e8</a>
-                    </p>
                     Please transfer the invoice total amount / first installment in GBP to the following bank account:
                     <div style="padding-left: 30px">
                         <b>Account Holder:</b>
