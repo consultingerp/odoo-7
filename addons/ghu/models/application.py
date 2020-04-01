@@ -124,13 +124,9 @@ class GhuApplication(models.Model):
     )
 
     # PAYMENT FIELDS
-    payment_method = fields.Selection(
-        string=u'Payment Method',
-        selection=[
-            ('one_time', 'One-time payment'),
-            ('two_times', 'Two-time payment'),
-            ('three_times', 'Three-time payment'),
-        ]
+    payment_method = fields.Many2one(
+        string=u'Payment Term',
+        comodel_name='account.payment.term'
     )
 
     

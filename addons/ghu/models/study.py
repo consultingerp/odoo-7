@@ -48,6 +48,11 @@ class GhuStudy(models.Model):
         required=False
     )
 
+    payment_term_id = fields.Many2many(
+        string=u'Payment terms',
+        comodel_name='account.payment.term'
+    )
+
     description = fields.Html(string=u'Description')
 
     _sql_constraints = [
