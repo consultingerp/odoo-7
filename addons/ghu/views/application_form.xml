@@ -565,7 +565,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <t t-set="payment_terms" t-value="set([study.payment_term_id for study in all_studies])" />
+                                                                        <t t-set="payment_terms" t-value="set(x for l in all_studies for x in l.payment_term_id)" />
                                                                         <t t-foreach="payment_terms" t-as="payment_term">
                                                                             <div class="radio ">
                                                                                 <label>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
+    <data noupdate="0">
 
         <record id="view_ghu_study_tree" model="ir.ui.view">
             <field name="name">ghu.study.tree</field>
