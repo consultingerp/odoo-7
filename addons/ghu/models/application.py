@@ -215,7 +215,8 @@ class GhuApplication(models.Model):
     def _compute_first_fee_amount(self):
         for record in self:
             if self.payment_method:
-                record.first_fee_amount = self.payment_method.compute(25000-self.scholarship)[0][1]
+                payment = self.payment_method.compute(24500 - self.scholarship)
+                record.first_fee_amount = payment[0][0][1]
             else:
                 record.first_fee_amount = 0.0
         
