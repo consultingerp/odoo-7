@@ -529,14 +529,14 @@ class GhuApplication(models.Model):
                       datetime.timedelta(weeks=1)).date(),  # due date
             user_id=1,  # salesperson
             invoice_line_ids=[],  # invoice lines
-            name="First payment",  # name for account move lines
+            name="Doctoral Program",  # name for account move lines
             partner_bank_id=self.env['ir.config_parameter'].get_param(
                 'ghu.automated_invoice_bank_account'),  # company bank account
         ))
 
 
 
-        payment = self.first_fee_amount
+        payment = 24500 - self.scholarship + self.payment_method.additional_fee
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
@@ -546,7 +546,7 @@ class GhuApplication(models.Model):
             default_invoice_id=invoice.id
         ).create(dict(
             product_id=product.id,
-            name="Doctoral Program - First Fee",
+            name="Doctoral Program - Total amount",
             price_unit=payment,
         ))
 
