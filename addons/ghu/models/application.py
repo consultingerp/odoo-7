@@ -532,6 +532,7 @@ class GhuApplication(models.Model):
             name="Doctoral Program",  # name for account move lines
             partner_bank_id=self.env['ir.config_parameter'].get_param(
                 'ghu.automated_invoice_bank_account'),  # company bank account
+            payment_term_id=self.payment_method.id
         ))
 
 
