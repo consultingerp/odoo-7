@@ -214,7 +214,10 @@ class GhuApplication(models.Model):
     @api.depends('payment_method','scholarship')
     def _compute_first_fee_amount(self):
         for record in self:
-            record.first_fee_amount = self.payment_method.compute(25000-self.scholarship)[0][1]
+            if self.payment_method:
+                record.first_fee_amount = self.payment_method.compute(25000-self.scholarship)[0][1]
+            else:
+                record.first_fee_amount = 0.0
         
 
     @api.multi
