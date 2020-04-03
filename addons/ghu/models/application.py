@@ -214,18 +214,7 @@ class GhuApplication(models.Model):
     @api.depends('payment_method','scholarship')
     def _compute_first_fee_amount(self):
         for record in self:
-            total_amount = 25000 - record.scholarship
-
-            if record.payment_method == 'one_time':
-                payment = total_amount - 500
-            elif record.payment_method == 'two_times':
-                total_amount = total_amount + 500
-                payment = total_amount/2 - 500
-            else:
-                total_amount = total_amount + 1000
-                payment = total_amount/3 - 500
-
-            record.first_fee_amount = payment
+            record.first_fee_amount = self.payment_method.compute(25000-self.scholarship)[0][1]
         
 
     @api.multi

@@ -9,10 +9,12 @@ _logger = logging.getLogger(__name__)
 class GhuAccountPaymentTerm(models.Model):
     _inherit = "account.payment.term"
 
+    additional_fee = fields.Float(string=u'Additional fee for payment type')
+
     @api.one
     def compute(self, value, date_ref=False):
         date_ref = date_ref or fields.Date.today()
-        amount = value
+        amount = value + self.additional_fee
         percentage_amount = value
         sign = value < 0 and -1 or 1
         result = []
