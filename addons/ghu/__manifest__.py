@@ -16,11 +16,11 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.727',
+    'version': '0.730',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'base_automation', 'web', 'crm', 'account', 'website', 'website_form', 'website_partner',
-                'website_form_editor', 'hr', 'sign', 'mass_mailing', 'theme_treehouse', 'account_transferwise'],
+                'website_form_editor', 'hr', 'sign', 'mass_mailing', 'theme_treehouse', 'account_transferwise', 'note'],
 
     # always loaded
     'data': [

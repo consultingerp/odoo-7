@@ -124,13 +124,9 @@ class GhuApplication(models.Model):
     )
 
     # PAYMENT FIELDS
-    payment_method = fields.Selection(
-        string=u'Payment Method',
-        selection=[
-            ('one_time', 'One-time payment'),
-            ('two_times', 'Two-time payment'),
-            ('three_times', 'Three-time payment'),
-        ]
+    payment_method = fields.Many2one(
+        string=u'Payment Term',
+        comodel_name='account.payment.term'
     )
 
     
@@ -218,18 +214,11 @@ class GhuApplication(models.Model):
     @api.depends('payment_method','scholarship')
     def _compute_first_fee_amount(self):
         for record in self:
-            total_amount = 25000 - record.scholarship
-
-            if record.payment_method == 'one_time':
-                payment = total_amount - 500
-            elif record.payment_method == 'two_times':
-                total_amount = total_amount + 500
-                payment = total_amount/2 - 500
+            if self.payment_method:
+                payment = self.payment_method.compute(24500 - self.scholarship)
+                record.first_fee_amount = payment[0][0][1]
             else:
-                total_amount = total_amount + 1000
-                payment = total_amount/3 - 500
-
-            record.first_fee_amount = payment
+                record.first_fee_amount = 0.0
         
 
     @api.multi
@@ -540,14 +529,15 @@ class GhuApplication(models.Model):
                       datetime.timedelta(weeks=1)).date(),  # due date
             user_id=1,  # salesperson
             invoice_line_ids=[],  # invoice lines
-            name="First payment",  # name for account move lines
+            name="Doctoral Program",  # name for account move lines
             partner_bank_id=self.env['ir.config_parameter'].get_param(
                 'ghu.automated_invoice_bank_account'),  # company bank account
+            payment_term_id=self.payment_method.id
         ))
 
 
 
-        payment = self.first_fee_amount
+        payment = 24500 - self.scholarship + self.payment_method.additional_fee
 
         product = self.env['product.product'].search(
             [('id', '=', self.env['ir.config_parameter'].get_param('ghu.doctoral_application_fee_product'))])
@@ -557,7 +547,7 @@ class GhuApplication(models.Model):
             default_invoice_id=invoice.id
         ).create(dict(
             product_id=product.id,
-            name="Doctoral Program - First Fee",
+            name="Doctoral Program - Total amount",
             price_unit=payment,
         ))
 

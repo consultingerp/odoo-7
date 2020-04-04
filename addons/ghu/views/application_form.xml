@@ -304,7 +304,7 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <t t-set="all_studies" t-value="request.env['ghu.study'].sudo().search([])"/>
+                                                                        <t t-set="all_studies" t-value="request.env['ghu.study'].sudo().search(['|',('code','ilike','DBA'),('code','ilike','PHD')])"/>
                                                                         <select required="required" class="form-control o_website_form_input" id="study_id" name="study_id">
                                                                             <t t-foreach="all_studies" t-as="study">
                                                                                 <option t-att-value="study.id" t-field="study.name" />
@@ -565,24 +565,15 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <div class="radio ">
-                                                                            <label>
-                                                                                <input required="required" class="o_website_form_input" id="paymentmethod_1" type="radio" name="payment_method" value="one_time" checked="checked" />
-                                                                            One-time payment USD 24,500.-- (at the beginning)
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="radio ">
-                                                                            <label>
-                                                                                <input id="paymentmethod_2" class="o_website_form_input" type="radio" name="payment_method" value="two_times" />
-                                                                            USD 12,500.-- at the beginning; USD 12,500. -- after 12 months
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="radio ">
-                                                                            <label>
-                                                                                <input id="paymentmethod_3" class="o_website_form_input" type="radio" name="payment_method" value="three_times" />
-                                                                            USD 9,000.-- at the beginning; 9,000.-- after 12 months, 8,000.-- after Phase 1
-                                                                            </label>
-                                                                        </div>
+                                                                        <t t-set="payment_terms" t-value="set(x for l in all_studies for x in l.payment_term_id)" />
+                                                                        <t t-foreach="payment_terms" t-as="payment_term">
+                                                                            <div class="radio ">
+                                                                                <label>
+                                                                                    <input required="required" class="o_website_form_input" t-attf-id="paymentmethod_#{payment_term.id}" type="radio" name="payment_method" t-att-value="payment_term.id" />
+                                                                                    <t t-esc="payment_term.name" />
+                                                                                </label>
+                                                                            </div>
+                                                                        </t>
                                                                     </div>
                                                                 </div>
                                                             </div>

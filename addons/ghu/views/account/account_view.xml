@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="report_invoice_document_with_bank_account" inherit_id="account.view_payment_term_form">
+            <field name="note" position="after">
+                <field name="additional_fee"/>
+            </field>
+        </template>
+    </data>
+</odoo>
