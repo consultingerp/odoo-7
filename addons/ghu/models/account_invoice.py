@@ -16,7 +16,7 @@ class GhuAccountPaymentTerm(models.Model):
     form_label = fields.Char(string='Label on forms', translate=True)
 
     # This value is used for website forms as a further description
-    form_description = fields.Html(string='Further description of payment term for forms', translate=True)
+    form_description = fields.Text(string='Further description of payment term for forms', translate=True)
 
     @api.one
     def compute(self, value, date_ref=False):

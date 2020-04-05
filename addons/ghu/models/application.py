@@ -592,6 +592,7 @@ class GhuApplication(models.Model):
         # Create Portal Access for both (Advisor and Student) if there is no one yet
         group_portal = self_sudo.env.ref('base.group_portal')
         user = student.partner_id.user_ids[0] if student.partner_id.user_ids else None
+        # TODO: Check if there is already a portal user with the same email address
         if not user:
 
             user = self_sudo.env['res.users'].with_context(no_reset_password=True)._create_user_from_template({
