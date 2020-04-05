@@ -536,7 +536,7 @@ class GhuApplication(models.Model):
         ))
 
 
-
+        # Total cost is 25000 - 500 (already paid at application) - scholarships + additional fee for installment plan
         payment = 24500 - self.scholarship + self.payment_method.additional_fee
 
         product = self.env['product.product'].search(
