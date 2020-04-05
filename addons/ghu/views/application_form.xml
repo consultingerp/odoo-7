@@ -565,8 +565,8 @@
                                                                         <span class="mandatory">*</span>
                                                                     </label>
                                                                     <div class="col-sm-9">
-                                                                        <t t-set="payment_terms" t-value="sorted(set(x for l in all_studies for x in l.payment_term_id), key=lambda x: x.sequence)" />
-                                                                        <t t-foreach="payment_terms" t-as="payment_term">
+                                                                        <t t-set="payment_terms" t-value="list(set(x for l in all_studies for x in l.payment_term_id))" />
+                                                                        <t t-foreach="sorted(payment_terms, key=lambda x: x.sequence)" t-as="payment_term">
                                                                             <div class="radio ">
                                                                                 <label t-attf-title="#{payment_term.form_description}">
                                                                                     <input required="required" class="o_website_form_input" t-attf-id="paymentmethod_#{payment_term.id}" type="radio" name="payment_method" t-att-value="payment_term.id" />
