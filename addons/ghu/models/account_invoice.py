@@ -12,6 +12,12 @@ class GhuAccountPaymentTerm(models.Model):
     #TODO: This value has to be added to total amount when invoice changes payment.term
     additional_fee = fields.Float(string=u'Additional fee for payment type')
 
+    # This value is used for website forms as a label in selection
+    form_label = fields.Text(string=u'Label on forms')
+
+    # This value is used for website forms as a further description
+    form_description = fields.Html(string=u'Further description of payment term for forms')
+
     @api.one
     def compute(self, value, date_ref=False):
         date_ref = date_ref or fields.Date.today()

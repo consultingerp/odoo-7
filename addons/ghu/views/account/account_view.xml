@@ -4,6 +4,8 @@
         <template id="report_invoice_document_with_bank_account" inherit_id="account.view_payment_term_form">
             <field name="note" position="after">
                 <field name="additional_fee"/>
+                <field name="form_label"/>
+                <field name="form_description"/>
             </field>
         </template>
     </data>
